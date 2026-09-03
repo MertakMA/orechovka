@@ -34,3 +34,18 @@ body {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+
+/* Jemné "důležité" pulzování zelené linky pod odkazem "Novinky" v navbaru
+   — zobrazuje se, jen když nějaké novinky opravdu jsou. */
+@keyframes nav-badge-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.animate-nav-badge-pulse {
+  animation: nav-badge-pulse 1.8s ease-in-out infinite;
+}

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/kontakt/ContactForm";
 import { withBasePath } from "@/lib/basePath";
+import { getNews } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Kontakt",
@@ -81,10 +82,12 @@ const DIRECTIONS = [
   },
 ];
 
-export default function KontaktPage() {
+export default async function KontaktPage() {
+  const news = await getNews();
+
   return (
     <>
-      <Navbar />
+      <Navbar hasNews={news.length > 0} />
       <main>
         <section className="relative flex h-[260px] items-center justify-center overflow-hidden text-center">
           <Image src={withBasePath("/images/hero-facade.jpg")} alt="" fill priority sizes="100vw" className="object-cover object-[60%_50%]" />

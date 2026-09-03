@@ -5,16 +5,19 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import GalleryFilterGrid from "@/components/gallery/GalleryFilterGrid";
 import { withBasePath } from "@/lib/basePath";
+import { getNews } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Galerie",
   description: "Nahlédněte do Roubenky Ořechovka a jejího okolí — exteriér, interiér i výlety v Krkonoších.",
 };
 
-export default function GaleriePage() {
+export default async function GaleriePage() {
+  const news = await getNews();
+
   return (
     <>
-      <Navbar />
+      <Navbar hasNews={news.length > 0} />
       <main>
         <section className="relative flex h-[260px] items-center justify-center overflow-hidden text-center">
           <Image src={withBasePath("/images/hero-facade.jpg")} alt="" fill priority sizes="100vw" className="object-cover object-[60%_50%]" />

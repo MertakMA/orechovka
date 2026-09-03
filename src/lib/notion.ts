@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { Client } from "@notionhq/client";
 
 export type NewsItem = {
@@ -48,8 +49,12 @@ function readFirstFileUrl(prop: unknown): string | null {
  * Načte publikované novinky z Notion databáze ("Novinky – Roubenka Ořechovka").
  * Klient je přidává sám v Notionu — pokud databáze není nastavená (chybí env
  * proměnné) nebo je prázdná, vrátí se prázdné pole a sekce na webu se skryje.
+ *
+ * Obalené v React cache() — voláme to jak z NewsSection, tak z každé
+ * stránky (kvůli odkazu "Novinky" v navbaru), a takhle se v rámci jednoho
+ * buildu/renderu na Notion sáhne jen jednou, ne vícekrát zbytečně.
  */
-export async function getNews(): Promise<NewsItem[]> {
+export const getNews = cache(async (): Promise<NewsItem[]> => {
   if (!API_KEY || !DATA_SOURCE_ID) return [];
 
   try {
@@ -83,4 +88,4 @@ export async function getNews(): Promise<NewsItem[]> {
     console.error("Nepodařilo se načíst novinky z Notionu:", err);
     return [];
   }
-}
+});

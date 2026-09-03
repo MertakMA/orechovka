@@ -7,6 +7,7 @@ import CTASection from "@/components/CTASection";
 import PriceCard from "@/components/pricing/PriceCard";
 import FAQAccordion from "@/components/pricing/FAQAccordion";
 import { withBasePath } from "@/lib/basePath";
+import { getNews } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Ceník ubytování",
@@ -52,10 +53,12 @@ const FEES = [
   { label: "Pozdní check-out", value: "po dohodě, příplatek 300 Kč" },
 ];
 
-export default function CenikPage() {
+export default async function CenikPage() {
+  const news = await getNews();
+
   return (
     <>
-      <Navbar />
+      <Navbar hasNews={news.length > 0} />
       <main>
         <section className="relative flex h-[260px] items-center justify-center overflow-hidden text-center">
           <Image src={withBasePath("/images/hero-facade.jpg")} alt="" fill priority sizes="100vw" className="object-cover object-[60%_50%]" />

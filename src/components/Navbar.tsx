@@ -10,7 +10,9 @@ import { handleHashNavClick } from "@/lib/hashNav";
 
 const MotionLink = motion(Link);
 
-const NAV_LINKS = [
+type NavLink = { label: string; href: string; isNews?: boolean };
+
+const BASE_NAV_LINKS: NavLink[] = [
   { label: "O nás", href: "/#o-nas" },
   { label: "Ceník", href: "/cenik" },
   { label: "Galerie", href: "/galerie" },
@@ -19,9 +21,33 @@ const NAV_LINKS = [
   { label: "Počasí", href: "/#pocasi" },
 ];
 
-export default function Navbar() {
+const NEWS_LINK: NavLink = { label: "Novinky", href: "/#novinky", isNews: true };
+
+// Zelená podtržená "důležitá" značka pod odkazem Novinky — jemně pulzuje,
+// ať si jí je nejdřív všimnout, že je na webu něco nového.
+function NavLinkLabel({ link }: { link: NavLink }) {
+  if (!link.isNews) return <>{link.label}</>;
+  return (
+    <span className="relative inline-block">
+      {link.label}
+      <span
+        aria-hidden
+        className="animate-nav-badge-pulse absolute inset-x-0 -bottom-1 h-[2px] rounded-full bg-brand-gradient"
+      />
+    </span>
+  );
+}
+
+export default function Navbar({ hasNews = false }: { hasNews?: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+
+  // Odkaz na Novinky se zobrazí, jen když nějaké skutečně jsou (viz
+  // NewsSection — prázdno = sekce na webu vůbec není, takže by odkaz
+  // jinak mířil na nic). Zařazený hned za Kontakt.
+  const navLinks = hasNews
+    ? [...BASE_NAV_LINKS.slice(0, 4), NEWS_LINK, ...BASE_NAV_LINKS.slice(4)]
+    : BASE_NAV_LINKS;
 
   // Otevřené mobilní menu je fixed přes celou obrazovku, ale stránka pod
   // ním by bez tohohle šla dál posouvat scrollem prstu/kolečkem.
@@ -51,7 +77,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden lg:flex lg:items-center lg:gap-[45px]">
-          {NAV_LINKS.map((link) => {
+          {navLinks.map((link) => {
             const isActive =
               link.href !== "/" && link.href.startsWith("/") && !link.href.includes("#") && pathname?.startsWith(link.href);
             return (
@@ -63,7 +89,7 @@ export default function Navbar() {
                   isActive ? "font-semibold text-brand" : "text-ink"
                 }`}
               >
-                {link.label}
+                <NavLinkLabel link={link} />
               </Link>
             );
           })}
@@ -118,7 +144,7 @@ export default function Navbar() {
               }}
               className="flex flex-col gap-2 px-6 py-4"
             >
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <MotionLink
                   key={link.href}
                   href={link.href}
@@ -136,7 +162,7 @@ export default function Navbar() {
                   }}
                   className="border-b border-border py-4 text-lg text-ink"
                 >
-                  {link.label}
+                  <NavLinkLabel link={link} />
                 </MotionLink>
               ))}
               <a

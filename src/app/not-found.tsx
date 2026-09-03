@@ -3,11 +3,14 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { withBasePath } from "@/lib/basePath";
+import { getNews } from "@/lib/notion";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const news = await getNews();
+
   return (
     <>
-      <Navbar />
+      <Navbar hasNews={news.length > 0} />
       <main className="flex flex-col items-center justify-center gap-6 bg-cream px-6 py-24 text-center sm:py-32">
         <div className="flex size-28 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0px_10px_30px_0px_rgba(34,25,16,0.12)] sm:size-32">
           <Image src={withBasePath("/images/logo.svg")} alt="" width={100} height={117} className="h-20 w-auto sm:h-24" />
