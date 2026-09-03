@@ -10,11 +10,20 @@ function formatDate(iso: string | null): string | null {
   return new Date(iso).toLocaleDateString("cs-CZ", { day: "numeric", month: "long", year: "numeric" });
 }
 
+// Klient v Notionu odděluje odstavce novým řádkem — každý neprázdný
+// řádek se v popupu vykreslí jako vlastní odstavec.
+function paragraphs(text: string): string[] {
+  return text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
 /**
- * Karty s novinkami + popup s detailem. Dřív karta s odkazem byla celá
- * <a target="_blank"> — teď klik otevře jen popup na stránce se vším
- * potřebným textem, a samotný odkaz z Notionu (schovaný pod textem z
- * kolonky "Text odkazu") je až tlačítko na konci popupu.
+ * Karty s novinkami + popup s detailem. Karta v mřížce ukazuje jen
+ * obrázek/datum/název, ať se dlouhým textem nikdy nerozbije rozvržení —
+ * celý text novinky je vidět až po kliknutí v popupu, rozdělený na
+ * odstavce a zarovnaný na střed v pevné čitelné šířce.
  */
 export default function NewsGrid({ news }: { news: NewsItem[] }) {
   const [selected, setSelected] = useState<NewsItem | null>(null);
@@ -40,13 +49,13 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
       <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-[52px] lg:grid-cols-3">
         {news.map((item) => {
           const date = formatDate(item.date);
-          const openable = Boolean(item.link);
-          const cardClassName =
-            "flex flex-col overflow-hidden rounded-[10px] border border-border bg-white text-left transition-colors" +
-            (openable ? " cursor-pointer hover:border-brand" : "");
-
-          const content = (
-            <>
+          return (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => setSelected(item)}
+              className="flex cursor-pointer flex-col overflow-hidden rounded-[10px] border border-border bg-white text-left transition-colors hover:border-brand"
+            >
               {item.imageUrl && (
                 <div className="relative h-[180px] w-full">
                   <Image src={item.imageUrl} alt={item.title} fill unoptimized className="object-cover" />
@@ -55,24 +64,9 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
               <div className="flex flex-col gap-2 px-5 py-[18px]">
                 {date && <p className="text-[12px] font-semibold uppercase tracking-wide text-brand">{date}</p>}
                 <h3 className="font-serif text-[18px] font-bold text-ink">{item.title}</h3>
-                {item.text && <p className="text-[14px] leading-[1.55] text-clay">{item.text}</p>}
-                {openable && (
-                  <span className="mt-1 text-[13px] font-semibold text-brand">
-                    {item.linkText || "Zjistit více"} →
-                  </span>
-                )}
+                <span className="mt-1 text-[13px] font-semibold text-brand">Více informací →</span>
               </div>
-            </>
-          );
-
-          return openable ? (
-            <button key={item.id} type="button" onClick={() => setSelected(item)} className={cardClassName}>
-              {content}
             </button>
-          ) : (
-            <div key={item.id} className={cardClassName}>
-              {content}
-            </div>
           );
         })}
       </div>
@@ -113,7 +107,7 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
                 </div>
               )}
 
-              <div className="flex flex-col gap-3 px-6 py-6">
+              <div className="flex flex-col items-center gap-3 px-6 py-6 text-center">
                 {formatDate(selected.date) && (
                   <p className="text-[12px] font-semibold uppercase tracking-wide text-brand">
                     {formatDate(selected.date)}
@@ -122,7 +116,16 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
                 <h3 id="novinka-popup-title" className="font-serif text-[22px] font-bold text-ink">
                   {selected.title}
                 </h3>
-                {selected.text && <p className="text-[15px] leading-[1.65] text-clay">{selected.text}</p>}
+
+                {selected.text && (
+                  <div className="mx-auto flex max-w-[380px] flex-col gap-3">
+                    {paragraphs(selected.text).map((paragraph, i) => (
+                      <p key={i} className="text-[15px] leading-[1.65] text-clay">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                )}
 
                 {selected.link && (
                   <a
