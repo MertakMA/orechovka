@@ -63,9 +63,9 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
               )}
               <div className="flex flex-col gap-2 px-5 py-[18px]">
                 {date && <p className="text-[12px] font-semibold uppercase tracking-wide text-brand">{date}</p>}
-                <h3 className="font-serif text-[18px] font-bold text-ink">{item.title}</h3>
+                <h3 className="break-words font-serif text-[18px] font-bold text-ink">{item.title}</h3>
                 {item.text && (
-                  <p className="line-clamp-2 text-[14px] leading-[1.55] text-clay">{item.text}</p>
+                  <p className="line-clamp-2 break-words text-[14px] leading-[1.55] text-clay">{item.text}</p>
                 )}
                 <span className="mt-1 text-[13px] font-semibold text-brand">Více informací →</span>
               </div>
@@ -93,7 +93,7 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
               role="dialog"
               aria-modal="true"
               aria-labelledby="novinka-popup-title"
-              className="relative max-h-[85vh] w-full max-w-[520px] overflow-y-auto rounded-[14px] bg-white shadow-xl"
+              className="relative max-h-[85vh] w-full max-w-[520px] overflow-y-auto overflow-x-hidden rounded-[14px] bg-white shadow-xl"
             >
               <button
                 type="button"
@@ -116,14 +116,14 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
                     {formatDate(selected.date)}
                   </p>
                 )}
-                <h3 id="novinka-popup-title" className="font-serif text-[22px] font-bold text-ink">
+                <h3 id="novinka-popup-title" className="max-w-[380px] break-words font-serif text-[22px] font-bold text-ink">
                   {selected.title}
                 </h3>
 
                 {selected.text && (
-                  <div className="mx-auto flex max-w-[380px] flex-col gap-3">
+                  <div className="mx-auto flex w-full max-w-[380px] flex-col gap-3">
                     {paragraphs(selected.text).map((paragraph, i) => (
-                      <p key={i} className="text-[15px] leading-[1.65] text-clay">
+                      <p key={i} className="break-words text-[15px] leading-[1.65] text-clay">
                         {paragraph}
                       </p>
                     ))}
