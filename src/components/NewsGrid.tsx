@@ -64,6 +64,9 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
               <div className="flex flex-col gap-2 px-5 py-[18px]">
                 {date && <p className="text-[12px] font-semibold uppercase tracking-wide text-brand">{date}</p>}
                 <h3 className="font-serif text-[18px] font-bold text-ink">{item.title}</h3>
+                {item.text && (
+                  <p className="line-clamp-2 text-[14px] leading-[1.55] text-clay">{item.text}</p>
+                )}
                 <span className="mt-1 text-[13px] font-semibold text-brand">Více informací →</span>
               </div>
             </button>
