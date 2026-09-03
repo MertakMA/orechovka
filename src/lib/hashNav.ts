@@ -1,4 +1,5 @@
 import type { MouseEvent } from "react";
+import { BASE_PATH } from "@/lib/basePath";
 
 /**
  * next/link u odkazů typu "/#tipy" spolehlivě naviguje a doscrolluje jen
@@ -6,7 +7,11 @@ import type { MouseEvent } from "react";
  * uživatel už na cílové stránce, Next hash-only "navigaci" potichu přeskočí
  * a nikam nedoscrolluje — proto v tom případě scroll doděláme ručně.
  *
- * `pathname` je hodnota z next/navigation usePathname() (bez basePath).
+ * `pathname` je hodnota z next/navigation usePathname() (bez basePath), proto
+ * se s ním `targetPath` (odvozený z `href`, taky bez basePath) dá přímo
+ * porovnat. Ale při zápisu do adresního řádku (replaceState) musíme basePath
+ * ručně přidat zpátky — jinak by na GitHub Pages buildu (kde web běží pod
+ * "/orechovka") replaceState smazal "/orechovka" z URL.
  */
 export function handleHashNavClick(e: MouseEvent<HTMLAnchorElement>, href: string, pathname: string | null) {
   if (!href.includes("#")) return;
@@ -19,5 +24,5 @@ export function handleHashNavClick(e: MouseEvent<HTMLAnchorElement>, href: strin
   const el = document.getElementById(hash);
   if (!el) return;
   el.scrollIntoView({ behavior: "smooth", block: "start" });
-  window.history.replaceState(null, "", `${targetPath}#${hash}`);
+  window.history.replaceState(null, "", `${BASE_PATH}${targetPath}#${hash}`);
 }
