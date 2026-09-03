@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 
 // TODO: nahradit reálnými fotkami výletních cílů, nyní jde o neutrální placeholdery z Picsum.
@@ -54,6 +54,23 @@ const WIND_PARTICLES = [
 
 const FALL_DURATION_MS = 750;
 
+// Pod "sm" (640px) jsou karty v jednom sloupci pod sebou (viz grid-cols-1
+// níž) — pádová animace by tak najížděla do karty pod sebou. Na mobilu
+// proto necháváme jen kývání na kolíčku a klik naviguje rovnou, bez pádu.
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  return isMobile;
+}
+
 function Clip({ color }: { color: string }) {
   return (
     <div
@@ -79,8 +96,12 @@ function PolaroidCard({
   const fallDrift = tip.rotate >= 0 ? 70 : -70;
 
   const [isFalling, setIsFalling] = useState(false);
+  const isMobile = useIsMobile();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    // Na mobilu (1 sloupec) žádný pád — jen kývání, klik naviguje normálně.
+    if (isMobile) return;
+
     // Ctrl/Cmd/Shift-klik nebo prostřední tlačítko (otevření na pozadí,
     // "otevřít v novém okně" apod.) neschováváme za animaci — necháme
     // prohlížeč, ať to zpracuje sám a rovnou.
