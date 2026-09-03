@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
+import { handleHashNavClick } from "@/lib/hashNav";
 
 const MotionLink = motion(Link);
 
@@ -22,9 +23,18 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  // Otevřené mobilní menu je fixed přes celou obrazovku, ale stránka pod
+  // ním by bez tohohle šla dál posouvat scrollem prstu/kolečkem.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white">
-      <div className="mx-auto flex h-24 max-w-[1440px] items-center justify-between gap-6 px-6 md:px-10 lg:px-[100px]">
+      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-6 px-6 sm:h-24 md:px-10 lg:px-[100px]">
         <Link
           href="/"
           className="relative z-10 flex shrink-0 items-center py-2 pr-4"
@@ -35,7 +45,7 @@ export default function Navbar() {
             alt="Roubenka Ořechovka"
             width={100}
             height={117}
-            className="h-28 w-auto"
+            className="h-20 w-auto sm:h-28"
             priority
           />
         </Link>
@@ -48,6 +58,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleHashNavClick(e, link.href, pathname)}
                 className={`whitespace-nowrap text-[16px] transition-colors hover:text-brand ${
                   isActive ? "font-semibold text-brand" : "text-ink"
                 }`}
@@ -87,7 +98,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-white lg:hidden"
           >
-            <div className="flex h-24 items-center justify-between px-6">
+            <div className="flex h-20 items-center justify-between px-6 sm:h-24">
               <span className="font-serif text-lg font-bold text-ink">Roubenka Ořechovka</span>
               <button
                 type="button"
@@ -111,7 +122,14 @@ export default function Navbar() {
                 <MotionLink
                   key={link.href}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    // Zrušit scroll-lock rovnou tady, ne čekat na efekt
+                    // navázaný na `open` — jinak by scroll níž mohl
+                    // proběhnout dřív, než se stránka vůbec odemkne.
+                    document.body.style.overflow = "";
+                    setOpen(false);
+                    handleHashNavClick(e, link.href, pathname);
+                  }}
                   variants={{
                     open: { opacity: 1, y: 0 },
                     closed: { opacity: 0, y: 12 },

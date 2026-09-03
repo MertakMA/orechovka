@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { withBasePath } from "@/lib/basePath";
+import { handleHashNavClick } from "@/lib/hashNav";
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
@@ -36,6 +40,8 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+
   return (
     <footer className="bg-[#242e29]">
       <div className="mx-auto max-w-[1440px] px-6 py-14 sm:px-10 sm:py-16 lg:px-[100px]">
@@ -54,9 +60,6 @@ export default function Footer() {
             <a href="https://roubenkaorechovka.cz" className="text-[13px] text-[#82a396] hover:underline">
               roubenkaorechovka.cz
             </a>
-            <p className="text-[13px] leading-[1.6] text-[#a6bfb2]">
-              Útulná roubenka pro vaši dovolenou v krásné přírodě.
-            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:gap-x-12">
@@ -78,6 +81,7 @@ export default function Footer() {
                       ) : (
                         <Link
                           href={link.href}
+                          onClick={(e) => handleHashNavClick(e, link.href, pathname)}
                           className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
                         >
                           {link.label}
@@ -97,6 +101,7 @@ export default function Footer() {
                     <li key={line.label}>
                       <Link
                         href={line.href}
+                        onClick={(e) => handleHashNavClick(e, line.href, pathname)}
                         className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
                       >
                         {line.label}

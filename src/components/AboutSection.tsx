@@ -12,10 +12,12 @@ const PHOTOS = [
   { src: withBasePath("/images/food-bread.jpg"), alt: "Čerstvý domácí chléb na dřevěném prkénku" },
 ];
 
-// Photos are duplicated so the track can keep sliding forward past the last
-// one — it lands on a visual clone of photo #1, then silently resets to the
-// real photo #1 (transition duration 0) for a seamless, never-skipping loop.
-const LOOP_PHOTOS = [...PHOTOS, ...PHOTOS];
+// Photos jsou ve frontě 3x za sebou (A|B|C) a start je uprostřed kopie B —
+// takže je vždycky celá jedna sada fotek jako "polštář" na obě strany.
+// Ať se jede dopředu i dozadu, vždycky je kam animovat na klon, a po
+// doběhnutí přechodu se potichu (duration 0) přeskočí zpátky do prostřední
+// kopie na vizuálně identickou fotku — smyčka tak funguje oběma směry.
+const LOOP_PHOTOS = [...PHOTOS, ...PHOTOS, ...PHOTOS];
 const COUNT = PHOTOS.length;
 const GAP = 12;
 const AUTOPLAY_MS = 5000;
@@ -23,7 +25,9 @@ const SLIDE_TRANSITION = { duration: 0.8, ease: [0.65, 0, 0.35, 1] as const };
 
 function Carousel() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [index, setIndex] = useState(0);
+  // Start uprostřed prostřední kopie (skutečná fotka #1), aby byl od
+  // začátku stejný polštář fotek k dispozici dozadu i dopředu.
+  const [index, setIndex] = useState(COUNT);
   const [step, setStep] = useState(0);
   const [instant, setInstant] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -51,7 +55,7 @@ function Carousel() {
     intervalRef.current = setInterval(() => {
       if (animatingRef.current) return;
       animatingRef.current = true;
-      setIndex((i) => Math.min(i + 1, LOOP_PHOTOS.length - 1));
+      setIndex((i) => i + 1);
     }, AUTOPLAY_MS);
   };
 
@@ -64,7 +68,9 @@ function Carousel() {
   const go = (dir: 1 | -1) => {
     if (animatingRef.current) return;
     animatingRef.current = true;
-    setIndex((i) => Math.min(Math.max(i + dir, 0), LOOP_PHOTOS.length - 1));
+    // Díky polštáři kopií na obě strany se nikdy nemusí ořezávat na 0/konec
+    // — smyčka pak funguje stejně plynule dozadu jako dopředu.
+    setIndex((i) => i + dir);
     startAutoplay();
   };
 
@@ -83,22 +89,25 @@ function Carousel() {
     else startAutoplay();
   };
 
+  const jumpSilently = (next: number) => {
+    // Neviditelný skok na vizuálně identickou fotku v prostřední kopii
+    // (transition duration 0) – přechody se zase povolí až na dalším snímku.
+    setInstant(true);
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        setInstant(false);
+        animatingRef.current = false;
+      })
+    );
+    return next;
+  };
+
   const handleAnimationComplete = () => {
     setIndex((current) => {
-      if (current < COUNT) {
-        animatingRef.current = false;
-        return current;
-      }
-      // Na konci smyčky – neviditelný skok zpět na skutečnou fotku #1
-      // (transition duration 0), přechody se zase povolí až na dalším snímku.
-      setInstant(true);
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          setInstant(false);
-          animatingRef.current = false;
-        })
-      );
-      return current % COUNT;
+      if (current >= 2 * COUNT) return jumpSilently(current - COUNT);
+      if (current < COUNT) return jumpSilently(current + COUNT);
+      animatingRef.current = false;
+      return current;
     });
   };
 
@@ -119,6 +128,7 @@ function Carousel() {
         dragMomentum={false}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
+        initial={false}
         animate={{ x: -index * step }}
         transition={instant ? { duration: 0 } : SLIDE_TRANSITION}
         onAnimationComplete={handleAnimationComplete}
@@ -166,7 +176,9 @@ function Carousel() {
             key={photo.src}
             type="button"
             onClick={() => {
-              setIndex(i);
+              // COUNT + i, ne holé i — vždycky přistát v prostřední kopii,
+              // aby zůstal polštář fotek na obě strany.
+              setIndex(COUNT + i);
               startAutoplay();
             }}
             aria-label={`Zobrazit fotku ${i + 1}`}

@@ -1,13 +1,9 @@
-# TODO – doladění webu
+# TODO – další kolo doladění
 
-- [x] **Logo** – odstraněno pozadí (byl to čtvercový path #FDFDFD za celým vektorem), logo v navbaru zvětšeno
-- [x] **Smooth scroll** – přidán plynulý doscroll i pro odkazy mířící z jiné podstránky (dřív skákaly instantně)
-- [x] **Polaroidy (Tipy na výlety)** – idle pohupování přesunuto na čisté CSS, hover je nezávislá vrstva navrch → žádné cukání po najetí
-- [x] **Kolíčky na šňůře** – rotace teď kolem horního okraje karty (origin-top), kolíček zůstává na místě
-- [x] **Carousel v sekci O nás** – zkrácena animace (1.4s → 0.8s) + reset po smyčce počítá modulo, takže i rychlé klikání nerozhodí pozici
-- [x] **Webkamera** – černý pruh je teď odkaz na holidayinfo.cz/camera/mbuky/2084
-- [x] **Footer** – "Pravidla pobytu" odstraněno
-- [x] **Ceník – časté dotazy** – blok vycentrován (mx-auto, max-w-900px)
-- [x] **404 stránka** – "CHYBA 404" výrazně zvětšeno, logo větší a v kulatém rámu
-- [x] **Kontakt – sociální sítě** – Facebook modrá, Instagram gradient
-- [x] **Kontakt – mapa** – výška srovnána s panelem "Jak se dostat" (flex stretch)
+- [x] **Stats lišta pod Hero** – text zvětšen (12→14px hodnoty, 9→11px popisky), odlehčeny paddingy/mezery, ať výška lišty zůstává prakticky stejná
+- [x] **Carousel v sekci O nás** – fotky teď jedou ve 3 kopiích za sebou (polštář na obě strany), takže smyčka funguje plynule i doleva, ne jen doprava
+- [x] **CTA tlačítko "Rezervovat pobyt" na mobilu** – menší text/padding na mobilu, šipka spojená s předchozím slovem nedělitelnou mezerou, takže nikdy nespadne sama na druhý řádek
+- [x] **Footer** – věta "Útulná roubenka pro vaši dovolenou v krásné přírodě." odstraněna
+- [x] **Mobilní menu (hamburger)** – při otevření se zamkne scroll na `body`, po zavření/kliknutí na odkaz se zase odemkne
+- [x] **Navbar na mobilu** – lišta i logo mírně zmenšené pod `sm` (h-24→h-20, logo h-28→h-20), od `sm` výš beze změny
+- [x] **Navbar/Footer odkazy na kotvy ("Tipy na výlety", "Počasí", "O nás")** – oprava: next/link hash-only navigaci na stejné stránce potichu ignoruje, takže se teď doscrolluje ručně (src/lib/hashNav.ts) kdykoliv je uživatel už na cílové stránce
