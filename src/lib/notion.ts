@@ -8,6 +8,9 @@ export type NewsItem = {
   text: string;
   imageUrl: string | null;
   link: string | null;
+  // Text odkazu z Notionu — text tlačítka, za kterým se v popupu schová
+  // `link`. Prázdné/chybí = použije se rozumný výchozí text v komponentě.
+  linkText: string | null;
 };
 
 const API_KEY = process.env.NOTION_API_KEY;
@@ -81,6 +84,7 @@ export const getNews = cache(async (): Promise<NewsItem[]> => {
         text: readRichText(props["Text"]),
         imageUrl: readFirstFileUrl(props["Obrázek"]),
         link: readUrl(props["Odkaz"]),
+        linkText: readRichText(props["Text odkazu"]) || null,
       });
     }
     return items;
