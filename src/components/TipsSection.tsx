@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 
 // TODO: nahradit reálnými fotkami výletních cílů, nyní jde o neutrální placeholdery z Picsum.
@@ -80,12 +80,22 @@ function PolaroidCard({
 
   const [isFalling, setIsFalling] = useState(false);
 
-  const handleClick = () => {
-    // Odkaz se otevře normálně na pozadí (nová karta) — tohle je jen
-    // animace navrch, ať to vypadá, že polaroid spadl z kolíčku. Po
-    // chvíli se sám vrátí zpátky na šňůru.
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    // Ctrl/Cmd/Shift-klik nebo prostřední tlačítko (otevření na pozadí,
+    // "otevřít v novém okně" apod.) neschováváme za animaci — necháme
+    // prohlížeč, ať to zpracuje sám a rovnou.
+    if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+
+    // Normální klik by prohlížeč hned přesměroval do nové karty a přepnul
+    // na ni fokus — pád polaroidu by tak nikdy nebylo vidět. Proto klik
+    // schválně zpozdíme: animace nejdřív doběhne (spadne a vrátí se na
+    // kolíček) a teprve pak otevřeme cílovou stránku v nové kartě.
+    e.preventDefault();
     setIsFalling(true);
-    window.setTimeout(() => setIsFalling(false), FALL_DURATION_MS);
+    window.setTimeout(() => {
+      setIsFalling(false);
+      window.open(tip.href, "_blank", "noopener,noreferrer");
+    }, FALL_DURATION_MS);
   };
 
   return (
