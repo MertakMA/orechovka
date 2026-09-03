@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
@@ -220,12 +221,12 @@ export default function AboutSection() {
             Útulné ubytování v podhůří Krkonoš — pro rodiny, páry i skupiny přátel. Celý objekt
             jen pro vás, zahrada s grilem a krb pro večerní pohodu.
           </p>
-          <a
-            href="#vyhody"
+          <Link
+            href="/galerie"
             className="text-gradient mt-7 inline-block rounded border-[1.8px] border-clay px-[22px] py-3 text-[15px] font-semibold"
           >
             Více o roubence →
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div
