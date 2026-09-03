@@ -4,24 +4,19 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 /**
- * Když se přijde na stránku s odkazem obsahujícím #hash (typicky z jiné
- * podstránky, např. Footer odkaz "/#o-nas"), doscrollujeme na cílový prvek
- * plynule. Odkazy s hashem mají v Navbaru/Footeru `scroll={false}`, takže
- * Next.js po navigaci sám neskočí nahoru — díky tomu jede jen tahle jedna
- * plynulá animace bez viditelného "skoku nahoru a pak zpátky dolů".
- *
- * Efekt běží znovu při každé změně `pathname`, ne jen při prvním načtení
- * appky — jinak by se u navigace mezi podstránkami (SPA přechod) vůbec
- * nespustil podruhé.
+ * Doscrolluje na cílovou sekci, když se na stránku přijde s #hash v URL
+ * (přímý odkaz zvenčí, nebo plná navigace z handleHashNavClick — viz
+ * hashNav.ts). Efekt běží při každé změně `pathname`, ne jen jednou při
+ * prvním načtení appky.
  */
 export default function SmoothHashScroll() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const hash = window.location.hash;
+    const hash = window.location.hash.slice(1);
     if (!hash) return;
 
-    const el = document.querySelector(hash);
+    const el = document.getElementById(hash);
     if (!el) return;
 
     const id = requestAnimationFrame(() => {

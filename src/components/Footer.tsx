@@ -81,7 +81,7 @@ export default function Footer() {
                       ) : (
                         <Link
                           href={link.href}
-                          scroll={!link.href.includes("#")}
+                          prefetch={!link.href.includes("#")}
                           onClick={(e) => handleHashNavClick(e, link.href, pathname)}
                           className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
                         >
@@ -102,7 +102,7 @@ export default function Footer() {
                     <li key={line.label}>
                       <Link
                         href={line.href}
-                        scroll={!line.href.includes("#")}
+                        prefetch={!line.href.includes("#")}
                         onClick={(e) => handleHashNavClick(e, line.href, pathname)}
                         className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
                       >

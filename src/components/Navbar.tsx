@@ -84,7 +84,7 @@ export default function Navbar({ hasNews = false }: { hasNews?: boolean }) {
               <Link
                 key={link.href}
                 href={link.href}
-                scroll={!link.href.includes("#")}
+                prefetch={!link.href.includes("#")}
                 onClick={(e) => handleHashNavClick(e, link.href, pathname)}
                 className={`whitespace-nowrap text-[16px] transition-colors hover:text-brand ${
                   isActive ? "font-semibold text-brand" : "text-ink"
@@ -149,7 +149,7 @@ export default function Navbar({ hasNews = false }: { hasNews?: boolean }) {
                 <MotionLink
                   key={link.href}
                   href={link.href}
-                  scroll={!link.href.includes("#")}
+                  prefetch={!link.href.includes("#")}
                   onClick={(e) => {
                     // Zrušit scroll-lock rovnou tady, ne čekat na efekt
                     // navázaný na `open` — jinak by scroll níž mohl
