@@ -41,3 +41,18 @@ Web bude působit přírodně, klidně a útulně. Úvodní část bude založen
 - [roubenkajindriska.cz](https://roubenkajindriska.cz)
 
 Referenční weby slouží jako inspirace pro strukturu, prezentaci ubytování a práci s fotografiemi. Výsledný web bude mít vlastní vizuální identitu Roubenky Ořechovka.
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) 14 (App Router) + React 18 + TypeScript
+- Tailwind CSS
+- Framer Motion (animace), yet-another-react-lightbox (galerie)
+
+## Spuštění projektu
+
+```bash
+npm install
+npm run dev
+```
+
+Web poběží na `http://localhost:3000`.
