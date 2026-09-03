@@ -118,7 +118,7 @@ export default async function CenikPage() {
         <section className="bg-[#f5efe6] px-6 py-16 sm:px-10 lg:px-[100px]">
           <div className="mx-auto max-w-[1440px]">
             <h2 className="font-serif text-[24px] font-bold text-ink sm:text-[28px]">Časté dotazy k ceníku</h2>
-            <div className="mx-auto mt-8 max-w-[900px]">
+            <div className="mt-8">
               <FAQAccordion />
             </div>
           </div>
