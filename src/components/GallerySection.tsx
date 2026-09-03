@@ -1,19 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { withBasePath } from "@/lib/basePath";
 
 const GALLERY = [
-  { src: "/images/gallery-1.jpg", alt: "Roubenka Ořechovka zvenčí" },
-  { src: "/images/gallery-2.jpg", alt: "Kachlový krb s posezením" },
-  { src: "/images/gallery-3.jpg", alt: "Kuchyně s výhledem do zahrady" },
-  { src: "/images/gallery-4.png", alt: "Podkrovní ložnice s vikýřem" },
-  { src: "/images/carousel-1.jpg", alt: "Jídelní stůl z masivního dřeva" },
-  { src: "/images/carousel-2.png", alt: "Obývací pokoj s křesly" },
-  { src: "/images/adv-soukromi.png", alt: "Zahrada s kamennou zídkou" },
+  { src: withBasePath("/images/gallery-1.jpg"), alt: "Roubenka Ořechovka zvenčí" },
+  { src: withBasePath("/images/gallery-2.jpg"), alt: "Kachlový krb s posezením" },
+  { src: withBasePath("/images/gallery-3.jpg"), alt: "Kuchyně s výhledem do zahrady" },
+  { src: withBasePath("/images/gallery-4.png"), alt: "Podkrovní ložnice s vikýřem" },
+  { src: withBasePath("/images/carousel-1.jpg"), alt: "Jídelní stůl z masivního dřeva" },
+  { src: withBasePath("/images/carousel-2.png"), alt: "Obývací pokoj s křesly" },
+  { src: withBasePath("/images/adv-soukromi.png"), alt: "Zahrada s kamennou zídkou" },
 ];
 
 export default function GallerySection() {
@@ -76,12 +78,12 @@ export default function GallerySection() {
             >
               <Image src={GALLERY[3].src} alt={GALLERY[3].alt} fill sizes="(min-width: 640px) 11vw, 50vw" className="object-cover transition-transform hover:scale-105" />
             </button>
-            <a
+            <Link
               href="/galerie"
               className="group relative block h-[100px] w-1/2 overflow-hidden rounded-md bg-espresso sm:h-[124px] sm:w-full"
             >
               <Image
-                src="/images/gallery-tile-bg.png"
+                src={withBasePath("/images/gallery-tile-bg.png")}
                 alt=""
                 fill
                 sizes="(min-width: 640px) 11vw, 50vw"
@@ -92,7 +94,7 @@ export default function GallerySection() {
                 <br />
                 galerie →
               </span>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

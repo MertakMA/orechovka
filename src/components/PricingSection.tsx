@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import PriceCard from "@/components/pricing/PriceCard";
 
 const FEATURES = ["Energie v ceně", "WiFi zdarma", "Parkování zdarma", "Postel. prádlo"];
@@ -53,9 +54,9 @@ export default function PricingSection() {
         </div>
 
         <div className="mt-10 text-center">
-          <a href="/cenik" className="text-[15px] font-semibold text-brand hover:underline">
+          <Link href="/cenik" className="text-[15px] font-semibold text-brand hover:underline">
             Zobrazit celý ceník a časté dotazy →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

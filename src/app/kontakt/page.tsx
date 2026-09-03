@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { MapPin, Mail, Phone, Globe, Clock, CloudSun, Video, Car, SquareParking, TrainFront } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/kontakt/ContactForm";
+import { withBasePath } from "@/lib/basePath";
 
 export const metadata: Metadata = {
   title: "Kontakt",
@@ -85,7 +87,7 @@ export default function KontaktPage() {
       <Navbar />
       <main>
         <section className="relative flex h-[260px] items-center justify-center overflow-hidden text-center">
-          <Image src="/images/hero-facade.jpg" alt="" fill priority sizes="100vw" className="object-cover object-[60%_50%]" />
+          <Image src={withBasePath("/images/hero-facade.jpg")} alt="" fill priority sizes="100vw" className="object-cover object-[60%_50%]" />
           <div className="absolute inset-0 bg-[#1a241f]/50" />
           <div className="relative z-10 flex flex-col items-center gap-3 px-6">
             <h1 className="font-serif text-[36px] font-bold text-white sm:text-[48px]">Kontakt</h1>
@@ -198,13 +200,10 @@ export default function KontaktPage() {
 
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {PRACTICAL_INFO.map(({ Icon, label, value, note, href }) => {
-                const Wrapper = href ? "a" : "div";
-                return (
-                  <Wrapper
-                    key={label}
-                    {...(href ? { href } : {})}
-                    className="flex flex-col gap-2 rounded-lg bg-cream p-5 transition-colors hover:bg-tag/40"
-                  >
+                const cardClassName =
+                  "flex flex-col gap-2 rounded-lg bg-cream p-5 transition-colors hover:bg-tag/40";
+                const content = (
+                  <>
                     <Icon className="size-5 text-brand" strokeWidth={1.75} aria-hidden />
                     <p className="text-[13px] font-semibold text-ink">{label}</p>
                     <p className="text-[14px] text-clay">
@@ -212,7 +211,16 @@ export default function KontaktPage() {
                       <br />
                       <span className="text-[12px]">{note}</span>
                     </p>
-                  </Wrapper>
+                  </>
+                );
+                return href ? (
+                  <Link key={label} href={href} className={cardClassName}>
+                    {content}
+                  </Link>
+                ) : (
+                  <div key={label} className={cardClassName}>
+                    {content}
+                  </div>
                 );
               })}
             </div>

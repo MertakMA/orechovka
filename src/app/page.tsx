@@ -12,9 +12,10 @@ import NewsSection from "@/components/NewsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
-// Znovu ověří novinky z Notionu nejdéle jednou za 30 minut (ISR),
-// aby se nová novinka přidaná klientem objevila bez ručního redeploye.
-export const revalidate = 1800;
+// Statický export (GitHub Pages) nemá server, takže ISR (revalidate) tu
+// nefunguje — novinky z Notionu se načtou vždy jen při buildu. Aktuálnost
+// proto zajišťuje pravidelný rebuild naplánovaný v GitHub Actions workflow
+// (viz .github/workflows/deploy.yml), ne runtime revalidace.
 
 export default function Home() {
   return (

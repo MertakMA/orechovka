@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { withBasePath } from "@/lib/basePath";
 
 export default function Hero() {
   return (
@@ -10,7 +12,7 @@ export default function Hero() {
       className="relative flex h-[calc(100svh-6rem)] max-h-[calc(900px-6rem)] min-h-[440px] items-end overflow-hidden"
     >
       <Image
-        src="/images/hero-facade.jpg"
+        src={withBasePath("/images/hero-facade.jpg")}
         alt="Roubenka Ořechovka – dřevěná roubenka s prosklenou terasou"
         fill
         priority
@@ -45,12 +47,12 @@ export default function Hero() {
           >
             Rezervovat na Bookingu
           </a>
-          <a
+          <Link
             href="/galerie"
             className="rounded border-[1.5px] border-white/80 bg-white/20 px-6 py-[14px] text-center text-[15px] text-white transition-colors hover:bg-white/30"
           >
             Prohlédnout galerii
-          </a>
+          </Link>
         </div>
       </motion.div>
     </section>

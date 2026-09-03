@@ -2,29 +2,30 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { withBasePath } from "@/lib/basePath";
 
 const ADVANTAGES = [
   {
-    src: "/images/adv-priroda.jpg",
+    src: withBasePath("/images/adv-priroda.jpg"),
     alt: "Roubenka obklopená zelení a stromy",
     title: "Příroda & lesy",
     text: "Lesy a stráně Krkonoš přímo u prahu. Turistika i MTB trasy.",
     objectPosition: "object-top",
   },
   {
-    src: "/images/adv-krb.jpg",
+    src: withBasePath("/images/adv-krb.jpg"),
     alt: "Kachlový krb s posezením v roubence",
     title: "Krb & útulnost",
     text: "Kachlový krb, dřevěné trámy — teplo a domácí pohoda.",
   },
   {
-    src: "/images/adv-soukromi.png",
+    src: withBasePath("/images/adv-soukromi.png"),
     alt: "Oplocená zahrada s kamennou zídkou",
     title: "Soukromí",
     text: "Celý objekt jen pro vás. Oplocená zahrada s grilem.",
   },
   {
-    src: "/images/adv-poloha.jpg",
+    src: withBasePath("/images/adv-poloha.jpg"),
     alt: "Výhled na okolní krajinu Krkonoš",
     title: "Poloha",
     text: "5 km Trutnov · 20 km Sněžka · 20 km Zoo Dvůr Králové",

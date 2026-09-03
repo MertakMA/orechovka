@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 // TODO: nahradit přesnou adresou/pinem od klienta (aktuálně obecná poloha Mladé Buky, u kostela).
 const MAP_QUERY = "Mladé Buky, kostel svaté Kateřiny Alexandrijské";
@@ -37,12 +38,12 @@ export default function MapSection() {
             <br />
             30 min Hradec Králové · 20 min Pec pod Sněžkou
           </p>
-          <a
+          <Link
             href="/kontakt"
             className="text-gradient mt-6 inline-block text-[14px] font-semibold hover:underline"
           >
             Kontaktní údaje a formulář →
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div

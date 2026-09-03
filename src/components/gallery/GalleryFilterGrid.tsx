@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import PlaceholderTile from "./PlaceholderTile";
+import { withBasePath } from "@/lib/basePath";
 
 type Photo = { src: string; alt: string };
 
@@ -20,10 +21,10 @@ const FILTERS: { key: Filter; label: string }[] = [
 
 // TODO: nahradit placeholdery reálnými exteriérovými fotkami roubenky.
 const EXTERIER: (Photo | null)[] = [
-  { src: "/images/hero.jpg", alt: "Roubenka Ořechovka zvenčí v létě" },
-  { src: "/images/adv-priroda.jpg", alt: "Pohled na roubenku a okolní krajinu" },
+  { src: withBasePath("/images/hero.jpg"), alt: "Roubenka Ořechovka zvenčí v létě" },
+  { src: withBasePath("/images/adv-priroda.jpg"), alt: "Pohled na roubenku a okolní krajinu" },
   null,
-  { src: "/images/adv-soukromi.png", alt: "Oplocená zahrada s kamennou zídkou" },
+  { src: withBasePath("/images/adv-soukromi.png"), alt: "Oplocená zahrada s kamennou zídkou" },
   null,
   null,
   null,
@@ -32,11 +33,11 @@ const EXTERIER: (Photo | null)[] = [
 ];
 
 const INTERIER: Photo[] = [
-  { src: "/images/carousel-3.jpg", alt: "Otevřená kuchyně a obývací část roubenky" },
-  { src: "/images/carousel-1.jpg", alt: "Jídelní stůl z masivního dřeva" },
-  { src: "/images/adv-krb.jpg", alt: "Kachlový krb s posezením" },
-  { src: "/images/gallery-3.jpg", alt: "Kuchyně s výhledem do zahrady" },
-  { src: "/images/carousel-2.png", alt: "Obývací pokoj s křesly" },
+  { src: withBasePath("/images/carousel-3.jpg"), alt: "Otevřená kuchyně a obývací část roubenky" },
+  { src: withBasePath("/images/carousel-1.jpg"), alt: "Jídelní stůl z masivního dřeva" },
+  { src: withBasePath("/images/adv-krb.jpg"), alt: "Kachlový krb s posezením" },
+  { src: withBasePath("/images/gallery-3.jpg"), alt: "Kuchyně s výhledem do zahrady" },
+  { src: withBasePath("/images/carousel-2.png"), alt: "Obývací pokoj s křesly" },
 ];
 
 // TODO: nahradit reálnými fotkami okolí a výletních cílů, nyní jde o neutrální placeholdery.

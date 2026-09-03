@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { withBasePath } from "@/lib/basePath";
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
@@ -41,7 +43,7 @@ export default function Footer() {
           <div className="flex max-w-[280px] flex-col gap-3">
             <div className="flex items-center gap-3">
               <Image
-                src="/images/logo.svg"
+                src={withBasePath("/images/logo.svg")}
                 alt=""
                 width={40}
                 height={47}
@@ -64,14 +66,23 @@ export default function Footer() {
                 <ul className="flex flex-col gap-2">
                   {col.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        target={link.href.startsWith("http") ? "_blank" : undefined}
-                        rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
-                      >
-                        {link.label}
-                      </a>
+                      {link.href.startsWith("http") ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -81,16 +92,27 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <p className="text-[13px] font-semibold text-[#e0ede5]">Kontakt</p>
               <ul className="flex flex-col gap-2">
-                {CONTACT_LINES.map((line) => (
-                  <li key={line.label}>
-                    <a
-                      href={line.href}
-                      className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
-                    >
-                      {line.label}
-                    </a>
-                  </li>
-                ))}
+                {CONTACT_LINES.map((line) =>
+                  line.href.startsWith("/") ? (
+                    <li key={line.label}>
+                      <Link
+                        href={line.href}
+                        className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                      >
+                        {line.label}
+                      </Link>
+                    </li>
+                  ) : (
+                    <li key={line.label}>
+                      <a
+                        href={line.href}
+                        className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                      >
+                        {line.label}
+                      </a>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
 

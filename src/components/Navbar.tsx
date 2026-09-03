@@ -1,9 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { withBasePath } from "@/lib/basePath";
+
+const MotionLink = motion(Link);
 
 const NAV_LINKS = [
   { label: "O nás", href: "/#o-nas" },
@@ -21,27 +25,27 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white">
       <div className="mx-auto flex h-24 max-w-[1440px] items-center justify-between gap-6 px-6 md:px-10 lg:px-[100px]">
-        <a
+        <Link
           href="/"
           className="relative z-10 flex shrink-0 items-center py-2 pr-4"
           aria-label="Roubenka Ořechovka – domů"
         >
           <Image
-            src="/images/logo.svg"
+            src={withBasePath("/images/logo.svg")}
             alt="Roubenka Ořechovka"
             width={100}
             height={117}
             className="h-28 w-auto"
             priority
           />
-        </a>
+        </Link>
 
         <nav className="hidden lg:flex lg:items-center lg:gap-[45px]">
           {NAV_LINKS.map((link) => {
             const isActive =
               link.href !== "/" && link.href.startsWith("/") && !link.href.includes("#") && pathname?.startsWith(link.href);
             return (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className={`whitespace-nowrap text-[16px] transition-colors hover:text-brand ${
@@ -49,7 +53,7 @@ export default function Navbar() {
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             );
           })}
         </nav>
@@ -104,7 +108,7 @@ export default function Navbar() {
               className="flex flex-col gap-2 px-6 py-4"
             >
               {NAV_LINKS.map((link) => (
-                <motion.a
+                <MotionLink
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
@@ -115,7 +119,7 @@ export default function Navbar() {
                   className="border-b border-border py-4 text-lg text-ink"
                 >
                   {link.label}
-                </motion.a>
+                </MotionLink>
               ))}
               <a
                 href="https://www.booking.com"

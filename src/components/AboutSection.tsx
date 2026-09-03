@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
+import { withBasePath } from "@/lib/basePath";
 
 const PHOTOS = [
-  { src: "/images/carousel-1.jpg", alt: "Jídelní stůl z masivního dřeva s výhledem do krajiny" },
-  { src: "/images/carousel-2.png", alt: "Obývací pokoj s křesly a dřevěnými trámy" },
-  { src: "/images/carousel-3.jpg", alt: "Otevřená kuchyně a obývací část roubenky" },
-  { src: "/images/food-bread.jpg", alt: "Čerstvý domácí chléb na dřevěném prkénku" },
+  { src: withBasePath("/images/carousel-1.jpg"), alt: "Jídelní stůl z masivního dřeva s výhledem do krajiny" },
+  { src: withBasePath("/images/carousel-2.png"), alt: "Obývací pokoj s křesly a dřevěnými trámy" },
+  { src: withBasePath("/images/carousel-3.jpg"), alt: "Otevřená kuchyně a obývací část roubenky" },
+  { src: withBasePath("/images/food-bread.jpg"), alt: "Čerstvý domácí chléb na dřevěném prkénku" },
 ];
 
 // Photos are duplicated so the track can keep sliding forward past the last

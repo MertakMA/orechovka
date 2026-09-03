@@ -1,0 +1,67 @@
+name: Nasazení na GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Pravidelný rebuild, aby se novinky z Notionu (statický export nemá ISR)
+  # promítly na web samy bez ručního zásahu — jednou za hodinu.
+  schedule:
+    - cron: "0 * * * *"
+  # Umožní ruční spuštění z záložky Actions na GitHubu.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nechá doběhnout jen jedno nasazení najednou, další ve frontě se zruší
+# ve prospěch nejnovějšího.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stáhnout repozitář
+        uses: actions/checkout@v4
+
+      - name: Nastavit Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Nainstalovat závislosti
+        run: npm ci
+
+      - name: Sestavit statický export
+        env:
+          GITHUB_PAGES: "true"
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_NEWS_DATA_SOURCE_ID: ${{ secrets.NOTION_NEWS_DATA_SOURCE_ID }}
+        run: npm run build
+
+      - name: Zabránit zpracování přes Jekyll
+        run: touch out/.nojekyll
+
+      - name: Nastavit GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Nahrát build jako artefakt
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Nasadit na GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
