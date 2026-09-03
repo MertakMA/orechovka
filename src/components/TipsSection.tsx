@@ -1,9 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 // TODO: nahradit reálnými fotkami výletních cílů, nyní jde o neutrální placeholdery z Picsum.
+// TODO: ověřit/upřesnit odkazy s klientem — teď míří na oficiální/rozumně
+// důvěryhodné stránky daného místa.
 const TIPS = [
   {
     src: "https://picsum.photos/seed/snezka-krkonose/500/400",
@@ -11,6 +14,7 @@ const TIPS = [
     distance: "20 km",
     rotate: -6,
     clip: "#5f8c7a",
+    href: "https://www.snezka.cz",
   },
   {
     src: "https://picsum.photos/seed/zoo-dvur-kralove/500/400",
@@ -18,6 +22,7 @@ const TIPS = [
     distance: "20 km",
     rotate: 4,
     clip: "#d4915c",
+    href: "https://safaripark.cz",
   },
   {
     src: "https://picsum.photos/seed/rychory-prirodni-rezervace/500/400",
@@ -25,6 +30,7 @@ const TIPS = [
     distance: "3 km",
     rotate: -4,
     clip: "#c9a45c",
+    href: "https://cs.wikipedia.org/wiki/R%C3%BDchory",
   },
   {
     src: "https://picsum.photos/seed/adrspassko-teplicke-skaly/500/400",
@@ -32,8 +38,21 @@ const TIPS = [
     distance: "30 km",
     rotate: 7,
     clip: "#b0665a",
+    href: "https://www.adrspach.cz",
   },
 ];
+
+// Poryv "větru" kolem padajícího polaroidu — pár krátkých čárek, co
+// prolítnou zprava doleva s mírně rozhozeným zpožděním pro dojem gusta.
+const WIND_PARTICLES = [
+  { y: 10, drift: -70, angle: -10, delay: 0 },
+  { y: 45, drift: -90, angle: -6, delay: 0.06 },
+  { y: 80, drift: -60, angle: -14, delay: 0.03 },
+  { y: 115, drift: -85, angle: -8, delay: 0.1 },
+  { y: 150, drift: -55, angle: -12, delay: 0.08 },
+];
+
+const FALL_DURATION_MS = 750;
 
 function Clip({ color }: { color: string }) {
   return (
@@ -56,6 +75,18 @@ function PolaroidCard({
 }) {
   const kick = tip.rotate >= 0 ? 7 : -7;
   const sway = 2.2;
+  // Poryv větru odfoukne padající polaroid na tu stranu, kam už je nakloněný.
+  const fallDrift = tip.rotate >= 0 ? 70 : -70;
+
+  const [isFalling, setIsFalling] = useState(false);
+
+  const handleClick = () => {
+    // Odkaz se otevře normálně na pozadí (nová karta) — tohle je jen
+    // animace navrch, ať to vypadá, že polaroid spadl z kolíčku. Po
+    // chvíli se sám vrátí zpátky na šňůru.
+    setIsFalling(true);
+    window.setTimeout(() => setIsFalling(false), FALL_DURATION_MS);
+  };
 
   return (
     <motion.div
@@ -78,13 +109,29 @@ function PolaroidCard({
           } as React.CSSProperties
         }
       >
-        {/* Vrstva 2: interaktivní naklonění/zvětšení při hoveru, přičítá se
-            k pohupování z vrstvy 1. Otáčí se kolem stejného bodu (origin-top),
-            takže kolíček zůstává na místě na šňůře. */}
-        <motion.div
-          whileHover={{ rotate: kick, scale: 1.06 }}
-          transition={{ type: "spring", stiffness: 300, damping: 14 }}
-          className="origin-top relative cursor-default rounded-[2px] bg-[#fdfbf7] p-3 pb-8 shadow-[0px_1px_3px_0px_rgba(0,0,0,0.07),2px_4px_12px_0px_rgba(0,0,0,0.18)]"
+        {/* Vrstva 2: interaktivní naklonění/zvětšení při hoveru + pád po
+            kliknutí, přičítá se k pohupování z vrstvy 1. V klidu se otáčí
+            kolem stejného bodu (origin-top) jako vrstva 1, takže kolíček
+            zůstává na místě na šňůře — při pádu se to pravidlo záměrně
+            poruší (spadl by přece z kolíčku, ne kolem něj). */}
+        <motion.a
+          href={tip.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${tip.title} — otevřít v nové kartě`}
+          onClick={handleClick}
+          whileHover={isFalling ? undefined : { rotate: kick, scale: 1.06 }}
+          animate={
+            isFalling
+              ? { y: 420, x: fallDrift, rotate: kick * 5, opacity: 0 }
+              : { y: 0, x: 0, rotate: 0, opacity: 1 }
+          }
+          transition={
+            isFalling
+              ? { duration: FALL_DURATION_MS / 1000, ease: [0.55, 0, 1, 0.45] }
+              : { type: "spring", stiffness: 300, damping: 14 }
+          }
+          className="origin-top relative block cursor-pointer rounded-[2px] bg-[#fdfbf7] p-3 pb-8 shadow-[0px_1px_3px_0px_rgba(0,0,0,0.07),2px_4px_12px_0px_rgba(0,0,0,0.18)]"
         >
           <Clip color={tip.clip} />
           <div className="relative aspect-[232/188] w-full overflow-hidden">
@@ -102,7 +149,22 @@ function PolaroidCard({
           </div>
           <p className="mt-3 pl-0.5 font-serif text-[15px] font-bold italic text-[#2c2c2c]">{tip.title}</p>
           <p className="mt-1 pl-0.5 text-[11px] text-brand">{tip.distance} od roubenky</p>
-        </motion.div>
+
+          {isFalling && (
+            <div className="pointer-events-none absolute inset-0 overflow-visible" aria-hidden>
+              {WIND_PARTICLES.map((p, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, x: 16, y: p.y }}
+                  animate={{ opacity: [0, 1, 0], x: p.drift, y: p.y + 14 }}
+                  transition={{ duration: 0.55, delay: p.delay, ease: "easeOut" }}
+                  style={{ rotate: `${p.angle}deg` }}
+                  className="absolute right-0 h-[2px] w-8 rounded-full bg-white/80"
+                />
+              ))}
+            </div>
+          )}
+        </motion.a>
       </div>
     </motion.div>
   );
