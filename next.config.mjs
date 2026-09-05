@@ -27,6 +27,18 @@ const nextConfig = {
         protocol: "https",
         hostname: "picsum.photos",
       },
+      // Nahrané obrázky novinek si stahuje scripts/sync-news.mjs do
+      // public/images/novinky/, takže tyhle adresy se do HTML běžně vůbec
+      // nedostanou. Zůstávají tu pro případ, že by klient v Notionu vložil
+      // obrázek odkazem místo souboru.
+      {
+        protocol: "https",
+        hostname: "prod-files-secure.s3.us-west-2.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.notion-static.com",
+      },
     ],
   },
 };

@@ -93,3 +93,50 @@ v Notionu a do webu je dostávat generovaným souborem při buildu. Podklad a so
   nic dalšího řešit netřeba, dokud web zůstává na GitHub Pages.
 - Placeholdery v Notionu klienta nemají mást — do sloupce Poznámka napsat, co dané pole
   znamená (např. `KONTAKT_TELEFON` = "+420 XXX XXX XXX" zatím čeká na reálné číslo).
+
+## Obrázky novinek z Notionu — stahovat při buildu (hotovo 5. 9. 2026)
+
+> ### ⛔ Pravidlo pro AI asistenty
+>
+> Platí i tady: **nezačínat samo od sebe.** Před jakoukoli další úpravou tohoto
+> mechanismu předložit ke schválení seznam dotčených souborů, co se v nich mění
+> a co se tím může rozbít. Teprve po výslovném odsouhlasení sáhnout na kód.
+
+**Problém:** obrázky, které klient v Notionu nahraje jako soubor, dostávaly
+podepsanou URL na S3 platnou jednu hodinu. Statický export ji zapekl do HTML,
+takže hodinu po nasazení začaly obrázky vracet 403 a z webu zmizely.
+
+**Řešení:** obrázky se stahují při buildu do `public/images/novinky/` a novinky
+se renderují z generovaného `src/generated/news.json`, ne z běhového dotazu do
+Notionu. Web tak na Notionu po buildu nezávisí vůbec.
+
+### Provedené změny
+
+- [x] **`scripts/sync-news.mjs`** (nahradil `sync-news-fallback.mjs`) — stáhne
+      novinky včetně stránkování, obrázky uloží do `public/images/novinky/` pod
+      názvem odvozeným z ID přílohy (stabilní, takže se nestahuje dokola a po
+      výměně obrázku vznikne nový soubor), smaže osiřelé obrázky a zapíše
+      `src/generated/news.json`. Nepodporovaný formát nebo neúspěšné stažení
+      novinku nezabije — jen zůstane bez obrázku. Nad 2 MB varuje.
+- [x] **`src/lib/notion.ts`** — `getNews()` čte generovaný JSON, žádné volání
+      Notionu za běhu ani při renderu. Zmizely duplicitní parsery properties,
+      které byly dřív v souboru i ve skriptu.
+- [x] **`src/components/NewsGrid.tsx`** — lokální cesty obalené `withBasePath()`,
+      absolutní URL (vložený odkaz) zůstávají beze změny.
+- [x] **`package.json`** — `prebuild`/`predev` volají `sync-news.mjs`.
+- [x] **`next.config.mjs`** — do `remotePatterns` přidány Notion hostname pro
+      případ, že klient vloží obrázek odkazem místo souboru.
+
+### Zbývá
+
+- [x] **Smazat nahrazené soubory** `scripts/sync-news-fallback.mjs` a
+      `src/generated/news-fallback.json` — nic je už needituje ani nečte.
+- [ ] **Spustit `npm run build` s klíčem k Novinkám** a commitnout stažené
+      obrázky z `public/images/novinky/` spolu s `src/generated/news.json`.
+      Bez commitnutých obrázků by fallback při výpadku Notionu odkazoval na
+      soubory, které v buildu nejsou.
+- [ ] **Ověřit na GitHub Pages**, že cesty k obrázkům obsahují `/orechovka`
+      (build s `GITHUB_PAGES=true`, zkontrolovat `out/index.html`). Lokálně se
+      chyba v `withBasePath()` neprojeví, protože basePath je prázdný.
+- [ ] **Vyřešit secrets** — dokud v CI neproběhne sync, nasazuje se commitnutý
+      stav; viz problém s `NOTION_VARIABLES_DATA_SOURCE_ID`.

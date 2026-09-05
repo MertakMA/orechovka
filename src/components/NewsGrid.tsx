@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import type { NewsItem } from "@/lib/notion";
+import { withBasePath } from "@/lib/basePath";
+
+// Obrázky stažené z Notionu leží v public/images/novinky/ a na GitHub Pages
+// běží web v podadresáři — neoptimalizovanému next/image se basePath sám
+// nepřidá, takže ho doplňujeme. Vložený odkaz (absolutní URL) zůstává beze změny.
+function imageSrc(url: string): string {
+  return url.startsWith("/") ? withBasePath(url) : url;
+}
 
 function formatDate(iso: string | null): string | null {
   if (!iso) return null;
@@ -58,7 +66,7 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
             >
               {item.imageUrl && (
                 <div className="relative h-[180px] w-full">
-                  <Image src={item.imageUrl} alt={item.title} fill unoptimized className="object-cover" />
+                  <Image src={imageSrc(item.imageUrl)} alt={item.title} fill unoptimized className="object-cover" />
                 </div>
               )}
               <div className="flex flex-col gap-2 px-5 py-[18px]">
@@ -106,7 +114,7 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
 
               {selected.imageUrl && (
                 <div className="relative h-[220px] w-full shrink-0">
-                  <Image src={selected.imageUrl} alt={selected.title} fill unoptimized className="object-cover" />
+                  <Image src={imageSrc(selected.imageUrl)} alt={selected.title} fill unoptimized className="object-cover" />
                 </div>
               )}
 

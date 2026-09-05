@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node scripts/sync-variables.mjs && node scripts/sync-news-fallback.mjs",
+    "predev": "node scripts/sync-variables.mjs && node scripts/sync-news.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/sync-variables.mjs && node scripts/sync-news-fallback.mjs",
+    "prebuild": "node scripts/sync-variables.mjs && node scripts/sync-news.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
