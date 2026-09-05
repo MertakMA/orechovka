@@ -29,7 +29,11 @@ function loadDotEnvLocal() {
 }
 loadDotEnvLocal();
 
-const API_KEY = process.env.NOTION_API_KEY;
+// Vlastní integrace/klíč, ne NOTION_API_KEY sdílený s Novinkami — ta má
+// přístup jen k databázi Variables, News integrace zase jen k Novinkám.
+// Stejné jméno by v GitHub Secrets přepsalo klíč, který už tam pro
+// Novinky je.
+const API_KEY = process.env.NOTION_VARIABLES_API_KEY;
 const DATA_SOURCE_ID = process.env.NOTION_VARIABLES_DATA_SOURCE_ID;
 
 function fail(message) {
@@ -51,7 +55,7 @@ function readRichText(prop) {
 
 async function main() {
   if (!API_KEY || !DATA_SOURCE_ID) {
-    warn("chybí NOTION_API_KEY nebo NOTION_VARIABLES_DATA_SOURCE_ID");
+    warn("chybí NOTION_VARIABLES_API_KEY nebo NOTION_VARIABLES_DATA_SOURCE_ID");
     return;
   }
 

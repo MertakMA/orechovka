@@ -6,7 +6,7 @@ Ve webu je vidíš jako `V.NAZEV` (import z `@/generated/variables`).
 
 `src/generated/variables.ts` je **generovaný, ale commitnutý** soubor. Stahuje ho
 `scripts/sync-variables.mjs` automaticky před `npm run dev`/`npm run build` (`predev`/`prebuild`
-v `package.json`). Bez `NOTION_API_KEY`/`NOTION_VARIABLES_DATA_SOURCE_ID` nebo při chybě sítě
+v `package.json`). Bez `NOTION_VARIABLES_API_KEY`/`NOTION_VARIABLES_DATA_SOURCE_ID` nebo při chybě sítě
 skript jen vypíše varování a nechá poslední commitnutou verzi — dev/build kvůli tomu nespadne.
 
 **Zdroj pravdy:** [Variables](https://app.notion.com/p/8292a07ec2cf4ec0b77fe7d01ab7c1a4) v Notionu

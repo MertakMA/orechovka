@@ -43,6 +43,7 @@ jobs:
           GITHUB_PAGES: "true"
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_NEWS_DATA_SOURCE_ID: ${{ secrets.NOTION_NEWS_DATA_SOURCE_ID }}
+          NOTION_VARIABLES_API_KEY: ${{ secrets.NOTION_VARIABLES_API_KEY }}
           NOTION_VARIABLES_DATA_SOURCE_ID: ${{ secrets.NOTION_VARIABLES_DATA_SOURCE_ID }}
         run: npm run build
 

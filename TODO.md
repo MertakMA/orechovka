@@ -44,10 +44,13 @@ v Notionu a do webu je dostávat generovaným souborem při buildu. Podklad a so
       zápis nepoužívají (žádná hodnota neobsahuje `{...}`), takže by šlo o neotestovanou
       funkčnost navíc. Snadno se doplní, až/pokud bude potřeba.
 - [x] **Napojení do buildu** — `prebuild`/`predev` v `package.json` (spouští i
-      `scripts/sync-news-fallback.mjs`, viz níž), `NOTION_VARIABLES_DATA_SOURCE_ID` doplněn do
-      `.env.local.example` a do `.github/workflows/deploy.yml`. **Zbývá ruční krok mimo kód:**
-      přidat `NOTION_VARIABLES_DATA_SOURCE_ID` jako repozitářový secret na GitHubu (Settings →
-      Secrets and variables → Actions) — bez toho hodinový rebuild proměnné nestáhne (jen
+      `scripts/sync-news-fallback.mjs`, viz níž), `NOTION_VARIABLES_API_KEY` +
+      `NOTION_VARIABLES_DATA_SOURCE_ID` doplněny do `.env.local.example` a do
+      `.github/workflows/deploy.yml`. Variables má vlastní integraci/klíč, ne sdílený
+      `NOTION_API_KEY` s Novinkami — jiné jméno secretu, ať se navzájem nepřepíšou.
+      **Zbývá ruční krok mimo kód:** přidat `NOTION_VARIABLES_API_KEY` a
+      `NOTION_VARIABLES_DATA_SOURCE_ID` jako repozitářové secrety na GitHubu (Settings →
+      Secrets and variables → Actions) — bez nich hodinový rebuild proměnné nestáhne (jen
       použije poslední commitnutou verzi, nic nespadne).
 - [x] **Úklid databáze Variables v Notionu** — hotovo 3. 9. 2026. Databáze obsahuje 45
       provozních proměnných v 7 sekcích (Kontakt & poloha, Odkazy, Parametry objektu, Ceny,
