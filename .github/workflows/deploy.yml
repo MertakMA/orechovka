@@ -3,8 +3,9 @@ name: Nasazení na GitHub Pages
 on:
   push:
     branches: [main]
-  # Pravidelný rebuild, aby se novinky z Notionu (statický export nemá ISR)
-  # promítly na web samy bez ručního zásahu — jednou za hodinu.
+  # Pravidelný rebuild, aby se novinky i proměnné (ceny, kontakty, odkazy...)
+  # z Notionu (statický export nemá ISR) promítly na web samy bez ručního
+  # zásahu — jednou za hodinu.
   schedule:
     - cron: "0 * * * *"
   # Umožní ruční spuštění z záložky Actions na GitHubu.
@@ -42,6 +43,7 @@ jobs:
           GITHUB_PAGES: "true"
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_NEWS_DATA_SOURCE_ID: ${{ secrets.NOTION_NEWS_DATA_SOURCE_ID }}
+          NOTION_VARIABLES_DATA_SOURCE_ID: ${{ secrets.NOTION_VARIABLES_DATA_SOURCE_ID }}
         run: npm run build
 
       - name: Zabránit zpracování přes Jekyll

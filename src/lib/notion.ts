@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { Client } from "@notionhq/client";
+import newsFallbackJson from "@/generated/news-fallback.json";
 
 export type NewsItem = {
   id: string;
@@ -15,6 +16,11 @@ export type NewsItem = {
 
 const API_KEY = process.env.NOTION_API_KEY;
 const DATA_SOURCE_ID = process.env.NOTION_NEWS_DATA_SOURCE_ID;
+
+// Naposledy úspěšně stažené novinky (scripts/sync-news-fallback.mjs, commitnutý
+// soubor) — použije se, když getNews() dole selže na chybě sítě/API. Skutečně
+// prázdná databáze se od tohohle neliší jinak, než že fallback sám bude [].
+const newsFallback = newsFallbackJson as NewsItem[];
 
 type NotionText = { plain_text: string };
 type NotionFile = { type: "external" | "file"; external?: { url: string }; file?: { url: string } };
@@ -51,14 +57,17 @@ function readFirstFileUrl(prop: unknown): string | null {
 /**
  * Načte publikované novinky z Notion databáze ("Novinky – Roubenka Ořechovka").
  * Klient je přidává sám v Notionu — pokud databáze není nastavená (chybí env
- * proměnné) nebo je prázdná, vrátí se prázdné pole a sekce na webu se skryje.
+ * proměnné) nebo je opravdu prázdná, vrátí se prázdné pole a sekce na webu
+ * se skryje. Selže-li ale dotaz samotný (výpadek Notionu/sítě), vrátí se
+ * naposledy známé novinky (newsFallback) místo prázdného pole — ať kvůli
+ * dočasnému výpadku sekce nezmizí celá.
  *
  * Obalené v React cache() — voláme to jak z NewsSection, tak z každé
  * stránky (kvůli odkazu "Novinky" v navbaru), a takhle se v rámci jednoho
  * buildu/renderu na Notion sáhne jen jednou, ne vícekrát zbytečně.
  */
 export const getNews = cache(async (): Promise<NewsItem[]> => {
-  if (!API_KEY || !DATA_SOURCE_ID) return [];
+  if (!API_KEY || !DATA_SOURCE_ID) return newsFallback;
 
   try {
     const notion = new Client({ auth: API_KEY });
@@ -90,6 +99,6 @@ export const getNews = cache(async (): Promise<NewsItem[]> => {
     return items;
   } catch (err) {
     console.error("Nepodařilo se načíst novinky z Notionu:", err);
-    return [];
+    return newsFallback;
   }
 });
