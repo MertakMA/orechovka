@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Send } from "lucide-react";
+import { V } from "@/generated/variables";
 
 const inputClass =
   "w-full rounded-md border border-border bg-white px-4 py-3 text-[15px] text-ink placeholder:text-clay/60 transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand";
@@ -43,7 +44,7 @@ export default function ContactForm() {
     setError(null);
 
     const body = `Jméno: ${form.name}\nE-mail: ${form.email}\nTelefon: ${form.phone || "neuvedeno"}\n\n${form.message}`;
-    const mailto = `mailto:info@roubenkaorechovka.cz?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:${V.KONTAKT_EMAIL}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
     setSubmitted(true);
   };
@@ -80,7 +81,7 @@ export default function ContactForm() {
           type="tel"
           value={form.phone}
           onChange={handleChange("phone")}
-          placeholder="+420 XXX XXX XXX"
+          placeholder={V.KONTAKT_TELEFON}
           className={inputClass}
         />
       </div>
@@ -122,7 +123,7 @@ export default function ContactForm() {
       {submitted && !error && (
         <p className="text-[13px] text-brand">
           Otevřel se váš e-mailový klient s předvyplněnou zprávou. Pokud se nic neotevřelo, napište nám prosím přímo
-          na info@roubenkaorechovka.cz.
+          na {V.KONTAKT_EMAIL}.
         </p>
       )}
 

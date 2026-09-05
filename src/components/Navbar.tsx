@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
 import { handleHashNavClick } from "@/lib/hashNav";
+import { V } from "@/generated/variables";
 
 const MotionLink = motion(Link);
 
@@ -97,7 +98,7 @@ export default function Navbar({ hasNews = false }: { hasNews?: boolean }) {
         </nav>
 
         <a
-          href="https://www.booking.com"
+          href={V.BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden rounded bg-brand px-5 py-[10px] text-[14px] font-semibold text-white transition-colors hover:bg-brand-light lg:inline-block"
@@ -168,7 +169,7 @@ export default function Navbar({ hasNews = false }: { hasNews?: boolean }) {
                 </MotionLink>
               ))}
               <a
-                href="https://www.booking.com"
+                href={V.BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}

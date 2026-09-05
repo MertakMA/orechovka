@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
+import { V } from "@/generated/variables";
 
 const ADVANTAGES = [
   {
@@ -28,7 +29,7 @@ const ADVANTAGES = [
     src: withBasePath("/images/adv-poloha.jpg"),
     alt: "Výhled na okolní krajinu Krkonoš",
     title: "Poloha",
-    text: "5 km Trutnov · 20 km Sněžka · 20 km Zoo Dvůr Králové",
+    text: `${V.VZDALENOST_TRUTNOV_KM} Trutnov · ${V.VZDALENOST_SNEZKA} Sněžka · ${V.VZDALENOST_ZOO_DVUR_KRALOVE} Zoo Dvůr Králové`,
   },
 ];
 

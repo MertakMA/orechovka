@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
+import { V } from "@/generated/variables";
 
 export default function Hero() {
   return (
@@ -40,7 +41,7 @@ export default function Hero() {
         <div className="mt-6 h-[2.5px] w-14 rounded bg-brand-gradient sm:mt-8" />
         <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
           <a
-            href="https://www.booking.com"
+            href={V.BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded bg-brand px-8 py-4 text-center text-[15px] font-semibold text-white transition-colors hover:bg-brand-light"

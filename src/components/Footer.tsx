@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { withBasePath } from "@/lib/basePath";
 import { handleHashNavClick } from "@/lib/hashNav";
+import { V } from "@/generated/variables";
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
@@ -21,22 +22,20 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
     links: [
       { label: "Počasí", href: "/#pocasi" },
       { label: "Webkamera", href: "/#pocasi" },
-      { label: "Booking.com", href: "https://www.booking.com" },
+      { label: "Booking.com", href: V.BOOKING_URL },
     ],
   },
 ];
 
-// TODO: doplnit skutečné telefonní číslo.
 const CONTACT_LINES = [
-  { label: "info@roubenkaorechovka.cz", href: "mailto:info@roubenkaorechovka.cz" },
-  { label: "+420 XXX XXX XXX", href: "tel:+420XXXXXXXXX" },
+  { label: V.KONTAKT_EMAIL, href: `mailto:${V.KONTAKT_EMAIL}` },
+  { label: V.KONTAKT_TELEFON, href: `tel:${V.KONTAKT_TELEFON.replace(/\s+/g, "")}` },
   { label: "Mladé Buky, okres Trutnov", href: "/kontakt#mapa-kontakt" },
 ];
 
-// TODO: doplnit skutečné odkazy na sociální sítě.
 const SOCIAL_LINKS = [
-  { label: "Facebook", href: "#" },
-  { label: "Instagram", href: "#" },
+  { label: "Facebook", href: V.FACEBOOK_URL },
+  { label: "Instagram", href: V.INSTAGRAM_URL },
 ];
 
 export default function Footer() {
@@ -146,7 +145,7 @@ export default function Footer() {
 
       <div className="border-t border-[#40594d]">
         <p className="mx-auto max-w-[1440px] px-6 py-5 text-[12px] text-[#738c80] sm:px-10 lg:px-[100px]">
-          © 2026 Roubenka Ořechovka · roubenkaorechovka.cz · Všechna práva vyhrazena
+          © {new Date().getFullYear()} Roubenka Ořechovka · roubenkaorechovka.cz · Všechna práva vyhrazena
         </p>
       </div>
     </footer>

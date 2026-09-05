@@ -1,5 +1,6 @@
-// Souřadnice obce Mladé Buky (okres Trutnov) — TODO: upřesnit na přesnou adresu/GPS roubenky, až bude k dispozici.
-export const CABIN_COORDS = { lat: 50.6065, lon: 15.8336 };
+import { V } from "@/generated/variables";
+
+export const CABIN_COORDS = { lat: Number(V.GPS_LAT), lon: Number(V.GPS_LON) };
 
 export type OpenMeteoResponse = {
   current: {

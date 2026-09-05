@@ -1,6 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
+import { V } from "@/generated/variables";
 
 export type PriceCardProps = {
   season: string;
@@ -19,7 +20,7 @@ export default function PriceCard({
   features,
   featured = false,
   badge = "★ Nejoblíbenější",
-  buttonHref = "https://www.booking.com",
+  buttonHref = V.BOOKING_URL,
 }: PriceCardProps) {
   return (
     <div

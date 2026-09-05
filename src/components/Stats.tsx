@@ -1,11 +1,11 @@
 import { BedDouble, Users, Droplet, Trees, Wifi, SquareParking } from "lucide-react";
+import { V } from "@/generated/variables";
 
-// TODO: upřesnit reálné údaje o roubence (počet ložnic, koupelen, m² zahrady) od klienta.
 const STATS = [
-  { value: "3", label: "Ložnice", Icon: BedDouble },
-  { value: "8 osob", label: "Kapacita", Icon: Users },
-  { value: "1", label: "Koupelna", Icon: Droplet },
-  { value: "500 m²", label: "Zahrada", Icon: Trees },
+  { value: V.POCET_LOZNIC, label: "Ložnice", Icon: BedDouble },
+  { value: V.KAPACITA, label: "Kapacita", Icon: Users },
+  { value: V.POCET_KOUPELEN, label: "Koupelna", Icon: Droplet },
+  { value: V.VELIKOST_ZAHRADY, label: "Zahrada", Icon: Trees },
   { value: "WiFi", label: "Internet zdarma", Icon: Wifi },
   { value: "Zdarma", label: "Parkování", Icon: SquareParking },
 ];

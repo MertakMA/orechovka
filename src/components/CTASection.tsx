@@ -1,8 +1,10 @@
+import { V } from "@/generated/variables";
+
 export default function CTASection({
   title,
   subtitle,
   buttonLabel = "Rezervovat pobyt přes Booking.com →",
-  buttonHref = "https://www.booking.com",
+  buttonHref = V.BOOKING_URL,
 }: {
   title: string;
   subtitle: string;

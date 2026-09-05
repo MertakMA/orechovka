@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { V } from "@/generated/variables";
 
-// TODO: nahradit přesnou adresou/pinem od klienta (aktuálně obecná poloha Mladé Buky, u kostela).
-const MAP_QUERY = "Mladé Buky, kostel svaté Kateřiny Alexandrijské";
-const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`;
+const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(V.MAPA_QUERY)}&output=embed`;
 
 export default function MapSection() {
   return (
@@ -27,16 +26,15 @@ export default function MapSection() {
             <br />
             Krkonoše
           </h2>
-          {/* TODO: nahradit reálnou adresou (číslo popisné) po upřesnění klientem */}
           <p className="mt-6 text-[15px] leading-[1.7] text-clay">
-            Mladé Buky, u kostela
+            {V.ADRESA_RADEK_1}
             <br />
-            542 23, okres Trutnov
+            {V.ADRESA_RADEK_2}
             <br />
             <br />
-            5 min Trutnov
+            {V.VZDALENOST_TRUTNOV_MIN} Trutnov
             <br />
-            30 min Hradec Králové · 20 min Pec pod Sněžkou
+            {V.VZDALENOST_HRADEC_KRALOVE} Hradec Králové · {V.VZDALENOST_PEC_POD_SNEZKOU} Pec pod Sněžkou
           </p>
           <Link
             href="/kontakt"

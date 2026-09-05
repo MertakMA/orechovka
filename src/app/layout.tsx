@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Nunito_Sans } from "next/font/google";
 import SmoothHashScroll from "@/components/SmoothHashScroll";
+import { V } from "@/generated/variables";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -18,8 +19,7 @@ const nunitoSans = Nunito_Sans({
   display: "swap",
 });
 
-// TODO: nahradit reálnou doménou, až bude web nasazený.
-const SITE_URL = "https://roubenkaorechovka.cz";
+const SITE_URL = V.SITE_URL;
 const SITE_TITLE = "Roubenka Ořechovka | Ubytování v podhůří Krkonoš";
 const SITE_DESCRIPTION =
   "Útulná roubenka k pronájmu pro rodiny, páry i skupiny přátel. Celý objekt jen pro vás, zahrada s grilem, krb a výhled na Krkonoše.";

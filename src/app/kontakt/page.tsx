@@ -8,58 +8,55 @@ import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/kontakt/ContactForm";
 import { withBasePath } from "@/lib/basePath";
 import { getNews } from "@/lib/notion";
+import { V } from "@/generated/variables";
 
 export const metadata: Metadata = {
   title: "Kontakt",
   description: "Spojte se s námi — kontaktní údaje, formulář, mapa a praktické informace k příjezdu do Roubenky Ořechovka.",
 };
 
-// TODO: nahradit přesnou adresou/pinem od klienta (aktuálně obecná poloha Mladé Buky, u kostela).
-const MAP_QUERY = "Mladé Buky, kostel svaté Kateřiny Alexandrijské";
-const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`;
+const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(V.MAPA_QUERY)}&output=embed`;
 
 const CONTACT_CARDS = [
   {
     Icon: MapPin,
     label: "Adresa",
-    value: "Mladé Buky, u kostela — 542 23, okres Trutnov",
+    value: `${V.ADRESA_RADEK_1} — ${V.ADRESA_RADEK_2}`,
     href: "#mapa-kontakt",
   },
   {
     Icon: Mail,
     label: "E-mail",
-    value: "info@roubenkaorechovka.cz",
-    href: "mailto:info@roubenkaorechovka.cz",
+    value: V.KONTAKT_EMAIL,
+    href: `mailto:${V.KONTAKT_EMAIL}`,
   },
   {
-    // TODO: doplnit skutečné telefonní číslo.
     Icon: Phone,
     label: "Telefon",
-    value: "+420 XXX XXX XXX",
-    href: "tel:+420XXXXXXXXX",
+    value: V.KONTAKT_TELEFON,
+    href: `tel:${V.KONTAKT_TELEFON.replace(/\s+/g, "")}`,
   },
   {
     Icon: Globe,
     label: "Booking",
     value: "roubenkaorechovka.booking.com",
-    href: "https://www.booking.com",
+    href: V.BOOKING_URL,
     external: true,
   },
 ];
 
-// TODO: doplnit skutečné odkazy na sociální sítě.
 const SOCIAL_LINKS = [
-  { label: "Facebook", href: "#", className: "bg-[#1877F2] hover:bg-[#1467d8]" },
+  { label: "Facebook", href: V.FACEBOOK_URL, className: "bg-[#1877F2] hover:bg-[#1467d8]" },
   {
     label: "Instagram",
-    href: "#",
+    href: V.INSTAGRAM_URL,
     className: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
   },
 ];
 
 const PRACTICAL_INFO = [
-  { Icon: Clock, label: "Check-in", value: "od 15:00", note: "Po dohodě jinak" },
-  { Icon: Clock, label: "Check-out", value: "do 10:00", note: "Po dohodě jinak" },
+  { Icon: Clock, label: "Check-in", value: V.CHECK_IN, note: "Po dohodě jinak" },
+  { Icon: Clock, label: "Check-out", value: V.CHECK_OUT, note: "Po dohodě jinak" },
   { Icon: CloudSun, label: "Počasí", value: "Aktuální předpověď", note: "Mladé Buky a okolí", href: "/#pocasi" },
   { Icon: Video, label: "Webkamera", value: "Živý záběr z okolí", note: "Ski areál Mladé Buky", href: "/#pocasi" },
 ];
@@ -68,17 +65,17 @@ const DIRECTIONS = [
   {
     Icon: Car,
     label: "Autem",
-    text: "Z Prahy: dálnice D11, sjezd Hradec Králové, dále silnice I/37 směr Trutnov. Z Trutnova cca 5 km do Mladých Buků.",
+    text: `Z Prahy: dálnice D11, sjezd Hradec Králové, dále silnice I/37 směr Trutnov. Z Trutnova cca ${V.VZDALENOST_TRUTNOV_KM} do Mladých Buků.`,
   },
   {
     Icon: SquareParking,
     label: "Parkování",
-    text: "Zdarma na pozemku, 2 parkovací místa.",
+    text: `Zdarma na pozemku, ${V.POCET_PARKOVACICH_MIST} parkovací místa.`,
   },
   {
     Icon: TrainFront,
     label: "Vlakem",
-    text: "Vlaková stanice Trutnov hlavní nádraží (spoje z Prahy přes Hradec Králové), odtud MHD nebo taxi cca 5 km.",
+    text: `Vlaková stanice Trutnov hlavní nádraží (spoje z Prahy přes Hradec Králové), odtud MHD nebo taxi cca ${V.VZDALENOST_TRUTNOV_KM}.`,
   },
 ];
 

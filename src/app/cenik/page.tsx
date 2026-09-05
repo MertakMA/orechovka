@@ -8,6 +8,7 @@ import PriceCard from "@/components/pricing/PriceCard";
 import FAQAccordion from "@/components/pricing/FAQAccordion";
 import { withBasePath } from "@/lib/basePath";
 import { getNews } from "@/lib/notion";
+import { V } from "@/generated/variables";
 
 export const metadata: Metadata = {
   title: "Ceník ubytování",
@@ -16,22 +17,22 @@ export const metadata: Metadata = {
 
 const PLANS = [
   {
-    season: "Mimo sezónu",
-    price: "od 2 200 Kč",
-    dateRange: "říjen–duben (mimo svátky)",
+    season: "Vedlejší sezóna",
+    price: V.CENA_VEDLEJSI_SEZONA,
+    dateRange: V.TERMIN_VEDLEJSI_SEZONA,
     features: ["Energie v ceně", "WiFi zdarma", "Parkování zdarma", "Postel. prádlo"],
   },
   {
     season: "Hlavní sezóna",
-    price: "od 3 800 Kč",
-    dateRange: "červen–září, svátky, prázdniny",
+    price: V.CENA_HLAVNI_SEZONA,
+    dateRange: V.TERMIN_HLAVNI_SEZONA,
     features: ["Energie v ceně", "WiFi zdarma", "Parkování zdarma", "Postel. prádlo", "Uvítací balíček"],
     featured: true,
   },
   {
-    season: "Víkend mimo sezónu",
-    price: "od 2 800 Kč",
-    dateRange: "pá–ne, říjen–duben",
+    season: "Mimo sezónu",
+    price: V.CENA_MIMO_SEZONU,
+    dateRange: V.TERMIN_MIMO_SEZONU,
     features: ["Energie v ceně", "WiFi zdarma", "Parkování zdarma", "Postel. prádlo"],
   },
 ];
@@ -39,18 +40,18 @@ const PLANS = [
 const INCLUDED = [
   "Energie (elektřina, topení)",
   "WiFi připojení",
-  "Parkování na pozemku (2 místa)",
+  `Parkování na pozemku (${V.POCET_PARKOVACICH_MIST} místa)`,
   "Ložní prádlo a ručníky",
   "Základní vybavení kuchyně",
   "Zahrada a terasa",
 ];
 
-// TODO: upřesnit turistickou taxu dle aktuálního sazebníku obce Mladé Buky.
 const FEES = [
-  { label: "Turistická taxa", value: "dle aktuálního sazebníku obce" },
-  { label: "Úklid při odjezdu", value: "800 Kč (nebo sami uklidíte)" },
-  { label: "Domácí mazlíčci", value: "po dohodě, příplatek 200 Kč/noc" },
-  { label: "Pozdní check-out", value: "po dohodě, příplatek 300 Kč" },
+  { label: "Turistická taxa", value: V.POPLATEK_TURISTICKA_TAXA },
+  { label: "Úklid při odjezdu", value: V.POPLATEK_UKLID },
+  { label: "Domácí mazlíčci", value: V.POPLATEK_MAZLICCI },
+  { label: "Pozdní check-out", value: V.POPLATEK_POZDNI_CHECKOUT },
+  { label: "Víkend mimo sezónu", value: V.POPLATEK_VIKEND },
 ];
 
 export default async function CenikPage() {
@@ -76,7 +77,7 @@ export default async function CenikPage() {
             <p className="text-[13px] font-semibold tracking-[2px] text-brand">SEZÓNNÍ CENY</p>
             <h2 className="mt-3 font-serif text-[30px] font-bold text-ink sm:text-[38px]">Vyberte si svůj termín</h2>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.6] text-clay">
-              Ceny jsou za celou roubenku. Minimální délka pobytu: 2 noci.
+              Ceny jsou za celou roubenku. Minimální délka pobytu: {V.MIN_DELKA_POBYTU}.
             </p>
 
             <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:items-center lg:gap-8">

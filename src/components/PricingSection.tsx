@@ -3,27 +3,28 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import PriceCard from "@/components/pricing/PriceCard";
+import { V } from "@/generated/variables";
 
 const FEATURES = ["Energie v ceně", "WiFi zdarma", "Parkování zdarma", "Postel. prádlo"];
 
 const PLANS = [
   {
     season: "Vedlejší sezóna",
-    price: "od 3 200 Kč",
-    dateRange: "Květen, září, říjen",
+    price: V.CENA_VEDLEJSI_SEZONA,
+    dateRange: V.TERMIN_VEDLEJSI_SEZONA,
     features: FEATURES,
   },
   {
     season: "Hlavní sezóna",
-    price: "od 4 500 Kč",
-    dateRange: "Červen – srpen, svátky",
+    price: V.CENA_HLAVNI_SEZONA,
+    dateRange: V.TERMIN_HLAVNI_SEZONA,
     features: [...FEATURES, "Uvítací balíček"],
     featured: true,
   },
   {
     season: "Mimo sezónu",
-    price: "od 2 500 Kč",
-    dateRange: "Listopad – duben",
+    price: V.CENA_MIMO_SEZONU,
+    dateRange: V.TERMIN_MIMO_SEZONU,
     features: FEATURES,
   },
 ];

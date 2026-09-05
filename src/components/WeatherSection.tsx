@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sunrise, Sunset, ExternalLink } from "lucide-react";
 import WebcamPlayer from "@/components/WebcamPlayer";
+import { V } from "@/generated/variables";
 import {
   CABIN_COORDS,
   degreesToCompass,
@@ -135,7 +136,7 @@ export default function WeatherSection() {
             className="w-full overflow-hidden rounded-xl border border-border bg-white shadow-[0px_10px_30px_0px_rgba(34,25,16,0.08)] lg:flex-1"
           >
             <a
-              href="https://www.holidayinfo.cz/cs/camera/mbuky/2084"
+              href={V.WEBKAMERA_STRANKA_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-between bg-espresso px-5 py-4 transition-colors hover:bg-[#332212]"

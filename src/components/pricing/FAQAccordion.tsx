@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { V } from "@/generated/variables";
 
 const FAQ = [
   {
@@ -11,11 +12,11 @@ const FAQ = [
   },
   {
     q: "Jaká je minimální délka pobytu?",
-    a: "Minimálně 2 noci. O víkendu a svátcích min. 2 noci, v hlavní sezóně min. 3 noci.",
+    a: `Minimálně ${V.MIN_DELKA_POBYTU}. O víkendu a svátcích min. ${V.MIN_DELKA_POBYTU}, v hlavní sezóně min. ${V.MIN_DELKA_POBYTU_HLAVNI_SEZONA}.`,
   },
   {
     q: "Kdy probíhá check-in a check-out?",
-    a: "Check-in: od 15:00 / Check-out: do 10:00. Jiné časy po dohodě.",
+    a: `Check-in: ${V.CHECK_IN} / Check-out: ${V.CHECK_OUT}. Jiné časy po dohodě.`,
   },
   {
     q: "Je možné platit v hotovosti?",

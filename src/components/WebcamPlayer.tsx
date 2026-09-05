@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { V } from "@/generated/variables";
 
-// Exportovaný poslední klip z webkamery (holidayinfo.cz). Server soubor pravidelně
-// přepisuje novým záznamem, takže sem periodicky přidáváme cache-busting parametr.
-const WEBCAM_VIDEO_URL =
-  "https://exports.holidayinfo.cz/loc_cams_expvideo_lastvideofile.php?dc=492c16309390f152&camid=2084&size=full&ext=mp4";
 const REFRESH_MS = 5 * 60 * 1000; // 5 minut
 
 export default function WebcamPlayer() {
@@ -24,7 +21,7 @@ export default function WebcamPlayer() {
 
   return (
     <video key={refreshedAt} className="size-full object-cover" autoPlay loop muted playsInline controls>
-      <source src={`${WEBCAM_VIDEO_URL}&t=${refreshedAt}`} type="video/mp4" />
+      <source src={`${V.WEBKAMERA_VIDEO_URL}&t=${refreshedAt}`} type="video/mp4" />
     </video>
   );
 }

@@ -1,7 +1,5 @@
 import type { MetadataRoute } from "next";
-
-// TODO: nahradit reálnou doménou, až bude web nasazený (musí odpovídat layout.tsx SITE_URL).
-const SITE_URL = "https://roubenkaorechovka.cz";
+import { V } from "@/generated/variables";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    sitemap: `${V.SITE_URL}/sitemap.xml`,
   };
 }

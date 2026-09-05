@@ -3,42 +3,41 @@
 import Image from "next/image";
 import { useEffect, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
+import { V } from "@/generated/variables";
 
 // TODO: nahradit reálnými fotkami výletních cílů, nyní jde o neutrální placeholdery z Picsum.
-// TODO: ověřit/upřesnit odkazy s klientem — teď míří na oficiální/rozumně
-// důvěryhodné stránky daného místa.
 const TIPS = [
   {
     src: "https://picsum.photos/seed/snezka-krkonose/500/400",
     title: "Sněžka",
-    distance: "20 km",
+    distance: V.VZDALENOST_SNEZKA,
     rotate: -6,
     clip: "#5f8c7a",
-    href: "https://www.snezka.cz",
+    href: V.TIP_SNEZKA_URL,
   },
   {
     src: "https://picsum.photos/seed/zoo-dvur-kralove/500/400",
     title: "Zoo Dvůr Králové",
-    distance: "20 km",
+    distance: V.VZDALENOST_ZOO_DVUR_KRALOVE,
     rotate: 4,
     clip: "#d4915c",
-    href: "https://safaripark.cz",
+    href: V.TIP_ZOO_DVUR_KRALOVE_URL,
   },
   {
     src: "https://picsum.photos/seed/rychory-prirodni-rezervace/500/400",
     title: "Rýchory",
-    distance: "3 km",
+    distance: V.VZDALENOST_RYCHORY,
     rotate: -4,
     clip: "#c9a45c",
-    href: "https://cs.wikipedia.org/wiki/R%C3%BDchory",
+    href: V.TIP_RYCHORY_URL,
   },
   {
     src: "https://picsum.photos/seed/adrspassko-teplicke-skaly/500/400",
     title: "Adršpašské skály",
-    distance: "30 km",
+    distance: V.VZDALENOST_ADRSPACH,
     rotate: 7,
     clip: "#b0665a",
-    href: "https://www.adrspach.cz",
+    href: V.TIP_ADRSPACH_URL,
   },
 ];
 
