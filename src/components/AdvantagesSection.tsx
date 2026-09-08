@@ -65,7 +65,7 @@ export default function AdvantagesSection() {
                 />
               </div>
               <div className="p-[18px]">
-                <h3 className="text-[19px] font-semibold text-ink">{item.title}</h3>
+                <h3 className="font-serif text-[19px] font-semibold text-ink">{item.title}</h3>
                 <p className="mt-2 text-[15px] leading-[1.55] text-clay">{item.text}</p>
               </div>
             </motion.div>

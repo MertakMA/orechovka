@@ -88,7 +88,7 @@ function Tile({
 }
 
 function CategoryLabel({ children }: { children: React.ReactNode }) {
-  return <h3 className="text-lg font-semibold text-[#82a396]">{children}</h3>;
+  return <h3 className="font-serif text-lg font-semibold text-[#82a396]">{children}</h3>;
 }
 
 export default function GalleryFilterGrid() {

@@ -54,9 +54,9 @@ export default function Footer() {
                 height={47}
                 className="h-10 w-auto rounded-full bg-white/90 p-0.5"
               />
-              <p className="text-[14px] font-semibold text-[#e0ede5]">Roubenka Ořechovka</p>
+              <p className="text-[14px] font-semibold text-[#f2f7f4]">Roubenka Ořechovka</p>
             </div>
-            <a href="https://roubenkaorechovka.cz" className="text-[13px] text-[#82a396] hover:underline">
+            <a href="https://roubenkaorechovka.cz" className="text-[13px] text-[#9fcab6] hover:underline">
               roubenkaorechovka.cz
             </a>
           </div>
@@ -64,7 +64,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:gap-x-12">
             {COLUMNS.map((col) => (
               <div key={col.heading} className="flex flex-col gap-3">
-                <p className="text-[13px] font-semibold text-[#e0ede5]">{col.heading}</p>
+                <p className="text-[13px] font-semibold text-[#f2f7f4]">{col.heading}</p>
                 <ul className="flex flex-col gap-2">
                   {col.links.map((link) => (
                     <li key={link.label}>
@@ -73,7 +73,7 @@ export default function Footer() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                          className="text-[13px] text-[#bcd2c9] transition-colors hover:text-white"
                         >
                           {link.label}
                         </a>
@@ -82,7 +82,7 @@ export default function Footer() {
                           href={link.href}
                           prefetch={!link.href.includes("#")}
                           onClick={(e) => handleHashNavClick(e, link.href, pathname)}
-                          className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                          className="text-[13px] text-[#bcd2c9] transition-colors hover:text-white"
                         >
                           {link.label}
                         </Link>
@@ -94,7 +94,7 @@ export default function Footer() {
             ))}
 
             <div className="flex flex-col gap-3">
-              <p className="text-[13px] font-semibold text-[#e0ede5]">Kontakt</p>
+              <p className="text-[13px] font-semibold text-[#f2f7f4]">Kontakt</p>
               <ul className="flex flex-col gap-2">
                 {CONTACT_LINES.map((line) =>
                   line.href.startsWith("/") ? (
@@ -103,7 +103,7 @@ export default function Footer() {
                         href={line.href}
                         prefetch={!line.href.includes("#")}
                         onClick={(e) => handleHashNavClick(e, line.href, pathname)}
-                        className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                        className="text-[13px] text-[#bcd2c9] transition-colors hover:text-white"
                       >
                         {line.label}
                       </Link>
@@ -112,7 +112,7 @@ export default function Footer() {
                     <li key={line.label}>
                       <a
                         href={line.href}
-                        className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                        className="text-[13px] text-[#bcd2c9] transition-colors hover:text-white"
                       >
                         {line.label}
                       </a>
@@ -123,7 +123,7 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col gap-3">
-              <p className="text-[13px] font-semibold text-[#e0ede5]">Sledujte nás</p>
+              <p className="text-[13px] font-semibold text-[#f2f7f4]">Sledujte nás</p>
               <ul className="flex flex-col gap-2">
                 {SOCIAL_LINKS.map((link) => (
                   <li key={link.label}>
@@ -131,7 +131,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[13px] text-[#8ca69e] transition-colors hover:text-white"
+                      className="text-[13px] text-[#bcd2c9] transition-colors hover:text-white"
                     >
                       {link.label}
                     </a>
@@ -144,7 +144,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-[#40594d]">
-        <p className="mx-auto max-w-[1440px] px-6 py-5 text-[12px] text-[#738c80] sm:px-10 lg:px-[100px]">
+        <p className="mx-auto max-w-[1440px] px-6 py-5 text-[12px] text-[#a9c3b8] sm:px-10 lg:px-[100px]">
           © {new Date().getFullYear()} Roubenka Ořechovka · roubenkaorechovka.cz · Všechna práva vyhrazena
         </p>
       </div>
