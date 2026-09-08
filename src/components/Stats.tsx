@@ -12,18 +12,18 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <div className="border-b border-border bg-bark">
+    <div className="border-b border-border bg-cream">
       <div className="mx-auto grid max-w-[1440px] grid-cols-3 gap-x-3 gap-y-2 px-6 py-2 sm:grid-cols-6 md:px-10 lg:flex lg:items-stretch lg:justify-center lg:gap-0 lg:px-[100px] lg:py-0">
         {STATS.map(({ value, label, Icon }, i) => (
           <div
             key={label}
-            className={`flex flex-col items-center gap-0 text-center lg:flex-1 lg:justify-center lg:border-white/20 lg:px-3 lg:py-2 ${
+            className={`flex flex-col items-center gap-0 text-center lg:flex-1 lg:justify-center lg:border-border lg:px-3 lg:py-2 ${
               i > 0 ? "lg:border-l lg:border-dotted" : ""
             }`}
           >
-            <Icon className="size-3.5 text-white" strokeWidth={1.5} aria-hidden />
-            <p className="mt-0.5 text-[14px] font-semibold text-white">{value}</p>
-            <p className="text-[11px] text-white/60">{label}</p>
+            <Icon className="size-3.5 text-brand" strokeWidth={1.5} aria-hidden />
+            <p className="mt-0.5 text-[14px] font-semibold text-ink">{value}</p>
+            <p className="text-[11px] text-clay">{label}</p>
           </div>
         ))}
       </div>
