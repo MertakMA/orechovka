@@ -32,12 +32,17 @@ export default function Hero() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative z-10 w-full px-6 pb-14 sm:px-10 sm:pb-16 lg:px-[100px] lg:pb-[70px]"
+        className="relative z-10 w-full px-6 pb-28 sm:px-10 sm:pb-32 lg:px-[100px] lg:pb-[140px]"
       >
-        <h1 className="max-w-3xl font-serif text-[44px] font-bold leading-[1.05] tracking-[-0.5px] text-white sm:text-[64px] sm:leading-[1.05] lg:text-[96px] lg:leading-[90px] lg:tracking-[-1.2px]">
-          Vaše útočiště
-          <br />v srdci přírody
+        <h1 className="font-serif text-white">
+          <span className="block whitespace-nowrap text-[40px] font-bold leading-[1.05] tracking-[-0.5px] sm:text-[56px] lg:text-[84px] lg:leading-[80px] lg:tracking-[-1.2px]">
+            Roubenka Ořechovka
+          </span>
+          <span className="mt-1 block text-[16px] font-medium uppercase leading-[1.2] tracking-[0.5px] sm:mt-2 sm:text-[22px] lg:mt-3 lg:text-[32px] lg:leading-[1.15]">
+            Mladé Buky | Krkonoše
+          </span>
         </h1>
+
         <div className="mt-6 h-[2.5px] w-14 rounded bg-brand-gradient sm:mt-8" />
         <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
           <a
