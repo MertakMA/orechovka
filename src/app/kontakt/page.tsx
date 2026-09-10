@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { MapPin, Mail, Phone, Globe, Clock, CloudSun, Video, Car, SquareParking, TrainFront } from "lucide-react";
+import { MapPin, Mail, Phone, Globe, Car, SquareParking, TrainFront } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
@@ -52,13 +51,6 @@ const SOCIAL_LINKS = [
     href: V.INSTAGRAM_URL,
     className: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
   },
-];
-
-const PRACTICAL_INFO = [
-  { Icon: Clock, label: "Check-in", value: V.CHECK_IN, note: "Po dohodě jinak" },
-  { Icon: Clock, label: "Check-out", value: V.CHECK_OUT, note: "Po dohodě jinak" },
-  { Icon: CloudSun, label: "Počasí", value: "Aktuální předpověď", note: "Mladé Buky a okolí", href: "/#pocasi" },
-  { Icon: Video, label: "Webkamera", value: "Živý záběr z okolí", note: "Ski areál Mladé Buky", href: "/#pocasi" },
 ];
 
 const DIRECTIONS = [
@@ -188,41 +180,6 @@ export default async function KontaktPage() {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-surface px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-24">
-          <div className="mx-auto max-w-[1440px]">
-            <p className="text-[13px] font-semibold tracking-[2px] text-brand">PRAKTICKÉ INFORMACE K PŘÍJEZDU</p>
-            <div className="mt-2 h-[2px] w-8 bg-brand" />
-            <h2 className="mt-3 font-serif text-[30px] font-bold text-ink sm:text-[34px]">Co vědět před příjezdem</h2>
-
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {PRACTICAL_INFO.map(({ Icon, label, value, note, href }) => {
-                const cardClassName =
-                  "flex flex-col gap-2 rounded-lg bg-cream p-5 transition-colors hover:bg-tag/40";
-                const content = (
-                  <>
-                    <Icon className="size-5 text-brand" strokeWidth={1.75} aria-hidden />
-                    <p className="text-[13px] font-semibold text-ink">{label}</p>
-                    <p className="text-[14px] text-clay">
-                      {value}
-                      <br />
-                      <span className="text-[12px]">{note}</span>
-                    </p>
-                  </>
-                );
-                return href ? (
-                  <Link key={label} href={href} className={cardClassName}>
-                    {content}
-                  </Link>
-                ) : (
-                  <div key={label} className={cardClassName}>
-                    {content}
-                  </div>
-                );
-              })}
             </div>
           </div>
         </section>
