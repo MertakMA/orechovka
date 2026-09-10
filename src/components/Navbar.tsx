@@ -15,8 +15,8 @@ type NavLink = { label: string; href: string; isNews?: boolean };
 
 const BASE_NAV_LINKS: NavLink[] = [
   { label: "O roubence", href: "/#vyhody" },
-  { label: "Ceník", href: "/cenik" },
   { label: "Galerie", href: "/galerie" },
+  { label: "Ceník", href: "/cenik" },
   { label: "Kontakt", href: "/kontakt" },
   { label: "Tipy na výlety", href: "/tipy" },
 ];
