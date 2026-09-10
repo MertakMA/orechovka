@@ -213,16 +213,16 @@ export default function AboutSection() {
             <div className="h-[2px] w-11 bg-brand-gradient" />
           </div>
           <h2 className="mt-5 font-serif text-[36px] font-bold italic leading-[1.05] text-ink sm:text-[52px] lg:text-[68px]">
-            Místo, kde čas
+            Váš domov
             <br />
-            plyne pomaleji
+            v Krkonoších
           </h2>
           <p className="mt-6 text-lg leading-[1.7] text-clay sm:text-xl">
-            Útulné ubytování v podhůří Krkonoš — pro rodiny, páry i skupiny přátel. Celý objekt
-            jen pro vás, zahrada s grilem a krb pro večerní pohodu.
+            Útulná roubenka v Mladých Bukách, kde si můžete užít Krkonoše naplno nebo zpomalit a jen tak být. Výlety do přírody, společné chvíle i lenošení na peci. 
+            <br />Krásná místa, která stojí za to objevovat, máte z Ořechovky na dosah.  
           </p>
           <Link
-            href="/galerie"
+            href="#vyhody"
             className="text-gradient mt-7 inline-block rounded border-[1.8px] border-clay px-[22px] py-3 text-[15px] font-semibold"
           >
             Více o roubence →
