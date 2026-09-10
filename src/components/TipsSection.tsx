@@ -174,7 +174,7 @@ export default function TipsSection() {
           <div className="h-[2px] w-7 bg-brand-gradient" />
         </div>
         <h2 className="mt-3 font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">
-          V okolí je toho hodně
+          Zajímavá místa v okolí
         </h2>
 
         <div className="relative mt-14 lg:mt-20">
