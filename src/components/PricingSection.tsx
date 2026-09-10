@@ -55,7 +55,7 @@ export default function PricingSection() {
         </div>
 
         <div className="mt-10 text-center">
-          <Link href="/cenik" className="text-[15px] font-semibold text-brand hover:underline">
+          <Link href="/cenik" className="text-[15px] font-semibold text-bark hover:underline">
             Zobrazit celý ceník a časté dotazy →
           </Link>
         </div>
