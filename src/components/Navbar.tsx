@@ -14,12 +14,11 @@ const MotionLink = motion(Link);
 type NavLink = { label: string; href: string; isNews?: boolean };
 
 const BASE_NAV_LINKS: NavLink[] = [
-  { label: "O nás", href: "/#o-nas" },
+  { label: "O roubence", href: "/#vyhody" },
   { label: "Ceník", href: "/cenik" },
   { label: "Galerie", href: "/galerie" },
   { label: "Kontakt", href: "/kontakt" },
   { label: "Tipy na výlety", href: "/#tipy" },
-  { label: "Počasí", href: "/#pocasi" },
 ];
 
 const NEWS_LINK: NavLink = { label: "Novinky", href: "/#novinky", isNews: true };

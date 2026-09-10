@@ -76,7 +76,7 @@ export default function WeatherSection() {
                     {weatherIcon(data.current.weather_code)}
                   </span>
                   <div>
-                    <p className="font-serif text-[48px] font-semibold leading-none text-ink">
+                    <p className="font-sans text-[48px] font-semibold leading-none text-ink">
                       {Math.round(data.current.temperature_2m)}°
                     </p>
                     <p className="mt-2 text-[15px] text-clay">

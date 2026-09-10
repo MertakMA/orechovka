@@ -177,7 +177,7 @@ function PolaroidCard({
               {tip.distance}
             </span>
           </div>
-          <p className="mt-3 pl-0.5 font-serif text-[15px] font-bold italic text-[#2c2c2c]">{tip.title}</p>
+          <p className="mt-3 pl-0.5 font-sans text-[15px] font-semibold text-[#2c2c2c]">{tip.title}</p>
           <p className="mt-1 pl-0.5 text-[11px] text-brand">{tip.distance} od roubenky</p>
 
           {isFalling && (

@@ -16,7 +16,7 @@ const FILTERS: { key: Filter; label: string }[] = [
   { key: "vse", label: "Vše" },
   { key: "exterier", label: "Exteriér" },
   { key: "interier", label: "Interiér" },
-  { key: "okoli", label: "Okolí & Výlety" },
+  { key: "okoli", label: "Okolí a Výlety" },
 ];
 
 // TODO: nahradit placeholdery reálnými exteriérovými fotkami roubenky.
@@ -88,7 +88,7 @@ function Tile({
 }
 
 function CategoryLabel({ children }: { children: React.ReactNode }) {
-  return <h3 className="font-serif text-lg font-semibold text-[#82a396]">{children}</h3>;
+  return <h3 className="font-sans text-lg font-semibold text-[#82a396]">{children}</h3>;
 }
 
 export default function GalleryFilterGrid() {
@@ -184,7 +184,7 @@ export default function GalleryFilterGrid() {
 
           {showOkoli && (
             <section className="flex flex-col gap-5">
-              <CategoryLabel>Okolí &amp; Výlety</CategoryLabel>
+              <CategoryLabel>Okolí a Výlety</CategoryLabel>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
                 {OKOLI.map((photo, i) => (
                   <Tile key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="aspect-[4/3] lg:aspect-auto lg:h-[200px]" />

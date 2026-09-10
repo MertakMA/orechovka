@@ -209,7 +209,7 @@ export default function AboutSection() {
           className="w-full max-w-[488px]"
         >
           <div className="flex flex-col gap-[5px]">
-            <p className="text-[14px] font-semibold tracking-[2.34px] text-brand">O NÁS</p>
+            <p className="text-[14px] font-semibold tracking-[2.34px] text-brand">OŘECHOVKA</p>
             <div className="h-[2px] w-11 bg-brand-gradient" />
           </div>
           <h2 className="mt-5 font-serif text-[36px] font-bold italic leading-[1.05] text-ink sm:text-[52px] lg:text-[68px]">

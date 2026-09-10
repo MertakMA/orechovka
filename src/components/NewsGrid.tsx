@@ -71,7 +71,7 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
               )}
               <div className="flex flex-col gap-2 px-5 py-[18px]">
                 {date && <p className="text-[12px] font-semibold uppercase tracking-wide text-brand">{date}</p>}
-                <h3 className="break-words font-serif text-[18px] font-bold text-ink">{item.title}</h3>
+                <h3 className="break-words font-sans text-[18px] font-semibold text-ink">{item.title}</h3>
                 {item.text && (
                   <p className="line-clamp-2 break-words text-[14px] leading-[1.55] text-clay">{item.text}</p>
                 )}
@@ -124,7 +124,7 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
                     {formatDate(selected.date)}
                   </p>
                 )}
-                <h3 id="novinka-popup-title" className="max-w-[380px] break-words font-serif text-[22px] font-bold text-ink">
+                <h3 id="novinka-popup-title" className="max-w-[380px] break-words font-sans text-[22px] font-semibold text-ink">
                   {selected.title}
                 </h3>
 

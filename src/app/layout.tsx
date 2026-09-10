@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Fraunces, Nunito_Sans } from "next/font/google";
+import { Playfair_Display, Nunito_Sans } from "next/font/google";
 import SmoothHashScroll from "@/components/SmoothHashScroll";
 import { V } from "@/generated/variables";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const playfairDisplay = Playfair_Display({
   subsets: ["latin", "latin-ext"],
   weight: ["500", "600", "700"],
   style: ["normal", "italic"],
@@ -54,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="cs" className={`${fraunces.variable} ${nunitoSans.variable}`}>
+    <html lang="cs" className={`${playfairDisplay.variable} ${nunitoSans.variable}`}>
       <body className="font-sans antialiased">
         <SmoothHashScroll />
         {children}

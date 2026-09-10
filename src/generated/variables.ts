@@ -3,7 +3,7 @@
 // Zdroj pravdy: https://app.notion.com/p/8292a07ec2cf4ec0b77fe7d01ab7c1a4
 
 export const V = {
-  ADRESA_RADEK_1: "Mladé Buky, u kostela",
+  ADRESA_RADEK_1: "Mladé Buky",
   ADRESA_RADEK_2: "542 23, okres Trutnov",
   BOOKING_URL: "https://www.booking.com",
   CENA_HLAVNI_SEZONA: "od 4 500 Kč",
