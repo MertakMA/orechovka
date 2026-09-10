@@ -1,45 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
-import { V } from "@/generated/variables";
-
-// TODO: nahradit reálnými fotkami výletních cílů, nyní jde o neutrální placeholdery z Picsum.
-const TIPS = [
-  {
-    src: "https://picsum.photos/seed/snezka-krkonose/500/400",
-    title: "Sněžka",
-    distance: V.VZDALENOST_SNEZKA,
-    rotate: -6,
-    clip: "#5f8c7a",
-    href: V.TIP_SNEZKA_URL,
-  },
-  {
-    src: "https://picsum.photos/seed/zoo-dvur-kralove/500/400",
-    title: "Zoo Dvůr Králové",
-    distance: V.VZDALENOST_ZOO_DVUR_KRALOVE,
-    rotate: 4,
-    clip: "#d4915c",
-    href: V.TIP_ZOO_DVUR_KRALOVE_URL,
-  },
-  {
-    src: "https://picsum.photos/seed/rychory-prirodni-rezervace/500/400",
-    title: "Rýchory",
-    distance: V.VZDALENOST_RYCHORY,
-    rotate: -4,
-    clip: "#c9a45c",
-    href: V.TIP_RYCHORY_URL,
-  },
-  {
-    src: "https://picsum.photos/seed/adrspassko-teplicke-skaly/500/400",
-    title: "Adršpašské skály",
-    distance: V.VZDALENOST_ADRSPACH,
-    rotate: 7,
-    clip: "#b0665a",
-    href: V.TIP_ADRSPACH_URL,
-  },
-];
+import { TIPS } from "@/lib/tips";
 
 // Poryv "větru" kolem padajícího polaroidu — pár krátkých čárek, co
 // prolítnou zprava doleva s mírně rozhozeným zpožděním pro dojem gusta.
@@ -238,6 +203,12 @@ export default function TipsSection() {
               <PolaroidCard key={tip.title} tip={tip} index={i} />
             ))}
           </div>
+        </div>
+
+        <div className="mt-10 text-center lg:mt-14">
+          <Link href="/tipy" className="text-[15px] font-semibold text-bark hover:underline">
+            Zobrazit všechny tipy na výlety →
+          </Link>
         </div>
       </div>
     </section>

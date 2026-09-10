@@ -18,7 +18,7 @@ const BASE_NAV_LINKS: NavLink[] = [
   { label: "Ceník", href: "/cenik" },
   { label: "Galerie", href: "/galerie" },
   { label: "Kontakt", href: "/kontakt" },
-  { label: "Tipy na výlety", href: "/#tipy" },
+  { label: "Tipy na výlety", href: "/tipy" },
 ];
 
 const NEWS_LINK: NavLink = { label: "Novinky", href: "/#novinky", isNews: true };
