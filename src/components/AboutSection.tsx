@@ -223,7 +223,7 @@ export default function AboutSection() {
           </p>
           <Link
             href="#vyhody"
-            className="text-gradient mt-7 inline-block rounded border-[1.8px] border-clay px-[22px] py-3 text-[15px] font-semibold"
+            className="text-bark mt-7 inline-block rounded border-[1.8px] border-clay px-[22px] py-3 text-[15px] font-semibold"
           >
             Více o roubence →
           </Link>

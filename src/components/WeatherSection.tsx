@@ -45,7 +45,7 @@ export default function WeatherSection() {
             transition={{ duration: 0.6 }}
             className="flex w-full flex-col overflow-hidden rounded-xl border border-border bg-white shadow-[0px_10px_30px_0px_rgba(34,25,16,0.08)] lg:w-[500px]"
           >
-            <div className="relative flex items-center justify-between overflow-hidden bg-brand-gradient px-5 py-4">
+            <div className="relative flex items-center justify-between overflow-hidden bg-bark px-5 py-4">
               <p className="text-[15px] font-semibold text-white">Počasí v okolí Mladých Buků</p>
               <span
                 aria-hidden

@@ -38,7 +38,7 @@ export default function MapSection() {
           </p>
           <Link
             href="/kontakt"
-            className="text-gradient mt-6 inline-block text-[14px] font-semibold hover:underline"
+            className="text-bark mt-6 inline-block text-[14px] font-semibold hover:underline"
           >
             Kontaktní údaje a formulář →
           </Link>
