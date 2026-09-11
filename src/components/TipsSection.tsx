@@ -206,7 +206,7 @@ export default function TipsSection() {
         </div>
 
         <div className="mt-10 text-center lg:mt-14">
-          <Link href="/tipy" className="text-[15px] font-semibold text-bark hover:underline">
+          <Link href="/vylety" className="text-[15px] font-semibold text-bark hover:underline">
             Zobrazit všechny tipy na výlety →
           </Link>
         </div>
