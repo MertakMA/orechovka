@@ -1,5 +1,35 @@
 # TODO – další kolo doladění
 
+## Anglická verze webu (přepínání jazyků)
+
+> ### ⛔ Pravidlo pro AI asistenty
+>
+> **Tento úkol se nikdy nezačíná plnit sám od sebe.** Ani částečně, ani „jen přípravný krok".
+>
+> Teprve po **výslovném odsouhlasení** se smí sáhnout na první soubor. Bez odpovědi se nepokračuje.
+
+**Cíl:** anglická verze webu na vlastních indexovatelných URL (`/en/...`), aby fungovalo SEO
+a šlo sdílet přímé odkazy, ne jen klientský přepínač bez změny URL.
+
+### Odsouhlasená rozhodnutí
+
+- **Routing:** `next-intl`, struktura `app/[locale]/...`, `generateStaticParams` pro `cs`/`en`
+  (kompatibilní se statickým exportem, žádný middleware).
+- **Novinky z Notionu:** na EN verzi zůstanou v češtině beze změny, žádný zásah do Notionu.
+- **Zdroj EN textů:** překlad navrhne asistent jako součást implementace, klient/uživatel ho
+  následně zkontroluje a upraví.
+- **`V` proměnné** (ceny, adresy, kontakty) zůstávají jazykově neutrální beze změny; jen pevné
+  štítky v kódu (např. názvy sezón) půjdou do jazykových slovníků.
+
+### Kroky (zatím neschváleno, nezačínat)
+
+- [ ] Přesunout stránky (`/`, `/cenik`, `/kontakt`, `/tipy`, `/galerie`) pod `app/[locale]/...`.
+- [ ] Vytvořit slovníky `messages/cs.json` a `messages/en.json`, extrahovat texty z komponent
+      (Hero, AboutSection, AdvantagesSection, PricingSection, TipsSection, Navbar, Footer,
+      kontakt/cenik stránky) a nahradit je voláním `useTranslations()`/`getTranslations()`.
+- [ ] Language switcher v Navbaru (odkaz na ekvivalentní cestu v druhém jazyce).
+- [ ] Upravit `next.config.js` (basePath + locale) a `layout.tsx` (metadata per locale, `hreflang`).
+
 ## Sjednocení proměnných a jejich načítání z Notionu
 
 > ### ⛔ Pravidlo pro AI asistenty
