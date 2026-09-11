@@ -35,9 +35,6 @@ export default function PricingSection() {
       <div className="mx-auto max-w-[1440px]">
         <p className="text-[13px] font-semibold tracking-[2.16px] text-brand">CENÍK</p>
         <div className="mt-[18px] h-[2px] w-10 bg-brand" />
-        <h2 className="mt-[12px] font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">
-          Kolik vás to bude stát
-        </h2>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-[42px] lg:grid-cols-3 lg:items-center lg:gap-8">
           {PLANS.map((plan, i) => (
