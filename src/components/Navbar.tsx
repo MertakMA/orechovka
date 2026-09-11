@@ -23,6 +23,11 @@ const BASE_NAV_LINKS: NavLink[] = [
 
 const NEWS_LINK: NavLink = { label: "Novinky", href: "/#novinky", isNews: true };
 
+const SOCIAL_LINKS = [
+  { label: "Facebook", href: V.FACEBOOK_URL, icon: "/images/icons/facebook.svg" },
+  { label: "Instagram", href: V.INSTAGRAM_URL, icon: "/images/icons/instagram.svg" },
+];
+
 // Zelená podtržená "důležitá" značka pod odkazem Novinky — jemně pulzuje,
 // ať si jí je nejdřív všimnout, že je na webu něco nového.
 function NavLinkLabel({ link }: { link: NavLink }) {
@@ -96,14 +101,28 @@ export default function Navbar({ hasNews = false }: { hasNews?: boolean }) {
           })}
         </nav>
 
-        <a
-          href={V.BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden rounded bg-brand px-5 py-[10px] text-[14px] font-semibold text-white transition-colors hover:bg-brand-light lg:inline-block"
-        >
-          Rezervovat na Bookingu
-        </a>
+        <div className="hidden items-center gap-4 lg:flex">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              className="opacity-80 transition-opacity hover:opacity-100"
+            >
+              <Image src={withBasePath(link.icon)} alt="" width={20} height={20} className="size-5" />
+            </a>
+          ))}
+          <a
+            href={V.BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded bg-brand px-5 py-[10px] text-[14px] font-semibold text-white transition-colors hover:bg-brand-light"
+          >
+            Rezervovat na Bookingu
+          </a>
+        </div>
 
         <button
           type="button"
@@ -176,6 +195,21 @@ export default function Navbar({ hasNews = false }: { hasNews?: boolean }) {
               >
                 Rezervovat na Bookingu
               </a>
+
+              <div className="mt-4 flex items-center justify-center gap-6">
+                {SOCIAL_LINKS.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.label}
+                    className="opacity-80 transition-opacity hover:opacity-100"
+                  >
+                    <Image src={withBasePath(link.icon)} alt="" width={24} height={24} className="size-6" />
+                  </a>
+                ))}
+              </div>
             </motion.nav>
           </motion.div>
         )}
