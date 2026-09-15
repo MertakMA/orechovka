@@ -152,13 +152,7 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Link
-            href={switchHref}
-            aria-label={t.switchLabel}
-            className="rounded border border-border px-2.5 py-1 text-[12px] font-semibold text-clay transition-colors hover:border-pec-dark hover:text-pec-dark"
-          >
-            {t.switchTo}
-          </Link>
+          
           {SOCIAL_LINKS.map((link) => (
             <a
               key={link.label}
@@ -179,6 +173,14 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
           >
             {t.book}
           </a>
+            <Link
+            href={switchHref}
+            aria-label={t.switchLabel}
+            className="rounded border border-border px-2.5 py-1 text-[12px] font-semibold text-clay transition-colors hover:border-pec-dark hover:text-pec-dark"
+          >
+            {t.switchTo}
+          </Link>
+
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
