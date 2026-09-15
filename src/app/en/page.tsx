@@ -12,14 +12,19 @@ import MapSection from "@/components/MapSection";
 import NewsSection from "@/components/NewsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import HtmlLangSetter from "@/components/HtmlLangSetter";
 import { getNews } from "@/lib/notion";
 import { V } from "@/generated/variables";
 
 export const metadata: Metadata = {
+  title: { absolute: "Roubenka Ořechovka | Cabin rental near the Krkonoše Mountains" },
+  description:
+    "A cozy log cabin to rent for families, couples and groups of friends. The whole place just for you, a garden with a grill, a stove and Krkonoše views.",
   alternates: {
-    canonical: V.SITE_URL,
+    canonical: `${V.SITE_URL}/en`,
     languages: { cs: V.SITE_URL, en: `${V.SITE_URL}/en` },
   },
+  openGraph: { locale: "en_US" },
 };
 
 // Statický export (GitHub Pages) nemá server, takže ISR (revalidate) tu
@@ -27,29 +32,31 @@ export const metadata: Metadata = {
 // proto zajišťuje pravidelný rebuild naplánovaný v GitHub Actions workflow
 // (viz .github/workflows/deploy.yml), ne runtime revalidace.
 
-export default async function Home() {
+export default async function HomeEn() {
   const news = await getNews();
 
   return (
     <>
-      <Navbar hasNews={news.length > 0} />
+      <HtmlLangSetter lang="en" />
+      <Navbar hasNews={news.length > 0} locale="en" />
       <main>
-        <Hero />
-        <Stats />
-        <AboutSection />
-        <AdvantagesSection />
-        <GallerySection />
-        <TipsSection />
-        <PricingSection />
-        <WeatherSection />
-        <MapSection />
-        <NewsSection />
+        <Hero locale="en" />
+        <Stats locale="en" />
+        <AboutSection locale="en" />
+        <AdvantagesSection locale="en" />
+        <GallerySection locale="en" />
+        <TipsSection locale="en" />
+        <PricingSection locale="en" />
+        <WeatherSection locale="en" />
+        <MapSection locale="en" />
+        <NewsSection locale="en" />
         <CTASection
-          title="Připraveni na pobyt v přírodě?"
-          subtitle="Roubenka Ořechovka čeká. Rezervujte si termín jednoduše a bezpečně přes Booking.com."
+          title="Ready for a stay in nature?"
+          subtitle="Roubenka Ořechovka is waiting. Book your dates simply and safely via Booking.com."
+          buttonLabel="Book your stay via Booking.com →"
         />
       </main>
-      <Footer />
+      <Footer locale="en" />
     </>
   );
 }

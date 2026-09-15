@@ -11,13 +11,27 @@ import { withBasePath } from "@/lib/basePath";
 type Photo = { src: string; alt: string };
 
 type Filter = "vse" | "exterier" | "interier" | "okoli";
+type Locale = "cs" | "en";
 
-const FILTERS: { key: Filter; label: string }[] = [
-  { key: "vse", label: "Vše" },
-  { key: "exterier", label: "Exteriér" },
-  { key: "interier", label: "Interiér" },
-  { key: "okoli", label: "Okolí a Výlety" },
-];
+const FILTERS: Record<Locale, { key: Filter; label: string }[]> = {
+  cs: [
+    { key: "vse", label: "Vše" },
+    { key: "exterier", label: "Exteriér" },
+    { key: "interier", label: "Interiér" },
+    { key: "okoli", label: "Okolí a Výlety" },
+  ],
+  en: [
+    { key: "vse", label: "All" },
+    { key: "exterier", label: "Exterior" },
+    { key: "interier", label: "Interior" },
+    { key: "okoli", label: "Nearby & Trips" },
+  ],
+};
+
+const CATEGORY_LABELS: Record<Locale, { exterier: string; interier: string; okoli: string }> = {
+  cs: { exterier: "Exteriér", interier: "Interiér", okoli: "Okolí a Výlety" },
+  en: { exterier: "Exterior", interier: "Interior", okoli: "Nearby & Trips" },
+};
 
 // TODO: nahradit placeholdery reálnými exteriérovými fotkami roubenky.
 const EXTERIER: (Photo | null)[] = [
@@ -88,12 +102,14 @@ function Tile({
 }
 
 function CategoryLabel({ children }: { children: React.ReactNode }) {
-  return <h3 className="font-sans text-lg font-semibold text-[#82a396]">{children}</h3>;
+  return <h3 className="font-sans text-lg font-semibold text-pec-dark">{children}</h3>;
 }
 
-export default function GalleryFilterGrid() {
+export default function GalleryFilterGrid({ locale = "cs" }: { locale?: Locale }) {
   const [filter, setFilter] = useState<Filter>("vse");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const filters = FILTERS[locale];
+  const categoryLabels = CATEGORY_LABELS[locale];
 
   const openPhoto = (photo: Photo) => {
     const idx = ALL_PHOTOS.findIndex((p) => p.src === photo.src);
@@ -109,8 +125,8 @@ export default function GalleryFilterGrid() {
 
   return (
     <div>
-      <div className="sticky top-24 z-30 -mx-6 flex flex-wrap gap-2 border-b border-border bg-[#fafaf8] px-6 py-4 sm:-mx-10 sm:px-10 lg:-mx-[100px] lg:px-[100px]">
-        {FILTERS.map((f) => (
+      <div className="sticky top-24 z-30 -mx-6 flex flex-wrap gap-2 border-b border-border bg-cream px-6 py-4 sm:-mx-10 sm:px-10 lg:-mx-[100px] lg:px-[100px]">
+        {filters.map((f) => (
           <button
             key={f.key}
             type="button"
@@ -118,7 +134,7 @@ export default function GalleryFilterGrid() {
             className={`rounded-full px-5 py-[10px] text-[13px] font-semibold transition-colors ${
               filter === f.key
                 ? "bg-brand text-white"
-                : "border border-border bg-white text-ink hover:border-brand"
+                : "border border-border bg-surface text-ink hover:border-brand"
             }`}
           >
             {f.label}
@@ -137,7 +153,7 @@ export default function GalleryFilterGrid() {
         >
           {showExterier && (
             <section className="flex flex-col gap-5">
-              <CategoryLabel>Exteriér</CategoryLabel>
+              <CategoryLabel>{categoryLabels.exterier}</CategoryLabel>
 
               <div className="hidden lg:grid lg:h-[340px] lg:grid-cols-4 lg:grid-rows-2 lg:gap-4">
                 <Tile photo={EXTERIER[0]} onOpen={openPhoto} sizes={sizesWide} className="col-span-2 row-span-2 h-full w-full" />
@@ -162,7 +178,7 @@ export default function GalleryFilterGrid() {
 
           {showInterier && (
             <section className="flex flex-col gap-5">
-              <CategoryLabel>Interiér</CategoryLabel>
+              <CategoryLabel>{categoryLabels.interier}</CategoryLabel>
 
               <div className="hidden lg:grid lg:h-[240px] lg:grid-cols-4 lg:gap-4">
                 <Tile photo={INTERIER[0]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
@@ -184,7 +200,7 @@ export default function GalleryFilterGrid() {
 
           {showOkoli && (
             <section className="flex flex-col gap-5">
-              <CategoryLabel>Okolí a Výlety</CategoryLabel>
+              <CategoryLabel>{categoryLabels.okoli}</CategoryLabel>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
                 {OKOLI.map((photo, i) => (
                   <Tile key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="aspect-[4/3] lg:aspect-auto lg:h-[200px]" />

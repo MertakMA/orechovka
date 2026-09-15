@@ -34,9 +34,11 @@ export async function fetchWeather(lat: number, lon: number): Promise<OpenMeteoR
   return res.json();
 }
 
-export function formatTime(isoDateTime: string): string {
+export type Locale = "cs" | "en";
+
+export function formatTime(isoDateTime: string, locale: Locale = "cs"): string {
   const date = new Date(isoDateTime);
-  return date.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit" });
+  return date.toLocaleTimeString(locale === "en" ? "en-GB" : "cs-CZ", { hour: "2-digit", minute: "2-digit" });
 }
 
 const WEATHER_DESCRIPTIONS: Record<number, string> = {
@@ -68,41 +70,82 @@ const WEATHER_DESCRIPTIONS: Record<number, string> = {
   99: "Silná bouřka s kroupami",
 };
 
-export function describeWeatherCode(code: number): string {
-  return WEATHER_DESCRIPTIONS[code] ?? "Neznámé počasí";
-}
-
-const WEATHER_ICONS: Record<number, string> = {
-  0: "☀️",
-  1: "🌤️",
-  2: "⛅",
-  3: "☁️",
-  45: "🌫️",
-  48: "🌫️",
-  51: "🌦️",
-  53: "🌦️",
-  55: "🌧️",
-  61: "🌧️",
-  63: "🌧️",
-  65: "🌧️",
-  66: "🌧️",
-  67: "🌧️",
-  71: "🌨️",
-  73: "🌨️",
-  75: "❄️",
-  77: "🌨️",
-  80: "🌦️",
-  81: "🌧️",
-  82: "⛈️",
-  85: "🌨️",
-  86: "❄️",
-  95: "⛈️",
-  96: "⛈️",
-  99: "⛈️",
+const WEATHER_DESCRIPTIONS_EN: Record<number, string> = {
+  0: "Clear sky",
+  1: "Mostly clear",
+  2: "Partly cloudy",
+  3: "Overcast",
+  45: "Fog",
+  48: "Rime fog",
+  51: "Light drizzle",
+  53: "Drizzle",
+  55: "Heavy drizzle",
+  61: "Light rain",
+  63: "Rain",
+  65: "Heavy rain",
+  66: "Freezing rain",
+  67: "Heavy freezing rain",
+  71: "Light snow",
+  73: "Snow",
+  75: "Heavy snow",
+  77: "Snow grains",
+  80: "Rain showers",
+  81: "Heavier rain showers",
+  82: "Violent rain showers",
+  85: "Snow showers",
+  86: "Heavy snow showers",
+  95: "Thunderstorm",
+  96: "Thunderstorm with hail",
+  99: "Severe thunderstorm with hail",
 };
 
-export function weatherIcon(code: number): string {
-  return WEATHER_ICONS[code] ?? "🌡️";
+export function describeWeatherCode(code: number, locale: Locale = "cs"): string {
+  const dict = locale === "en" ? WEATHER_DESCRIPTIONS_EN : WEATHER_DESCRIPTIONS;
+  return dict[code] ?? (locale === "en" ? "Unknown weather" : "Neznámé počasí");
+}
+
+export type WeatherKind =
+  | "clear"
+  | "few-clouds"
+  | "partly-cloudy"
+  | "cloudy"
+  | "fog"
+  | "drizzle"
+  | "rain"
+  | "snow"
+  | "storm";
+
+const WEATHER_KINDS: Record<number, WeatherKind> = {
+  0: "clear",
+  1: "few-clouds",
+  2: "partly-cloudy",
+  3: "cloudy",
+  45: "fog",
+  48: "fog",
+  51: "drizzle",
+  53: "drizzle",
+  55: "drizzle",
+  61: "rain",
+  63: "rain",
+  65: "rain",
+  66: "rain",
+  67: "rain",
+  71: "snow",
+  73: "snow",
+  75: "snow",
+  77: "snow",
+  80: "rain",
+  81: "rain",
+  82: "storm",
+  85: "snow",
+  86: "snow",
+  95: "storm",
+  96: "storm",
+  99: "storm",
+};
+
+export function weatherKind(code: number): WeatherKind {
+  return WEATHER_KINDS[code] ?? "cloudy";
 }
 
 const COMPASS = ["S", "SV", "V", "JV", "J", "JZ", "Z", "SZ"];
@@ -112,8 +155,9 @@ export function degreesToCompass(deg: number): string {
 }
 
 const WEEKDAYS_CS = ["Ne", "Po", "Út", "St", "Čt", "Pá", "So"];
+const WEEKDAYS_EN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export function weekdayLabel(isoDate: string): string {
+export function weekdayLabel(isoDate: string, locale: Locale = "cs"): string {
   const date = new Date(isoDate);
-  return WEEKDAYS_CS[date.getDay()];
+  return (locale === "en" ? WEEKDAYS_EN : WEEKDAYS_CS)[date.getDay()];
 }

@@ -4,7 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
-import { TIPS } from "@/lib/tips";
+import { TIPS, TIPS_EN } from "@/lib/tips";
+
+type Locale = "cs" | "en";
 
 // Poryv "větru" kolem padajícího polaroidu — pár krátkých čárek, co
 // prolítnou zprava doleva s mírně rozhozeným zpožděním pro dojem gusta.
@@ -50,9 +52,11 @@ function Clip({ color }: { color: string }) {
 function PolaroidCard({
   tip,
   index,
+  distanceSuffix,
 }: {
   tip: (typeof TIPS)[number];
   index: number;
+  distanceSuffix: string;
 }) {
   const kick = tip.rotate >= 0 ? 7 : -7;
   const sway = 2.2;
@@ -126,7 +130,7 @@ function PolaroidCard({
               ? { duration: FALL_DURATION_MS / 1000, ease: [0.55, 0, 1, 0.45] }
               : { type: "spring", stiffness: 300, damping: 14 }
           }
-          className="origin-top relative block cursor-pointer rounded-[2px] bg-[#fdfbf7] p-3 pb-8 shadow-[0px_1px_3px_0px_rgba(0,0,0,0.07),2px_4px_12px_0px_rgba(0,0,0,0.18)]"
+          className="origin-top relative block cursor-pointer rounded-[2px] bg-surface p-3 pb-8 shadow-[0px_1px_3px_0px_rgba(0,0,0,0.07),2px_4px_12px_0px_rgba(0,0,0,0.18)]"
         >
           <Clip color={tip.clip} />
           <div className="relative aspect-[232/188] w-full overflow-hidden">
@@ -143,7 +147,9 @@ function PolaroidCard({
             </span>
           </div>
           <p className="mt-3 pl-0.5 font-sans text-[15px] font-semibold text-[#2c2c2c]">{tip.title}</p>
-          <p className="mt-1 pl-0.5 text-[11px] text-brand">{tip.distance} od roubenky</p>
+          <p className="mt-1 pl-0.5 text-[11px] text-brand">
+            {tip.distance} {distanceSuffix}
+          </p>
 
           {isFalling && (
             <div className="pointer-events-none absolute inset-0 overflow-visible" aria-hidden>
@@ -165,16 +171,33 @@ function PolaroidCard({
   );
 }
 
-export default function TipsSection() {
+const TEXT: Record<Locale, { eyebrow: string; heading: string; distanceSuffix: string; link: string }> = {
+  cs: {
+    eyebrow: "TIPY NA VÝLETY",
+    heading: "Zajímavá místa v okolí",
+    distanceSuffix: "od roubenky",
+    link: "Zobrazit všechny tipy na výlety →",
+  },
+  en: {
+    eyebrow: "TRIP IDEAS",
+    heading: "Interesting places nearby",
+    distanceSuffix: "from the cabin",
+    link: "See all trip ideas →",
+  },
+};
+
+export default function TipsSection({ locale = "cs" }: { locale?: Locale }) {
+  const t = TEXT[locale];
+  const tips = locale === "en" ? TIPS_EN : TIPS;
   return (
-    <section id="tipy" className="bg-cream px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
+    <section id="tipy" className="bg-sand px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
       <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-col gap-[5px]">
-          <p className="text-gradient text-[13px] font-semibold tracking-[2px]">TIPY NA VÝLETY</p>
+          <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{t.eyebrow}</p>
           <div className="h-[2px] w-7 bg-brand-gradient" />
         </div>
         <h2 className="mt-3 font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">
-          Zajímavá místa v okolí
+          {t.heading}
         </h2>
 
         <div className="relative mt-14 lg:mt-20">
@@ -190,7 +213,7 @@ export default function TipsSection() {
                 a ne jen dekorativně "kolem". */}
             <path
               d="M0,15 Q50,17 100,15"
-              stroke="#8b6f4e"
+              stroke="#896c46"
               strokeWidth="1.5"
               fill="none"
               vectorEffect="non-scaling-stroke"
@@ -199,15 +222,18 @@ export default function TipsSection() {
           </svg>
 
           <div className="grid grid-cols-1 gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
-            {TIPS.map((tip, i) => (
-              <PolaroidCard key={tip.title} tip={tip} index={i} />
+            {tips.map((tip, i) => (
+              <PolaroidCard key={tip.title} tip={tip} index={i} distanceSuffix={t.distanceSuffix} />
             ))}
           </div>
         </div>
 
         <div className="mt-10 text-center lg:mt-14">
-          <Link href="/vylety" className="text-[15px] font-semibold text-bark hover:underline">
-            Zobrazit všechny tipy na výlety →
+          <Link
+            href={locale === "cs" ? "/vylety" : "/en/vylety"}
+            className="text-[16px] font-bold text-bark hover:underline"
+          >
+            {t.link}
           </Link>
         </div>
       </div>

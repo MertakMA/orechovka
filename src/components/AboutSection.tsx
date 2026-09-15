@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, type PanInfo } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
 
@@ -151,14 +151,14 @@ function Carousel() {
         ))}
       </motion.div>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent sm:w-24" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent sm:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-cream to-transparent sm:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-cream to-transparent sm:w-24" />
 
       <button
         type="button"
         onClick={() => go(-1)}
         aria-label="Předchozí fotka"
-        className="absolute left-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl text-[#1f150c] shadow-md"
+        className="absolute left-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-cream/95 text-xl text-ink shadow-md"
       >
         ‹
       </button>
@@ -166,7 +166,7 @@ function Carousel() {
         type="button"
         onClick={() => go(1)}
         aria-label="Další fotka"
-        className="absolute right-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl text-[#1f150c] shadow-md"
+        className="absolute right-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-cream/95 text-xl text-ink shadow-md"
       >
         ›
       </button>
@@ -197,9 +197,41 @@ function Carousel() {
   );
 }
 
-export default function AboutSection() {
+type Locale = "cs" | "en";
+
+const TEXT: Record<Locale, { eyebrow: string; heading: [string, string]; body: ReactNode; link: string }> = {
+  cs: {
+    eyebrow: "OŘECHOVKA",
+    heading: ["Váš domov", "v Krkonoších"],
+    body: (
+      <>
+        Útulná roubenka v Mladých Bukách, kde si můžete užít Krkonoše naplno nebo zpomalit a jen tak být. Výlety do
+        přírody, společné chvíle i lenošení na peci.
+        <br />
+        Krásná místa, která stojí za to objevovat, máte z Ořechovky na dosah.
+      </>
+    ),
+    link: "Více o roubence →",
+  },
+  en: {
+    eyebrow: "OŘECHOVKA",
+    heading: ["Your home", "in the Krkonoše"],
+    body: (
+      <>
+        A cozy log cabin in Mladé Buky, where you can enjoy the Krkonoše mountains to the full — or just slow down
+        and be. Trips into nature, time together, and lazing by the stove.
+        <br />
+        Beautiful places worth exploring are all within easy reach of Ořechovka.
+      </>
+    ),
+    link: "More about the cabin →",
+  },
+};
+
+export default function AboutSection({ locale = "cs" }: { locale?: Locale }) {
+  const t = TEXT[locale];
   return (
-    <section id="o-nas" className="bg-white px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[120px]">
+    <section id="o-nas" className="bg-cream px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[120px]">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -209,23 +241,20 @@ export default function AboutSection() {
           className="w-full max-w-[488px]"
         >
           <div className="flex flex-col gap-[5px]">
-            <p className="text-[14px] font-semibold tracking-[2.34px] text-brand">OŘECHOVKA</p>
+            <p className="text-[14px] font-semibold tracking-[2.34px] text-pec-dark">{t.eyebrow}</p>
             <div className="h-[2px] w-11 bg-brand-gradient" />
           </div>
           <h2 className="mt-5 font-serif text-[36px] font-bold italic leading-[1.05] text-ink sm:text-[52px] lg:text-[68px]">
-            Váš domov
+            {t.heading[0]}
             <br />
-            v Krkonoších
+            {t.heading[1]}
           </h2>
-          <p className="mt-6 text-lg leading-[1.7] text-clay sm:text-xl">
-            Útulná roubenka v Mladých Bukách, kde si můžete užít Krkonoše naplno nebo zpomalit a jen tak být. Výlety do přírody, společné chvíle i lenošení na peci. 
-            <br />Krásná místa, která stojí za to objevovat, máte z Ořechovky na dosah.  
-          </p>
+          <p className="mt-6 text-lg leading-[1.7] text-clay sm:text-xl">{t.body}</p>
           <Link
             href="#vyhody"
             className="text-bark mt-7 inline-block rounded border-[1.8px] border-clay px-[22px] py-3 text-[15px] font-semibold"
           >
-            Více o roubence →
+            {t.link}
           </Link>
         </motion.div>
 

@@ -12,8 +12,8 @@ export default async function NotFound() {
     <>
       <Navbar hasNews={news.length > 0} />
       <main className="flex flex-col items-center justify-center gap-6 bg-cream px-6 py-24 text-center sm:py-32">
-        <div className="flex size-28 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0px_10px_30px_0px_rgba(34,25,16,0.12)] sm:size-32">
-          <Image src={withBasePath("/images/logo.svg")} alt="" width={100} height={117} className="h-20 w-auto sm:h-24" />
+        <div className="flex size-28 items-center justify-center overflow-hidden rounded-full bg-surface shadow-[0px_10px_30px_0px_rgba(34,25,16,0.12)] sm:size-32">
+          <Image src={withBasePath("/images/logo.svg")} alt="" width={795} height={742} className="h-16 w-auto sm:h-20" />
         </div>
         <p className="text-gradient font-serif text-[72px] font-bold leading-none sm:text-[110px]">CHYBA 404</p>
         <h1 className="font-serif text-[32px] font-bold text-ink sm:text-[44px]">Tahle stezka nikam nevede</h1>
@@ -22,7 +22,7 @@ export default async function NotFound() {
         </p>
         <Link
           href="/"
-          className="mt-2 rounded bg-brand px-8 py-4 text-[15px] font-semibold text-white transition-colors hover:bg-brand-light"
+          className="mt-2 rounded bg-brand px-8 py-4 text-[15px] font-semibold text-cream transition-colors hover:bg-brand-dark"
         >
           Zpět na hlavní stránku
         </Link>

@@ -19,7 +19,7 @@ function TripLink({ href, children }: { href: string; children: React.ReactNode 
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-0.5 text-[13px] font-semibold text-brand transition-colors hover:text-brand-light"
+      className="inline-flex items-center gap-0.5 text-[13px] font-semibold text-brand transition-colors hover:text-brand-dark"
     >
       {children}
       <ArrowUpRight className="size-3.5" strokeWidth={2.5} aria-hidden />
@@ -27,8 +27,24 @@ function TripLink({ href, children }: { href: string; children: React.ReactNode 
   );
 }
 
-export default function TripRow({ trip, index = 0 }: { trip: Trip; index?: number }) {
+type Locale = "cs" | "en";
+
+const TEXT: Record<Locale, { distance: string; map: string; more: string }> = {
+  cs: { distance: "VZDÁLENOST", map: "Mapa", more: "Více" },
+  en: { distance: "DISTANCE", map: "Map", more: "More" },
+};
+
+export default function TripRow({
+  trip,
+  index = 0,
+  locale = "cs",
+}: {
+  trip: Trip;
+  index?: number;
+  locale?: Locale;
+}) {
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(trip.mapQuery)}`;
+  const t = TEXT[locale];
 
   return (
     <motion.div
@@ -51,16 +67,16 @@ export default function TripRow({ trip, index = 0 }: { trip: Trip; index?: numbe
 
       <div className="flex flex-1 flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
         <div className="max-w-xl">
-          <h3 className="font-serif text-[20px] font-bold text-ink sm:text-[24px]">{trip.title}</h3>
-          <p className="mt-2 text-[14px] leading-[1.7] text-clay">{trip.description}</p>
+          <h3 className="font-subhead text-[20px] font-bold text-ink sm:text-[24px]">{trip.title}</h3>
+          <p className="mt-2 text-[14px] font-medium leading-[1.7] text-clay">{trip.description}</p>
         </div>
 
         <div className="flex shrink-0 flex-col items-start gap-1 sm:items-end sm:text-right">
-          <p className="text-[11px] font-semibold tracking-[1.5px] text-stone">VZDÁLENOST</p>
-          <p className="font-serif text-[20px] font-bold text-ink">{trip.distance}</p>
+          <p className="text-[11px] font-bold tracking-[1.5px] text-stone">{t.distance}</p>
+          <p className="font-subhead text-[20px] font-bold text-ink">{trip.distance}</p>
           <div className="mt-2 flex flex-col items-start gap-1.5 sm:items-end">
-            <TripLink href={mapHref}>Mapa</TripLink>
-            {trip.moreHref && <TripLink href={trip.moreHref}>Více</TripLink>}
+            <TripLink href={mapHref}>{t.map}</TripLink>
+            {trip.moreHref && <TripLink href={trip.moreHref}>{t.more}</TripLink>}
           </div>
         </div>
       </div>

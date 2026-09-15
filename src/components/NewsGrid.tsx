@@ -13,9 +13,20 @@ function imageSrc(url: string): string {
   return url.startsWith("/") ? withBasePath(url) : url;
 }
 
-function formatDate(iso: string | null): string | null {
+type Locale = "cs" | "en";
+
+const TEXT: Record<Locale, { readMore: string; close: string; openLink: string }> = {
+  cs: { readMore: "Více informací →", close: "Zavřít", openLink: "Otevřít odkaz" },
+  en: { readMore: "Read more →", close: "Close", openLink: "Open link" },
+};
+
+function formatDate(iso: string | null, locale: Locale): string | null {
   if (!iso) return null;
-  return new Date(iso).toLocaleDateString("cs-CZ", { day: "numeric", month: "long", year: "numeric" });
+  return new Date(iso).toLocaleDateString(locale === "en" ? "en-GB" : "cs-CZ", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 // Klient v Notionu odděluje odstavce novým řádkem — každý neprázdný
@@ -33,8 +44,9 @@ function paragraphs(text: string): string[] {
  * celý text novinky je vidět až po kliknutí v popupu, rozdělený na
  * odstavce a zarovnaný na střed v pevné čitelné šířce.
  */
-export default function NewsGrid({ news }: { news: NewsItem[] }) {
+export default function NewsGrid({ news, locale = "cs" }: { news: NewsItem[]; locale?: Locale }) {
   const [selected, setSelected] = useState<NewsItem | null>(null);
+  const t = TEXT[locale];
 
   useEffect(() => {
     document.body.style.overflow = selected ? "hidden" : "";
@@ -56,13 +68,13 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
     <>
       <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-[52px] lg:grid-cols-3">
         {news.map((item) => {
-          const date = formatDate(item.date);
+          const date = formatDate(item.date, locale);
           return (
             <button
               key={item.id}
               type="button"
               onClick={() => setSelected(item)}
-              className="flex cursor-pointer flex-col overflow-hidden rounded-[10px] border border-border bg-white text-left transition-colors hover:border-brand"
+              className="flex cursor-pointer flex-col overflow-hidden rounded-[10px] border border-border bg-surface text-left transition-colors hover:border-brand"
             >
               {item.imageUrl && (
                 <div className="relative h-[180px] w-full">
@@ -75,7 +87,7 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
                 {item.text && (
                   <p className="line-clamp-2 break-words text-[14px] leading-[1.55] text-clay">{item.text}</p>
                 )}
-                <span className="mt-1 text-[13px] font-semibold text-brand">Více informací →</span>
+                <span className="mt-1 text-[13px] font-semibold text-brand">{t.readMore}</span>
               </div>
             </button>
           );
@@ -101,13 +113,13 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
               role="dialog"
               aria-modal="true"
               aria-labelledby="novinka-popup-title"
-              className="relative max-h-[85vh] w-full max-w-[520px] overflow-y-auto overflow-x-hidden rounded-[14px] bg-white shadow-xl"
+              className="relative max-h-[85vh] w-full max-w-[520px] overflow-y-auto overflow-x-hidden rounded-[14px] bg-surface shadow-xl"
             >
               <button
                 type="button"
                 onClick={() => setSelected(null)}
-                aria-label="Zavřít"
-                className="absolute right-3 top-3 z-10 flex size-9 items-center justify-center rounded-full bg-white/90 text-xl text-[#1f150c] shadow-md"
+                aria-label={t.close}
+                className="absolute right-3 top-3 z-10 flex size-9 items-center justify-center rounded-full bg-cream/95 text-xl text-[#1c1209] shadow-md"
               >
                 ×
               </button>
@@ -119,9 +131,9 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
               )}
 
               <div className="flex flex-col items-center gap-3 px-6 py-6 text-center">
-                {formatDate(selected.date) && (
+                {formatDate(selected.date, locale) && (
                   <p className="text-[12px] font-semibold uppercase tracking-wide text-brand">
-                    {formatDate(selected.date)}
+                    {formatDate(selected.date, locale)}
                   </p>
                 )}
                 <h3 id="novinka-popup-title" className="max-w-[380px] break-words font-sans text-[22px] font-semibold text-ink">
@@ -143,9 +155,9 @@ export default function NewsGrid({ news }: { news: NewsItem[] }) {
                     href={selected.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-block w-fit rounded-lg bg-brand px-6 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-brand-light"
+                    className="mt-2 inline-block w-fit rounded-lg bg-brand px-6 py-3 text-[14px] font-semibold text-cream transition-colors hover:bg-brand-dark"
                   >
-                    {selected.linkText || "Otevřít odkaz"} →
+                    {selected.linkText || t.openLink} →
                   </a>
                 )}
               </div>

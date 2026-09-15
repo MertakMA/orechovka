@@ -6,7 +6,25 @@ import { motion } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
 import { V } from "@/generated/variables";
 
-export default function Hero() {
+type Locale = "cs" | "en";
+
+const TEXT: Record<Locale, { alt: string; subtitle: string; book: string; gallery: string }> = {
+  cs: {
+    alt: "Roubenka Ořechovka – dřevěná roubenka s prosklenou terasou",
+    subtitle: "Mladé Buky | Krkonoše",
+    book: "Rezervovat na Bookingu",
+    gallery: "Prohlédnout galerii",
+  },
+  en: {
+    alt: "Roubenka Ořechovka – a wooden cabin with a glazed terrace",
+    subtitle: "Mladé Buky | Krkonoše, Czechia",
+    book: "Book on Booking.com",
+    gallery: "View the gallery",
+  },
+};
+
+export default function Hero({ locale = "cs" }: { locale?: Locale }) {
+  const t = TEXT[locale];
   return (
     <section
       id="hero"
@@ -14,17 +32,20 @@ export default function Hero() {
     >
       <Image
         src={withBasePath("/images/hero-facade.jpg")}
-        alt="Roubenka Ořechovka – dřevěná roubenka s prosklenou terasou"
+        alt={t.alt}
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[60%_50%]"
+        className="object-cover object-[60%_50%] [filter:sepia(0.16)_saturate(1.06)]"
       />
+      {/* Teplý závoj přes fotku — modrá obloha jinak působí chladně a klientka
+          chce, aby web na první dobrou působil hřejivě. */}
+      <div className="absolute inset-0 bg-[#8a5426] opacity-[0.08] mix-blend-soft-light" />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(16,10,5,0) 0%, rgba(16,10,5,0.25) 40%, rgba(16,10,5,0.78) 100%)",
+            "linear-gradient(to bottom, rgba(16,10,5,0) 0%, rgba(42,26,12,0.28) 40%, rgba(30,18,8,0.8) 100%)",
         }}
       />
 
@@ -35,11 +56,11 @@ export default function Hero() {
         className="relative z-10 w-full px-6 pb-28 sm:px-10 sm:pb-32 lg:px-[100px] lg:pb-[140px]"
       >
         <h1 className="font-serif text-white">
-          <span className="block whitespace-nowrap text-[40px] font-bold leading-[1.05] tracking-[-0.5px] sm:text-[56px] lg:text-[84px] lg:leading-[80px] lg:tracking-[-1.2px]">
+          <span className="block whitespace-nowrap text-[clamp(26px,8vw,40px)] font-bold leading-[1.05] tracking-[-0.5px] sm:text-[56px] lg:text-[84px] lg:leading-[80px] lg:tracking-[-1.2px]">
             Roubenka Ořechovka
           </span>
           <span className="mt-1 block text-[16px] font-medium uppercase leading-[1.2] tracking-[0.5px] sm:mt-2 sm:text-[22px] lg:mt-3 lg:text-[32px] lg:leading-[1.15]">
-            Mladé Buky | Krkonoše
+            {t.subtitle}
           </span>
         </h1>
 
@@ -49,15 +70,15 @@ export default function Hero() {
             href={V.BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded bg-brand px-8 py-4 text-center text-[15px] font-semibold text-white transition-colors hover:bg-brand-light"
+            className="rounded bg-brand px-8 py-4 text-center text-[15px] font-semibold text-cream transition-colors hover:bg-brand-dark"
           >
-            Rezervovat na Bookingu
+            {t.book}
           </a>
           <Link
-            href="/galerie"
-            className="rounded border-[1.5px] border-white/80 bg-white/20 px-6 py-[14px] text-center text-[15px] text-white transition-colors hover:bg-white/30"
+            href={locale === "cs" ? "/galerie" : "/en/galerie"}
+            className="rounded border-[1.5px] border-cream/80 bg-cream/20 px-6 py-[14px] text-center text-[15px] font-semibold text-cream transition-colors hover:bg-cream/30"
           >
-            Prohlédnout galerii
+            {t.gallery}
           </Link>
         </div>
       </motion.div>

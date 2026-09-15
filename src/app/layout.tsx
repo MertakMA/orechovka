@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Nunito_Sans } from "next/font/google";
+import { Playfair_Display, Lora, Montserrat } from "next/font/google";
 import SmoothHashScroll from "@/components/SmoothHashScroll";
 import { V } from "@/generated/variables";
 import "./globals.css";
@@ -12,7 +12,17 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
 });
 
-const nunitoSans = Nunito_Sans({
+// Podnadpisy podle brand boardu — Lora drží serifový tón nadpisů, ale je
+// měkčí a čitelnější v menších velikostech než Playfair.
+const lora = Lora({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-subheading",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-body",
@@ -54,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="cs" className={`${playfairDisplay.variable} ${nunitoSans.variable}`}>
+    <html lang="cs" className={`${playfairDisplay.variable} ${lora.variable} ${montserrat.variable}`}>
       <body className="font-sans antialiased">
         <SmoothHashScroll />
         {children}

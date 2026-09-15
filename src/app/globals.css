@@ -7,12 +7,12 @@ html {
 }
 
 body {
-  color: #2c2c2c;
-  background: #ffffff;
+  color: #33281f;
+  background: #faf7f0;
 }
 
 .text-gradient {
-  background-image: linear-gradient(90deg, #5f8c7a 0%, #5f8c7a 46%, #82a396 83%, #82a396 100%);
+  background-image: linear-gradient(90deg, #34706c 0%, #34706c 46%, #559895 83%, #559895 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -35,7 +35,7 @@ body {
   animation-iteration-count: infinite;
 }
 
-/* Jemné "důležité" pulzování zelené linky pod odkazem "Novinky" v navbaru
+/* Jemné "důležité" pulzování tyrkysové linky pod odkazem "Novinky" v navbaru
    — zobrazuje se, jen když nějaké novinky opravdu jsou. */
 @keyframes nav-badge-pulse {
   0%,
@@ -48,4 +48,61 @@ body {
 }
 .animate-nav-badge-pulse {
   animation: nav-badge-pulse 1.8s ease-in-out infinite;
+}
+
+/* Letní štítek na stránce výletů — slunečně okrový protějšek .text-gradient. */
+.text-gradient-sun {
+  background-image: linear-gradient(90deg, #8f5a14 0%, #8f5a14 46%, #b8802f 83%, #b8802f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Sezónní dekorace na stránce výletů: vločky se pomalu pohupují, sluneční
+   paprsky se téměř neznatelně otáčí a nad hrnkem stoupá pára. */
+@keyframes snow-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(18deg);
+  }
+}
+.animate-snow-drift {
+  animation: snow-drift 9s ease-in-out infinite;
+}
+
+@keyframes sun-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-sun-spin {
+  animation: sun-spin 90s linear infinite;
+}
+
+@keyframes steam-rise {
+  0% {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+.animate-steam {
+  animation: steam-rise 3.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-snow-drift,
+  .animate-sun-spin,
+  .animate-steam {
+    animation: none;
+  }
 }

@@ -18,9 +18,17 @@ const GALLERY = [
   { src: withBasePath("/images/adv-soukromi.png"), alt: "Zahrada s kamennou zídkou" },
 ];
 
-export default function GallerySection() {
+type Locale = "cs" | "en";
+
+const TEXT: Record<Locale, { eyebrow: string; heading: string; galleryHref: string; tile: [string, string] }> = {
+  cs: { eyebrow: "GALERIE", heading: "Nahlédněte do roubenky", galleryHref: "/galerie", tile: ["Celá", "galerie →"] },
+  en: { eyebrow: "GALLERY", heading: "Take a look inside", galleryHref: "/en/galerie", tile: ["Full", "gallery →"] },
+};
+
+export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  const t = TEXT[locale];
 
   const openAt = (i: number) => {
     setIndex(i);
@@ -28,14 +36,14 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="galerie" className="bg-white px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
+    <section id="galerie" className="bg-cream px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
       <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-col gap-[5px]">
-          <p className="text-gradient text-[13px] font-semibold tracking-[2px]">GALERIE</p>
+          <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{t.eyebrow}</p>
           <div className="h-[2px] w-7 bg-brand-gradient" />
         </div>
         <h2 className="mt-3 max-w-[514px] font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">
-          Nahlédněte do roubenky
+          {t.heading}
         </h2>
 
         <motion.div
@@ -79,7 +87,7 @@ export default function GallerySection() {
               <Image src={GALLERY[3].src} alt={GALLERY[3].alt} fill sizes="(min-width: 640px) 11vw, 50vw" className="object-cover transition-transform hover:scale-105" />
             </button>
             <Link
-              href="/galerie"
+              href={t.galleryHref}
               className="group relative block h-[100px] w-1/2 overflow-hidden rounded-md bg-espresso sm:h-[124px] sm:w-full"
             >
               <Image
@@ -90,9 +98,9 @@ export default function GallerySection() {
                 className="object-cover opacity-35 transition-transform group-hover:scale-105"
               />
               <span className="absolute inset-0 flex items-center justify-center text-center text-sm font-semibold leading-tight text-white">
-                Celá
+                {t.tile[0]}
                 <br />
-                galerie →
+                {t.tile[1]}
               </span>
             </Link>
           </div>

@@ -4,11 +4,27 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { V } from "@/generated/variables";
 
+type Locale = "cs" | "en";
+
 const MAP_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(V.MAPA_QUERY)}&output=embed`;
 
-export default function MapSection() {
+const TEXT: Record<Locale, { eyebrow: string; mapTitle: string; link: string }> = {
+  cs: {
+    eyebrow: "KDE NÁS NAJDETE",
+    mapTitle: "Mapa – Mladé Buky",
+    link: "Kontaktní údaje a formulář →",
+  },
+  en: {
+    eyebrow: "WHERE TO FIND US",
+    mapTitle: "Map – Mladé Buky",
+    link: "Contact details and form →",
+  },
+};
+
+export default function MapSection({ locale = "cs" }: { locale?: Locale }) {
+  const t = TEXT[locale];
   return (
-    <section id="mapa" className="bg-white px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
+    <section id="mapa" className="bg-cream px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
       <div className="mx-auto flex max-w-[1440px] flex-col items-start gap-10 lg:flex-row lg:items-center lg:gap-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -18,7 +34,7 @@ export default function MapSection() {
           className="w-full max-w-[380px] shrink-0"
         >
           <div className="flex flex-col gap-[5px]">
-            <p className="text-gradient text-[13px] font-semibold tracking-[2px]">KDE NÁS NAJDETE</p>
+            <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{t.eyebrow}</p>
             <div className="h-[2px] w-7 bg-brand-gradient" />
           </div>
           <h2 className="mt-[26px] font-serif text-[30px] font-bold leading-tight text-ink sm:text-[38px]">
@@ -32,15 +48,15 @@ export default function MapSection() {
             {V.ADRESA_RADEK_2}
             <br />
             <br />
-            {V.VZDALENOST_TRUTNOV_MIN} Trutnov
+            {V.VZDALENOST_TRUTNOV_MIN} {locale === "en" ? "from" : ""} Trutnov
             <br />
             {V.VZDALENOST_HRADEC_KRALOVE} Hradec Králové · {V.VZDALENOST_PEC_POD_SNEZKOU} Pec pod Sněžkou
           </p>
           <Link
-            href="/kontakt"
+            href={locale === "cs" ? "/kontakt" : "/en/kontakt"}
             className="text-bark mt-6 inline-block text-[14px] font-semibold hover:underline"
           >
-            Kontaktní údaje a formulář →
+            {t.link}
           </Link>
         </motion.div>
 
@@ -53,7 +69,7 @@ export default function MapSection() {
         >
           <iframe
             src={MAP_EMBED_SRC}
-            title="Mapa – Mladé Buky"
+            title={t.mapTitle}
             className="size-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
