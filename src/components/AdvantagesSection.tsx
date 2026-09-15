@@ -233,7 +233,7 @@ function RoomCard({ room, bedsPill }: { room: Room; bedsPill: string | null }) {
             </span>
           )}
         </div>
-        <p className="mt-0.5 text-[12px] font-medium leading-[1.4] text-clay">{room.detail}</p>
+        <p className="mt-0.5 text-[15px] font-medium leading-[1.4] text-clay">{room.detail}</p>
       </div>
     </div>
   );
@@ -302,16 +302,7 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
             <div className="mt-4">
               {/* Přesah do stran dělá okap — bez něj střecha vypadala jen jako
                   tmavý klín položený na kartě. */}
-              <div className="-mx-2">
-                <svg
-                  viewBox="0 0 600 60"
-                  preserveAspectRatio="none"
-                  className={`block w-full text-bark ${ROOF_H}`}
-                  aria-hidden
-                >
-                  <path fill="currentColor" d="M300 0 L600 50 L600 60 L0 60 L0 50 Z" />
-                </svg>
-              </div>
+              
 
               <div className="overflow-hidden rounded-b-xl border border-t-0 border-border bg-surface shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)]">
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-border bg-cream/70 px-4 py-2.5 sm:px-5">
