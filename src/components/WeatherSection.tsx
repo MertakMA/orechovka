@@ -121,7 +121,7 @@ export default function WeatherSection({ locale = "cs" }: { locale?: Locale }) {
                   whileHover={{ y: -2 }}
                   className="flex flex-col items-center gap-1.5 rounded-lg py-3 transition-colors hover:bg-cream"
                 >
-                  <p className="text-[12px] font-semibold uppercase tracking-wide text-clay">
+                  <p className="text-[13px] font-semibold uppercase tracking-wide text-clay">
                     {data ? weekdayLabel(day as string, locale) : "–"}
                   </p>
                   {data ? (
@@ -141,14 +141,14 @@ export default function WeatherSection({ locale = "cs" }: { locale?: Locale }) {
                 <div className="flex items-center gap-2">
                   <Sunrise className="size-5 text-brand" strokeWidth={1.75} aria-hidden />
                   <div>
-                    <p className="text-[11px] uppercase tracking-wide text-clay">{t.sunrise}</p>
+                    <p className="text-[12px] uppercase tracking-wide text-clay">{t.sunrise}</p>
                     <p className="text-[14px] font-semibold text-ink">{formatTime(data.daily.sunrise[0], locale)}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <Sunset className="size-5 text-brand" strokeWidth={1.75} aria-hidden />
                   <div>
-                    <p className="text-[11px] uppercase tracking-wide text-clay">{t.sunset}</p>
+                    <p className="text-[12px] uppercase tracking-wide text-clay">{t.sunset}</p>
                     <p className="text-[14px] font-semibold text-ink">{formatTime(data.daily.sunset[0], locale)}</p>
                   </div>
                 </div>

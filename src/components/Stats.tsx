@@ -36,7 +36,7 @@ export default function Stats({ locale = "cs" }: { locale?: Locale }) {
           >
             <Icon className="size-3.5 text-pec" strokeWidth={1.5} aria-hidden />
             <p className="mt-0.5 text-[15px] font-bold text-ink">{value}</p>
-            <p className="text-[12px] font-semibold text-clay">{label}</p>
+            <p className="text-[13px] font-semibold text-clay">{label}</p>
           </div>
         ))}
       </div>
