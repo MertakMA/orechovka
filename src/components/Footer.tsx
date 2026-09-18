@@ -14,7 +14,7 @@ const COLUMNS: Record<Locale, { heading: string; links: { label: string; href: s
     {
       heading: "Stránky",
       links: [
-        { label: "O nás", href: "/#o-nas" },
+        { label: "O roubence", href: "/#vyhody" },
         { label: "Galerie", href: "/galerie" },
         { label: "Ceník", href: "/cenik" },
         { label: "Kontakt", href: "/kontakt" },
@@ -33,7 +33,7 @@ const COLUMNS: Record<Locale, { heading: string; links: { label: string; href: s
     {
       heading: "Pages",
       links: [
-        { label: "About", href: "/en#o-nas" },
+        { label: "About", href: "/en#vyhody" },
         { label: "Gallery", href: "/en/galerie" },
         { label: "Rates", href: "/en/cenik" },
         { label: "Contact", href: "/en/kontakt" },
@@ -108,7 +108,7 @@ export default function Footer({ locale = "cs" }: { locale?: Locale }) {
 
           <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:gap-x-12">
             {columns.map((col) => (
-              <div key={col.heading} className="flex flex-col gap-3">
+              <div key={col.heading} className="flex min-w-0 flex-col gap-3">
                 <p className="text-[13px] font-bold uppercase tracking-[1.2px] text-espresso">{col.heading}</p>
                 <ul className="flex flex-col gap-2">
                   {col.links.map((link) => (
@@ -138,7 +138,7 @@ export default function Footer({ locale = "cs" }: { locale?: Locale }) {
               </div>
             ))}
 
-            <div className="flex flex-col gap-3">
+            <div className="flex min-w-0 flex-col gap-3">
               <p className="text-[13px] font-bold uppercase tracking-[1.2px] text-espresso">{t.contact}</p>
               <ul className="flex flex-col gap-2">
                 {contactLines.map((line) =>
@@ -148,7 +148,7 @@ export default function Footer({ locale = "cs" }: { locale?: Locale }) {
                         href={line.href}
                         prefetch={!line.href.includes("#")}
                         onClick={(e) => handleHashNavClick(e, line.href, pathname)}
-                        className="text-[15px] font-semibold text-espresso transition-colors hover:text-pec-dark"
+                        className="break-words text-[15px] font-semibold text-espresso transition-colors hover:text-pec-dark"
                       >
                         {line.label}
                       </Link>
@@ -157,7 +157,7 @@ export default function Footer({ locale = "cs" }: { locale?: Locale }) {
                     <li key={line.label}>
                       <a
                         href={line.href}
-                        className="text-[15px] font-semibold text-espresso transition-colors hover:text-pec-dark"
+                        className="break-words text-[15px] font-semibold text-espresso transition-colors hover:text-pec-dark"
                       >
                         {line.label}
                       </a>
@@ -167,7 +167,7 @@ export default function Footer({ locale = "cs" }: { locale?: Locale }) {
               </ul>
             </div>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex min-w-0 flex-col gap-3">
               <p className="text-[13px] font-bold uppercase tracking-[1.2px] text-espresso">{t.follow}</p>
               <ul className="flex flex-col gap-2">
                 {SOCIAL_LINKS.map((link) => (
