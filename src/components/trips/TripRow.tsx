@@ -13,13 +13,21 @@ export type Trip = {
   moreHref?: string;
 };
 
-function TripLink({ href, children }: { href: string; children: React.ReactNode }) {
+function TripLink({
+  href,
+  className = "text-brand hover:text-brand-dark",
+  children,
+}: {
+  href: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-0.5 text-[13px] font-semibold text-brand transition-colors hover:text-brand-dark"
+      className={`relative z-10 inline-flex items-center gap-0.5 text-[13px] font-semibold transition-colors ${className}`}
     >
       {children}
       <ArrowUpRight className="size-3.5" strokeWidth={2.5} aria-hidden />
@@ -29,9 +37,9 @@ function TripLink({ href, children }: { href: string; children: React.ReactNode 
 
 type Locale = "cs" | "en";
 
-const TEXT: Record<Locale, { distance: string; map: string; more: string }> = {
-  cs: { distance: "VZDÁLENOST", map: "Mapa", more: "Více" },
-  en: { distance: "DISTANCE", map: "Map", more: "More" },
+const TEXT: Record<Locale, { distance: string; map: string; article: string }> = {
+  cs: { distance: "VZDÁLENOST", map: "Mapa", article: "celý článek" },
+  en: { distance: "DISTANCE", map: "Map", article: "full article" },
 };
 
 export default function TripRow({
@@ -52,8 +60,21 @@ export default function TripRow({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5, delay: Math.min(index, 4) * 0.06 }}
-      className="group flex flex-col gap-5 py-10 sm:flex-row sm:gap-8"
+      className="group relative flex flex-col gap-5 py-10 sm:flex-row sm:gap-8"
     >
+      {/* Celá karta je odkaz na plný článek — žádný samostatný "více" odkaz
+          v rohu. Leží jako neviditelná vrstva přes celý řádek (proto z-index
+          nižší než u Mapy níž), takže se dá kliknout kamkoli na fotku i text. */}
+      {trip.moreHref && (
+        <a
+          href={trip.moreHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${trip.title} — ${t.article}`}
+          className="absolute inset-0 z-[1]"
+        />
+      )}
+
       <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_20px_-8px_rgba(0,0,0,0.18)] sm:aspect-square sm:w-[220px] lg:w-[260px]">
         <Image
           src={trip.image}
@@ -67,16 +88,26 @@ export default function TripRow({
 
       <div className="flex flex-1 flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
         <div className="max-w-xl">
-          <h3 className="font-subhead text-[20px] font-bold text-ink sm:text-[24px]">{trip.title}</h3>
-          <p className="mt-2 text-[14px] font-medium leading-[1.7] text-clay">{trip.description}</p>
+          <h3 className="inline-flex items-center gap-1.5 font-subhead text-[20px] font-bold text-ink transition-colors sm:text-[24px] group-hover:text-brand">
+            {trip.title}
+            {trip.moreHref && (
+              <ArrowUpRight
+                className="size-4 shrink-0 opacity-0 transition-opacity group-hover:opacity-70"
+                strokeWidth={2.5}
+                aria-hidden
+              />
+            )}
+          </h3>
+          <p className="mt-2 text-[15px] font-medium leading-[1.7] text-clay sm:text-[16px]">{trip.description}</p>
         </div>
 
         <div className="flex shrink-0 flex-col items-start gap-1 sm:items-end sm:text-right">
           <p className="text-[11px] font-bold tracking-[1.5px] text-stone">{t.distance}</p>
           <p className="font-subhead text-[20px] font-bold text-ink">{trip.distance}</p>
           <div className="mt-2 flex flex-col items-start gap-1.5 sm:items-end">
-            <TripLink href={mapHref}>{t.map}</TripLink>
-            {trip.moreHref && <TripLink href={trip.moreHref}>{t.more}</TripLink>}
+            <TripLink href={mapHref} className="text-green-700 hover:text-green-800">
+              {t.map}
+            </TripLink>
           </div>
         </div>
       </div>

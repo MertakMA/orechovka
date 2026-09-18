@@ -140,8 +140,53 @@ const RESTAURANTS: Trip[] = [
   },
 ];
 
+// Zimní měsíce (listopad–duben) uvidí nejdřív sekci Zima, zbytek roku Léto —
+// ať je jako první to, co je zrovna sezónní. Restaurace zůstávají vždy dole.
+function isWinterSeason(month: number) {
+  return month <= 4 || month >= 11;
+}
+
 export default async function VyletyPage() {
   const news = await getNews();
+
+  const winterSection = (bgClassName: string) => (
+    <SeasonSection
+      key="zima"
+      id="zima"
+      icon={<Snowflake className="size-5" strokeWidth={2} aria-hidden />}
+      eyebrow="ZIMA"
+      title="Lyže, běžky a bobovka"
+      subtitle="Sjezdovky i upravené běžecké stopy, na které to z roubenky máte jen na skok."
+      trips={WINTER_TRIPS}
+      season="winter"
+      bgClassName={bgClassName}
+    />
+  );
+
+  const summerSection = (bgClassName: string) => (
+    <SeasonSection
+      key="leto"
+      id="leto"
+      icon={<Sun className="size-5" strokeWidth={2} aria-hidden />}
+      eyebrow="LÉTO"
+      title="Hory, koupání a výlety pro děti"
+      subtitle="Od koupání po lesích a skalách až po safari a lanovky — na léto je toho v okolí nejvíc."
+      trips={SUMMER_TRIPS}
+      season="summer"
+      bgClassName={bgClassName}
+      extraLink={{
+        label: "Další tipy na pěší trasy v Krkonoších",
+        href: "https://www.region-krkonose.cz/aktivni-vyziti/turisticke-trasy-naucne-stezky/",
+      }}
+    />
+  );
+
+  // Pořadí sekcí se otočí podle sezóny, ale střídání pozadí (krémová/písková)
+  // zůstává vázané na pozici, ne na sezónu, ať vizuální rytmus stránky
+  // zůstává stejný ať je první zima, nebo léto.
+  const seasonSections = isWinterSeason(new Date().getMonth() + 1)
+    ? [winterSection("bg-cream"), summerSection("bg-sand")]
+    : [summerSection("bg-cream"), winterSection("bg-sand")];
 
   return (
     <>
@@ -158,37 +203,13 @@ export default async function VyletyPage() {
           </div>
         </section>
 
-        <SeasonSection
-          id="zima"
-          icon={<Snowflake className="size-5" strokeWidth={2} aria-hidden />}
-          eyebrow="ZIMA"
-          title="Lyže, běžky a bobovka"
-          subtitle="Sjezdovky i upravené běžecké stopy, na které to z roubenky máte jen na skok."
-          trips={WINTER_TRIPS}
-          season="winter"
-          bgClassName="bg-cream"
-        />
-
-        <SeasonSection
-          id="leto"
-          icon={<Sun className="size-5" strokeWidth={2} aria-hidden />}
-          eyebrow="LÉTO"
-          title="Hory, koupání a výlety pro děti"
-          subtitle="Od koupání po lesích a skalách až po safari a lanovky — na léto je toho v okolí nejvíc."
-          trips={SUMMER_TRIPS}
-          season="summer"
-          bgClassName="bg-sand"
-          extraLink={{
-            label: "Další tipy na pěší trasy v Krkonoších",
-            href: "https://www.region-krkonose.cz/aktivni-vyziti/turisticke-trasy-naucne-stezky/",
-          }}
-        />
+        {seasonSections}
 
         <SeasonSection
           id="restaurace"
           icon={<UtensilsCrossed className="size-5" strokeWidth={2} aria-hidden />}
           eyebrow="V OKOLÍ"
-          title="Restaurace v okolí"
+          title="Místa v okolí"
           subtitle="Kam zajít na jídlo, když se vám nechce vařit."
           trips={RESTAURANTS}
           season="food"

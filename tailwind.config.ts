@@ -43,7 +43,6 @@ const config: Config = {
       },
       backgroundImage: {
         "brand-gradient": "linear-gradient(90deg, #34706c 0%, #34706c 46%, #559895 83%, #559895 100%)",
-        "sun-gradient": "linear-gradient(90deg, #8f5a14 0%, #8f5a14 46%, #c38a36 83%, #c38a36 100%)",
       },
       container: {
         center: true,

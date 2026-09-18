@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import TripRow, { type Trip } from "./TripRow";
-import SeasonDecor, { type Season } from "./SeasonDecor";
+
+export type Season = "winter" | "summer" | "food";
 
 // Každé období má vlastní akcent: zima ledově tyrkysová, léto slunečně
 // okrová, restaurace ořechově hnědá.
 const THEMES: Record<Season, { iconWrap: string; eyebrow: string; rule: string }> = {
-  winter: { iconWrap: "bg-pec-light text-pec-dark", eyebrow: "text-gradient", rule: "bg-brand-gradient" },
-  summer: { iconWrap: "bg-[#f6e5c3] text-[#94601a]", eyebrow: "text-gradient-sun", rule: "bg-sun-gradient" },
+  winter: { iconWrap: "bg-pec-light text-pec-dark", eyebrow: "text-pec-dark", rule: "bg-pec" },
+  summer: { iconWrap: "bg-[#f6e5c3] text-[#94601a]", eyebrow: "text-[#94601a]", rule: "bg-[#94601a]" },
   food: { iconWrap: "bg-parchment text-brand", eyebrow: "text-brand", rule: "bg-brand" },
 };
 
@@ -37,9 +38,7 @@ export default function SeasonSection({
   const theme = THEMES[season];
 
   return (
-    <section id={id} className={`relative overflow-hidden ${bgClassName} px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px]`}>
-      <SeasonDecor season={season} />
-
+    <section id={id} className={`relative ${bgClassName} px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px]`}>
       <div className="relative mx-auto max-w-[1440px]">
         <div className="flex items-center gap-3">
           <span className={`flex size-10 shrink-0 items-center justify-center rounded-full shadow-sm ${theme.iconWrap}`}>

@@ -141,8 +141,52 @@ const RESTAURANTS: Trip[] = [
   },
 ];
 
+// Zimní měsíce (listopad–duben) uvidí nejdřív sekci Zima, zbytek roku Léto —
+// stejná logika jako na české stránce (viz src/app/vylety/page.tsx).
+function isWinterSeason(month: number) {
+  return month <= 4 || month >= 11;
+}
+
 export default async function VyletyPageEn() {
   const news = await getNews();
+
+  const winterSection = (bgClassName: string) => (
+    <SeasonSection
+      key="zima"
+      id="zima"
+      icon={<Snowflake className="size-5" strokeWidth={2} aria-hidden />}
+      eyebrow="WINTER"
+      title="Skis, cross-country and a bobsled"
+      subtitle="Ski slopes and groomed cross-country tracks, just a short hop from the cabin."
+      trips={WINTER_TRIPS}
+      season="winter"
+      bgClassName={bgClassName}
+      locale="en"
+    />
+  );
+
+  const summerSection = (bgClassName: string) => (
+    <SeasonSection
+      key="leto"
+      id="leto"
+      icon={<Sun className="size-5" strokeWidth={2} aria-hidden />}
+      eyebrow="SUMMER"
+      title="Mountains, swimming and trips for kids"
+      subtitle="From forest and rock swimming to safari and cable cars — summer brings the most options nearby."
+      trips={SUMMER_TRIPS}
+      season="summer"
+      bgClassName={bgClassName}
+      locale="en"
+      extraLink={{
+        label: "More hiking trail ideas in the Krkonoše",
+        href: "https://www.region-krkonose.cz/aktivni-vyziti/turisticke-trasy-naucne-stezky/",
+      }}
+    />
+  );
+
+  const seasonSections = isWinterSeason(new Date().getMonth() + 1)
+    ? [winterSection("bg-cream"), summerSection("bg-sand")]
+    : [summerSection("bg-cream"), winterSection("bg-sand")];
 
   return (
     <>
@@ -160,39 +204,13 @@ export default async function VyletyPageEn() {
           </div>
         </section>
 
-        <SeasonSection
-          id="zima"
-          icon={<Snowflake className="size-5" strokeWidth={2} aria-hidden />}
-          eyebrow="WINTER"
-          title="Skis, cross-country and a bobsled"
-          subtitle="Ski slopes and groomed cross-country tracks, just a short hop from the cabin."
-          trips={WINTER_TRIPS}
-          season="winter"
-          bgClassName="bg-cream"
-          locale="en"
-        />
-
-        <SeasonSection
-          id="leto"
-          icon={<Sun className="size-5" strokeWidth={2} aria-hidden />}
-          eyebrow="SUMMER"
-          title="Mountains, swimming and trips for kids"
-          subtitle="From forest and rock swimming to safari and cable cars — summer brings the most options nearby."
-          trips={SUMMER_TRIPS}
-          season="summer"
-          bgClassName="bg-sand"
-          locale="en"
-          extraLink={{
-            label: "More hiking trail ideas in the Krkonoše",
-            href: "https://www.region-krkonose.cz/aktivni-vyziti/turisticke-trasy-naucne-stezky/",
-          }}
-        />
+        {seasonSections}
 
         <SeasonSection
           id="restaurace"
           icon={<UtensilsCrossed className="size-5" strokeWidth={2} aria-hidden />}
           eyebrow="NEARBY"
-          title="Restaurants nearby"
+          title="Places nearby"
           subtitle="Where to eat out when you don't feel like cooking."
           trips={RESTAURANTS}
           season="food"
