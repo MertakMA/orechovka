@@ -4,21 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
-import { V } from "@/generated/variables";
 
 type Locale = "cs" | "en";
 
-const TEXT: Record<Locale, { alt: string; subtitle: string; book: string; gallery: string }> = {
+const TEXT: Record<Locale, { alt: string; subtitle: string; gallery: string }> = {
   cs: {
     alt: "Roubenka Ořechovka – dřevěná roubenka s prosklenou terasou",
     subtitle: "Mladé Buky | Krkonoše",
-    book: "Rezervovat na Bookingu",
     gallery: "Prohlédnout galerii",
   },
   en: {
     alt: "Roubenka Ořechovka – a wooden cabin with a glazed terrace",
     subtitle: "Mladé Buky | Krkonoše, Czechia",
-    book: "Book on Booking.com",
     gallery: "View the gallery",
   },
 };
@@ -66,17 +63,9 @@ export default function Hero({ locale = "cs" }: { locale?: Locale }) {
 
         <div className="mt-6 h-[2.5px] w-14 rounded bg-brand-gradient sm:mt-8" />
         <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
-          <a
-            href={V.BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded bg-brand px-8 py-4 text-center text-[15px] font-semibold text-cream transition-colors hover:bg-brand-dark"
-          >
-            {t.book}
-          </a>
           <Link
             href={locale === "cs" ? "/galerie" : "/en/galerie"}
-            className="rounded border-[1.5px] border-cream/80 bg-cream/20 px-6 py-[14px] text-center text-[15px] font-semibold text-cream transition-colors hover:bg-cream/30"
+            className="rounded bg-brand px-8 py-4 text-center text-[15px] font-semibold text-cream transition-colors hover:bg-brand-dark"
           >
             {t.gallery}
           </Link>
