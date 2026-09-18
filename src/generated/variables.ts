@@ -3,7 +3,7 @@
 // Zdroj pravdy: https://app.notion.com/p/8292a07ec2cf4ec0b77fe7d01ab7c1a4
 
 export const V = {
-  ADRESA_RADEK_1: "Mladé Buky",
+  ADRESA_RADEK_1: "Mladé Buky 512",
   ADRESA_RADEK_2: "542 23, okres Trutnov",
   BOOKING_URL: "https://www.booking.com",
   CENA_HLAVNI_SEZONA: "od 4 500 Kč",
@@ -37,7 +37,7 @@ export const V = {
   TIP_RYCHORY_URL: "https://cs.wikipedia.org/wiki/R%C3%BDchory",
   TIP_SNEZKA_URL: "https://www.snezka.cz",
   TIP_ZOO_DVUR_KRALOVE_URL: "https://safaripark.cz",
-  VELIKOST_ZAHRADY: "1000 m²",
+  VELIKOST_ZAHRADY: "1500 m²",
   VZDALENOST_ADRSPACH: "30 km",
   VZDALENOST_HRADEC_KRALOVE: "30 min",
   VZDALENOST_PEC_POD_SNEZKOU: "20 min",
