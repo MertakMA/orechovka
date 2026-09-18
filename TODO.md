@@ -1,43 +1,20 @@
 # TODO – další kolo doladění
 
-### footer - mobilní zobrazení - vyřešit překryv
+### aktualizovat odkazy na socaální sítě - zatím nedělat
 
-### footer - odkaz "O nás" není aktuální
+### změnit umístění button na en verzi - zatím nedělat
 
-### aktualizovat odkazy na socaální sítě
-
-### čitelnost textu     
-
-### adresa - Mladé Buky 512
-
-### změnit umístění button na en verzi
-
-### tipy na výlety - odstranit background icons a animations, nadpis sekcí - bez gradientu
-
-### landing - ceník nemá podtržení s gradientem
-
-### ceník - změnit hover při najetí na article
-
-### ceník - info před příjezdem - nefunkční odkazy - chybí ve variables
-
-### O roubence - přidat info "Roubenka je nekuřácká", "Bez domácích mazlíčků"
+### ceník - info před příjezdem - nefunkční odkazy - chybí ve variables na notionu
+Nejde dodělat bez reálných dat od klienta (telefon, přesná adresa/GPS) — v Notionu jsou
+zatím jen placeholdery, odkaz/tel. číslo by tak byl vymyšlený.
 
 ### přidat do variables většinu textů
+Koliduje s dokumentovaným rozhodnutím ve VARIABLES.md (texty záměrně zůstávají v kódu,
+do proměnných jen čísla/odkazy) a šlo by o rozsáhlý refaktor napříč celým webem —
+potřebuje potvrzení, než se do toho pustím.
 
-### logo
+### logo - zatím nedělat
 
-### tipy na výlet - zelené odkazy na mapu
+### soubor zpracování osobních údajů - zatím nedělat
 
-### tipy na výlet - odstranit více a přidat odkaz na celý article
-
-### restaurace v okolí nahradit místo okolí
-
-### tipy na výlet - logika - v zimních měsících první sekce zima, v létě léto
-
-### tipy na výlet - větší doplňující text
-
-### soubor zpracování osobních údajů
-
-### zvýraznit všechny menší texty
-
-### přidat telefonní číslo (footer/form)
+### přidat telefonní číslo (footer/form) - zatím nedělat
