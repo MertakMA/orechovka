@@ -57,7 +57,6 @@ const INCLUDED = [
 const FEES = [
   { label: "Local tourist tax", value: V.POPLATEK_TURISTICKA_TAXA },
   { label: "Departure cleaning", value: V.POPLATEK_UKLID },
-  { label: "Pets", value: V.POPLATEK_MAZLICCI },
   { label: "Late check-out", value: V.POPLATEK_POZDNI_CHECKOUT },
   { label: "Off-season weekend", value: V.POPLATEK_VIKEND },
 ];
@@ -164,7 +163,7 @@ export default async function CenikPageEn() {
                     <p className="text-[14px] text-clay">
                       {value}
                       <br />
-                      <span className="text-[12px]">{note}</span>
+                      <span className="text-[13px]">{note}</span>
                     </p>
                   </>
                 );

@@ -6,6 +6,7 @@ import {
   BedDouble,
   BedSingle,
   Bike,
+  CigaretteOff,
   Coffee,
   CookingPot,
   Fan,
@@ -13,6 +14,7 @@ import {
   Footprints,
   Layers,
   Microwave,
+  PawPrint,
   Refrigerator,
   Sandwich,
   Shirt,
@@ -91,6 +93,8 @@ const TEXT = {
       storage: "Uzamykatelná kolárna a lyžárna",
       wifi: "Wifi připojení a smart TV",
       parking: "Parkování zdarma",
+      nonSmoking: "Roubenka je nekuřácká",
+      noPets: "Bez domácích mazlíčků",
     },
   },
   en: {
@@ -140,6 +144,8 @@ const TEXT = {
       storage: "Lockable bike and ski storage",
       wifi: "Wifi and a smart TV",
       parking: "Free parking",
+      nonSmoking: "The cabin is non-smoking",
+      noPets: "No pets allowed",
     },
   },
 } as const;
@@ -215,6 +221,8 @@ function buildExtras(locale: Locale) {
     { Icon: Bike, label: e.storage },
     { Icon: Wifi, label: e.wifi },
     { Icon: SquareParking, label: e.parking },
+    { Icon: CigaretteOff, label: e.nonSmoking },
+    { Icon: PawPrint, label: e.noPets },
   ];
 }
 

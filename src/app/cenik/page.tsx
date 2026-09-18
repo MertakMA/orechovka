@@ -54,7 +54,6 @@ const INCLUDED = [
 const FEES = [
   { label: "Turistická taxa", value: V.POPLATEK_TURISTICKA_TAXA },
   { label: "Úklid při odjezdu", value: V.POPLATEK_UKLID },
-  { label: "Domácí mazlíčci", value: V.POPLATEK_MAZLICCI },
   { label: "Pozdní check-out", value: V.POPLATEK_POZDNI_CHECKOUT },
   { label: "Víkend mimo sezónu", value: V.POPLATEK_VIKEND },
 ];
@@ -154,7 +153,7 @@ export default async function CenikPage() {
                     <p className="text-[14px] text-clay">
                       {value}
                       <br />
-                      <span className="text-[12px]">{note}</span>
+                      <span className="text-[13px]">{note}</span>
                     </p>
                   </>
                 );
