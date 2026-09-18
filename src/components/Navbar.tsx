@@ -173,10 +173,15 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
           >
             {t.book}
           </a>
-            <Link
+          {/* Přesunuto o 42px doprava (translate, nezasahuje do layoutu
+              ostatních položek) — bez toho sedí hned vedle tlačítka Booking,
+              zatímco ke konci stránky zbývá celých 100px (padding kontejneru)
+              nevyužitých. 42px vyrovná obě mezery na stejnou vzdálenost
+              (58px) od tlačítka i od okraje stránky. */}
+          <Link
             href={switchHref}
             aria-label={t.switchLabel}
-            className="rounded border border-border px-2.5 py-1 text-[12px] font-semibold text-clay transition-colors hover:border-pec-dark hover:text-pec-dark"
+            className="translate-x-[42px] rounded border border-border px-2.5 py-1 text-[12px] font-semibold text-clay transition-colors hover:border-pec-dark hover:text-pec-dark"
           >
             {t.switchTo}
           </Link>
