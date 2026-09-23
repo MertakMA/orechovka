@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
+import Link from "next/link";
 import { Send } from "lucide-react";
 import { V } from "@/generated/variables";
 
@@ -31,7 +32,7 @@ const TEXT: Record<
     subjectPlaceholder: string;
     messageLabel: string;
     messagePlaceholder: string;
-    consent: string;
+    consent: ReactNode;
     submit: string;
     errorRequired: string;
     errorConsent: string;
@@ -51,7 +52,15 @@ const TEXT: Record<
     subjectPlaceholder: "O čem chcete psát?",
     messageLabel: "Zpráva",
     messagePlaceholder: "Vaše zpráva...",
-    consent: "Souhlasím se zpracováním osobních údajů pro účely odpovědi.",
+    consent: (
+      <>
+        Souhlasím se{" "}
+        <Link href="/zpracovani-osobnich-udaju" target="_blank" className="font-semibold text-brand hover:underline">
+          zpracováním osobních údajů
+        </Link>{" "}
+        pro účely odpovědi.
+      </>
+    ),
     submit: "Odeslat zprávu",
     errorRequired: "Vyplňte prosím všechna povinná pole.",
     errorConsent: "Pro odeslání je potřeba souhlasit se zpracováním osobních údajů.",
@@ -70,7 +79,19 @@ const TEXT: Record<
     subjectPlaceholder: "What's this about?",
     messageLabel: "Message",
     messagePlaceholder: "Your message...",
-    consent: "I agree to the processing of my personal data for the purpose of a reply.",
+    consent: (
+      <>
+        I agree to the{" "}
+        <Link
+          href="/en/zpracovani-osobnich-udaju"
+          target="_blank"
+          className="font-semibold text-brand hover:underline"
+        >
+          processing of my personal data
+        </Link>{" "}
+        for the purpose of a reply.
+      </>
+    ),
     submit: "Send message",
     errorRequired: "Please fill in all required fields.",
     errorConsent: "You need to agree to the processing of personal data before sending.",
