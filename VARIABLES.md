@@ -40,7 +40,7 @@ výletních cílů — sem **nepatří** a zůstávají v kódu. Do proměnných
 
 | Proměnná | Hodnota | Kde v kódu |
 | --- | --- | --- |
-| `SITE_URL` | https://roubenkaorechovka.cz ⚠️ doména nenasazená | `layout.tsx`, `sitemap.ts`, `robots.ts` |
+| `SITE_URL` | https://roubenkaorechovka.cz | `layout.tsx`, `sitemap.ts`, `robots.ts` |
 | `BOOKING_URL` | https://www.booking.com ⚠️ obecný, ne přímý odkaz na objekt | `Hero.tsx`, `Navbar.tsx` (2×), `Footer.tsx → COLUMNS`, `CTASection.tsx`/`PriceCard.tsx` (výchozí `buttonHref`), `kontakt/page.tsx → CONTACT_CARDS` |
 | `FACEBOOK_URL` | `#` ⚠️ nikam nevede | `kontakt/page.tsx → SOCIAL_LINKS`, `Footer.tsx → SOCIAL_LINKS` |
 | `INSTAGRAM_URL` | `#` ⚠️ nikam nevede | `kontakt/page.tsx → SOCIAL_LINKS`, `Footer.tsx → SOCIAL_LINKS` |
