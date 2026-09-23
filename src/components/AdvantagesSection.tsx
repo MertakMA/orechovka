@@ -19,9 +19,13 @@ import {
   Sandwich,
   Shirt,
   ShowerHead,
+  Sofa,
   Soup,
   SquareParking,
+  Table,
   Toilet,
+  ToyBrick,
+  Tv,
   Utensils,
   WashingMachine,
   Wifi,
@@ -61,8 +65,8 @@ const TEXT = {
     rooms: {
       double: "Dvoulůžkový pokoj",
       doubleDetail: "manželská postel",
-      quad: "Čtyřlůžkový pokoj",
-      quadDetail: "manželská postel + 2 lůžka, hambálka pro 2",
+      sixBed: "Šestilůžkový pokoj",
+      sixBedDetail: "1× manželská postel\n2× jednolůžková postel\nHambálka – spaní v podkroví pro 2 osoby",
       bathGround: "Koupelna",
       bathGroundDetail: "sprchový kout a WC",
       bathUpper: "Koupelna",
@@ -70,8 +74,11 @@ const TEXT = {
     },
     summary: { beds: ["lůžko", "lůžka", "lůžek"], baths: ["koupelna", "koupelny", "koupelen"], floors: ["podlaží", "podlaží", "podlaží"] },
     bedsPill: ["lůžko", "lůžka", "lůžek"],
-    groups: { kitchen: "Kuchyň", kids: "Pro děti", other: "Ostatní vybavení" },
+    groups: { livingRoom: "Světnice", kitchen: "Kuchyň", kids: "Pro děti", other: "Ostatní vybavení" },
     items: {
+      stove: "Kachlová pec s ležením",
+      table: "Dřevěný stůl s rohovou lavicí",
+      smartTv: "Smart TV",
       dishwasher: "Myčka na nádobí",
       coffee: "Kávovar",
       microwave: "Mikrovlnná trouba",
@@ -83,6 +90,7 @@ const TEXT = {
       highChair: "Jídelní židlička",
       crib: "Dětská postýlka",
       potty: "Nočník a WC prkénko",
+      toys: "Hračky a deskové hry",
       washer: "Pračka",
       dryer: "Sušička",
       hairdryer: "Fén",
@@ -91,7 +99,7 @@ const TEXT = {
     },
     extras: {
       storage: "Uzamykatelná kolárna a lyžárna",
-      wifi: "Wifi připojení a smart TV",
+      wifi: "Wifi připojení",
       parking: "Parkování zdarma",
       nonSmoking: "Roubenka je nekuřácká",
       noPets: "Bez domácích mazlíčků",
@@ -112,8 +120,8 @@ const TEXT = {
     rooms: {
       double: "Double room",
       doubleDetail: "one double bed",
-      quad: "Four-bed room",
-      quadDetail: "double bed + 2 singles, loft sleeping 2",
+      sixBed: "Six-bed room",
+      sixBedDetail: "1× double bed\n2× single bed\nLoft (hambálka) sleeping 2",
       bathGround: "Bathroom",
       bathGroundDetail: "shower and WC",
       bathUpper: "Bathroom",
@@ -121,8 +129,11 @@ const TEXT = {
     },
     summary: { beds: ["bed", "beds", "beds"], baths: ["bathroom", "bathrooms", "bathrooms"], floors: ["floor", "floors", "floors"] },
     bedsPill: ["bed", "beds", "beds"],
-    groups: { kitchen: "Kitchen", kids: "For kids", other: "Other equipment" },
+    groups: { livingRoom: "Living room", kitchen: "Kitchen", kids: "For kids", other: "Other equipment" },
     items: {
+      stove: "Tiled stove with a sleeping bench",
+      table: "Wooden table with a corner bench",
+      smartTv: "Smart TV",
       dishwasher: "Dishwasher",
       coffee: "Coffee maker",
       microwave: "Microwave",
@@ -134,6 +145,7 @@ const TEXT = {
       highChair: "High chair",
       crib: "Crib",
       potty: "Potty and toilet seat",
+      toys: "Toys and board games",
       washer: "Washing machine",
       dryer: "Dryer",
       hairdryer: "Hairdryer",
@@ -142,7 +154,7 @@ const TEXT = {
     },
     extras: {
       storage: "Lockable bike and ski storage",
-      wifi: "Wifi and a smart TV",
+      wifi: "Wifi connection",
       parking: "Free parking",
       nonSmoking: "The cabin is non-smoking",
       noPets: "No pets allowed",
@@ -157,18 +169,18 @@ function buildFloors(locale: Locale): Floor[] {
   const f = TEXT[locale].floors;
   return [
     {
-      label: f.upper,
-      rooms: [
-        { Icon: BedDouble, name: r.double, detail: r.doubleDetail, beds: 2 },
-        { Icon: BedSingle, name: r.quad, detail: r.quadDetail, beds: 6 },
-        { Icon: ShowerHead, name: r.bathUpper, detail: r.bathUpperDetail },
-      ],
-    },
-    {
       label: f.ground,
       rooms: [
         { Icon: BedDouble, name: r.double, detail: r.doubleDetail, beds: 2 },
         { Icon: ShowerHead, name: r.bathGround, detail: r.bathGroundDetail },
+      ],
+    },
+    {
+      label: f.upper,
+      rooms: [
+        { Icon: BedDouble, name: r.double, detail: r.doubleDetail, beds: 2 },
+        { Icon: BedSingle, name: r.sixBed, detail: r.sixBedDetail, beds: 6 },
+        { Icon: ShowerHead, name: r.bathUpper, detail: r.bathUpperDetail },
       ],
     },
   ];
@@ -178,6 +190,15 @@ function buildGroups(locale: Locale): Group[] {
   const g = TEXT[locale].groups;
   const i = TEXT[locale].items;
   return [
+    {
+      title: g.livingRoom,
+      Icon: Sofa,
+      items: [
+        { Icon: Flame, label: i.stove },
+        { Icon: Table, label: i.table },
+        { Icon: Tv, label: i.smartTv },
+      ],
+    },
     {
       title: g.kitchen,
       Icon: CookingPot,
@@ -199,6 +220,7 @@ function buildGroups(locale: Locale): Group[] {
         { Icon: Baby, label: i.highChair },
         { Icon: BedSingle, label: i.crib },
         { Icon: Toilet, label: i.potty },
+        { Icon: ToyBrick, label: i.toys },
       ],
     },
     {
@@ -241,16 +263,17 @@ function RoomCard({ room, bedsPill }: { room: Room; bedsPill: string | null }) {
             </span>
           )}
         </div>
-        <p className="mt-0.5 text-[15px] font-medium leading-[1.4] text-clay">{room.detail}</p>
+        <div className="mt-0.5 flex flex-col gap-0.5">
+          {room.detail.split("\n").map((line) => (
+            <p key={line} className="text-[15px] font-medium leading-[1.4] text-clay">
+              {line}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
-
-// Výška střechy nad kartou s pokoji. Pravý sloupec o ni musí být odsazený,
-// aby jeho karta začínala na stejné lince jako obdélník pod střechou —
-// proto je to konstanta a ne dvě nezávislá čísla.
-const ROOF_H = "h-9 sm:h-12 lg:h-14";
 
 // Oba bloky mají stejně vysokou hlavičku, takže si v dvousloupcovém
 // rozvržení karty pod nimi sednou na stejnou linku.
@@ -308,11 +331,7 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
             <BlockHeading title={t.roomsTitle} note={t.roomsNote} />
 
             <div className="mt-4">
-              {/* Přesah do stran dělá okap — bez něj střecha vypadala jen jako
-                  tmavý klín položený na kartě. */}
-              
-
-              <div className="overflow-hidden rounded-b-xl border border-t-0 border-border bg-surface shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)]">
+              <div className="overflow-hidden rounded-xl border border-border bg-surface shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)]">
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-border bg-cream/70 px-4 py-2.5 sm:px-5">
                   {summary.map((s) => (
                     <span key={s.label} className="flex items-center gap-1.5 text-[12.5px] font-bold text-ink">
@@ -357,9 +376,6 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
             <BlockHeading title={t.equipmentTitle} note={t.equipmentNote} />
 
             <div className="mt-4 flex flex-1 flex-col">
-              {/* Zarovnání se sousedním sloupcem: nahoře odskok o výšku střechy,
-                  dole se karta roztáhne, takže obě kolonky končí na stejné lince. */}
-              <div aria-hidden className={`hidden lg:block ${ROOF_H}`} />
               <div className="flex flex-1 flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)]">
                 {groups.map((group, i) => (
                   <div
