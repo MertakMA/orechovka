@@ -41,6 +41,8 @@ export default async function Home() {
         <GallerySection />
         <TipsSection />
         <PricingSection />
+        <div id="pocasi" className="scroll-mt-24" />
+        <div id="webkamera" className="scroll-mt-24" />
         <WeatherSection />
         <MapSection />
         <NewsSection />

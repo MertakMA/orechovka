@@ -59,7 +59,7 @@ export default function WeatherSection({ locale = "cs" }: { locale?: Locale }) {
   }, []);
 
   return (
-    <section id="pocasi" className="bg-sand px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
+    <section className="bg-sand px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
       <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-24">
           <motion.div

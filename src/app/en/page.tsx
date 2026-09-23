@@ -47,6 +47,8 @@ export default async function HomeEn() {
         <GallerySection locale="en" />
         <TipsSection locale="en" />
         <PricingSection locale="en" />
+        <div id="pocasi" className="scroll-mt-24" />
+        <div id="webkamera" className="scroll-mt-24" />
         <WeatherSection locale="en" />
         <MapSection locale="en" />
         <NewsSection locale="en" />

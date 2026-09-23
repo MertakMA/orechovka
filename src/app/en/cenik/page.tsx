@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Check, Clock, CloudSun, Video } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -64,8 +63,8 @@ const FEES = [
 const PRACTICAL_INFO = [
   { Icon: Clock, label: "Check-in", value: V.CHECK_IN, note: "Other times by arrangement" },
   { Icon: Clock, label: "Check-out", value: V.CHECK_OUT, note: "Other times by arrangement" },
-  { Icon: CloudSun, label: "Weather", value: "Current forecast", note: "Mladé Buky and surroundings", href: "/en#pocasi" },
-  { Icon: Video, label: "Webcam", value: "Live feed from the area", note: "Mladé Buky ski area", href: "/en#pocasi" },
+  { Icon: CloudSun, label: "Weather", value: "Current forecast", note: "Mladé Buky and surroundings", href: withBasePath("/en#pocasi") },
+  { Icon: Video, label: "Webcam", value: "Live feed from the area", note: "Mladé Buky ski area", href: withBasePath("/en#webkamera") },
 ];
 
 export default async function CenikPageEn() {
@@ -168,9 +167,9 @@ export default async function CenikPageEn() {
                   </>
                 );
                 return href ? (
-                  <Link key={label} href={href} className={cardClassName}>
+                  <a key={label} href={href} className={cardClassName}>
                     {content}
-                  </Link>
+                  </a>
                 ) : (
                   <div key={label} className={cardClassName}>
                     {content}
