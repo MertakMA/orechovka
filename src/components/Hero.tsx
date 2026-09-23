@@ -9,12 +9,12 @@ type Locale = "cs" | "en";
 
 const TEXT: Record<Locale, { alt: string; subtitle: string; gallery: string }> = {
   cs: {
-    alt: "Roubenka Ořechovka – dřevěná roubenka s prosklenou terasou",
+    alt: "Roubenka Ořechovka – dřevěná roubenka pod korunou ořešáku",
     subtitle: "Mladé Buky | Krkonoše",
     gallery: "Prohlédnout galerii",
   },
   en: {
-    alt: "Roubenka Ořechovka – a wooden cabin with a glazed terrace",
+    alt: "Roubenka Ořechovka – a wooden log cabin framed by the walnut tree above it",
     subtitle: "Mladé Buky | Krkonoše, Czechia",
     gallery: "View the gallery",
   },
@@ -28,12 +28,12 @@ export default function Hero({ locale = "cs" }: { locale?: Locale }) {
       className="relative flex h-[calc(100svh-6rem)] max-h-[calc(900px-6rem)] min-h-[440px] items-end overflow-hidden"
     >
       <Image
-        src={withBasePath("/images/hero-facade.jpg")}
+        src={withBasePath("/images/hero-2.jpg")}
         alt={t.alt}
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[60%_50%] [filter:sepia(0.16)_saturate(1.06)]"
+        className="object-cover object-[50%_65%] [filter:sepia(0.16)_saturate(1.06)]"
       />
       {/* Teplý závoj přes fotku — modrá obloha jinak působí chladně a klientka
           chce, aby web na první dobrou působil hřejivě. */}
