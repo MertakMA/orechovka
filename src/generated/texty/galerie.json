@@ -1,0 +1,97 @@
+{
+  "cs": {
+    "cta": {
+      "t": ""
+    },
+    "filtr.vse": {
+      "t": "Vše"
+    },
+    "foto.okoli.adrspach": {
+      "t": "Adršpašské skály"
+    },
+    "foto.okoli.mlade-buky": {
+      "t": "Areál Mladé Buky"
+    },
+    "foto.okoli.snezka": {
+      "t": "Sněžka"
+    },
+    "foto.okoli.stezka": {
+      "t": "Stezka korunami stromů"
+    },
+    "foto.okoli.zoo": {
+      "t": "Zoo Dvůr Králové"
+    },
+    "hero.nadpis": {
+      "t": "Galerie"
+    },
+    "hero.podnadpis": {
+      "t": "Nahlédněte do Roubenky Ořechovka a jejího okolí."
+    },
+    "kategorie.exterier": {
+      "t": "Exteriér"
+    },
+    "kategorie.interier": {
+      "t": "Interiér"
+    },
+    "kategorie.okoli": {
+      "t": "Okolí a Výlety"
+    },
+    "seo.popis": {
+      "t": "Nahlédněte do Roubenky Ořechovka a jejího okolí — exteriér, interiér i výlety v Krkonoších."
+    },
+    "seo.titulek": {
+      "t": "Galerie"
+    },
+    "zastupna-fotka": {
+      "t": "Fotka bude doplněna"
+    }
+  },
+  "en": {
+    "cta": {
+      "t": ""
+    },
+    "filtr.vse": {
+      "t": "All"
+    },
+    "foto.okoli.adrspach": {
+      "t": "Adršpach Rocks"
+    },
+    "foto.okoli.mlade-buky": {
+      "t": "Mladé Buky resort"
+    },
+    "foto.okoli.snezka": {
+      "t": "Sněžka"
+    },
+    "foto.okoli.stezka": {
+      "t": "Treetop Walk"
+    },
+    "foto.okoli.zoo": {
+      "t": "Dvůr Králové Zoo"
+    },
+    "hero.nadpis": {
+      "t": "Gallery"
+    },
+    "hero.podnadpis": {
+      "t": "Take a look inside Roubenka Ořechovka and its surroundings."
+    },
+    "kategorie.exterier": {
+      "t": "Exterior"
+    },
+    "kategorie.interier": {
+      "t": "Interior"
+    },
+    "kategorie.okoli": {
+      "t": "Nearby & Trips"
+    },
+    "seo.popis": {
+      "t": "Take a look inside Roubenka Ořechovka and its surroundings — exterior, interior and trips in the Krkonoše."
+    },
+    "seo.titulek": {
+      "t": "Gallery"
+    },
+    "zastupna-fotka": {
+      "t": "Photo coming soon"
+    }
+  },
+  "skryte": []
+}

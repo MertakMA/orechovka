@@ -54,32 +54,34 @@ function BottomRidges() {
 export default function CTASection({
   title,
   subtitle,
-  buttonLabel = "Rezervovat pobyt přes Booking.com →",
+  buttonLabel,
   buttonHref = V.BOOKING_URL,
 }: {
-  title: string;
-  subtitle: string;
-  buttonLabel?: string;
+  title: string | null;
+  subtitle: string | null;
+  buttonLabel: string | null;
   buttonHref?: string;
 }) {
   // Poslední mezera (před šipkou →) se nahradí nedělitelnou ( ), aby
   // se šipka na mobilu nikdy neodtrhla samotná na druhý řádek.
-  const label = buttonLabel.replace(/ (?=\S*$)/, " ");
+  const label = buttonLabel?.replace(/ (?=\S*$)/, " ");
 
   return (
     <section className="relative bg-gradient-to-b from-bark via-bark to-[#563f2c] px-6 pb-28 pt-14 text-center sm:px-10 sm:pb-36 sm:pt-16 lg:pb-44">
       <TopRidge />
       <div className="relative">
-        <h2 className="font-serif text-[28px] font-bold text-cream sm:text-[34px] lg:text-[40px]">{title}</h2>
-        <p className="mx-auto mt-4 max-w-xl text-[16px] font-medium text-cream sm:text-[18px]">{subtitle}</p>
-        <a
-          href={buttonHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-block rounded-lg bg-cream px-6 py-3.5 text-[13px] font-semibold text-bark transition-colors hover:bg-sand sm:px-11 sm:py-4 sm:text-[15px] lg:text-base"
-        >
-          {label}
-        </a>
+        {title && <h2 className="font-serif text-[28px] font-bold text-cream sm:text-[34px] lg:text-[40px]">{title}</h2>}
+        {subtitle && <p className="mx-auto mt-4 max-w-xl text-[16px] font-medium text-cream sm:text-[18px]">{subtitle}</p>}
+        {label && (
+          <a
+            href={buttonHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-block rounded-lg bg-cream px-6 py-3.5 text-[13px] font-semibold text-bark transition-colors hover:bg-sand sm:px-11 sm:py-4 sm:text-[15px] lg:text-base"
+          >
+            {label}
+          </a>
+        )}
       </div>
       <BottomRidges />
     </section>

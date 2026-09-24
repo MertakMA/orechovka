@@ -16,35 +16,22 @@ import {
   weekdayLabel,
   type OpenMeteoResponse,
 } from "@/lib/weather";
-
-type Locale = "cs" | "en";
-
-const TEXT: Record<
-  Locale,
-  { title: string; error: string; sunrise: string; sunset: string; webcamTitle: string }
-> = {
-  cs: {
-    title: "Počasí v okolí Mladých Buků",
-    error: "Počasí se nepodařilo načíst. Zkuste to prosím později.",
-    sunrise: "Východ",
-    sunset: "Západ",
-    webcamTitle: "Webkamera – Ski areál Mladé Buky",
-  },
-  en: {
-    title: "Weather around Mladé Buky",
-    error: "Couldn't load the weather. Please try again later.",
-    sunrise: "Sunrise",
-    sunset: "Sunset",
-    webcamTitle: "Webcam – Mladé Buky ski area",
-  },
-};
+import { texty, type Locale } from "@/lib/texty";
 
 export default function WeatherSection({ locale = "cs" }: { locale?: Locale }) {
   const [data, setData] = useState<OpenMeteoResponse | null>(null);
   const [error, setError] = useState(false);
-  const t = TEXT[locale];
+  const u = texty("uvod", locale);
+  const showWeather = u.sekce("pocasi");
+  const showWebcam = u.sekce("webkamera");
+  const title = u.t("pocasi.nadpis");
+  const sunrise = u.t("pocasi.vychod");
+  const sunset = u.t("pocasi.zapad");
+  const webcamTitle = u.t("webkamera.nadpis");
+  const liveLabel = u.t("webkamera.stitek");
 
   useEffect(() => {
+    if (!showWeather) return;
     let cancelled = false;
     fetchWeather(CABIN_COORDS.lat, CABIN_COORDS.lon)
       .then((res) => {
@@ -56,12 +43,15 @@ export default function WeatherSection({ locale = "cs" }: { locale?: Locale }) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [showWeather]);
+
+  if (!showWeather && !showWebcam) return null;
 
   return (
     <section className="bg-sand px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
       <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-24">
+          {showWeather && (
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +60,7 @@ export default function WeatherSection({ locale = "cs" }: { locale?: Locale }) {
             className="flex w-full flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-[0px_10px_30px_0px_rgba(34,25,16,0.08)] lg:w-[500px]"
           >
             <div className="relative flex items-center justify-between overflow-hidden bg-bark px-5 py-4">
-              <p className="text-[15px] font-semibold text-white">{t.title}</p>
+              {title && <p className="text-[15px] font-semibold text-white">{title}</p>}
               <span
                 aria-hidden
                 className="pointer-events-none absolute -right-6 -top-10 size-28 rounded-full bg-white/10"
@@ -79,7 +69,7 @@ export default function WeatherSection({ locale = "cs" }: { locale?: Locale }) {
 
             <div className="px-5 pt-5">
               {error && (
-                <p className="py-6 text-sm text-clay">{t.error}</p>
+                <p className="py-6 text-sm text-clay">{u.vzdy("pocasi.chyba")}</p>
               )}
 
               {!error && !data && (
@@ -141,47 +131,52 @@ export default function WeatherSection({ locale = "cs" }: { locale?: Locale }) {
                 <div className="flex items-center gap-2">
                   <Sunrise className="size-5 text-brand" strokeWidth={1.75} aria-hidden />
                   <div>
-                    <p className="text-[12px] uppercase tracking-wide text-clay">{t.sunrise}</p>
+                    {sunrise && <p className="text-[12px] uppercase tracking-wide text-clay">{sunrise}</p>}
                     <p className="text-[14px] font-semibold text-ink">{formatTime(data.daily.sunrise[0], locale)}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <Sunset className="size-5 text-brand" strokeWidth={1.75} aria-hidden />
                   <div>
-                    <p className="text-[12px] uppercase tracking-wide text-clay">{t.sunset}</p>
+                    {sunset && <p className="text-[12px] uppercase tracking-wide text-clay">{sunset}</p>}
                     <p className="text-[14px] font-semibold text-ink">{formatTime(data.daily.sunset[0], locale)}</p>
                   </div>
                 </div>
               </div>
             )}
           </motion.div>
+          )}
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="w-full overflow-hidden rounded-xl border border-border bg-surface shadow-[0px_10px_30px_0px_rgba(34,25,16,0.08)] lg:flex-1"
-          >
-            <a
-              href={V.WEBKAMERA_STRANKA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between bg-espresso px-5 py-4 transition-colors hover:bg-[#2f1f14]"
+          {showWebcam && (
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="w-full overflow-hidden rounded-xl border border-border bg-surface shadow-[0px_10px_30px_0px_rgba(34,25,16,0.08)] lg:flex-1"
             >
-              <p className="flex items-center gap-1.5 text-[15px] font-semibold text-white">
-                {t.webcamTitle}
-                <ExternalLink className="size-3.5 opacity-0 transition-opacity group-hover:opacity-70" aria-hidden />
-              </p>
-              <span className="flex items-center gap-1.5 rounded-full bg-live px-[13px] py-[3px] text-[11px] font-semibold text-white">
-                <span className="size-[6px] animate-pulse rounded-full bg-white" />
-                LIVE
-              </span>
-            </a>
-            <div className="relative m-4 aspect-video overflow-hidden rounded-lg bg-espresso">
-              <WebcamPlayer />
-            </div>
-          </motion.div>
+              <a
+                href={V.WEBKAMERA_STRANKA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between bg-espresso px-5 py-4 transition-colors hover:bg-[#2f1f14]"
+              >
+                <p className="flex items-center gap-1.5 text-[15px] font-semibold text-white">
+                  {webcamTitle}
+                  <ExternalLink className="size-3.5 opacity-0 transition-opacity group-hover:opacity-70" aria-hidden />
+                </p>
+                {liveLabel && (
+                  <span className="flex items-center gap-1.5 rounded-full bg-live px-[13px] py-[3px] text-[11px] font-semibold text-white">
+                    <span className="size-[6px] animate-pulse rounded-full bg-white" />
+                    {liveLabel}
+                  </span>
+                )}
+              </a>
+              <div className="relative m-4 aspect-video overflow-hidden rounded-lg bg-espresso">
+                <WebcamPlayer />
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

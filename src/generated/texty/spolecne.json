@@ -1,0 +1,315 @@
+{
+  "cs": {
+    "NAZEV_WEBU": {
+      "t": "Roubenka Ořechovka"
+    },
+    "ceny.hlavni": {
+      "t": "Hlavní sezóna"
+    },
+    "ceny.hlavni.navic": [
+      {
+        "t": "Uvítací balíček"
+      }
+    ],
+    "ceny.mimo": {
+      "t": "Mimo sezónu"
+    },
+    "ceny.odznak": {
+      "t": "★ Nejoblíbenější"
+    },
+    "ceny.tlacitko": {
+      "t": "Rezervovat přes Booking"
+    },
+    "ceny.vedlejsi": {
+      "t": "Vedlejší sezóna"
+    },
+    "ceny.vlastnosti": [
+      {
+        "t": "Energie v ceně"
+      },
+      {
+        "t": "WiFi zdarma"
+      },
+      {
+        "t": "Parkování zdarma"
+      },
+      {
+        "t": "Postel. prádlo"
+      }
+    ],
+    "ceny.za-noc": {
+      "t": "za noc"
+    },
+    "cta.cekame.nadpis": {
+      "t": "{NAZEV_WEBU} vás čeká"
+    },
+    "cta.cekame.podnadpis": {
+      "t": "Zarezervujte si pobyt jednoduše a bezpečně přes Booking.com."
+    },
+    "cta.tlacitko": {
+      "t": "Rezervovat pobyt přes Booking.com →"
+    },
+    "foto.adv-krb": {
+      "t": "Kachlový krb s posezením"
+    },
+    "foto.adv-priroda": {
+      "t": "Pohled na roubenku a okolní krajinu"
+    },
+    "foto.adv-soukromi": {
+      "t": "Oplocená zahrada s kamennou zídkou"
+    },
+    "foto.carousel-1": {
+      "t": "Jídelní stůl z masivního dřeva s výhledem do krajiny"
+    },
+    "foto.carousel-2": {
+      "t": "Obývací pokoj s křesly a dřevěnými trámy"
+    },
+    "foto.carousel-3": {
+      "t": "Otevřená kuchyně a obývací část roubenky"
+    },
+    "foto.food-bread": {
+      "t": "Čerstvý domácí chléb na dřevěném prkénku"
+    },
+    "foto.gallery-1": {
+      "t": "{NAZEV_WEBU} zvenčí"
+    },
+    "foto.gallery-2": {
+      "t": "Kachlový krb s posezením"
+    },
+    "foto.gallery-3": {
+      "t": "Kuchyně s výhledem do zahrady"
+    },
+    "foto.gallery-4": {
+      "t": "Podkrovní ložnice s vikýřem"
+    },
+    "foto.hero": {
+      "t": "{NAZEV_WEBU} zvenčí v létě"
+    },
+    "mapa.titulek": {
+      "t": "Mapa – Mladé Buky"
+    },
+    "menu.booking": {
+      "t": "Booking.com"
+    },
+    "menu.cenik": {
+      "t": "Ceník"
+    },
+    "menu.galerie": {
+      "t": "Galerie"
+    },
+    "menu.kontakt": {
+      "t": "Kontakt"
+    },
+    "menu.novinky": {
+      "t": "Novinky"
+    },
+    "menu.o-roubence": {
+      "t": "O roubence"
+    },
+    "menu.osobni-udaje": {
+      "t": "Zpracování osobních údajů"
+    },
+    "menu.pocasi": {
+      "t": "Počasí"
+    },
+    "menu.vylety": {
+      "t": "Tipy na výlety"
+    },
+    "menu.webkamera": {
+      "t": "Webkamera"
+    },
+    "navbar.rezervovat": {
+      "t": "Rezervovat na Bookingu"
+    },
+    "paticka.adresa": {
+      "t": "Mladé Buky, okres Trutnov"
+    },
+    "paticka.informace": {
+      "t": "Informace"
+    },
+    "paticka.kontakt": {
+      "t": "Kontakt"
+    },
+    "paticka.prava": {
+      "t": "Všechna práva vyhrazena"
+    },
+    "paticka.stranky": {
+      "t": "Stránky"
+    },
+    "paticka.web": {
+      "t": "roubenkaorechovka.cz"
+    },
+    "seo.popis": {
+      "t": "Útulná roubenka k pronájmu pro rodiny, páry i skupiny přátel. Celý objekt jen pro vás, zahrada s grilem, krb a výhled na Krkonoše."
+    },
+    "seo.titulek": {
+      "t": "{NAZEV_WEBU} | Ubytování v podhůří Krkonoš"
+    },
+    "sledujte-nas": {
+      "t": "Sledujte nás"
+    },
+    "social.facebook": {
+      "t": "Facebook"
+    },
+    "social.instagram": {
+      "t": "Instagram"
+    }
+  },
+  "en": {
+    "NAZEV_WEBU": {
+      "t": "Roubenka Ořechovka"
+    },
+    "ceny.hlavni": {
+      "t": "Peak season"
+    },
+    "ceny.hlavni.navic": [
+      {
+        "t": "Welcome pack"
+      }
+    ],
+    "ceny.mimo": {
+      "t": "Off season"
+    },
+    "ceny.odznak": {
+      "t": "★ Most popular"
+    },
+    "ceny.tlacitko": {
+      "t": "Book via Booking.com"
+    },
+    "ceny.vedlejsi": {
+      "t": "Shoulder season"
+    },
+    "ceny.vlastnosti": [
+      {
+        "t": "Utilities included"
+      },
+      {
+        "t": "Free WiFi"
+      },
+      {
+        "t": "Free parking"
+      },
+      {
+        "t": "Bed linen"
+      }
+    ],
+    "ceny.za-noc": {
+      "t": "per night"
+    },
+    "cta.cekame.nadpis": {
+      "t": "{NAZEV_WEBU} is waiting"
+    },
+    "cta.cekame.podnadpis": {
+      "t": "Book your stay simply and safely via Booking.com."
+    },
+    "cta.tlacitko": {
+      "t": "Book your stay via Booking.com →"
+    },
+    "foto.adv-krb": {
+      "t": "Tiled stove with seating"
+    },
+    "foto.adv-priroda": {
+      "t": "View of the cabin and the surrounding countryside"
+    },
+    "foto.adv-soukromi": {
+      "t": "Fenced garden with a stone wall"
+    },
+    "foto.carousel-1": {
+      "t": "Solid wood dining table with a view of the countryside"
+    },
+    "foto.carousel-2": {
+      "t": "Living room with armchairs and wooden beams"
+    },
+    "foto.carousel-3": {
+      "t": "Open kitchen and living area of the cabin"
+    },
+    "foto.food-bread": {
+      "t": "Fresh homemade bread on a wooden board"
+    },
+    "foto.gallery-1": {
+      "t": "{NAZEV_WEBU} from the outside"
+    },
+    "foto.gallery-2": {
+      "t": "Tiled stove with seating"
+    },
+    "foto.gallery-3": {
+      "t": "Kitchen overlooking the garden"
+    },
+    "foto.gallery-4": {
+      "t": "Attic bedroom with a dormer window"
+    },
+    "foto.hero": {
+      "t": "{NAZEV_WEBU} from the outside in summer"
+    },
+    "mapa.titulek": {
+      "t": "Map – Mladé Buky"
+    },
+    "menu.booking": {
+      "t": "Booking.com"
+    },
+    "menu.cenik": {
+      "t": "Rates"
+    },
+    "menu.galerie": {
+      "t": "Gallery"
+    },
+    "menu.kontakt": {
+      "t": "Contact"
+    },
+    "menu.novinky": {
+      "t": "News"
+    },
+    "menu.o-roubence": {
+      "t": "About"
+    },
+    "menu.osobni-udaje": {
+      "t": "Personal data processing"
+    },
+    "menu.pocasi": {
+      "t": "Weather"
+    },
+    "menu.vylety": {
+      "t": "Trip ideas"
+    },
+    "menu.webkamera": {
+      "t": "Webcam"
+    },
+    "navbar.rezervovat": {
+      "t": "Book on Booking.com"
+    },
+    "paticka.adresa": {
+      "t": "Mladé Buky, Trutnov district"
+    },
+    "paticka.informace": {
+      "t": "Information"
+    },
+    "paticka.kontakt": {
+      "t": "Contact"
+    },
+    "paticka.prava": {
+      "t": "All rights reserved"
+    },
+    "paticka.stranky": {
+      "t": "Pages"
+    },
+    "paticka.web": {
+      "t": "roubenkaorechovka.cz"
+    },
+    "seo.popis": {
+      "t": "A cozy log cabin to rent for families, couples and groups of friends. The whole place just for you, a garden with a grill, a stove and Krkonoše views."
+    },
+    "seo.titulek": {
+      "t": "{NAZEV_WEBU} | Cabin rental near the Krkonoše Mountains"
+    },
+    "sledujte-nas": {
+      "t": "Follow us"
+    },
+    "social.facebook": {
+      "t": "Facebook"
+    },
+    "social.instagram": {
+      "t": "Instagram"
+    }
+  },
+  "skryte": []
+}

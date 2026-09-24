@@ -1,0 +1,31 @@
+{
+  "cs": {
+    "kod": {
+      "t": "CHYBA 404"
+    },
+    "nadpis": {
+      "t": "Tahle stezka nikam nevede"
+    },
+    "text": {
+      "t": "Stránka, kterou hledáte, tu bohužel není. Možná byla přesunuta, nebo jste zabloudili v lese."
+    },
+    "tlacitko": {
+      "t": "Zpět na hlavní stránku"
+    }
+  },
+  "en": {
+    "kod": {
+      "t": "ERROR 404"
+    },
+    "nadpis": {
+      "t": "This trail leads nowhere"
+    },
+    "text": {
+      "t": "The page you're looking for isn't here. It may have moved — or you got lost in the woods."
+    },
+    "tlacitko": {
+      "t": "Back to the home page"
+    }
+  },
+  "skryte": []
+}

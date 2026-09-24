@@ -1,4 +1,4 @@
-export default function PlaceholderTile({ className = "" }: { className?: string }) {
+export default function PlaceholderTile({ className = "", label }: { className?: string; label: string | null }) {
   return (
     <div
       className={`flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-border bg-cream text-clay ${className}`}
@@ -12,7 +12,7 @@ export default function PlaceholderTile({ className = "" }: { className?: string
         />
         <circle cx="12" cy="13" r="3.2" stroke="currentColor" strokeWidth="1.5" />
       </svg>
-      <span className="px-2 text-center text-[13px] leading-tight opacity-70">Fotka bude doplněna</span>
+      {label && <span className="px-2 text-center text-[13px] leading-tight opacity-70">{label}</span>}
     </div>
   );
 }

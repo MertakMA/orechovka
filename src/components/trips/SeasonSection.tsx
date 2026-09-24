@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import TripRow, { type Trip } from "./TripRow";
+import type { Locale } from "@/lib/texty";
 
 export type Season = "winter" | "summer" | "food";
 
@@ -26,14 +27,14 @@ export default function SeasonSection({
 }: {
   id: string;
   icon: ReactNode;
-  eyebrow: string;
-  title: string;
-  subtitle: string;
+  eyebrow: string | null;
+  title: string | null;
+  subtitle: string | null;
   trips: Trip[];
   season: Season;
   bgClassName?: string;
-  extraLink?: { label: string; href: string };
-  locale?: "cs" | "en";
+  extraLink?: { label: string | null; href: string };
+  locale?: Locale;
 }) {
   const theme = THEMES[season];
 
@@ -44,13 +45,15 @@ export default function SeasonSection({
           <span className={`flex size-10 shrink-0 items-center justify-center rounded-full shadow-sm ${theme.iconWrap}`}>
             {icon}
           </span>
-          <div className="flex flex-col gap-[5px]">
-            <p className={`${theme.eyebrow} text-[13px] font-semibold tracking-[2px]`}>{eyebrow}</p>
-            <div className={`h-[2px] w-7 ${theme.rule}`} />
-          </div>
+          {eyebrow && (
+            <div className="flex flex-col gap-[5px]">
+              <p className={`${theme.eyebrow} text-[13px] font-semibold tracking-[2px]`}>{eyebrow}</p>
+              <div className={`h-[2px] w-7 ${theme.rule}`} />
+            </div>
+          )}
         </div>
-        <h2 className="mt-4 font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">{title}</h2>
-        <p className="mt-3 max-w-2xl text-[15px] font-medium leading-[1.6] text-clay">{subtitle}</p>
+        {title && <h2 className="mt-4 font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">{title}</h2>}
+        {subtitle && <p className="mt-3 max-w-2xl text-[15px] font-medium leading-[1.6] text-clay">{subtitle}</p>}
 
         <div className="mt-4 divide-y divide-border border-t border-border">
           {trips.map((trip, i) => (
@@ -58,7 +61,7 @@ export default function SeasonSection({
           ))}
         </div>
 
-        {extraLink && (
+        {extraLink?.label && (
           <a
             href={extraLink.href}
             target="_blank"

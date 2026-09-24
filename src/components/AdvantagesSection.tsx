@@ -1,251 +1,66 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Baby,
-  BedDouble,
-  BedSingle,
-  Bike,
-  CigaretteOff,
-  Coffee,
-  CookingPot,
-  Fan,
-  Flame,
-  Footprints,
-  Layers,
-  Microwave,
-  PawPrint,
-  Refrigerator,
-  Sandwich,
-  Shirt,
-  ShowerHead,
-  Sofa,
-  Soup,
-  SquareParking,
-  Table,
-  Toilet,
-  ToyBrick,
-  Tv,
-  Utensils,
-  WashingMachine,
-  Wifi,
-  Wind,
-} from "lucide-react";
+import { Baby, BedDouble, BedSingle, CookingPot, Layers, ShowerHead, Sofa, WashingMachine, type LucideIcon } from "lucide-react";
+import { texty, type Locale, type Texty } from "@/lib/texty";
+import { ikona } from "@/lib/ikony";
 
-type Locale = "cs" | "en";
-type Icon = typeof BedDouble;
+type Room = { Icon: LucideIcon; name: string; detail: string; beds?: number };
+type Floor = { label: string | null; rooms: Room[] };
+type Group = { title: string; Icon: LucideIcon; items: { Icon: LucideIcon; label: string }[] };
 
-type Room = { Icon: Icon; name: string; detail: string; beds?: number };
-type Floor = { label: string; rooms: Room[] };
-type Group = { title: string; Icon: Icon; items: { Icon: Icon; label: string }[] };
-
-// Čeština má tři tvary množného čísla (1 / 2–4 / 5 a víc), angličtina dva.
-type Forms = readonly [one: string, few: string, many: string];
-
-function plural(locale: Locale, n: number, forms: Forms) {
-  const [one, few, many] = forms;
+// Tvary slova v Notionu: "lůžko | lůžka | lůžek" (1 / 2–4 / 5 a víc).
+// Angličtina má jen dva tvary, třetí je tam stejný jako druhý.
+function plural(n: number, forms: string) {
+  const [one, few = one, many = few] = forms.split("|").map((f) => f.trim());
   if (n === 1) return one;
-  if (locale === "en") return many;
-  return n < 5 ? few : many;
+  return n >= 2 && n <= 4 ? few : many;
 }
 
-const TEXT = {
-  cs: {
-    eyebrow: "O ROUBENCE",
-    heading: "Co roubenka nabízí",
-    intro: [
-      "Ořechovka je nově postavená tradiční roubenka s veškerým komfortem dnešní doby — ideální pro rodinnou dovolenou i pobyt s přáteli až pro 10 osob.",
-      "V přízemí vás čeká prostorná světnice s velkým dřevěným stolem a kachlovou pecí, srdcem celé chalupy. Zahrada s terasou pak zve k posezení pod vzrostlým ořechem i večernímu opékání na ohništi.",
+// Počty lůžek a ikony pokojů jsou v kódu (z nich se počítá souhrn), texty
+// pokojů i vybavení žijí v Notionu na stránce Úvod.
+const FLOORS: { labelId: string; rooms: { id: string; Icon: LucideIcon; beds?: number }[] }[] = [
+  {
+    labelId: "vyhody.prizemi",
+    rooms: [
+      { id: "vyhody.pokoj.prizemi-dvoulozkovy", Icon: BedDouble, beds: 2 },
+      { id: "vyhody.pokoj.prizemi-koupelna", Icon: ShowerHead },
     ],
-    roomsTitle: "Pokoje a koupelny",
-    roomsNote: "Připraveny včetně ložního prádla a osušek.",
-    equipmentTitle: "Vybavení",
-    equipmentNote: "Kompletně vybavená kuchyň i domácnost.",
-    floors: { ground: "Přízemí", upper: "Patro" },
-    rooms: {
-      double: "Dvoulůžkový pokoj",
-      doubleDetail: "manželská postel",
-      sixBed: "Šestilůžkový pokoj",
-      sixBedDetail: "1× manželská postel\n2× jednolůžková postel\nHambálka – spaní v podkroví pro 2 osoby",
-      bathGround: "Koupelna",
-      bathGroundDetail: "sprchový kout a WC",
-      bathUpper: "Koupelna",
-      bathUpperDetail: "sprchový kout, samostatné WC",
-    },
-    summary: { beds: ["lůžko", "lůžka", "lůžek"], baths: ["koupelna", "koupelny", "koupelen"], floors: ["podlaží", "podlaží", "podlaží"] },
-    bedsPill: ["lůžko", "lůžka", "lůžek"],
-    groups: { livingRoom: "Světnice", kitchen: "Kuchyň", kids: "Pro děti", other: "Ostatní vybavení" },
-    items: {
-      stove: "Kachlová pec s ležením",
-      table: "Dřevěný stůl s rohovou lavicí",
-      smartTv: "Smart TV",
-      dishwasher: "Myčka na nádobí",
-      coffee: "Kávovar",
-      microwave: "Mikrovlnná trouba",
-      toaster: "Topinkovač",
-      kettle: "Varná konvice",
-      fridge: "Lednice s mrazákem",
-      oven: "Horkovzdušná trouba",
-      hob: "Indukční deska",
-      highChair: "Jídelní židlička",
-      crib: "Dětská postýlka",
-      potty: "Nočník a WC prkénko",
-      toys: "Hračky a deskové hry",
-      washer: "Pračka",
-      dryer: "Sušička",
-      hairdryer: "Fén",
-      iron: "Žehlička",
-      bootDryer: "Sušák na lyžařské boty",
-    },
-    extras: {
-      storage: "Uzamykatelná kolárna a lyžárna",
-      wifi: "Wifi připojení",
-      parking: "Parkování zdarma",
-      nonSmoking: "Roubenka je nekuřácká",
-      noPets: "Bez domácích mazlíčků",
-    },
   },
-  en: {
-    eyebrow: "ABOUT THE CABIN",
-    heading: "What the cabin offers",
-    intro: [
-      "Ořechovka is a newly built traditional log cabin with all the comforts of today — ideal for a family holiday or a stay with friends, sleeping up to 10.",
-      "On the ground floor you'll find a spacious living room with a large wooden dining table and a tiled stove, the heart of the whole cabin. The garden with a terrace invites you to sit outside under the old walnut tree or grill in the evening at the outdoor fire pit.",
+  {
+    labelId: "vyhody.patro",
+    rooms: [
+      { id: "vyhody.pokoj.patro-dvoulozkovy", Icon: BedDouble, beds: 2 },
+      { id: "vyhody.pokoj.patro-ctyrlozkovy", Icon: BedDouble, beds: 4 },
+      { id: "vyhody.pokoj.patro-sestilozkovy", Icon: BedSingle, beds: 6 },
+      { id: "vyhody.pokoj.patro-koupelna", Icon: ShowerHead },
     ],
-    roomsTitle: "Rooms and bathrooms",
-    roomsNote: "Ready with bed linen and towels included.",
-    equipmentTitle: "Amenities",
-    equipmentNote: "A fully equipped kitchen and household.",
-    floors: { ground: "Ground floor", upper: "Upper floor" },
-    rooms: {
-      double: "Double room",
-      doubleDetail: "one double bed",
-      sixBed: "Six-bed room",
-      sixBedDetail: "1× double bed\n2× single bed\nLoft (hambálka) sleeping 2",
-      bathGround: "Bathroom",
-      bathGroundDetail: "shower and WC",
-      bathUpper: "Bathroom",
-      bathUpperDetail: "shower, separate WC",
-    },
-    summary: { beds: ["bed", "beds", "beds"], baths: ["bathroom", "bathrooms", "bathrooms"], floors: ["floor", "floors", "floors"] },
-    bedsPill: ["bed", "beds", "beds"],
-    groups: { livingRoom: "Living room", kitchen: "Kitchen", kids: "For kids", other: "Other equipment" },
-    items: {
-      stove: "Tiled stove with a sleeping bench",
-      table: "Wooden table with a corner bench",
-      smartTv: "Smart TV",
-      dishwasher: "Dishwasher",
-      coffee: "Coffee maker",
-      microwave: "Microwave",
-      toaster: "Toaster",
-      kettle: "Kettle",
-      fridge: "Fridge-freezer",
-      oven: "Convection oven",
-      hob: "Induction hob",
-      highChair: "High chair",
-      crib: "Crib",
-      potty: "Potty and toilet seat",
-      toys: "Toys and board games",
-      washer: "Washing machine",
-      dryer: "Dryer",
-      hairdryer: "Hairdryer",
-      iron: "Iron",
-      bootDryer: "Ski-boot dryer",
-    },
-    extras: {
-      storage: "Lockable bike and ski storage",
-      wifi: "Wifi connection",
-      parking: "Free parking",
-      nonSmoking: "The cabin is non-smoking",
-      noPets: "No pets allowed",
-    },
   },
-} as const;
+];
 
-// Ikony a struktura jsou společné pro oba jazyky, mění se jen texty — díky
-// tomu nemůže anglická a česká verze "ujet" jedna druhé.
-function buildFloors(locale: Locale): Floor[] {
-  const r = TEXT[locale].rooms;
-  const f = TEXT[locale].floors;
-  return [
-    {
-      label: f.ground,
-      rooms: [
-        { Icon: BedDouble, name: r.double, detail: r.doubleDetail, beds: 2 },
-        { Icon: ShowerHead, name: r.bathGround, detail: r.bathGroundDetail },
-      ],
-    },
-    {
-      label: f.upper,
-      rooms: [
-        { Icon: BedDouble, name: r.double, detail: r.doubleDetail, beds: 2 },
-        { Icon: BedSingle, name: r.sixBed, detail: r.sixBedDetail, beds: 6 },
-        { Icon: ShowerHead, name: r.bathUpper, detail: r.bathUpperDetail },
-      ],
-    },
-  ];
+const GROUPS: { id: string; Icon: LucideIcon }[] = [
+  { id: "vyhody.svetnice", Icon: Sofa },
+  { id: "vyhody.kuchyn", Icon: CookingPot },
+  { id: "vyhody.deti", Icon: Baby },
+  { id: "vyhody.ostatni", Icon: WashingMachine },
+];
+
+function buildFloors(u: Texty): Floor[] {
+  return FLOORS.flatMap((floor) => {
+    const rooms = floor.rooms.flatMap(({ id, Icon, beds }) => {
+      const room = u.polozka(id);
+      return room ? [{ Icon, beds, name: room.t, detail: room.p ?? "" }] : [];
+    });
+    return rooms.length > 0 ? [{ label: u.t(floor.labelId), rooms }] : [];
+  });
 }
 
-function buildGroups(locale: Locale): Group[] {
-  const g = TEXT[locale].groups;
-  const i = TEXT[locale].items;
-  return [
-    {
-      title: g.livingRoom,
-      Icon: Sofa,
-      items: [
-        { Icon: Flame, label: i.stove },
-        { Icon: Table, label: i.table },
-        { Icon: Tv, label: i.smartTv },
-      ],
-    },
-    {
-      title: g.kitchen,
-      Icon: CookingPot,
-      items: [
-        { Icon: Utensils, label: i.dishwasher },
-        { Icon: Refrigerator, label: i.fridge },
-        { Icon: Flame, label: i.oven },
-        { Icon: CookingPot, label: i.hob },
-        { Icon: Microwave, label: i.microwave },
-        { Icon: Coffee, label: i.coffee },
-        { Icon: Soup, label: i.kettle },
-        { Icon: Sandwich, label: i.toaster },
-      ],
-    },
-    {
-      title: g.kids,
-      Icon: Baby,
-      items: [
-        { Icon: Baby, label: i.highChair },
-        { Icon: BedSingle, label: i.crib },
-        { Icon: Toilet, label: i.potty },
-        { Icon: ToyBrick, label: i.toys },
-      ],
-    },
-    {
-      title: g.other,
-      Icon: WashingMachine,
-      items: [
-        { Icon: WashingMachine, label: i.washer },
-        { Icon: Fan, label: i.dryer },
-        { Icon: Wind, label: i.hairdryer },
-        { Icon: Shirt, label: i.iron },
-        { Icon: Footprints, label: i.bootDryer },
-      ],
-    },
-  ];
-}
-
-function buildExtras(locale: Locale) {
-  const e = TEXT[locale].extras;
-  return [
-    { Icon: Bike, label: e.storage },
-    { Icon: Wifi, label: e.wifi },
-    { Icon: SquareParking, label: e.parking },
-    { Icon: CigaretteOff, label: e.nonSmoking },
-    { Icon: PawPrint, label: e.noPets },
-  ];
+function buildGroups(u: Texty): Group[] {
+  return GROUPS.flatMap(({ id, Icon }) => {
+    const title = u.t(`${id}.nazev`);
+    const items = u.seznam(id).map((item) => ({ Icon: ikona(item.i), label: item.t }));
+    return title && items.length > 0 ? [{ title, Icon, items }] : [];
+  });
 }
 
 function RoomCard({ room, bedsPill }: { room: Room; bedsPill: string | null }) {
@@ -277,45 +92,55 @@ function RoomCard({ room, bedsPill }: { room: Room; bedsPill: string | null }) {
 
 // Oba bloky mají stejně vysokou hlavičku, takže si v dvousloupcovém
 // rozvržení karty pod nimi sednou na stejnou linku.
-function BlockHeading({ title, note }: { title: string; note: string }) {
+function BlockHeading({ title, note }: { title: string | null; note: string | null }) {
   return (
     <div>
-      <h3 className="font-subhead text-[19px] font-bold text-ink sm:text-[21px]">{title}</h3>
-      <p className="mt-0.5 text-[12.5px] font-medium text-clay">{note}</p>
+      {title && <h3 className="font-subhead text-[19px] font-bold text-ink sm:text-[21px]">{title}</h3>}
+      {note && <p className="mt-0.5 text-[12.5px] font-medium text-clay">{note}</p>}
     </div>
   );
 }
 
 export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }) {
-  const t = TEXT[locale];
-  const floors = buildFloors(locale);
-  const groups = buildGroups(locale);
-  const extras = buildExtras(locale);
+  const u = texty("uvod", locale);
+  if (!u.sekce("vyhody")) return null;
+
+  const eyebrow = u.t("vyhody.nadtitulek");
+  const heading = u.t("vyhody.nadpis");
+  const intro = u.seznam("vyhody.uvod");
+  const floors = buildFloors(u);
+  const groups = buildGroups(u);
+  const extras = u.seznam("vyhody.extra").map((item) => ({ Icon: ikona(item.i), label: item.t }));
+  const bedsForms = u.vzdy("vyhody.tvary.luzka");
 
   const allRooms = floors.flatMap((f) => f.rooms);
   const bedCount = allRooms.reduce((n, r) => n + (r.beds ?? 0), 0);
   const bathCount = allRooms.filter((r) => r.beds === undefined).length;
 
   const summary = [
-    { Icon: BedDouble, label: `${bedCount} ${plural(locale, bedCount, t.summary.beds)}` },
-    { Icon: ShowerHead, label: `${bathCount} ${plural(locale, bathCount, t.summary.baths)}` },
-    { Icon: Layers, label: `${floors.length} ${plural(locale, floors.length, t.summary.floors)}` },
+    { Icon: BedDouble, label: `${bedCount} ${plural(bedCount, bedsForms)}` },
+    { Icon: ShowerHead, label: `${bathCount} ${plural(bathCount, u.vzdy("vyhody.tvary.koupelny"))}` },
+    { Icon: Layers, label: `${floors.length} ${plural(floors.length, u.vzdy("vyhody.tvary.podlazi"))}` },
   ];
 
   return (
     <section id="vyhody" className="bg-sand px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
       <div className="mx-auto max-w-[1440px]">
-        <div className="flex flex-col gap-[5px]">
-          <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{t.eyebrow}</p>
-          <div className="h-[2px] w-7 bg-brand-gradient" />
-        </div>
-        <h2 className="mt-3 font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">{t.heading}</h2>
+        {eyebrow && (
+          <div className="flex flex-col gap-[5px]">
+            <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{eyebrow}</p>
+            <div className="h-[2px] w-7 bg-brand-gradient" />
+          </div>
+        )}
+        {heading && <h2 className="mt-3 font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">{heading}</h2>}
 
-        <div className="mt-5 flex max-w-[720px] flex-col gap-3 text-[15px] font-medium leading-[1.65] text-clay sm:text-[16px]">
-          {t.intro.map((p) => (
-            <p key={p}>{p}</p>
-          ))}
-        </div>
+        {intro.length > 0 && (
+          <div className="mt-5 flex max-w-[720px] flex-col gap-3 text-[15px] font-medium leading-[1.65] text-clay sm:text-[16px]">
+            {intro.map((p) => (
+              <p key={p.t}>{p.t}</p>
+            ))}
+          </div>
+        )}
 
         {/* Pokoje a vybavení stojí vedle sebe — pod sebou by se každý blok
             roztáhl přes celou šířku stránky a sekce by byla dvakrát vyšší. */}
@@ -328,33 +153,37 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5 }}
           >
-            <BlockHeading title={t.roomsTitle} note={t.roomsNote} />
+            <BlockHeading title={u.t("vyhody.pokoje.nadpis")} note={u.t("vyhody.pokoje.poznamka")} />
 
             <div className="mt-4">
               <div className="overflow-hidden rounded-xl border border-border bg-surface shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)]">
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-border bg-cream/70 px-4 py-2.5 sm:px-5">
-                  {summary.map((s) => (
-                    <span key={s.label} className="flex items-center gap-1.5 text-[12.5px] font-bold text-ink">
-                      <s.Icon className="size-[15px] shrink-0 text-brand" strokeWidth={2} aria-hidden />
-                      {s.label}
-                    </span>
-                  ))}
-                </div>
+                {u.sekce("vyhody.souhrn") && (
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-border bg-cream/70 px-4 py-2.5 sm:px-5">
+                    {summary.map((s) => (
+                      <span key={s.label} className="flex items-center gap-1.5 text-[12.5px] font-bold text-ink">
+                        <s.Icon className="size-[15px] shrink-0 text-brand" strokeWidth={2} aria-hidden />
+                        {s.label}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 {floors.map((floor, i) => (
                   <div
-                    key={floor.label}
+                    key={i}
                     className={`px-4 py-4 sm:px-5 ${i > 0 ? "border-t-[1.5px] border-dashed border-border" : ""}`}
                   >
-                    <span className="inline-block rounded-full bg-tag/60 px-2.5 py-[3px] text-[10.5px] font-bold uppercase tracking-[1.2px] text-bark">
-                      {floor.label}
-                    </span>
-                    <div className="mt-2.5 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-1">
+                    {floor.label && (
+                      <span className="inline-block rounded-full bg-tag/60 px-2.5 py-[3px] text-[10.5px] font-bold uppercase tracking-[1.2px] text-bark">
+                        {floor.label}
+                      </span>
+                    )}
+                    <div className={`${floor.label ? "mt-2.5 " : ""}grid gap-2.5 sm:grid-cols-2 lg:grid-cols-1`}>
                       {floor.rooms.map((room) => (
                         <RoomCard
-                          key={`${floor.label}-${room.name}-${room.detail}`}
+                          key={`${room.name}-${room.detail}`}
                           room={room}
-                          bedsPill={room.beds ? `${room.beds} ${plural(locale, room.beds, t.bedsPill)}` : null}
+                          bedsPill={room.beds ? `${room.beds} ${plural(room.beds, bedsForms)}` : null}
                         />
                       ))}
                     </div>
@@ -373,7 +202,7 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
             transition={{ duration: 0.5, delay: 0.08 }}
             className="flex flex-col"
           >
-            <BlockHeading title={t.equipmentTitle} note={t.equipmentNote} />
+            <BlockHeading title={u.t("vyhody.vybaveni.nadpis")} note={u.t("vyhody.vybaveni.poznamka")} />
 
             <div className="mt-4 flex flex-1 flex-col">
               <div className="flex flex-1 flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)]">
@@ -401,14 +230,16 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
                 ))}
               </div>
 
-              <div className="mt-4 flex flex-col gap-2.5 rounded-xl border border-brand/20 bg-tag/40 px-4 py-3.5 sm:px-5">
-                {extras.map((extra) => (
-                  <div key={extra.label} className="flex items-center gap-2">
-                    <extra.Icon className="size-[17px] shrink-0 text-brand" strokeWidth={1.9} aria-hidden />
-                    <span className="text-[13px] font-semibold text-ink">{extra.label}</span>
-                  </div>
-                ))}
-              </div>
+              {extras.length > 0 && (
+                <div className="mt-4 flex flex-col gap-2.5 rounded-xl border border-brand/20 bg-tag/40 px-4 py-3.5 sm:px-5">
+                  {extras.map((extra) => (
+                    <div key={extra.label} className="flex items-center gap-2">
+                      <extra.Icon className="size-[17px] shrink-0 text-brand" strokeWidth={1.9} aria-hidden />
+                      <span className="text-[13px] font-semibold text-ink">{extra.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         </div>

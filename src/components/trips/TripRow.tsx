@@ -3,11 +3,12 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { texty, type Locale } from "@/lib/texty";
 
 export type Trip = {
   title: string;
   description: string;
-  distance: string;
+  distance: string | null;
   image: string;
   mapQuery: string;
   moreHref?: string;
@@ -35,12 +36,7 @@ function TripLink({
   );
 }
 
-type Locale = "cs" | "en";
-
-const TEXT: Record<Locale, { distance: string; map: string; article: string }> = {
-  cs: { distance: "VZDÁLENOST", map: "Mapa", article: "celý článek" },
-  en: { distance: "DISTANCE", map: "Map", article: "full article" },
-};
+const ARTICLE_LABEL: Record<Locale, string> = { cs: "celý článek", en: "full article" };
 
 export default function TripRow({
   trip,
@@ -52,7 +48,9 @@ export default function TripRow({
   locale?: Locale;
 }) {
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(trip.mapQuery)}`;
-  const t = TEXT[locale];
+  const v = texty("vylety", locale);
+  const distanceLabel = v.t("vylet.vzdalenost");
+  const mapLabel = v.t("vylet.mapa");
 
   return (
     <motion.div
@@ -70,7 +68,7 @@ export default function TripRow({
           href={trip.moreHref}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${trip.title} — ${t.article}`}
+          aria-label={`${trip.title} — ${ARTICLE_LABEL[locale]}`}
           className="absolute inset-0 z-[1]"
         />
       )}
@@ -98,17 +96,25 @@ export default function TripRow({
               />
             )}
           </h3>
-          <p className="mt-2 text-[15px] font-medium leading-[1.7] text-clay sm:text-[16px]">{trip.description}</p>
+          {trip.description && (
+            <p className="mt-2 text-[15px] font-medium leading-[1.7] text-clay sm:text-[16px]">{trip.description}</p>
+          )}
         </div>
 
         <div className="flex shrink-0 flex-col items-start gap-1 sm:items-end sm:text-right">
-          <p className="text-[11px] font-bold tracking-[1.5px] text-stone">{t.distance}</p>
-          <p className="font-subhead text-[20px] font-bold text-ink">{trip.distance}</p>
-          <div className="mt-2 flex flex-col items-start gap-1.5 sm:items-end">
-            <TripLink href={mapHref} className="text-green-700 hover:text-green-800">
-              {t.map}
-            </TripLink>
-          </div>
+          {trip.distance && (
+            <>
+              {distanceLabel && <p className="text-[11px] font-bold tracking-[1.5px] text-stone">{distanceLabel}</p>}
+              <p className="font-subhead text-[20px] font-bold text-ink">{trip.distance}</p>
+            </>
+          )}
+          {mapLabel && (
+            <div className="mt-2 flex flex-col items-start gap-1.5 sm:items-end">
+              <TripLink href={mapHref} className="text-green-700 hover:text-green-800">
+                {mapLabel}
+              </TripLink>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

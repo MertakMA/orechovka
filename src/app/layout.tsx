@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Lora, Montserrat } from "next/font/google";
 import SmoothHashScroll from "@/components/SmoothHashScroll";
 import { V } from "@/generated/variables";
+import { texty } from "@/lib/texty";
 import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -29,26 +30,27 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+const s = texty("spolecne", "cs");
 const SITE_URL = V.SITE_URL;
-const SITE_TITLE = "Roubenka Ořechovka | Ubytování v podhůří Krkonoš";
-const SITE_DESCRIPTION =
-  "Útulná roubenka k pronájmu pro rodiny, páry i skupiny přátel. Celý objekt jen pro vás, zahrada s grilem, krb a výhled na Krkonoše.";
+const SITE_NAME = s.vzdy("NAZEV_WEBU");
+const SITE_TITLE = s.vzdy("seo.titulek");
+const SITE_DESCRIPTION = s.vzdy("seo.popis");
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s | Roubenka Ořechovka",
+    template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
-    siteName: "Roubenka Ořechovka",
+    siteName: SITE_NAME,
     locale: "cs_CZ",
     type: "website",
-    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Roubenka Ořechovka" }],
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",

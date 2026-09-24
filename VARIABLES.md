@@ -4,7 +4,7 @@ Provozní hodnoty, které se v čase mění (kontakty, poloha, odkazy, parametry
 poplatky, pravidla pobytu, vzdálenosti), žijí v Notion databázi **Variables** — ne přímo v kódu.
 Ve webu je vidíš jako `V.NAZEV` (import z `@/generated/variables`).
 
-`src/generated/variables.ts` je **generovaný, ale commitnutý** soubor. Stahuje ho
+`src/generated/variables.ts` (exporty `V` a `V_EN`) je **generovaný, ale commitnutý** soubor. Stahuje ho
 `scripts/sync-variables.mjs` automaticky před `npm run dev`/`npm run build` (`predev`/`prebuild`
 v `package.json`). Bez `NOTION_VARIABLES_API_KEY`/`NOTION_VARIABLES_DATA_SOURCE_ID` nebo při chybě sítě
 skript jen vypíše varování a nechá poslední commitnutou verzi — dev/build kvůli tomu nespadne.
@@ -17,8 +17,14 @@ skript jen vypíše varování a nechá poslední commitnutou verzi — dev/buil
 `SOCIAL_LINKS` hodnoty) jsou pryč.
 
 Texty webu — nadpisy, popisky, texty tlačítek, SEO titulky, znění FAQ, texty výhod a názvy
-výletních cílů — sem **nepatří** a zůstávají v kódu. Do proměnných se jen vkládají čísla/odkazy
-(např. odpověď FAQ na check-in zůstává celá napsaná v kódu, jen s `${V.CHECK_IN}` uvnitř).
+výletních cílů — sem **nepatří**; žijí v Notion databázi **Texty** (viz [TEXTY.md](TEXTY.md)).
+Proměnné se do nich vkládají placeholderem, např. odpověď FAQ na check-in je v Textech napsaná
+jako `Check-in: {CHECK_IN} / …` a hodnota se dosadí při buildu. Sloupec „Kde v kódu“ níže proto
+u textových proměnných ukazuje i místa, kde se dnes proměnná používá přes Texty.
+
+**Hodnota EN** (nepovinná) je anglická verze pro `/en` stránky — generuje se jako `V_EN`,
+prázdná = stejná jako česká (odkazy, čísla, km). Vyplněná je u cen, termínů, poplatků,
+check-in/out, kapacity, délky pobytu a řádku adresy.
 
 ⚠️ = hodnota není finální (placeholder od klienta). Souhrn je [na konci](#placeholdery-k-doplneni-od-klienta).
 

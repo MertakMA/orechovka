@@ -2,15 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
+import { texty, type Locale } from "@/lib/texty";
+import Radky from "@/components/Radky";
 
+// altId = řádek s popisem fotky na stránce Společné v Notionu.
 const PHOTOS = [
-  { src: withBasePath("/images/carousel-1.jpg"), alt: "Jídelní stůl z masivního dřeva s výhledem do krajiny" },
-  { src: withBasePath("/images/carousel-2.png"), alt: "Obývací pokoj s křesly a dřevěnými trámy" },
-  { src: withBasePath("/images/carousel-3.jpg"), alt: "Otevřená kuchyně a obývací část roubenky" },
-  { src: withBasePath("/images/food-bread.jpg"), alt: "Čerstvý domácí chléb na dřevěném prkénku" },
+  { src: withBasePath("/images/carousel-1.jpg"), altId: "foto.carousel-1" },
+  { src: withBasePath("/images/carousel-2.png"), altId: "foto.carousel-2" },
+  { src: withBasePath("/images/carousel-3.jpg"), altId: "foto.carousel-3" },
+  { src: withBasePath("/images/food-bread.jpg"), altId: "foto.food-bread" },
 ];
 
 // Photos jsou ve frontě 3x za sebou (A|B|C) a start je uprostřed kopie B —
@@ -24,7 +27,8 @@ const GAP = 12;
 const AUTOPLAY_MS = 5000;
 const SLIDE_TRANSITION = { duration: 0.8, ease: [0.65, 0, 0.35, 1] as const };
 
-function Carousel() {
+function Carousel({ locale }: { locale: Locale }) {
+  const s = texty("spolecne", locale);
   const trackRef = useRef<HTMLDivElement>(null);
   // Start uprostřed prostřední kopie (skutečná fotka #1), aby byl od
   // začátku stejný polštář fotek k dispozici dozadu i dopředu.
@@ -141,7 +145,7 @@ function Carousel() {
           >
             <Image
               src={photo.src}
-              alt={photo.alt}
+              alt={s.vzdy(photo.altId)}
               fill
               draggable={false}
               sizes="(min-width: 1024px) 290px, 46vw"
@@ -197,39 +201,13 @@ function Carousel() {
   );
 }
 
-type Locale = "cs" | "en";
-
-const TEXT: Record<Locale, { eyebrow: string; heading: [string, string]; body: ReactNode; link: string }> = {
-  cs: {
-    eyebrow: "OŘECHOVKA",
-    heading: ["Váš domov", "v Krkonoších"],
-    body: (
-      <>
-        Útulná roubenka v Mladých Bukách, kde si můžete užít Krkonoše naplno nebo zpomalit a jen tak být. Výlety do
-        přírody, společné chvíle i lenošení na peci.
-        <br />
-        Krásná místa, která stojí za to objevovat, máte z Ořechovky na dosah.
-      </>
-    ),
-    link: "Více o roubence →",
-  },
-  en: {
-    eyebrow: "OŘECHOVKA",
-    heading: ["Your home", "in the Krkonoše"],
-    body: (
-      <>
-        A cozy log cabin in Mladé Buky, where you can enjoy the Krkonoše mountains to the full — or just slow down
-        and be. Trips into nature, time together, and lazing by the stove.
-        <br />
-        Beautiful places worth exploring are all within easy reach of Ořechovka.
-      </>
-    ),
-    link: "More about the cabin →",
-  },
-};
-
 export default function AboutSection({ locale = "cs" }: { locale?: Locale }) {
-  const t = TEXT[locale];
+  const u = texty("uvod", locale);
+  if (!u.sekce("o-nas")) return null;
+  const eyebrow = u.t("o-nas.nadtitulek");
+  const heading = u.t("o-nas.nadpis");
+  const body = u.t("o-nas.text");
+  const link = u.t("o-nas.tlacitko");
   return (
     <section id="o-nas" className="bg-cream px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[120px]">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-24">
@@ -240,22 +218,30 @@ export default function AboutSection({ locale = "cs" }: { locale?: Locale }) {
           transition={{ duration: 0.6 }}
           className="w-full max-w-[488px]"
         >
-          <div className="flex flex-col gap-[5px]">
-            <p className="text-[14px] font-semibold tracking-[2.34px] text-pec-dark">{t.eyebrow}</p>
-            <div className="h-[2px] w-11 bg-brand-gradient" />
-          </div>
-          <h2 className="mt-5 font-serif text-[36px] font-bold italic leading-[1.05] text-ink sm:text-[52px] lg:text-[68px]">
-            {t.heading[0]}
-            <br />
-            {t.heading[1]}
-          </h2>
-          <p className="mt-6 text-lg leading-[1.7] text-clay sm:text-xl">{t.body}</p>
-          <Link
-            href="#vyhody"
-            className="text-bark mt-7 inline-block rounded border-[1.8px] border-clay px-[22px] py-3 text-[15px] font-semibold"
-          >
-            {t.link}
-          </Link>
+          {eyebrow && (
+            <div className="flex flex-col gap-[5px]">
+              <p className="text-[14px] font-semibold tracking-[2.34px] text-pec-dark">{eyebrow}</p>
+              <div className="h-[2px] w-11 bg-brand-gradient" />
+            </div>
+          )}
+          {heading && (
+            <h2 className="mt-5 font-serif text-[36px] font-bold italic leading-[1.05] text-ink sm:text-[52px] lg:text-[68px]">
+              <Radky text={heading} />
+            </h2>
+          )}
+          {body && (
+            <p className="mt-6 text-lg leading-[1.7] text-clay sm:text-xl">
+              <Radky text={body} />
+            </p>
+          )}
+          {link && (
+            <Link
+              href="#vyhody"
+              className="text-bark mt-7 inline-block rounded border-[1.8px] border-clay px-[22px] py-3 text-[15px] font-semibold"
+            >
+              {link}
+            </Link>
+          )}
         </motion.div>
 
         <motion.div
@@ -265,7 +251,7 @@ export default function AboutSection({ locale = "cs" }: { locale?: Locale }) {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="w-full"
         >
-          <Carousel />
+          <Carousel locale={locale} />
         </motion.div>
       </div>
     </section>

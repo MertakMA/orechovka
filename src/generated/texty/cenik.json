@@ -1,0 +1,277 @@
+{
+  "cs": {
+    "cta": {
+      "t": ""
+    },
+    "cta.nadpis": {
+      "t": "Zaujaly vás naše ceny?"
+    },
+    "cta.podnadpis": {
+      "t": "Zkontrolujte dostupné termíny a rezervujte bezpečně přes Booking.com."
+    },
+    "cta.tlacitko": {
+      "t": "Zkontrolovat dostupnost na Booking →"
+    },
+    "faq": {
+      "t": ""
+    },
+    "faq.nadpis": {
+      "t": "Časté dotazy k ceníku"
+    },
+    "faq.polozky": [
+      {
+        "t": "Jak probíhá rezervace?",
+        "p": "Rezervujte přímo přes Booking.com. Po potvrzení vám zašleme veškeré pokyny k příjezdu."
+      },
+      {
+        "t": "Jaká je minimální délka pobytu?",
+        "p": "Minimálně {MIN_DELKA_POBYTU}. O víkendu a svátcích min. {MIN_DELKA_POBYTU}, v hlavní sezóně min. {MIN_DELKA_POBYTU_HLAVNI_SEZONA}."
+      },
+      {
+        "t": "Kdy probíhá check-in a check-out?",
+        "p": "Check-in: {CHECK_IN} / Check-out: {CHECK_OUT}. Jiné časy po dohodě."
+      },
+      {
+        "t": "Je možné platit v hotovosti?",
+        "p": "Platbu zajišťuje Booking.com (karta, PayPal). Na místě nejsou žádné platby."
+      }
+    ],
+    "hero.nadpis": {
+      "t": "Ceník ubytování"
+    },
+    "hero.podnadpis": {
+      "t": "Jasné ceny, žádné skryté poplatky. Rezervace přes Booking.com."
+    },
+    "poplatky": {
+      "t": ""
+    },
+    "poplatky.nadpis": {
+      "t": "Doplňkové poplatky"
+    },
+    "poplatky.polozky": [
+      {
+        "t": "Turistická taxa",
+        "p": "{POPLATEK_TURISTICKA_TAXA}"
+      },
+      {
+        "t": "Úklid při odjezdu",
+        "p": "{POPLATEK_UKLID}"
+      },
+      {
+        "t": "Pozdní check-out",
+        "p": "{POPLATEK_POZDNI_CHECKOUT}"
+      },
+      {
+        "t": "Víkend mimo sezónu",
+        "p": "{POPLATEK_VIKEND}"
+      }
+    ],
+    "prakticke": {
+      "t": ""
+    },
+    "prakticke.checkin": {
+      "t": "Check-in",
+      "p": "{CHECK_IN}\nPo dohodě jinak"
+    },
+    "prakticke.checkout": {
+      "t": "Check-out",
+      "p": "{CHECK_OUT}\nPo dohodě jinak"
+    },
+    "prakticke.nadpis": {
+      "t": "Co vědět před příjezdem"
+    },
+    "prakticke.nadtitulek": {
+      "t": "PRAKTICKÉ INFORMACE K PŘÍJEZDU"
+    },
+    "prakticke.pocasi": {
+      "t": "Počasí",
+      "p": "Aktuální předpověď\nMladé Buky a okolí"
+    },
+    "prakticke.webkamera": {
+      "t": "Webkamera",
+      "p": "Živý záběr z okolí\nSki areál Mladé Buky"
+    },
+    "seo.popis": {
+      "t": "Jasné ceny, žádné skryté poplatky. Sezónní ceník, co je v ceně a časté dotazy k rezervaci přes Booking.com."
+    },
+    "seo.titulek": {
+      "t": "Ceník ubytování"
+    },
+    "sezony": {
+      "t": ""
+    },
+    "sezony.nadpis": {
+      "t": "Vyberte si svůj termín"
+    },
+    "sezony.nadtitulek": {
+      "t": "SEZÓNNÍ CENY"
+    },
+    "sezony.text": {
+      "t": "Ceny jsou za celou roubenku. Minimální délka pobytu: {MIN_DELKA_POBYTU}."
+    },
+    "v-cene": {
+      "t": ""
+    },
+    "v-cene.nadpis": {
+      "t": "Co je zahrnuto v ceně"
+    },
+    "v-cene.polozky": [
+      {
+        "t": "Energie (elektřina, topení)"
+      },
+      {
+        "t": "WiFi připojení"
+      },
+      {
+        "t": "Parkování na pozemku ({POCET_PARKOVACICH_MIST} místa)"
+      },
+      {
+        "t": "Ložní prádlo a ručníky"
+      },
+      {
+        "t": "Základní vybavení kuchyně"
+      },
+      {
+        "t": "Zahrada a terasa"
+      }
+    ]
+  },
+  "en": {
+    "cta": {
+      "t": ""
+    },
+    "cta.nadpis": {
+      "t": "Like our rates?"
+    },
+    "cta.podnadpis": {
+      "t": "Check available dates and book securely via Booking.com."
+    },
+    "cta.tlacitko": {
+      "t": "Check availability on Booking →"
+    },
+    "faq": {
+      "t": ""
+    },
+    "faq.nadpis": {
+      "t": "Frequently asked questions"
+    },
+    "faq.polozky": [
+      {
+        "t": "How does booking work?",
+        "p": "Book directly via Booking.com. Once confirmed, we'll send you all the arrival instructions."
+      },
+      {
+        "t": "What's the minimum stay?",
+        "p": "At least {MIN_DELKA_POBYTU}. Minimum {MIN_DELKA_POBYTU} on weekends and holidays, minimum {MIN_DELKA_POBYTU_HLAVNI_SEZONA} in peak season."
+      },
+      {
+        "t": "What are check-in and check-out times?",
+        "p": "Check-in: {CHECK_IN} / Check-out: {CHECK_OUT}. Other times by arrangement."
+      },
+      {
+        "t": "Can I pay in cash?",
+        "p": "Payment is handled by Booking.com (card, PayPal). No payments are taken on site."
+      }
+    ],
+    "hero.nadpis": {
+      "t": "Rates"
+    },
+    "hero.podnadpis": {
+      "t": "Clear prices, no hidden fees. Booking via Booking.com."
+    },
+    "poplatky": {
+      "t": ""
+    },
+    "poplatky.nadpis": {
+      "t": "Additional fees"
+    },
+    "poplatky.polozky": [
+      {
+        "t": "Local tourist tax",
+        "p": "{POPLATEK_TURISTICKA_TAXA}"
+      },
+      {
+        "t": "Departure cleaning",
+        "p": "{POPLATEK_UKLID}"
+      },
+      {
+        "t": "Late check-out",
+        "p": "{POPLATEK_POZDNI_CHECKOUT}"
+      },
+      {
+        "t": "Off-season weekend",
+        "p": "{POPLATEK_VIKEND}"
+      }
+    ],
+    "prakticke": {
+      "t": ""
+    },
+    "prakticke.checkin": {
+      "t": "Check-in",
+      "p": "{CHECK_IN}\nOther times by arrangement"
+    },
+    "prakticke.checkout": {
+      "t": "Check-out",
+      "p": "{CHECK_OUT}\nOther times by arrangement"
+    },
+    "prakticke.nadpis": {
+      "t": "What to know before you arrive"
+    },
+    "prakticke.nadtitulek": {
+      "t": "PRACTICAL ARRIVAL INFO"
+    },
+    "prakticke.pocasi": {
+      "t": "Weather",
+      "p": "Current forecast\nMladé Buky and surroundings"
+    },
+    "prakticke.webkamera": {
+      "t": "Webcam",
+      "p": "Live feed from the area\nMladé Buky ski area"
+    },
+    "seo.popis": {
+      "t": "Clear prices, no hidden fees. Seasonal rates, what's included, and frequently asked questions about booking via Booking.com."
+    },
+    "seo.titulek": {
+      "t": "Rates"
+    },
+    "sezony": {
+      "t": ""
+    },
+    "sezony.nadpis": {
+      "t": "Pick your dates"
+    },
+    "sezony.nadtitulek": {
+      "t": "SEASONAL RATES"
+    },
+    "sezony.text": {
+      "t": "Prices are for the whole cabin. Minimum stay: {MIN_DELKA_POBYTU}."
+    },
+    "v-cene": {
+      "t": ""
+    },
+    "v-cene.nadpis": {
+      "t": "What's included in the price"
+    },
+    "v-cene.polozky": [
+      {
+        "t": "Utilities (electricity, heating)"
+      },
+      {
+        "t": "WiFi connection"
+      },
+      {
+        "t": "On-site parking ({POCET_PARKOVACICH_MIST} spaces)"
+      },
+      {
+        "t": "Bed linen and towels"
+      },
+      {
+        "t": "Basic kitchen equipment"
+      },
+      {
+        "t": "Garden and terrace"
+      }
+    ]
+  },
+  "skryte": []
+}

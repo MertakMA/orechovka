@@ -1,0 +1,309 @@
+{
+  "cs": {
+    "cta": {
+      "t": ""
+    },
+    "hero.nadpis": {
+      "t": "Tipy na výlety"
+    },
+    "hero.podnadpis": {
+      "t": "Krkonoše v zimě i v létě — vybrali jsme, kam se z roubenky vypravit."
+    },
+    "leto": {
+      "t": ""
+    },
+    "leto.adrspach": {
+      "t": "Adršpašské skály",
+      "p": "Bludiště pískovcových věží, soutěsek a lodní vyhlídkové plavby po Skalním jezírku."
+    },
+    "leto.adrspach.vzdalenost": {
+      "t": "{VZDALENOST_ADRSPACH}"
+    },
+    "leto.dalsi-tipy": {
+      "t": "Další tipy na pěší trasy v Krkonoších"
+    },
+    "leto.grund": {
+      "t": "Grund Resort Golf & Ski",
+      "p": "18jamkové golfové hřiště a wellness centrum, otevřené i pro veřejnost mimo hotelové hosty."
+    },
+    "leto.grund.vzdalenost": {
+      "t": "1 km autem / 600 m pěšky"
+    },
+    "leto.mlade-buky": {
+      "t": "Areál Mladé Buky",
+      "p": "V létě bikepark s lanovkou nahoru a dětský zábavní park Hříčky, celoročně v provozu i bobová dráha."
+    },
+    "leto.mlade-buky.vzdalenost": {
+      "t": "1 km pěšky / 1,8 km autem"
+    },
+    "leto.muchomurka": {
+      "t": "Farmapark Muchomůrka",
+      "p": "Farmový park se zvířátky, prolézačkami a atrakcemi pro nejmenší, mezi Janskými Lázněmi a Svobodou nad Úpou."
+    },
+    "leto.muchomurka.vzdalenost": {
+      "t": "10 km autem"
+    },
+    "leto.nadpis": {
+      "t": "Hory, koupání a výlety pro děti"
+    },
+    "leto.nadtitulek": {
+      "t": "LÉTO"
+    },
+    "leto.podnadpis": {
+      "t": "Od koupání po lesích a skalách až po safari a lanovky — na léto je toho v okolí nejvíc."
+    },
+    "leto.sejfy": {
+      "t": "Lesní plovárna Sejfy",
+      "p": "Přírodní koupaliště s 50metrovým bazénem, travnatou plochou k opalování a hřišti na plážový volejbal."
+    },
+    "leto.sejfy.vzdalenost": {
+      "t": "1 km"
+    },
+    "leto.snezka": {
+      "t": "Sněžka",
+      "p": "Nejvyšší hora Česka — lanovkou z Pece pod Sněžkou nebo pěšky po jedné z několika značených tras."
+    },
+    "leto.snezka.vzdalenost": {
+      "t": "{VZDALENOST_SNEZKA}"
+    },
+    "leto.stezka": {
+      "t": "Stezka korunami stromů",
+      "p": "Procházka po korunách stromů až do výšky 45 metrů s výhledy na Krkonoše ze tří světových stran."
+    },
+    "leto.stezka.vzdalenost": {
+      "t": "9 km autem"
+    },
+    "leto.zoo": {
+      "t": "Zoo Dvůr Králové",
+      "p": "Jedna z největších afrických zoo v Evropě se safari okruhem přímo mezi zvířaty."
+    },
+    "leto.zoo.vzdalenost": {
+      "t": "{VZDALENOST_ZOO_DVUR_KRALOVE}"
+    },
+    "okoli": {
+      "t": ""
+    },
+    "okoli.grund": {
+      "t": "Grund Resort Golf & Ski",
+      "p": "Restaurace v hotelovém resortu s výhledem na golfové hřiště a krkonošské kopce."
+    },
+    "okoli.grund.vzdalenost": {
+      "t": "1 km autem / 600 m pěšky"
+    },
+    "okoli.na-kopecku": {
+      "t": "Na kopečku – Horní Maršov",
+      "p": "Oblíbený hostinec s českou i mezinárodní kuchyní a letní zahrádkou v centru Horního Maršova."
+    },
+    "okoli.na-kopecku.vzdalenost": {
+      "t": "6 km autem"
+    },
+    "okoli.nadpis": {
+      "t": "Místa v okolí"
+    },
+    "okoli.nadtitulek": {
+      "t": "V OKOLÍ"
+    },
+    "okoli.podnadpis": {
+      "t": "Kam zajít na jídlo, když se vám nechce vařit."
+    },
+    "seo.popis": {
+      "t": "Léto i zima v Krkonoších — lyžařské areály, koupaliště, výlety pro děti i tipy na jídlo v okolí roubenky."
+    },
+    "seo.titulek": {
+      "t": "Tipy na výlety"
+    },
+    "vylet.mapa": {
+      "t": "Mapa"
+    },
+    "vylet.vzdalenost": {
+      "t": "VZDÁLENOST"
+    },
+    "zima": {
+      "t": ""
+    },
+    "zima.bezky": {
+      "t": "Běžecké tratě u Grund Resort Golf & Ski",
+      "p": "Upravované běžecké stopy přímo za humny — ideální na rychlou lyžovačku před snídaní."
+    },
+    "zima.bezky.vzdalenost": {
+      "t": "600 m pěšky / 1 km autem"
+    },
+    "zima.cerna-hora": {
+      "t": "Skiresort Černá Hora – Pec",
+      "p": "Největší lyžařský areál v Česku — šest propojených středisek a přes 50 km sjezdovek na jeden skipas."
+    },
+    "zima.cerna-hora.vzdalenost": {
+      "t": "6,5 km autem"
+    },
+    "zima.mlade-buky": {
+      "t": "Areál Mladé Buky",
+      "p": "V zimě lyžařský areál s vleky pro rodiny s dětmi i pokročilé, celoročně v provozu i nejdelší bobová dráha v Krkonoších."
+    },
+    "zima.mlade-buky.vzdalenost": {
+      "t": "1 km pěšky / 1,8 km autem"
+    },
+    "zima.nadpis": {
+      "t": "Lyže, běžky a bobovka"
+    },
+    "zima.nadtitulek": {
+      "t": "ZIMA"
+    },
+    "zima.podnadpis": {
+      "t": "Sjezdovky i upravené běžecké stopy, na které to z roubenky máte jen na skok."
+    }
+  },
+  "en": {
+    "cta": {
+      "t": ""
+    },
+    "hero.nadpis": {
+      "t": "Trip ideas"
+    },
+    "hero.podnadpis": {
+      "t": "The Krkonoše in winter and summer — our picks for a trip from the cabin."
+    },
+    "leto": {
+      "t": ""
+    },
+    "leto.adrspach": {
+      "t": "Adršpach Rocks",
+      "p": "A maze of sandstone towers and gorges, with boat trips across the Rock Lake."
+    },
+    "leto.adrspach.vzdalenost": {
+      "t": "{VZDALENOST_ADRSPACH}"
+    },
+    "leto.dalsi-tipy": {
+      "t": "More hiking trail ideas in the Krkonoše"
+    },
+    "leto.grund": {
+      "t": "Grund Resort Golf & Ski",
+      "p": "An 18-hole golf course and wellness centre, open to the public beyond hotel guests."
+    },
+    "leto.grund.vzdalenost": {
+      "t": "1 km by car / 600 m on foot"
+    },
+    "leto.mlade-buky": {
+      "t": "Mladé Buky resort",
+      "p": "A bike park with an uphill lift and the Hříčky kids' fun park in summer, plus a bobsled track open year-round."
+    },
+    "leto.mlade-buky.vzdalenost": {
+      "t": "1 km on foot / 1.8 km by car"
+    },
+    "leto.muchomurka": {
+      "t": "Muchomůrka Farm Park",
+      "p": "A farm park with animals, climbing structures and attractions for the youngest, between Janské Lázně and Svoboda nad Úpou."
+    },
+    "leto.muchomurka.vzdalenost": {
+      "t": "10 km by car"
+    },
+    "leto.nadpis": {
+      "t": "Mountains, swimming and trips for kids"
+    },
+    "leto.nadtitulek": {
+      "t": "SUMMER"
+    },
+    "leto.podnadpis": {
+      "t": "From forest and rock swimming to safari and cable cars — summer brings the most options nearby."
+    },
+    "leto.sejfy": {
+      "t": "Sejfy forest swimming spot",
+      "p": "A natural swimming area with a 50-metre pool, a grassy sunbathing lawn and beach volleyball courts."
+    },
+    "leto.sejfy.vzdalenost": {
+      "t": "1 km"
+    },
+    "leto.snezka": {
+      "t": "Sněžka",
+      "p": "The Czech Republic's highest mountain — by cable car from Pec pod Sněžkou or on foot via marked trails."
+    },
+    "leto.snezka.vzdalenost": {
+      "t": "{VZDALENOST_SNEZKA}"
+    },
+    "leto.stezka": {
+      "t": "Treetop Walk",
+      "p": "A walkway through the treetops up to 45 metres high, with views of the Krkonoše from three sides."
+    },
+    "leto.stezka.vzdalenost": {
+      "t": "9 km by car"
+    },
+    "leto.zoo": {
+      "t": "Dvůr Králové Zoo",
+      "p": "One of the largest African-style zoos in Europe, with a safari loop right among the animals."
+    },
+    "leto.zoo.vzdalenost": {
+      "t": "{VZDALENOST_ZOO_DVUR_KRALOVE}"
+    },
+    "okoli": {
+      "t": ""
+    },
+    "okoli.grund": {
+      "t": "Grund Resort Golf & Ski",
+      "p": "A restaurant at the hotel resort with views over the golf course and the Krkonoše hills."
+    },
+    "okoli.grund.vzdalenost": {
+      "t": "1 km by car / 600 m on foot"
+    },
+    "okoli.na-kopecku": {
+      "t": "Na kopečku – Horní Maršov",
+      "p": "A popular inn serving Czech and international dishes, with a summer garden in the centre of Horní Maršov."
+    },
+    "okoli.na-kopecku.vzdalenost": {
+      "t": "6 km by car"
+    },
+    "okoli.nadpis": {
+      "t": "Places nearby"
+    },
+    "okoli.nadtitulek": {
+      "t": "NEARBY"
+    },
+    "okoli.podnadpis": {
+      "t": "Where to eat out when you don't feel like cooking."
+    },
+    "seo.popis": {
+      "t": "Summer and winter in the Krkonoše — ski areas, swimming spots, trips for kids and food tips near the cabin."
+    },
+    "seo.titulek": {
+      "t": "Trip ideas"
+    },
+    "vylet.mapa": {
+      "t": "Map"
+    },
+    "vylet.vzdalenost": {
+      "t": "DISTANCE"
+    },
+    "zima": {
+      "t": ""
+    },
+    "zima.bezky": {
+      "t": "Cross-country trails at Grund Resort Golf & Ski",
+      "p": "Groomed cross-country tracks right on the doorstep — great for a quick ski before breakfast."
+    },
+    "zima.bezky.vzdalenost": {
+      "t": "600 m on foot / 1 km by car"
+    },
+    "zima.cerna-hora": {
+      "t": "Skiresort Černá Hora – Pec",
+      "p": "The largest ski area in Czechia — six connected resorts and over 50 km of slopes on a single ski pass."
+    },
+    "zima.cerna-hora.vzdalenost": {
+      "t": "6.5 km by car"
+    },
+    "zima.mlade-buky": {
+      "t": "Mladé Buky resort",
+      "p": "A ski area with lifts for families and advanced skiers in winter, plus the longest bobsled track in the Krkonoše, open year-round."
+    },
+    "zima.mlade-buky.vzdalenost": {
+      "t": "1 km on foot / 1.8 km by car"
+    },
+    "zima.nadpis": {
+      "t": "Skis, cross-country and a bobsled"
+    },
+    "zima.nadtitulek": {
+      "t": "WINTER"
+    },
+    "zima.podnadpis": {
+      "t": "Ski slopes and groomed cross-country tracks, just a short hop from the cabin."
+    }
+  },
+  "skryte": []
+}

@@ -1,0 +1,265 @@
+{
+  "cs": {
+    "cta": {
+      "t": ""
+    },
+    "cta.nadpis": {
+      "t": "Rezervujte přes Booking.com"
+    },
+    "cta.podnadpis": {
+      "t": "Bezpečná a jednoduchá rezervace. Bez registrace, s garancí nejlepší ceny."
+    },
+    "cta.tlacitko": {
+      "t": "Přejít na Booking.com a rezervovat →"
+    },
+    "formular": {
+      "t": ""
+    },
+    "formular.chyba-povinne": {
+      "t": "Vyplňte prosím všechna povinná pole."
+    },
+    "formular.chyba-souhlas": {
+      "t": "Pro odeslání je potřeba souhlasit se zpracováním osobních údajů."
+    },
+    "formular.email": {
+      "t": "E-mail",
+      "p": "vas@email.cz"
+    },
+    "formular.jmeno": {
+      "t": "Jméno a příjmení",
+      "p": "Vaše jméno a příjmení"
+    },
+    "formular.mail-jmeno": {
+      "t": "Jméno"
+    },
+    "formular.mail-telefon": {
+      "t": "Telefon"
+    },
+    "formular.nadpis": {
+      "t": "Napište nám"
+    },
+    "formular.nadtitulek": {
+      "t": "KONTAKTNÍ FORMULÁŘ"
+    },
+    "formular.neuvedeno": {
+      "t": "neuvedeno"
+    },
+    "formular.odeslat": {
+      "t": "Odeslat zprávu"
+    },
+    "formular.poznamka": {
+      "t": "Formulář slouží pouze ke kontaktu, ne k rezervaci. Pro rezervaci použijte prosím Booking.com."
+    },
+    "formular.predmet": {
+      "t": "Předmět zprávy",
+      "p": "O čem chcete psát?"
+    },
+    "formular.souhlas": {
+      "t": "Souhlasím se [zpracováním osobních údajů] pro účely odpovědi."
+    },
+    "formular.telefon": {
+      "t": "Telefon (nepovinné)",
+      "p": "{KONTAKT_TELEFON}"
+    },
+    "formular.uspech": {
+      "t": "Otevřel se váš e-mailový klient s předvyplněnou zprávou. Pokud se nic neotevřelo, napište nám prosím přímo na {KONTAKT_EMAIL}."
+    },
+    "formular.zprava": {
+      "t": "Zpráva",
+      "p": "Vaše zpráva..."
+    },
+    "hero.nadpis": {
+      "t": "Kontakt"
+    },
+    "hero.podnadpis": {
+      "t": "Rádi vám odpovíme na dotazy. Rezervace probíhají přes Booking.com."
+    },
+    "karta.adresa": {
+      "t": "Adresa",
+      "p": "{ADRESA_RADEK_1} — {ADRESA_RADEK_2}"
+    },
+    "karta.booking": {
+      "t": "Booking",
+      "p": "roubenkaorechovka.booking.com"
+    },
+    "karta.email": {
+      "t": "E-mail",
+      "p": "{KONTAKT_EMAIL}"
+    },
+    "karta.telefon": {
+      "t": "Telefon",
+      "p": "{KONTAKT_TELEFON}"
+    },
+    "mapa": {
+      "t": ""
+    },
+    "mapa.jak-se-dostat": {
+      "t": "Jak se dostat"
+    },
+    "mapa.nadpis": {
+      "t": "Kde nás najdete"
+    },
+    "mapa.nadtitulek": {
+      "t": "JAK NÁS NAJDETE"
+    },
+    "seo.popis": {
+      "t": "Spojte se s námi — kontaktní údaje, formulář, mapa a praktické informace k příjezdu do Roubenky Ořechovka."
+    },
+    "seo.titulek": {
+      "t": "Kontakt"
+    },
+    "smer.auto": {
+      "t": "Autem",
+      "p": "Z Prahy: dálnice D11, sjezd Hradec Králové, dále silnice I/37 směr Trutnov. Z Trutnova cca {VZDALENOST_TRUTNOV_KM} do Mladých Buků."
+    },
+    "smer.parkovani": {
+      "t": "Parkování",
+      "p": "Zdarma na pozemku, {POCET_PARKOVACICH_MIST} parkovací místa."
+    },
+    "smer.vlak": {
+      "t": "Vlakem",
+      "p": "Vlaková stanice Trutnov hlavní nádraží (spoje z Prahy přes Hradec Králové), odtud MHD nebo taxi cca {VZDALENOST_TRUTNOV_KM}."
+    },
+    "udaje": {
+      "t": ""
+    },
+    "udaje.nadpis": {
+      "t": "Spojte se s námi"
+    },
+    "udaje.nadtitulek": {
+      "t": "KONTAKTNÍ ÚDAJE"
+    }
+  },
+  "en": {
+    "cta": {
+      "t": ""
+    },
+    "cta.nadpis": {
+      "t": "Book via Booking.com"
+    },
+    "cta.podnadpis": {
+      "t": "Safe and simple booking. No sign-up required, with a best-price guarantee."
+    },
+    "cta.tlacitko": {
+      "t": "Go to Booking.com and book →"
+    },
+    "formular": {
+      "t": ""
+    },
+    "formular.chyba-povinne": {
+      "t": "Please fill in all required fields."
+    },
+    "formular.chyba-souhlas": {
+      "t": "You need to agree to the processing of personal data before sending."
+    },
+    "formular.email": {
+      "t": "Email",
+      "p": "you@email.com"
+    },
+    "formular.jmeno": {
+      "t": "Full name",
+      "p": "Your full name"
+    },
+    "formular.mail-jmeno": {
+      "t": "Name"
+    },
+    "formular.mail-telefon": {
+      "t": "Phone"
+    },
+    "formular.nadpis": {
+      "t": "Write to us"
+    },
+    "formular.nadtitulek": {
+      "t": "CONTACT FORM"
+    },
+    "formular.neuvedeno": {
+      "t": "not provided"
+    },
+    "formular.odeslat": {
+      "t": "Send message"
+    },
+    "formular.poznamka": {
+      "t": "This form is for enquiries only, not for booking. Please use Booking.com to book."
+    },
+    "formular.predmet": {
+      "t": "Subject",
+      "p": "What's this about?"
+    },
+    "formular.souhlas": {
+      "t": "I agree to the [processing of my personal data] for the purpose of a reply."
+    },
+    "formular.telefon": {
+      "t": "Phone (optional)",
+      "p": "{KONTAKT_TELEFON}"
+    },
+    "formular.uspech": {
+      "t": "Your email client should have opened with a pre-filled message. If nothing opened, please write to us directly at {KONTAKT_EMAIL}."
+    },
+    "formular.zprava": {
+      "t": "Message",
+      "p": "Your message..."
+    },
+    "hero.nadpis": {
+      "t": "Contact"
+    },
+    "hero.podnadpis": {
+      "t": "We're happy to answer your questions. Bookings go through Booking.com."
+    },
+    "karta.adresa": {
+      "t": "Address",
+      "p": "{ADRESA_RADEK_1} — {ADRESA_RADEK_2}"
+    },
+    "karta.booking": {
+      "t": "Booking",
+      "p": "roubenkaorechovka.booking.com"
+    },
+    "karta.email": {
+      "t": "Email",
+      "p": "{KONTAKT_EMAIL}"
+    },
+    "karta.telefon": {
+      "t": "Phone",
+      "p": "{KONTAKT_TELEFON}"
+    },
+    "mapa": {
+      "t": ""
+    },
+    "mapa.jak-se-dostat": {
+      "t": "Getting here"
+    },
+    "mapa.nadpis": {
+      "t": "Where to find us"
+    },
+    "mapa.nadtitulek": {
+      "t": "FIND US"
+    },
+    "seo.popis": {
+      "t": "Get in touch — contact details, a form, a map and practical arrival information for Roubenka Ořechovka."
+    },
+    "seo.titulek": {
+      "t": "Contact"
+    },
+    "smer.auto": {
+      "t": "By car",
+      "p": "From Prague: D11 motorway, exit at Hradec Králové, then road I/37 towards Trutnov. From Trutnov about {VZDALENOST_TRUTNOV_KM} to Mladé Buky."
+    },
+    "smer.parkovani": {
+      "t": "Parking",
+      "p": "Free on-site parking, {POCET_PARKOVACICH_MIST} spaces."
+    },
+    "smer.vlak": {
+      "t": "By train",
+      "p": "Trutnov main railway station (connections from Prague via Hradec Králové), then a bus or taxi about {VZDALENOST_TRUTNOV_KM}."
+    },
+    "udaje": {
+      "t": ""
+    },
+    "udaje.nadpis": {
+      "t": "Get in touch"
+    },
+    "udaje.nadtitulek": {
+      "t": "CONTACT DETAILS"
+    }
+  },
+  "skryte": []
+}

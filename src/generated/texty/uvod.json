@@ -1,0 +1,753 @@
+{
+  "cs": {
+    "cenik": {
+      "t": ""
+    },
+    "cenik.nadtitulek": {
+      "t": "CENÍK"
+    },
+    "cenik.odkaz": {
+      "t": "Zobrazit celý ceník a časté dotazy →"
+    },
+    "cta": {
+      "t": ""
+    },
+    "cta.nadpis": {
+      "t": "Připraveni na pobyt v přírodě?"
+    },
+    "cta.podnadpis": {
+      "t": "{NAZEV_WEBU} čeká. Rezervujte si termín jednoduše a bezpečně přes Booking.com."
+    },
+    "galerie": {
+      "t": ""
+    },
+    "galerie.dlazdice": {
+      "t": "Celá\ngalerie →"
+    },
+    "galerie.nadpis": {
+      "t": "Nahlédněte do roubenky"
+    },
+    "galerie.nadtitulek": {
+      "t": "GALERIE"
+    },
+    "hero.foto": {
+      "t": "{NAZEV_WEBU} – dřevěná roubenka pod korunou ořešáku"
+    },
+    "hero.nadpis": {
+      "t": "{NAZEV_WEBU}"
+    },
+    "hero.podnadpis": {
+      "t": "Mladé Buky | Krkonoše"
+    },
+    "hero.tlacitko": {
+      "t": "Prohlédnout galerii"
+    },
+    "mapa": {
+      "t": ""
+    },
+    "mapa.adresa": {
+      "t": "{ADRESA_RADEK_1}\n{ADRESA_RADEK_2}"
+    },
+    "mapa.nadpis": {
+      "t": "Mladé Buky,\nKrkonoše"
+    },
+    "mapa.nadtitulek": {
+      "t": "KDE NÁS NAJDETE"
+    },
+    "mapa.odkaz": {
+      "t": "Kontaktní údaje a formulář →"
+    },
+    "mapa.vzdalenosti": {
+      "t": "{VZDALENOST_TRUTNOV_MIN} Trutnov\n{VZDALENOST_HRADEC_KRALOVE} Hradec Králové · {VZDALENOST_PEC_POD_SNEZKOU} Pec pod Sněžkou"
+    },
+    "novinky": {
+      "t": ""
+    },
+    "novinky.nadpis": {
+      "t": "Co je nového"
+    },
+    "novinky.nadtitulek": {
+      "t": "NOVINKY"
+    },
+    "novinky.odkaz": {
+      "t": "Otevřít odkaz"
+    },
+    "novinky.vice": {
+      "t": "Více informací →"
+    },
+    "o-nas": {
+      "t": ""
+    },
+    "o-nas.nadpis": {
+      "t": "Váš domov\nv Krkonoších"
+    },
+    "o-nas.nadtitulek": {
+      "t": "OŘECHOVKA"
+    },
+    "o-nas.text": {
+      "t": "Útulná roubenka v Mladých Bukách, kde si můžete užít Krkonoše naplno nebo zpomalit a jen tak být. Výlety do přírody, společné chvíle i lenošení na peci.\nKrásná místa, která stojí za to objevovat, máte z Ořechovky na dosah."
+    },
+    "o-nas.tlacitko": {
+      "t": "Více o roubence →"
+    },
+    "pocasi": {
+      "t": ""
+    },
+    "pocasi.chyba": {
+      "t": "Počasí se nepodařilo načíst. Zkuste to prosím později."
+    },
+    "pocasi.nadpis": {
+      "t": "Počasí v okolí Mladých Buků"
+    },
+    "pocasi.vychod": {
+      "t": "Východ"
+    },
+    "pocasi.zapad": {
+      "t": "Západ"
+    },
+    "statistiky": {
+      "t": ""
+    },
+    "statistiky.polozky": [
+      {
+        "t": "{POCET_LOZNIC}",
+        "p": "Ložnice",
+        "i": "Manželská postel"
+      },
+      {
+        "t": "{KAPACITA}",
+        "p": "Kapacita",
+        "i": "Lidé"
+      },
+      {
+        "t": "{POCET_KOUPELEN}",
+        "p": "Koupelna",
+        "i": "Kapka"
+      },
+      {
+        "t": "{VELIKOST_ZAHRADY}",
+        "p": "Zahrada",
+        "i": "Stromy"
+      },
+      {
+        "t": "WiFi",
+        "p": "Internet zdarma",
+        "i": "WiFi"
+      },
+      {
+        "t": "Zdarma",
+        "p": "Parkování",
+        "i": "Parkování"
+      }
+    ],
+    "tipy": {
+      "t": ""
+    },
+    "tipy.adrspach": {
+      "t": "Adršpašské skály",
+      "p": "{VZDALENOST_ADRSPACH}"
+    },
+    "tipy.mlade-buky": {
+      "t": "Areál Mladé Buky",
+      "p": "1,8 km"
+    },
+    "tipy.nadpis": {
+      "t": "Zajímavá místa v okolí"
+    },
+    "tipy.nadtitulek": {
+      "t": "TIPY NA VÝLETY"
+    },
+    "tipy.odkaz": {
+      "t": "Zobrazit všechny tipy na výlety →"
+    },
+    "tipy.pripona": {
+      "t": "od roubenky"
+    },
+    "tipy.snezka": {
+      "t": "Sněžka",
+      "p": "{VZDALENOST_SNEZKA}"
+    },
+    "tipy.zoo": {
+      "t": "Zoo Dvůr Králové",
+      "p": "{VZDALENOST_ZOO_DVUR_KRALOVE}"
+    },
+    "vyhody": {
+      "t": ""
+    },
+    "vyhody.deti": [
+      {
+        "t": "Jídelní židlička",
+        "i": "Dítě"
+      },
+      {
+        "t": "Dětská postýlka",
+        "i": "Postel"
+      },
+      {
+        "t": "Nočník a WC prkénko",
+        "i": "WC"
+      },
+      {
+        "t": "Hračky a deskové hry",
+        "i": "Hračky"
+      }
+    ],
+    "vyhody.deti.nazev": {
+      "t": "Pro děti"
+    },
+    "vyhody.extra": [
+      {
+        "t": "Uzamykatelná kolárna a lyžárna",
+        "i": "Kolo"
+      },
+      {
+        "t": "Wifi připojení",
+        "i": "WiFi"
+      },
+      {
+        "t": "Parkování zdarma",
+        "i": "Parkování"
+      },
+      {
+        "t": "Roubenka je nekuřácká",
+        "i": "Nekuřácké"
+      },
+      {
+        "t": "Bez domácích mazlíčků",
+        "i": "Zvířata"
+      }
+    ],
+    "vyhody.kuchyn": [
+      {
+        "t": "Myčka na nádobí",
+        "i": "Nádobí"
+      },
+      {
+        "t": "Lednice s mrazákem",
+        "i": "Lednice"
+      },
+      {
+        "t": "Horkovzdušná trouba",
+        "i": "Oheň"
+      },
+      {
+        "t": "Indukční deska",
+        "i": "Hrnec"
+      },
+      {
+        "t": "Mikrovlnná trouba",
+        "i": "Mikrovlnka"
+      },
+      {
+        "t": "Kávovar",
+        "i": "Káva"
+      },
+      {
+        "t": "Varná konvice",
+        "i": "Konvice"
+      },
+      {
+        "t": "Topinkovač",
+        "i": "Toustovač"
+      }
+    ],
+    "vyhody.kuchyn.nazev": {
+      "t": "Kuchyň"
+    },
+    "vyhody.nadpis": {
+      "t": "Co roubenka nabízí"
+    },
+    "vyhody.nadtitulek": {
+      "t": "O ROUBENCE"
+    },
+    "vyhody.ostatni": [
+      {
+        "t": "Pračka",
+        "i": "Pračka"
+      },
+      {
+        "t": "Sušička",
+        "i": "Sušička"
+      },
+      {
+        "t": "Fén",
+        "i": "Fén"
+      },
+      {
+        "t": "Žehlička",
+        "i": "Žehlička"
+      },
+      {
+        "t": "Sušák na lyžařské boty",
+        "i": "Boty"
+      }
+    ],
+    "vyhody.ostatni.nazev": {
+      "t": "Ostatní vybavení"
+    },
+    "vyhody.patro": {
+      "t": "Patro"
+    },
+    "vyhody.pokoj.patro-ctyrlozkovy": {
+      "t": "Čtyřlůžkový pokoj",
+      "p": "2x manželská postel"
+    },
+    "vyhody.pokoj.patro-dvoulozkovy": {
+      "t": "Dvoulůžkový pokoj",
+      "p": "manželská postel"
+    },
+    "vyhody.pokoj.patro-koupelna": {
+      "t": "Koupelna",
+      "p": "sprchový kout, samostatné WC"
+    },
+    "vyhody.pokoj.patro-sestilozkovy": {
+      "t": "Šestilůžkový pokoj",
+      "p": "1× manželská postel\n2× jednolůžková postel\nHambálka – spaní v podkroví pro 2 osoby"
+    },
+    "vyhody.pokoj.prizemi-dvoulozkovy": {
+      "t": "Dvoulůžkový pokoj",
+      "p": "manželská postel"
+    },
+    "vyhody.pokoj.prizemi-koupelna": {
+      "t": "Koupelna",
+      "p": "sprchový kout a WC"
+    },
+    "vyhody.pokoje.nadpis": {
+      "t": "Pokoje a koupelny"
+    },
+    "vyhody.pokoje.poznamka": {
+      "t": "Připraveny včetně ložního prádla a osušek."
+    },
+    "vyhody.prizemi": {
+      "t": "Přízemí"
+    },
+    "vyhody.souhrn": {
+      "t": ""
+    },
+    "vyhody.svetnice": [
+      {
+        "t": "Kachlová pec s ležením",
+        "i": "Oheň"
+      },
+      {
+        "t": "Dřevěný stůl s rohovou lavicí",
+        "i": "Stůl"
+      },
+      {
+        "t": "Smart TV",
+        "i": "Televize"
+      }
+    ],
+    "vyhody.svetnice.nazev": {
+      "t": "Světnice"
+    },
+    "vyhody.tvary.koupelny": {
+      "t": "koupelna | koupelny | koupelen"
+    },
+    "vyhody.tvary.luzka": {
+      "t": "lůžko | lůžka | lůžek"
+    },
+    "vyhody.tvary.podlazi": {
+      "t": "podlaží | podlaží | podlaží"
+    },
+    "vyhody.uvod": [
+      {
+        "t": "Ořechovka je nově postavená tradiční roubenka s veškerým komfortem dnešní doby — ideální pro rodinnou dovolenou i pobyt s přáteli až pro 10 osob."
+      },
+      {
+        "t": "V přízemí vás čeká prostorná světnice s velkým dřevěným stolem a kachlovou pecí, srdcem celé chalupy. Zahrada s terasou pak zve k posezení pod vzrostlým ořechem i večernímu opékání na ohništi."
+      }
+    ],
+    "vyhody.vybaveni.nadpis": {
+      "t": "Vybavení"
+    },
+    "vyhody.vybaveni.poznamka": {
+      "t": "Kompletně vybavená kuchyň i domácnost."
+    },
+    "webkamera": {
+      "t": ""
+    },
+    "webkamera.nadpis": {
+      "t": "Webkamera – Ski areál Mladé Buky"
+    },
+    "webkamera.stitek": {
+      "t": "LIVE"
+    }
+  },
+  "en": {
+    "cenik": {
+      "t": ""
+    },
+    "cenik.nadtitulek": {
+      "t": "RATES"
+    },
+    "cenik.odkaz": {
+      "t": "See the full price list and FAQ →"
+    },
+    "cta": {
+      "t": ""
+    },
+    "cta.nadpis": {
+      "t": "Ready for a stay in nature?"
+    },
+    "cta.podnadpis": {
+      "t": "{NAZEV_WEBU} is waiting. Book your dates simply and safely via Booking.com."
+    },
+    "galerie": {
+      "t": ""
+    },
+    "galerie.dlazdice": {
+      "t": "Full\ngallery →"
+    },
+    "galerie.nadpis": {
+      "t": "Take a look inside"
+    },
+    "galerie.nadtitulek": {
+      "t": "GALLERY"
+    },
+    "hero.foto": {
+      "t": "{NAZEV_WEBU} – a wooden log cabin framed by the walnut tree above it"
+    },
+    "hero.nadpis": {
+      "t": "{NAZEV_WEBU}"
+    },
+    "hero.podnadpis": {
+      "t": "Mladé Buky | Krkonoše, Czechia"
+    },
+    "hero.tlacitko": {
+      "t": "View the gallery"
+    },
+    "mapa": {
+      "t": ""
+    },
+    "mapa.adresa": {
+      "t": "{ADRESA_RADEK_1}\n{ADRESA_RADEK_2}"
+    },
+    "mapa.nadpis": {
+      "t": "Mladé Buky,\nKrkonoše"
+    },
+    "mapa.nadtitulek": {
+      "t": "WHERE TO FIND US"
+    },
+    "mapa.odkaz": {
+      "t": "Contact details and form →"
+    },
+    "mapa.vzdalenosti": {
+      "t": "{VZDALENOST_TRUTNOV_MIN} from Trutnov\n{VZDALENOST_HRADEC_KRALOVE} Hradec Králové · {VZDALENOST_PEC_POD_SNEZKOU} Pec pod Sněžkou"
+    },
+    "novinky": {
+      "t": ""
+    },
+    "novinky.nadpis": {
+      "t": "What's new"
+    },
+    "novinky.nadtitulek": {
+      "t": "NEWS"
+    },
+    "novinky.odkaz": {
+      "t": "Open link"
+    },
+    "novinky.vice": {
+      "t": "Read more →"
+    },
+    "o-nas": {
+      "t": ""
+    },
+    "o-nas.nadpis": {
+      "t": "Your home\nin the Krkonoše"
+    },
+    "o-nas.nadtitulek": {
+      "t": "OŘECHOVKA"
+    },
+    "o-nas.text": {
+      "t": "A cozy log cabin in Mladé Buky, where you can enjoy the Krkonoše mountains to the full — or just slow down and be. Trips into nature, time together, and lazing by the stove.\nBeautiful places worth exploring are all within easy reach of Ořechovka."
+    },
+    "o-nas.tlacitko": {
+      "t": "More about the cabin →"
+    },
+    "pocasi": {
+      "t": ""
+    },
+    "pocasi.chyba": {
+      "t": "Couldn't load the weather. Please try again later."
+    },
+    "pocasi.nadpis": {
+      "t": "Weather around Mladé Buky"
+    },
+    "pocasi.vychod": {
+      "t": "Sunrise"
+    },
+    "pocasi.zapad": {
+      "t": "Sunset"
+    },
+    "statistiky": {
+      "t": ""
+    },
+    "statistiky.polozky": [
+      {
+        "t": "{POCET_LOZNIC}",
+        "p": "Bedrooms",
+        "i": "Manželská postel"
+      },
+      {
+        "t": "{KAPACITA}",
+        "p": "Capacity",
+        "i": "Lidé"
+      },
+      {
+        "t": "{POCET_KOUPELEN}",
+        "p": "Bathroom",
+        "i": "Kapka"
+      },
+      {
+        "t": "{VELIKOST_ZAHRADY}",
+        "p": "Garden",
+        "i": "Stromy"
+      },
+      {
+        "t": "WiFi",
+        "p": "Free internet",
+        "i": "WiFi"
+      },
+      {
+        "t": "Free",
+        "p": "Parking",
+        "i": "Parkování"
+      }
+    ],
+    "tipy": {
+      "t": ""
+    },
+    "tipy.adrspach": {
+      "t": "Adršpach Rocks",
+      "p": "{VZDALENOST_ADRSPACH}"
+    },
+    "tipy.mlade-buky": {
+      "t": "Mladé Buky resort",
+      "p": "1.8 km"
+    },
+    "tipy.nadpis": {
+      "t": "Interesting places nearby"
+    },
+    "tipy.nadtitulek": {
+      "t": "TRIP IDEAS"
+    },
+    "tipy.odkaz": {
+      "t": "See all trip ideas →"
+    },
+    "tipy.pripona": {
+      "t": "from the cabin"
+    },
+    "tipy.snezka": {
+      "t": "Sněžka",
+      "p": "{VZDALENOST_SNEZKA}"
+    },
+    "tipy.zoo": {
+      "t": "Dvůr Králové Zoo",
+      "p": "{VZDALENOST_ZOO_DVUR_KRALOVE}"
+    },
+    "vyhody": {
+      "t": ""
+    },
+    "vyhody.deti": [
+      {
+        "t": "High chair",
+        "i": "Dítě"
+      },
+      {
+        "t": "Crib",
+        "i": "Postel"
+      },
+      {
+        "t": "Potty and toilet seat",
+        "i": "WC"
+      },
+      {
+        "t": "Toys and board games",
+        "i": "Hračky"
+      }
+    ],
+    "vyhody.deti.nazev": {
+      "t": "For kids"
+    },
+    "vyhody.extra": [
+      {
+        "t": "Lockable bike and ski storage",
+        "i": "Kolo"
+      },
+      {
+        "t": "Wifi connection",
+        "i": "WiFi"
+      },
+      {
+        "t": "Free parking",
+        "i": "Parkování"
+      },
+      {
+        "t": "The cabin is non-smoking",
+        "i": "Nekuřácké"
+      },
+      {
+        "t": "No pets allowed",
+        "i": "Zvířata"
+      }
+    ],
+    "vyhody.kuchyn": [
+      {
+        "t": "Dishwasher",
+        "i": "Nádobí"
+      },
+      {
+        "t": "Fridge-freezer",
+        "i": "Lednice"
+      },
+      {
+        "t": "Convection oven",
+        "i": "Oheň"
+      },
+      {
+        "t": "Induction hob",
+        "i": "Hrnec"
+      },
+      {
+        "t": "Microwave",
+        "i": "Mikrovlnka"
+      },
+      {
+        "t": "Coffee maker",
+        "i": "Káva"
+      },
+      {
+        "t": "Kettle",
+        "i": "Konvice"
+      },
+      {
+        "t": "Toaster",
+        "i": "Toustovač"
+      }
+    ],
+    "vyhody.kuchyn.nazev": {
+      "t": "Kitchen"
+    },
+    "vyhody.nadpis": {
+      "t": "What the cabin offers"
+    },
+    "vyhody.nadtitulek": {
+      "t": "ABOUT THE CABIN"
+    },
+    "vyhody.ostatni": [
+      {
+        "t": "Washing machine",
+        "i": "Pračka"
+      },
+      {
+        "t": "Dryer",
+        "i": "Sušička"
+      },
+      {
+        "t": "Hairdryer",
+        "i": "Fén"
+      },
+      {
+        "t": "Iron",
+        "i": "Žehlička"
+      },
+      {
+        "t": "Ski-boot dryer",
+        "i": "Boty"
+      }
+    ],
+    "vyhody.ostatni.nazev": {
+      "t": "Other equipment"
+    },
+    "vyhody.patro": {
+      "t": "Upper floor"
+    },
+    "vyhody.pokoj.patro-ctyrlozkovy": {
+      "t": "Four-bed room",
+      "p": "2x double bed"
+    },
+    "vyhody.pokoj.patro-dvoulozkovy": {
+      "t": "Double room",
+      "p": "one double bed"
+    },
+    "vyhody.pokoj.patro-koupelna": {
+      "t": "Bathroom",
+      "p": "shower, separate WC"
+    },
+    "vyhody.pokoj.patro-sestilozkovy": {
+      "t": "Six-bed room",
+      "p": "1× double bed\n2× single bed\nLoft (hambálka) sleeping 2"
+    },
+    "vyhody.pokoj.prizemi-dvoulozkovy": {
+      "t": "Double room",
+      "p": "one double bed"
+    },
+    "vyhody.pokoj.prizemi-koupelna": {
+      "t": "Bathroom",
+      "p": "shower and WC"
+    },
+    "vyhody.pokoje.nadpis": {
+      "t": "Rooms and bathrooms"
+    },
+    "vyhody.pokoje.poznamka": {
+      "t": "Ready with bed linen and towels included."
+    },
+    "vyhody.prizemi": {
+      "t": "Ground floor"
+    },
+    "vyhody.souhrn": {
+      "t": ""
+    },
+    "vyhody.svetnice": [
+      {
+        "t": "Tiled stove with a sleeping bench",
+        "i": "Oheň"
+      },
+      {
+        "t": "Wooden table with a corner bench",
+        "i": "Stůl"
+      },
+      {
+        "t": "Smart TV",
+        "i": "Televize"
+      }
+    ],
+    "vyhody.svetnice.nazev": {
+      "t": "Living room"
+    },
+    "vyhody.tvary.koupelny": {
+      "t": "bathroom | bathrooms | bathrooms"
+    },
+    "vyhody.tvary.luzka": {
+      "t": "bed | beds | beds"
+    },
+    "vyhody.tvary.podlazi": {
+      "t": "floor | floors | floors"
+    },
+    "vyhody.uvod": [
+      {
+        "t": "Ořechovka is a newly built traditional log cabin with all the comforts of today — ideal for a family holiday or a stay with friends, sleeping up to 10."
+      },
+      {
+        "t": "On the ground floor you'll find a spacious living room with a large wooden dining table and a tiled stove, the heart of the whole cabin. The garden with a terrace invites you to sit outside under the old walnut tree or grill in the evening at the outdoor fire pit."
+      }
+    ],
+    "vyhody.vybaveni.nadpis": {
+      "t": "Amenities"
+    },
+    "vyhody.vybaveni.poznamka": {
+      "t": "A fully equipped kitchen and household."
+    },
+    "webkamera": {
+      "t": ""
+    },
+    "webkamera.nadpis": {
+      "t": "Webcam – Mladé Buky ski area"
+    },
+    "webkamera.stitek": {
+      "t": "LIVE"
+    }
+  },
+  "skryte": []
+}

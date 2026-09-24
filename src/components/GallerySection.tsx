@@ -7,28 +7,31 @@ import { motion } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { withBasePath } from "@/lib/basePath";
+import { texty, type Locale } from "@/lib/texty";
+import Radky from "@/components/Radky";
 
+// altId = řádek s popisem fotky na stránce Společné v Notionu.
 const GALLERY = [
-  { src: withBasePath("/images/gallery-1.jpg"), alt: "Roubenka Ořechovka zvenčí" },
-  { src: withBasePath("/images/gallery-2.jpg"), alt: "Kachlový krb s posezením" },
-  { src: withBasePath("/images/gallery-3.jpg"), alt: "Kuchyně s výhledem do zahrady" },
-  { src: withBasePath("/images/gallery-4.png"), alt: "Podkrovní ložnice s vikýřem" },
-  { src: withBasePath("/images/carousel-1.jpg"), alt: "Jídelní stůl z masivního dřeva" },
-  { src: withBasePath("/images/carousel-2.png"), alt: "Obývací pokoj s křesly" },
-  { src: withBasePath("/images/adv-soukromi.png"), alt: "Zahrada s kamennou zídkou" },
+  { src: withBasePath("/images/gallery-1.jpg"), altId: "foto.gallery-1" },
+  { src: withBasePath("/images/gallery-2.jpg"), altId: "foto.gallery-2" },
+  { src: withBasePath("/images/gallery-3.jpg"), altId: "foto.gallery-3" },
+  { src: withBasePath("/images/gallery-4.png"), altId: "foto.gallery-4" },
+  { src: withBasePath("/images/carousel-1.jpg"), altId: "foto.carousel-1" },
+  { src: withBasePath("/images/carousel-2.png"), altId: "foto.carousel-2" },
+  { src: withBasePath("/images/adv-soukromi.png"), altId: "foto.adv-soukromi" },
 ];
-
-type Locale = "cs" | "en";
-
-const TEXT: Record<Locale, { eyebrow: string; heading: string; galleryHref: string; tile: [string, string] }> = {
-  cs: { eyebrow: "GALERIE", heading: "Nahlédněte do roubenky", galleryHref: "/galerie", tile: ["Celá", "galerie →"] },
-  en: { eyebrow: "GALLERY", heading: "Take a look inside", galleryHref: "/en/galerie", tile: ["Full", "gallery →"] },
-};
 
 export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
-  const t = TEXT[locale];
+  const u = texty("uvod", locale);
+  const s = texty("spolecne", locale);
+  if (!u.sekce("galerie")) return null;
+
+  const eyebrow = u.t("galerie.nadtitulek");
+  const heading = u.t("galerie.nadpis");
+  const tile = u.t("galerie.dlazdice");
+  const photos = GALLERY.map((g) => ({ src: g.src, alt: s.vzdy(g.altId) }));
 
   const openAt = (i: number) => {
     setIndex(i);
@@ -38,13 +41,17 @@ export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
   return (
     <section id="galerie" className="bg-cream px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
       <div className="mx-auto max-w-[1440px]">
-        <div className="flex flex-col gap-[5px]">
-          <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{t.eyebrow}</p>
-          <div className="h-[2px] w-7 bg-brand-gradient" />
-        </div>
-        <h2 className="mt-3 max-w-[514px] font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">
-          {t.heading}
-        </h2>
+        {eyebrow && (
+          <div className="flex flex-col gap-[5px]">
+            <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{eyebrow}</p>
+            <div className="h-[2px] w-7 bg-brand-gradient" />
+          </div>
+        )}
+        {heading && (
+          <h2 className="mt-3 max-w-[514px] font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">
+            {heading}
+          </h2>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -58,7 +65,7 @@ export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
             onClick={() => openAt(0)}
             className="relative h-[220px] w-full overflow-hidden rounded-md sm:h-[260px] sm:flex-[400]"
           >
-            <Image src={GALLERY[0].src} alt={GALLERY[0].alt} fill sizes="(min-width: 640px) 32vw, 100vw" className="object-cover transition-transform hover:scale-105" />
+            <Image src={photos[0].src} alt={photos[0].alt} fill sizes="(min-width: 640px) 32vw, 100vw" className="object-cover transition-transform hover:scale-105" />
           </button>
 
           <div className="flex gap-3 sm:contents">
@@ -67,14 +74,14 @@ export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
               onClick={() => openAt(1)}
               className="relative h-[180px] w-1/2 overflow-hidden rounded-md sm:h-[260px] sm:w-auto sm:flex-[300]"
             >
-              <Image src={GALLERY[1].src} alt={GALLERY[1].alt} fill sizes="(min-width: 640px) 24vw, 50vw" className="object-cover transition-transform hover:scale-105" />
+              <Image src={photos[1].src} alt={photos[1].alt} fill sizes="(min-width: 640px) 24vw, 50vw" className="object-cover transition-transform hover:scale-105" />
             </button>
             <button
               type="button"
               onClick={() => openAt(2)}
               className="relative h-[180px] w-1/2 overflow-hidden rounded-md sm:h-[260px] sm:w-auto sm:flex-[300]"
             >
-              <Image src={GALLERY[2].src} alt={GALLERY[2].alt} fill sizes="(min-width: 640px) 24vw, 50vw" className="object-cover transition-transform hover:scale-105" />
+              <Image src={photos[2].src} alt={photos[2].alt} fill sizes="(min-width: 640px) 24vw, 50vw" className="object-cover transition-transform hover:scale-105" />
             </button>
           </div>
 
@@ -84,25 +91,25 @@ export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
               onClick={() => openAt(3)}
               className="relative h-[100px] w-1/2 overflow-hidden rounded-md sm:h-[124px] sm:w-full"
             >
-              <Image src={GALLERY[3].src} alt={GALLERY[3].alt} fill sizes="(min-width: 640px) 11vw, 50vw" className="object-cover transition-transform hover:scale-105" />
+              <Image src={photos[3].src} alt={photos[3].alt} fill sizes="(min-width: 640px) 11vw, 50vw" className="object-cover transition-transform hover:scale-105" />
             </button>
-            <Link
-              href={t.galleryHref}
-              className="group relative block h-[100px] w-1/2 overflow-hidden rounded-md bg-espresso sm:h-[124px] sm:w-full"
-            >
-              <Image
-                src={withBasePath("/images/gallery-tile-bg.png")}
-                alt=""
-                fill
-                sizes="(min-width: 640px) 11vw, 50vw"
-                className="object-cover opacity-35 transition-transform group-hover:scale-105"
-              />
-              <span className="absolute inset-0 flex items-center justify-center text-center text-sm font-semibold leading-tight text-white">
-                {t.tile[0]}
-                <br />
-                {t.tile[1]}
-              </span>
-            </Link>
+            {tile && (
+              <Link
+                href={locale === "cs" ? "/galerie" : "/en/galerie"}
+                className="group relative block h-[100px] w-1/2 overflow-hidden rounded-md bg-espresso sm:h-[124px] sm:w-full"
+              >
+                <Image
+                  src={withBasePath("/images/gallery-tile-bg.png")}
+                  alt=""
+                  fill
+                  sizes="(min-width: 640px) 11vw, 50vw"
+                  className="object-cover opacity-35 transition-transform group-hover:scale-105"
+                />
+                <span className="absolute inset-0 flex items-center justify-center text-center text-sm font-semibold leading-tight text-white">
+                  <Radky text={tile} />
+                </span>
+              </Link>
+            )}
           </div>
         </motion.div>
       </div>
@@ -111,7 +118,7 @@ export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
         open={open}
         close={() => setOpen(false)}
         index={index}
-        slides={GALLERY.map((g) => ({ src: g.src, alt: g.alt }))}
+        slides={photos}
       />
     </section>
   );

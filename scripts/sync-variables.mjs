@@ -77,6 +77,7 @@ async function main() {
   }
 
   const variables = {};
+  const variablesEn = {};
   for (const row of rows) {
     if (!("properties" in row)) continue;
     const key = readTitle(row.properties["Název proměnné"]);
@@ -88,6 +89,8 @@ async function main() {
       continue;
     }
     variables[key] = readRichText(row.properties["Hodnota"]);
+    // Prázdná Hodnota EN = hodnota je v obou jazycích stejná (URL, čísla, km).
+    variablesEn[key] = readRichText(row.properties["Hodnota EN"]) || variables[key];
   }
 
   const keys = Object.keys(variables).sort();
@@ -98,14 +101,19 @@ async function main() {
     return;
   }
 
-  const body = keys.map((k) => `  ${k}: ${JSON.stringify(variables[k])},`).join("\n");
+  const body = (values) => keys.map((k) => `  ${k}: ${JSON.stringify(values[k])},`).join("\n");
   const contents = `// Tento soubor je generovaný — needituj ho ručně, změny se přepíší.
 // Vygenerováno z Notion databáze "Variables" skriptem scripts/sync-variables.mjs.
 // Zdroj pravdy: https://app.notion.com/p/8292a07ec2cf4ec0b77fe7d01ab7c1a4
 
 export const V = {
-${body}
+${body(variables)}
 } as const;
+
+// Anglická verze pro /en stránky — sloupec "Hodnota EN", prázdný = stejné jako V.
+export const V_EN: Record<keyof typeof V, string> = {
+${body(variablesEn)}
+};
 `;
 
   mkdirSync(dirname(OUT_FILE), { recursive: true });

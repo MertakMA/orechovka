@@ -7,38 +7,24 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import PlaceholderTile from "./PlaceholderTile";
 import { withBasePath } from "@/lib/basePath";
+import { commonsFile } from "@/lib/commonsImage";
+import { texty, type Locale } from "@/lib/texty";
 
 type Photo = { src: string; alt: string };
+// altId = řádek s popisem fotky v Notionu (spolecne.* sdílené s úvodní stránkou, galerie.* jen tady).
+type PhotoDef = { src: string; altId: string; stranka: "spolecne" | "galerie" };
 
 type Filter = "vse" | "exterier" | "interier" | "okoli";
-type Locale = "cs" | "en";
+type Category = Exclude<Filter, "vse">;
 
-const FILTERS: Record<Locale, { key: Filter; label: string }[]> = {
-  cs: [
-    { key: "vse", label: "Vše" },
-    { key: "exterier", label: "Exteriér" },
-    { key: "interier", label: "Interiér" },
-    { key: "okoli", label: "Okolí a Výlety" },
-  ],
-  en: [
-    { key: "vse", label: "All" },
-    { key: "exterier", label: "Exterior" },
-    { key: "interier", label: "Interior" },
-    { key: "okoli", label: "Nearby & Trips" },
-  ],
-};
-
-const CATEGORY_LABELS: Record<Locale, { exterier: string; interier: string; okoli: string }> = {
-  cs: { exterier: "Exteriér", interier: "Interiér", okoli: "Okolí a Výlety" },
-  en: { exterier: "Exterior", interier: "Interior", okoli: "Nearby & Trips" },
-};
+const shared = (src: string, altId: string): PhotoDef => ({ src, altId, stranka: "spolecne" });
 
 // TODO: nahradit placeholdery reálnými exteriérovými fotkami roubenky.
-const EXTERIER: (Photo | null)[] = [
-  { src: withBasePath("/images/hero.jpg"), alt: "Roubenka Ořechovka zvenčí v létě" },
-  { src: withBasePath("/images/adv-priroda.jpg"), alt: "Pohled na roubenku a okolní krajinu" },
+const EXTERIER: (PhotoDef | null)[] = [
+  shared(withBasePath("/images/hero.jpg"), "foto.hero"),
+  shared(withBasePath("/images/adv-priroda.jpg"), "foto.adv-priroda"),
   null,
-  { src: withBasePath("/images/adv-soukromi.png"), alt: "Oplocená zahrada s kamennou zídkou" },
+  shared(withBasePath("/images/adv-soukromi.png"), "foto.adv-soukromi"),
   null,
   null,
   null,
@@ -46,27 +32,23 @@ const EXTERIER: (Photo | null)[] = [
   null,
 ];
 
-const INTERIER: Photo[] = [
-  { src: withBasePath("/images/carousel-3.jpg"), alt: "Otevřená kuchyně a obývací část roubenky" },
-  { src: withBasePath("/images/carousel-1.jpg"), alt: "Jídelní stůl z masivního dřeva" },
-  { src: withBasePath("/images/adv-krb.jpg"), alt: "Kachlový krb s posezením" },
-  { src: withBasePath("/images/gallery-3.jpg"), alt: "Kuchyně s výhledem do zahrady" },
-  { src: withBasePath("/images/carousel-2.png"), alt: "Obývací pokoj s křesly" },
+const INTERIER: PhotoDef[] = [
+  shared(withBasePath("/images/carousel-3.jpg"), "foto.carousel-3"),
+  shared(withBasePath("/images/carousel-1.jpg"), "foto.carousel-1"),
+  shared(withBasePath("/images/adv-krb.jpg"), "foto.adv-krb"),
+  shared(withBasePath("/images/gallery-3.jpg"), "foto.gallery-3"),
+  shared(withBasePath("/images/carousel-2.png"), "foto.carousel-2"),
 ];
 
-// TODO: nahradit reálnými fotkami okolí a výletních cílů, nyní jde o neutrální placeholdery.
-const OKOLI: Photo[] = [
-  { src: "https://picsum.photos/seed/snezka-krkonose/500/500", alt: "Sněžka" },
-  { src: "https://picsum.photos/seed/zoo-dvur-kralove/500/500", alt: "Zoo Dvůr Králové" },
-  { src: "https://picsum.photos/seed/rychory-prirodni-rezervace/500/500", alt: "Rýchory" },
-  { src: "https://picsum.photos/seed/adrspassko-teplicke-skaly/500/500", alt: "Adršpašské skály" },
-  { src: "https://picsum.photos/seed/krkonose-panorama/500/500", alt: "Krkonoše" },
-];
-
-const ALL_PHOTOS: Photo[] = [
-  ...EXTERIER.filter((p): p is Photo => Boolean(p)),
-  ...INTERIER,
-  ...OKOLI,
+// Stejné ilustrační fotky (Wikimedia Commons, viz lib/commonsImage.ts) jako
+// na podstránce Tipy na výlety — dokud klient nedodá vlastní fotky míst
+// v okolí, ukazujeme aspoň reálná místa místo neutrálních Picsum placeholderů.
+const OKOLI: PhotoDef[] = [
+  { src: commonsFile("Sněžka a Obří důl.jpg"), altId: "foto.okoli.snezka", stranka: "galerie" },
+  { src: commonsFile("ZOO Dvůr Králové, vyhlídka v safari.JPG"), altId: "foto.okoli.zoo", stranka: "galerie" },
+  { src: commonsFile("Adršpašskoteplické skály 02.JPG"), altId: "foto.okoli.adrspach", stranka: "galerie" },
+  { src: commonsFile("Ansicht kreuzberg abfahrten 2009.jpg"), altId: "foto.okoli.mlade-buky", stranka: "galerie" },
+  { src: commonsFile("Stezka korunami stromů Krkonoše 2024.jpg"), altId: "foto.okoli.stezka", stranka: "galerie" },
 ];
 
 function Tile({
@@ -74,14 +56,16 @@ function Tile({
   className,
   sizes,
   onOpen,
+  placeholder,
 }: {
   photo: Photo | null;
   className?: string;
   sizes: string;
   onOpen: (photo: Photo) => void;
+  placeholder: string | null;
 }) {
   if (!photo) {
-    return <PlaceholderTile className={className} />;
+    return <PlaceholderTile className={className} label={placeholder} />;
   }
   return (
     <button
@@ -93,7 +77,6 @@ function Tile({
         src={photo.src}
         alt={photo.alt}
         fill
-        unoptimized={photo.src.startsWith("https://picsum.photos")}
         sizes={sizes}
         className="object-cover transition-transform duration-300 group-hover:scale-105"
       />
@@ -108,17 +91,42 @@ function CategoryLabel({ children }: { children: React.ReactNode }) {
 export default function GalleryFilterGrid({ locale = "cs" }: { locale?: Locale }) {
   const [filter, setFilter] = useState<Filter>("vse");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const filters = FILTERS[locale];
-  const categoryLabels = CATEGORY_LABELS[locale];
+  const g = texty("galerie", locale);
+  const s = texty("spolecne", locale);
+  const resolve = (def: PhotoDef): Photo => ({ src: def.src, alt: (def.stranka === "galerie" ? g : s).vzdy(def.altId) });
+  const exterier = EXTERIER.map((def) => (def ? resolve(def) : null));
+  const interier = INTERIER.map(resolve);
+  const okoli = OKOLI.map(resolve);
+  const placeholder = g.t("zastupna-fotka");
+
+  // Skrytá kategorie v Notionu = zmizí tlačítko filtru i celá skupina fotek.
+  const labels: Record<Category, string | null> = {
+    exterier: g.t("kategorie.exterier"),
+    interier: g.t("kategorie.interier"),
+    okoli: g.t("kategorie.okoli"),
+  };
+  const allLabel = g.t("filtr.vse");
+  const filters: { key: Filter; label: string }[] = [
+    ...(allLabel ? [{ key: "vse" as const, label: allLabel }] : []),
+    ...(Object.keys(labels) as Category[]).flatMap((key) => {
+      const label = labels[key];
+      return label ? [{ key, label }] : [];
+    }),
+  ];
+  const allPhotos: Photo[] = [
+    ...(labels.exterier ? exterier.filter((p): p is Photo => Boolean(p)) : []),
+    ...(labels.interier ? interier : []),
+    ...(labels.okoli ? okoli : []),
+  ];
 
   const openPhoto = (photo: Photo) => {
-    const idx = ALL_PHOTOS.findIndex((p) => p.src === photo.src);
+    const idx = allPhotos.findIndex((p) => p.src === photo.src);
     setLightboxIndex(idx === -1 ? 0 : idx);
   };
 
-  const showExterier = filter === "vse" || filter === "exterier";
-  const showInterier = filter === "vse" || filter === "interier";
-  const showOkoli = filter === "vse" || filter === "okoli";
+  const showExterier = Boolean(labels.exterier) && (filter === "vse" || filter === "exterier");
+  const showInterier = Boolean(labels.interier) && (filter === "vse" || filter === "interier");
+  const showOkoli = Boolean(labels.okoli) && (filter === "vse" || filter === "okoli");
 
   const sizesWide = "(min-width: 1024px) 45vw, (min-width: 640px) 46vw, 100vw";
   const sizesQuarter = "(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 50vw";
@@ -153,24 +161,24 @@ export default function GalleryFilterGrid({ locale = "cs" }: { locale?: Locale }
         >
           {showExterier && (
             <section className="flex flex-col gap-5">
-              <CategoryLabel>{categoryLabels.exterier}</CategoryLabel>
+              <CategoryLabel>{labels.exterier}</CategoryLabel>
 
               <div className="hidden lg:grid lg:h-[340px] lg:grid-cols-4 lg:grid-rows-2 lg:gap-4">
-                <Tile photo={EXTERIER[0]} onOpen={openPhoto} sizes={sizesWide} className="col-span-2 row-span-2 h-full w-full" />
-                <Tile photo={EXTERIER[1]} onOpen={openPhoto} sizes={sizesQuarter} className="col-start-3 row-start-1 h-full w-full" />
-                <Tile photo={EXTERIER[2]} onOpen={openPhoto} sizes={sizesQuarter} className="col-start-3 row-start-2 h-full w-full" />
-                <Tile photo={EXTERIER[3]} onOpen={openPhoto} sizes={sizesQuarter} className="col-start-4 row-start-1 h-full w-full" />
-                <Tile photo={EXTERIER[4]} onOpen={openPhoto} sizes={sizesQuarter} className="col-start-4 row-start-2 h-full w-full" />
+                <Tile placeholder={placeholder} photo={exterier[0]} onOpen={openPhoto} sizes={sizesWide} className="col-span-2 row-span-2 h-full w-full" />
+                <Tile placeholder={placeholder} photo={exterier[1]} onOpen={openPhoto} sizes={sizesQuarter} className="col-start-3 row-start-1 h-full w-full" />
+                <Tile placeholder={placeholder} photo={exterier[2]} onOpen={openPhoto} sizes={sizesQuarter} className="col-start-3 row-start-2 h-full w-full" />
+                <Tile placeholder={placeholder} photo={exterier[3]} onOpen={openPhoto} sizes={sizesQuarter} className="col-start-4 row-start-1 h-full w-full" />
+                <Tile placeholder={placeholder} photo={exterier[4]} onOpen={openPhoto} sizes={sizesQuarter} className="col-start-4 row-start-2 h-full w-full" />
               </div>
               <div className="hidden lg:grid lg:h-[200px] lg:grid-cols-4 lg:gap-4">
-                {EXTERIER.slice(5, 9).map((photo, i) => (
-                  <Tile key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
+                {exterier.slice(5, 9).map((photo, i) => (
+                  <Tile placeholder={placeholder} key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
                 ))}
               </div>
 
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:hidden">
-                {EXTERIER.map((photo, i) => (
-                  <Tile key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="aspect-[4/3]" />
+                {exterier.map((photo, i) => (
+                  <Tile placeholder={placeholder} key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="aspect-[4/3]" />
                 ))}
               </div>
             </section>
@@ -178,21 +186,21 @@ export default function GalleryFilterGrid({ locale = "cs" }: { locale?: Locale }
 
           {showInterier && (
             <section className="flex flex-col gap-5">
-              <CategoryLabel>{categoryLabels.interier}</CategoryLabel>
+              <CategoryLabel>{labels.interier}</CategoryLabel>
 
               <div className="hidden lg:grid lg:h-[240px] lg:grid-cols-4 lg:gap-4">
-                <Tile photo={INTERIER[0]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
-                <Tile photo={INTERIER[1]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
+                <Tile placeholder={placeholder} photo={interier[0]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
+                <Tile placeholder={placeholder} photo={interier[1]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
                 <div className="flex h-full flex-col gap-4">
-                  <Tile photo={INTERIER[2]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full flex-1" />
-                  <Tile photo={INTERIER[3]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full flex-1" />
+                  <Tile placeholder={placeholder} photo={interier[2]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full flex-1" />
+                  <Tile placeholder={placeholder} photo={interier[3]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full flex-1" />
                 </div>
-                <Tile photo={INTERIER[4]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
+                <Tile placeholder={placeholder} photo={interier[4]} onOpen={openPhoto} sizes={sizesQuarter} className="h-full w-full" />
               </div>
 
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:hidden">
-                {INTERIER.map((photo, i) => (
-                  <Tile key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="aspect-[4/3]" />
+                {interier.map((photo, i) => (
+                  <Tile placeholder={placeholder} key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="aspect-[4/3]" />
                 ))}
               </div>
             </section>
@@ -200,10 +208,10 @@ export default function GalleryFilterGrid({ locale = "cs" }: { locale?: Locale }
 
           {showOkoli && (
             <section className="flex flex-col gap-5">
-              <CategoryLabel>{categoryLabels.okoli}</CategoryLabel>
+              <CategoryLabel>{labels.okoli}</CategoryLabel>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
-                {OKOLI.map((photo, i) => (
-                  <Tile key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="aspect-[4/3] lg:aspect-auto lg:h-[200px]" />
+                {okoli.map((photo, i) => (
+                  <Tile placeholder={placeholder} key={i} photo={photo} onOpen={openPhoto} sizes={sizesQuarter} className="aspect-[4/3] lg:aspect-auto lg:h-[200px]" />
                 ))}
               </div>
             </section>
@@ -215,7 +223,7 @@ export default function GalleryFilterGrid({ locale = "cs" }: { locale?: Locale }
         open={lightboxIndex !== null}
         close={() => setLightboxIndex(null)}
         index={lightboxIndex ?? 0}
-        slides={ALL_PHOTOS.map((p) => ({ src: p.src, alt: p.alt }))}
+        slides={allPhotos}
       />
     </div>
   );

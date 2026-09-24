@@ -8,56 +8,41 @@ import { AnimatePresence, motion } from "framer-motion";
 import { withBasePath } from "@/lib/basePath";
 import { handleHashNavClick } from "@/lib/hashNav";
 import { V } from "@/generated/variables";
+import { texty, type Locale } from "@/lib/texty";
 
 const MotionLink = motion(Link);
 
-type Locale = "cs" | "en";
 type NavLink = { label: string; href: string; isNews?: boolean };
 
-const BASE_NAV_LINKS: Record<Locale, NavLink[]> = {
-  cs: [
-    { label: "O roubence", href: "/#vyhody" },
-    { label: "Galerie", href: "/galerie" },
-    { label: "Ceník", href: "/cenik" },
-    { label: "Kontakt", href: "/kontakt" },
-    { label: "Tipy na výlety", href: "/vylety" },
-  ],
-  en: [
-    { label: "About", href: "/en#vyhody" },
-    { label: "Gallery", href: "/en/galerie" },
-    { label: "Rates", href: "/en/cenik" },
-    { label: "Contact", href: "/en/kontakt" },
-    { label: "Trip ideas", href: "/en/vylety" },
-  ],
-};
-
-const NEWS_LINK: Record<Locale, NavLink> = {
-  cs: { label: "Novinky", href: "/#novinky", isNews: true },
-  en: { label: "News", href: "/en#novinky", isNews: true },
-};
-
-const SOCIAL_LINKS = [
-  { label: "Facebook", href: V.FACEBOOK_URL, icon: "/images/icons/facebook.svg" },
-  { label: "Instagram", href: V.INSTAGRAM_URL, icon: "/images/icons/instagram.svg" },
+// Novinky jsou zařazené hned za Kontakt a ukážou se, jen když nějaké jsou
+// (viz NewsSection — prázdno = sekce na webu vůbec není).
+const NAV_LINKS: { id: string; href: Record<Locale, string>; isNews?: boolean }[] = [
+  { id: "menu.o-roubence", href: { cs: "/#vyhody", en: "/en#vyhody" } },
+  { id: "menu.galerie", href: { cs: "/galerie", en: "/en/galerie" } },
+  { id: "menu.cenik", href: { cs: "/cenik", en: "/en/cenik" } },
+  { id: "menu.kontakt", href: { cs: "/kontakt", en: "/en/kontakt" } },
+  { id: "menu.novinky", href: { cs: "/#novinky", en: "/en#novinky" }, isNews: true },
+  { id: "menu.vylety", href: { cs: "/vylety", en: "/en/vylety" } },
 ];
 
-const TEXT: Record<
-  Locale,
-  { home: string; openMenu: string; closeMenu: string; book: string; switchTo: string; switchLabel: string }
-> = {
+const SOCIAL_LINKS = [
+  { id: "social.facebook", href: V.FACEBOOK_URL, icon: "/images/icons/facebook.svg" },
+  { id: "social.instagram", href: V.INSTAGRAM_URL, icon: "/images/icons/instagram.svg" },
+];
+
+// Popisky jen pro čtečky a přepínač jazyka — zůstávají v kódu.
+const TEXT: Record<Locale, { home: string; openMenu: string; closeMenu: string; switchTo: string; switchLabel: string }> = {
   cs: {
-    home: "Roubenka Ořechovka – domů",
+    home: "domů",
     openMenu: "Otevřít menu",
     closeMenu: "Zavřít menu",
-    book: "Rezervovat na Bookingu",
     switchTo: "EN",
     switchLabel: "Switch to English",
   },
   en: {
-    home: "Roubenka Ořechovka – home",
+    home: "home",
     openMenu: "Open menu",
     closeMenu: "Close menu",
-    book: "Book on Booking.com",
     switchTo: "CS",
     switchLabel: "Přepnout do češtiny",
   },
@@ -93,12 +78,20 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const t = TEXT[locale];
+  const s = texty("spolecne", locale);
+  const siteName = s.vzdy("NAZEV_WEBU");
+  const book = s.t("navbar.rezervovat");
 
-  // Odkaz na Novinky se zobrazí, jen když nějaké skutečně jsou (viz
-  // NewsSection — prázdno = sekce na webu vůbec není, takže by odkaz
-  // jinak mířil na nic). Zařazený hned za Kontakt.
-  const baseLinks = BASE_NAV_LINKS[locale];
-  const navLinks = hasNews ? [...baseLinks.slice(0, 4), NEWS_LINK[locale], ...baseLinks.slice(4)] : baseLinks;
+  const showNews = hasNews && texty("uvod", locale).sekce("novinky");
+  const navLinks: NavLink[] = NAV_LINKS.flatMap((link) => {
+    const label = s.t(link.id);
+    if (!label || (link.isNews && !showNews)) return [];
+    return [{ label, href: link.href[locale], isNews: link.isNews }];
+  });
+  const socialLinks = SOCIAL_LINKS.flatMap((link) => {
+    const label = s.t(link.id);
+    return label ? [{ ...link, label }] : [];
+  });
   const switchHref = otherLocalePath(pathname);
 
   // Otevřené mobilní menu je fixed přes celou obrazovku, ale stránka pod
@@ -119,11 +112,11 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
         <Link
           href={locale === "cs" ? "/" : "/en"}
           className="relative z-10 flex h-full shrink-0 items-center pr-4"
-          aria-label={t.home}
+          aria-label={`${siteName} – ${t.home}`}
         >
           <Image
             src={withBasePath("/images/logo.svg")}
-            alt="Roubenka Ořechovka"
+            alt={siteName}
             width={795}
             height={742}
             className="h-[82%] w-auto"
@@ -153,9 +146,9 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
 
         <div className="hidden items-center gap-4 lg:flex">
           
-          {SOCIAL_LINKS.map((link) => (
+          {socialLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.id}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -165,14 +158,16 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
               <Image src={withBasePath(link.icon)} alt="" width={20} height={20} className="size-5" />
             </a>
           ))}
-          <a
-            href={V.BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded bg-brand px-5 py-[10px] text-[14px] font-semibold text-cream transition-colors hover:bg-brand-dark"
-          >
-            {t.book}
-          </a>
+          {book && (
+            <a
+              href={V.BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded bg-brand px-5 py-[10px] text-[14px] font-semibold text-cream transition-colors hover:bg-brand-dark"
+            >
+              {book}
+            </a>
+          )}
           {/* Přesunuto o 42px doprava (translate, nezasahuje do layoutu
               ostatních položek) — bez toho sedí hned vedle tlačítka Booking,
               zatímco ke konci stránky zbývá celých 100px (padding kontejneru)
@@ -218,7 +213,7 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
             className="fixed inset-0 z-50 bg-cream lg:hidden"
           >
             <div className="flex h-20 items-center justify-between px-6 sm:h-24">
-              <span className="font-subhead text-lg font-bold text-ink">Roubenka Ořechovka</span>
+              <span className="font-subhead text-lg font-bold text-ink">{s.t("NAZEV_WEBU")}</span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -259,20 +254,22 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
                   <NavLinkLabel link={link} />
                 </MotionLink>
               ))}
-              <a
-                href={V.BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-                className="mt-4 rounded bg-brand px-8 py-4 text-center text-[16px] font-semibold text-cream"
-              >
-                {t.book}
-              </a>
+              {book && (
+                <a
+                  href={V.BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="mt-4 rounded bg-brand px-8 py-4 text-center text-[16px] font-semibold text-cream"
+                >
+                  {book}
+                </a>
+              )}
 
               <div className="mt-4 flex items-center justify-center gap-6">
-                {SOCIAL_LINKS.map((link) => (
+                {socialLinks.map((link) => (
                   <a
-                    key={link.label}
+                    key={link.id}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"

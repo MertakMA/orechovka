@@ -9,10 +9,10 @@ export type PriceCardProps = {
   dateRange: string;
   features: string[];
   featured?: boolean;
-  badge?: string;
+  badge: string | null;
   buttonHref?: string;
-  perNightLabel?: string;
-  buttonLabel?: string;
+  perNightLabel: string | null;
+  buttonLabel: string | null;
 };
 
 export default function PriceCard({
@@ -21,10 +21,10 @@ export default function PriceCard({
   dateRange,
   features,
   featured = false,
-  badge = "★ Nejoblíbenější",
+  badge,
   buttonHref = V.BOOKING_URL,
-  perNightLabel = "za noc",
-  buttonLabel = "Rezervovat přes Booking",
+  perNightLabel,
+  buttonLabel,
 }: PriceCardProps) {
   return (
     <div
@@ -34,7 +34,7 @@ export default function PriceCard({
           : "border-[1.5px] border-brand/60"
       }`}
     >
-      {featured && (
+      {featured && badge && (
         <span className="absolute -top-3 left-7 rounded-full bg-pec-dark px-3 py-1 text-[11px] font-semibold text-cream">
           {badge}
         </span>
@@ -42,7 +42,7 @@ export default function PriceCard({
 
       <p className="text-[14px] font-semibold text-ink">{season}</p>
       <p className="mt-2 font-serif text-[30px] font-bold text-ink">{price}</p>
-      <p className="text-[13px] text-clay">{perNightLabel}</p>
+      {perNightLabel && <p className="text-[13px] text-clay">{perNightLabel}</p>}
       <p className="mt-1 text-[13px] leading-[1.5] text-clay">{dateRange}</p>
 
       <div className="my-5 border-t border-border" />
@@ -56,14 +56,16 @@ export default function PriceCard({
         ))}
       </ul>
 
-      <a
-        href={buttonHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 block rounded-lg bg-brand py-3 text-center text-[14px] font-semibold text-cream transition-colors duration-300 hover:bg-brand-dark"
-      >
-        {buttonLabel}
-      </a>
+      {buttonLabel && (
+        <a
+          href={buttonHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 block rounded-lg bg-brand py-3 text-center text-[14px] font-semibold text-cream transition-colors duration-300 hover:bg-brand-dark"
+        >
+          {buttonLabel}
+        </a>
+      )}
     </div>
   );
 }

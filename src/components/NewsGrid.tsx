@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import type { NewsItem } from "@/lib/notion";
 import { withBasePath } from "@/lib/basePath";
+import { texty, type Locale } from "@/lib/texty";
 
 // Obrázky stažené z Notionu leží v public/images/novinky/ a na GitHub Pages
 // běží web v podadresáři — neoptimalizovanému next/image se basePath sám
@@ -13,12 +14,7 @@ function imageSrc(url: string): string {
   return url.startsWith("/") ? withBasePath(url) : url;
 }
 
-type Locale = "cs" | "en";
-
-const TEXT: Record<Locale, { readMore: string; close: string; openLink: string }> = {
-  cs: { readMore: "Více informací →", close: "Zavřít", openLink: "Otevřít odkaz" },
-  en: { readMore: "Read more →", close: "Close", openLink: "Open link" },
-};
+const CLOSE_LABEL: Record<Locale, string> = { cs: "Zavřít", en: "Close" };
 
 function formatDate(iso: string | null, locale: Locale): string | null {
   if (!iso) return null;
@@ -46,7 +42,8 @@ function paragraphs(text: string): string[] {
  */
 export default function NewsGrid({ news, locale = "cs" }: { news: NewsItem[]; locale?: Locale }) {
   const [selected, setSelected] = useState<NewsItem | null>(null);
-  const t = TEXT[locale];
+  const u = texty("uvod", locale);
+  const readMore = u.t("novinky.vice");
 
   useEffect(() => {
     document.body.style.overflow = selected ? "hidden" : "";
@@ -87,7 +84,7 @@ export default function NewsGrid({ news, locale = "cs" }: { news: NewsItem[]; lo
                 {item.text && (
                   <p className="line-clamp-2 break-words text-[14px] leading-[1.55] text-clay">{item.text}</p>
                 )}
-                <span className="mt-1 text-[13px] font-semibold text-brand">{t.readMore}</span>
+                {readMore && <span className="mt-1 text-[13px] font-semibold text-brand">{readMore}</span>}
               </div>
             </button>
           );
@@ -118,7 +115,7 @@ export default function NewsGrid({ news, locale = "cs" }: { news: NewsItem[]; lo
               <button
                 type="button"
                 onClick={() => setSelected(null)}
-                aria-label={t.close}
+                aria-label={CLOSE_LABEL[locale]}
                 className="absolute right-3 top-3 z-10 flex size-9 items-center justify-center rounded-full bg-cream/95 text-xl text-[#1c1209] shadow-md"
               >
                 ×
@@ -157,7 +154,7 @@ export default function NewsGrid({ news, locale = "cs" }: { news: NewsItem[]; lo
                     rel="noopener noreferrer"
                     className="mt-2 inline-block w-fit rounded-lg bg-brand px-6 py-3 text-[14px] font-semibold text-cream transition-colors hover:bg-brand-dark"
                   >
-                    {selected.linkText || t.openLink} →
+                    {selected.linkText || u.vzdy("novinky.odkaz")} →
                   </a>
                 )}
               </div>
