@@ -97,7 +97,7 @@ export default function Footer({ locale = "cs" }: { locale?: Locale }) {
             )}
           </div>
 
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:gap-x-12">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:gap-x-9">
             {columns.map((col) => (
               <div key={col.heading} className="flex min-w-0 flex-col gap-3">
                 <p className="text-[13px] font-bold uppercase tracking-[1.2px] text-espresso">{col.heading}</p>

@@ -217,6 +217,9 @@
         "i": "Zvířata"
       }
     ],
+    "vyhody.foto": {
+      "t": ""
+    },
     "vyhody.kuchyn": [
       {
         "t": "Myčka na nádobí",
@@ -592,6 +595,9 @@
         "i": "Zvířata"
       }
     ],
+    "vyhody.foto": {
+      "t": ""
+    },
     "vyhody.kuchyn": [
       {
         "t": "Dishwasher",

@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { withBasePath } from "@/lib/basePath";
 import { Baby, BedDouble, BedSingle, CookingPot, Layers, ShowerHead, Sofa, WashingMachine, type LucideIcon } from "lucide-react";
 import { texty, type Locale, type Texty } from "@/lib/texty";
 import { ikona } from "@/lib/ikony";
@@ -126,21 +128,46 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
   return (
     <section id="vyhody" className="bg-sand px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-[112px]">
       <div className="mx-auto max-w-[1440px]">
-        {eyebrow && (
-          <div className="flex flex-col gap-[5px]">
-            <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{eyebrow}</p>
-            <div className="h-[2px] w-7 bg-brand-gradient" />
-          </div>
-        )}
-        {heading && <h2 className="mt-3 font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">{heading}</h2>}
+        {/* Na desktopu vedle úvodního textu zbývalo prázdné místo — vyplňuje ho
+            fotka kachlové pece, o které úvodní text mluví jako o srdci chalupy.
+            Na mobilu by jen odsunula pokoje níž, proto je jen od lg. */}
+        <div className="lg:flex lg:items-stretch lg:justify-between lg:gap-10 xl:gap-16">
+          <div className="min-w-0">
+            {eyebrow && (
+              <div className="flex flex-col gap-[5px]">
+                <p className="text-gradient text-[13px] font-semibold tracking-[2px]">{eyebrow}</p>
+                <div className="h-[2px] w-7 bg-brand-gradient" />
+              </div>
+            )}
+            {heading && <h2 className="mt-3 font-serif text-[28px] font-bold text-ink sm:text-[34px] lg:text-[40px]">{heading}</h2>}
 
-        {intro.length > 0 && (
-          <div className="mt-5 flex max-w-[720px] flex-col gap-3 text-[15px] font-medium leading-[1.65] text-clay sm:text-[16px]">
-            {intro.map((p) => (
-              <p key={p.t}>{p.t}</p>
-            ))}
+            {intro.length > 0 && (
+              <div className="mt-5 flex max-w-[720px] flex-col gap-3 text-[15px] font-medium leading-[1.65] text-clay sm:text-[16px]">
+                {intro.map((p) => (
+                  <p key={p.t}>{p.t}</p>
+                ))}
+              </div>
+            )}
           </div>
-        )}
+
+          {u.sekce("vyhody.foto") && (
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5 }}
+              className="relative hidden min-h-[240px] w-[300px] shrink-0 overflow-hidden rounded-xl border border-border shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)] lg:block xl:w-[420px]"
+            >
+              <Image
+                src={withBasePath("/images/adv-krb.jpg")}
+                alt={texty("spolecne", locale).vzdy("foto.adv-krb")}
+                fill
+                sizes="(min-width: 1280px) 420px, 300px"
+                className="object-cover object-[50%_42%]"
+              />
+            </motion.div>
+          )}
+        </div>
 
         {/* Pokoje a vybavení stojí vedle sebe — pod sebou by se každý blok
             roztáhl přes celou šířku stránky a sekce by byla dvakrát vyšší. */}
