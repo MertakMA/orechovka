@@ -12,6 +12,7 @@ import NewsSection from "@/components/NewsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import HtmlLangSetter from "@/components/HtmlLangSetter";
+import StrukturovanaData from "@/components/StrukturovanaData";
 import { getNews } from "@/lib/notion";
 import { texty, type Locale } from "@/lib/texty";
 
@@ -23,6 +24,7 @@ export default async function HomePage({ locale }: { locale: Locale }) {
   return (
     <>
       {locale === "en" && <HtmlLangSetter lang="en" />}
+      <StrukturovanaData locale={locale} />
       <Navbar hasNews={news.length > 0} locale={locale} />
       <main>
         <Hero locale={locale} />

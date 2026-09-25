@@ -133,7 +133,7 @@ export default function GalleryFilterGrid({ locale = "cs" }: { locale?: Locale }
 
   return (
     <div>
-      <div className="sticky top-24 z-30 -mx-6 flex flex-wrap gap-2 border-b border-border bg-cream px-6 py-4 sm:-mx-10 sm:px-10 lg:-mx-[100px] lg:px-[100px]">
+      <div className="-mx-6 lg:sticky lg:top-24 lg:z-30 flex flex-wrap gap-2 border-b border-border bg-cream px-6 py-4 sm:-mx-10 sm:px-10 lg:-mx-[100px] lg:px-[100px]">
         {filters.map((f) => (
           <button
             key={f.key}

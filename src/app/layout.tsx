@@ -43,6 +43,12 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  // Bez max-image-preview Google u výsledku často vůbec neukáže náhledový obrázek.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
