@@ -12,7 +12,6 @@ import {
   Flame,
   Footprints,
   Microwave,
-  PawPrint,
   Refrigerator,
   Sandwich,
   Shirt,
@@ -32,6 +31,7 @@ import {
   Wind,
   type LucideIcon,
 } from "lucide-react";
+import PawPrintOff from "@/components/ikony/PawPrintOff";
 
 // Názvy musí přesně odpovídat možnostem sloupce "Ikona" v Notion databázi Texty.
 const IKONY: Record<string, LucideIcon> = {
@@ -59,7 +59,7 @@ const IKONY: Record<string, LucideIcon> = {
   "WiFi": Wifi,
   "Parkování": SquareParking,
   "Nekuřácké": CigaretteOff,
-  "Zvířata": PawPrint,
+  "Zvířata": PawPrintOff,
   "Sprcha": ShowerHead,
   "Pohovka": Sofa,
   "Lidé": Users,

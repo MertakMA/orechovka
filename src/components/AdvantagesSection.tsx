@@ -34,7 +34,7 @@ const FLOORS: { labelId: string; rooms: { id: string; Icon: LucideIcon; beds?: n
     rooms: [
       { id: "vyhody.pokoj.patro-dvoulozkovy", Icon: BedDouble, beds: 2 },
       { id: "vyhody.pokoj.patro-ctyrlozkovy", Icon: BedDouble, beds: 4 },
-      { id: "vyhody.pokoj.patro-sestilozkovy", Icon: BedSingle, beds: 6 },
+      { id: "vyhody.pokoj.patro-sestilozkovy", Icon: BedDouble, beds: 4 },
       { id: "vyhody.pokoj.patro-koupelna", Icon: ShowerHead },
     ],
   },
