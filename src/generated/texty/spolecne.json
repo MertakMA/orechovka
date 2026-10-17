@@ -6,39 +6,106 @@
     "ceny.hlavni": {
       "t": "Hlavní sezóna"
     },
-    "ceny.hlavni.navic": [
+    "ceny.hlavni.navic": [],
+    "ceny.hlavni.obdobi": [
       {
-        "t": "Uvítací balíček"
+        "t": "Letní",
+        "p": "1. července – 31. srpna"
+      },
+      {
+        "t": "Zimní",
+        "p": "15. prosince – 15. března"
       }
     ],
-    "ceny.mimo": {
-      "t": "Mimo sezónu"
-    },
+    "ceny.hlavni.pobyty": [
+      {
+        "t": "Týdenní pobyt",
+        "p": "39 000 Kč / 7 nocí"
+      },
+      {
+        "t": "Prodloužený víkend",
+        "p": "9 000 Kč / noc\nčtvrtek – neděle"
+      },
+      {
+        "t": "Pobyt během týdne",
+        "p": "7 000 Kč / noc\nneděle – čtvrtek"
+      }
+    ],
     "ceny.odznak": {
       "t": "★ Nejoblíbenější"
     },
     "ceny.tlacitko": {
       "t": "Rezervovat přes Booking"
     },
+    "ceny.vanoce": {
+      "t": "Vánoce a Silvestr"
+    },
+    "ceny.vanoce.pobyty": [
+      {
+        "t": "Vánoce 2026",
+        "p": "50 000 Kč / 4 noci\n23. 12. – 27. 12.\nV ceně pobytu ozdobený vánoční stromeček a cukroví."
+      },
+      {
+        "t": "Silvestr 2026",
+        "p": "75 000 Kč / 6 nocí\n28. 12. – 3. 1.\nV ceně pobytu silvestrovský balíček."
+      }
+    ],
+    "ceny.vanoce.pod-cenou": {
+      "t": "za pobyt"
+    },
     "ceny.vedlejsi": {
       "t": "Vedlejší sezóna"
     },
+    "ceny.vedlejsi.obdobi": [
+      {
+        "t": "Jarní"
+      },
+      {
+        "t": "Podzimní"
+      }
+    ],
+    "ceny.vedlejsi.pobyty": [
+      {
+        "t": "Týdenní pobyt",
+        "p": "29 000 Kč / 7 nocí"
+      },
+      {
+        "t": "Prodloužený víkend",
+        "p": "7 000 Kč / noc\nčtvrtek – neděle"
+      },
+      {
+        "t": "Pobyt během týdne",
+        "p": "5 000 Kč / noc\nneděle – čtvrtek"
+      }
+    ],
     "ceny.vlastnosti": [
       {
-        "t": "Energie v ceně"
+        "t": "Energie (elektřina, voda)"
       },
       {
-        "t": "WiFi zdarma"
+        "t": "Topné dřevo do pece"
       },
       {
-        "t": "Parkování zdarma"
+        "t": "Ložní prádlo a osušky"
       },
       {
-        "t": "Postel. prádlo"
+        "t": "Používání venkovního grilu"
+      },
+      {
+        "t": "Úklid po odjezdu"
+      },
+      {
+        "t": "Parkování na pozemku"
+      },
+      {
+        "t": "Wifi"
       }
     ],
     "ceny.za-noc": {
       "t": "za noc"
+    },
+    "ceny.zahrnuje": {
+      "t": "Cena zahrnuje"
     },
     "cta.cekame.nadpis": {
       "t": "{NAZEV_WEBU} vás čeká"
@@ -48,42 +115,6 @@
     },
     "cta.tlacitko": {
       "t": "Rezervovat pobyt přes Booking.com →"
-    },
-    "foto.adv-krb": {
-      "t": "Kachlový krb s posezením"
-    },
-    "foto.adv-priroda": {
-      "t": "Pohled na roubenku a okolní krajinu"
-    },
-    "foto.adv-soukromi": {
-      "t": "Oplocená zahrada s kamennou zídkou"
-    },
-    "foto.carousel-1": {
-      "t": "Jídelní stůl z masivního dřeva s výhledem do krajiny"
-    },
-    "foto.carousel-2": {
-      "t": "Obývací pokoj s křesly a dřevěnými trámy"
-    },
-    "foto.carousel-3": {
-      "t": "Otevřená kuchyně a obývací část roubenky"
-    },
-    "foto.food-bread": {
-      "t": "Čerstvý domácí chléb na dřevěném prkénku"
-    },
-    "foto.gallery-1": {
-      "t": "{NAZEV_WEBU} zvenčí"
-    },
-    "foto.gallery-2": {
-      "t": "Kachlový krb s posezením"
-    },
-    "foto.gallery-3": {
-      "t": "Kuchyně s výhledem do zahrady"
-    },
-    "foto.gallery-4": {
-      "t": "Podkrovní ložnice s vikýřem"
-    },
-    "foto.hero": {
-      "t": "{NAZEV_WEBU} zvenčí v létě"
     },
     "mapa.titulek": {
       "t": "Mapa – Mladé Buky"
@@ -122,7 +153,7 @@
       "t": "Rezervovat na Bookingu"
     },
     "paticka.adresa": {
-      "t": "Mladé Buky, okres Trutnov"
+      "t": "Mladé Buky 512, okres Trutnov"
     },
     "paticka.informace": {
       "t": "Informace"
@@ -140,10 +171,10 @@
       "t": "roubenkaorechovka.cz"
     },
     "seo.popis": {
-      "t": "Útulná roubenka k pronájmu pro rodiny, páry i skupiny přátel. Celý objekt jen pro vás, zahrada s grilem, krb a výhled na Krkonoše."
+      "t": "Útulná roubenka k pronájmu pro rodiny i skupinu přátel. Celý objekt jen pro vás, kachlová pec, zahrada a výhled na Krkonoše."
     },
     "seo.titulek": {
-      "t": "{NAZEV_WEBU} | Ubytování v podhůří Krkonoš"
+      "t": "{NAZEV_WEBU} | Ubytování v Krkonoších"
     },
     "sledujte-nas": {
       "t": "Sledujte nás"
@@ -162,39 +193,106 @@
     "ceny.hlavni": {
       "t": "Peak season"
     },
-    "ceny.hlavni.navic": [
+    "ceny.hlavni.navic": [],
+    "ceny.hlavni.obdobi": [
       {
-        "t": "Welcome pack"
+        "t": "Summer",
+        "p": "1 July – 31 August"
+      },
+      {
+        "t": "Winter",
+        "p": "15 December – 15 March"
       }
     ],
-    "ceny.mimo": {
-      "t": "Off season"
-    },
+    "ceny.hlavni.pobyty": [
+      {
+        "t": "Weekly stay",
+        "p": "CZK 39,000 / 7 nights"
+      },
+      {
+        "t": "Long weekend",
+        "p": "CZK 9,000 / night\nThursday – Sunday"
+      },
+      {
+        "t": "Midweek stay",
+        "p": "CZK 7,000 / night\nSunday – Thursday"
+      }
+    ],
     "ceny.odznak": {
       "t": "★ Most popular"
     },
     "ceny.tlacitko": {
       "t": "Book via Booking.com"
     },
+    "ceny.vanoce": {
+      "t": "Christmas & New Year"
+    },
+    "ceny.vanoce.pobyty": [
+      {
+        "t": "Christmas 2026",
+        "p": "CZK 50,000 / 4 nights\n23 Dec – 27 Dec\nIncludes a decorated Christmas tree and Christmas cookies."
+      },
+      {
+        "t": "New Year's Eve 2026",
+        "p": "CZK 75,000 / 6 nights\n28 Dec – 3 Jan\nIncludes a New Year's Eve package."
+      }
+    ],
+    "ceny.vanoce.pod-cenou": {
+      "t": "per stay"
+    },
     "ceny.vedlejsi": {
       "t": "Shoulder season"
     },
+    "ceny.vedlejsi.obdobi": [
+      {
+        "t": "Spring"
+      },
+      {
+        "t": "Autumn"
+      }
+    ],
+    "ceny.vedlejsi.pobyty": [
+      {
+        "t": "Weekly stay",
+        "p": "CZK 29,000 / 7 nights"
+      },
+      {
+        "t": "Long weekend",
+        "p": "CZK 7,000 / night\nThursday – Sunday"
+      },
+      {
+        "t": "Midweek stay",
+        "p": "CZK 5,000 / night\nSunday – Thursday"
+      }
+    ],
     "ceny.vlastnosti": [
       {
-        "t": "Utilities included"
+        "t": "Utilities (electricity, water)"
       },
       {
-        "t": "Free WiFi"
+        "t": "Firewood for the stove"
       },
       {
-        "t": "Free parking"
+        "t": "Bed linen and towels"
       },
       {
-        "t": "Bed linen"
+        "t": "Use of the outdoor grill"
+      },
+      {
+        "t": "Final cleaning"
+      },
+      {
+        "t": "On-site parking"
+      },
+      {
+        "t": "Wi-Fi"
       }
     ],
     "ceny.za-noc": {
       "t": "per night"
+    },
+    "ceny.zahrnuje": {
+      "t": "Price includes"
     },
     "cta.cekame.nadpis": {
       "t": "{NAZEV_WEBU} is waiting"
@@ -204,42 +302,6 @@
     },
     "cta.tlacitko": {
       "t": "Book your stay via Booking.com →"
-    },
-    "foto.adv-krb": {
-      "t": "Tiled stove with seating"
-    },
-    "foto.adv-priroda": {
-      "t": "View of the cabin and the surrounding countryside"
-    },
-    "foto.adv-soukromi": {
-      "t": "Fenced garden with a stone wall"
-    },
-    "foto.carousel-1": {
-      "t": "Solid wood dining table with a view of the countryside"
-    },
-    "foto.carousel-2": {
-      "t": "Living room with armchairs and wooden beams"
-    },
-    "foto.carousel-3": {
-      "t": "Open kitchen and living area of the cabin"
-    },
-    "foto.food-bread": {
-      "t": "Fresh homemade bread on a wooden board"
-    },
-    "foto.gallery-1": {
-      "t": "{NAZEV_WEBU} from the outside"
-    },
-    "foto.gallery-2": {
-      "t": "Tiled stove with seating"
-    },
-    "foto.gallery-3": {
-      "t": "Kitchen overlooking the garden"
-    },
-    "foto.gallery-4": {
-      "t": "Attic bedroom with a dormer window"
-    },
-    "foto.hero": {
-      "t": "{NAZEV_WEBU} from the outside in summer"
     },
     "mapa.titulek": {
       "t": "Map – Mladé Buky"
@@ -278,7 +340,7 @@
       "t": "Book on Booking.com"
     },
     "paticka.adresa": {
-      "t": "Mladé Buky, Trutnov district"
+      "t": "Mladé Buky 512, Trutnov district"
     },
     "paticka.informace": {
       "t": "Information"

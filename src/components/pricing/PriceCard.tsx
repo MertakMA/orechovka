@@ -6,25 +6,32 @@ import { V } from "@/generated/variables";
 export type PriceCardProps = {
   season: string;
   price: string;
-  dateRange: string;
+  priceNote: string | null;
+  periods: { name: string; dates: string }[];
+  stays: { name: string; price: string; details: string[] }[];
+  includedHeading: string | null;
   features: string[];
   featured?: boolean;
   badge: string | null;
   buttonHref?: string;
-  perNightLabel: string | null;
   buttonLabel: string | null;
+  // Úvodní stránka: jen hlavička a typy pobytů s cenou (bez sezón, dnů a „Cena zahrnuje“).
+  compact?: boolean;
 };
 
 export default function PriceCard({
   season,
   price,
-  dateRange,
+  priceNote,
+  periods,
+  stays,
+  includedHeading,
   features,
   featured = false,
   badge,
   buttonHref = V.BOOKING_URL,
-  perNightLabel,
   buttonLabel,
+  compact = false,
 }: PriceCardProps) {
   return (
     <div
@@ -42,19 +49,57 @@ export default function PriceCard({
 
       <p className="text-[14px] font-semibold text-ink">{season}</p>
       <p className="mt-2 font-serif text-[30px] font-bold text-ink">{price}</p>
-      {perNightLabel && <p className="text-[13px] text-clay">{perNightLabel}</p>}
-      <p className="mt-1 text-[13px] leading-[1.5] text-clay">{dateRange}</p>
+      {priceNote && <p className="text-[13px] text-clay">{priceNote}</p>}
+
+      {!compact && periods.length > 0 && (
+        <div
+          className="mt-4 grid divide-x divide-border rounded-lg bg-cream py-3"
+          style={{ gridTemplateColumns: `repeat(${periods.length}, minmax(0, 1fr))` }}
+        >
+          {periods.map((period) => (
+            <div key={period.name} className="px-3 text-center">
+              <p className="text-[13px] font-semibold text-ink">{period.name}</p>
+              {period.dates && <p className="mt-0.5 text-[12px] leading-[1.4] text-clay">{period.dates}</p>}
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="my-5 border-t border-border" />
 
-      <ul className="flex flex-1 flex-col gap-[7px]">
-        {features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2 text-[13px] text-clay">
-            <Check className="mt-[2px] size-[14px] shrink-0 text-pec" strokeWidth={2.5} aria-hidden />
-            {feature}
+      <ul className={`flex flex-col ${compact ? "flex-1 gap-[9px]" : "gap-4"}`}>
+        {stays.map((stay) => (
+          <li key={stay.name}>
+            <div className="flex items-baseline justify-between gap-3">
+              <span className={`text-ink ${compact ? "text-[13px]" : "text-[14px] font-semibold"}`}>{stay.name}</span>
+              <span className={`shrink-0 text-right font-semibold text-ink ${compact ? "text-[13px]" : "text-[14px]"}`}>
+                {stay.price}
+              </span>
+            </div>
+            {!compact &&
+              stay.details.map((detail) => (
+                <p key={detail} className="mt-0.5 text-[12px] leading-[1.45] text-clay">
+                  {detail}
+                </p>
+              ))}
           </li>
         ))}
       </ul>
+
+      {!compact && features.length > 0 && (
+        <>
+          <div className="my-5 border-t border-border" />
+          {includedHeading && <p className="mb-3 text-[13px] font-semibold text-ink">{includedHeading}</p>}
+          <ul className="flex flex-1 flex-col gap-[7px]">
+            {features.map((feature) => (
+              <li key={feature} className="flex items-start gap-2 text-[13px] text-clay">
+                <Check className="mt-[2px] size-[14px] shrink-0 text-pec" strokeWidth={2.5} aria-hidden />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
 
       {buttonLabel && (
         <a

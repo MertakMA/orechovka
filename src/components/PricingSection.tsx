@@ -34,7 +34,7 @@ export default function PricingSection({ locale = "cs" }: { locale?: Locale }) {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="h-full"
             >
-              <PriceCard {...plan} />
+              <PriceCard {...plan} compact />
             </motion.div>
           ))}
         </div>

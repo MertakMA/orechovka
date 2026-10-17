@@ -73,17 +73,16 @@ kulatá tlačítka, Footer.tsx ne — jiná prezentace), ale obě čtou stejné 
 
 ## Ceny
 
-Jedna kanonická sada, stejná na homepage (`PricingSection.tsx → PLANS`) i na `/cenik`
-(`cenik/page.tsx → PLANS`) — obě stránky teď ukazují stejné tři karty.
+Jedna sada karet (`lib/ceny.ts → buildPlans`) pro úvod i `/cenik` — úvod ukazuje zkrácenou verzi
+(hlavička + typy pobytů s cenou). Tady je jen cena „od“ v hlavičce karty; sezóny s termíny,
+typy pobytů a „Cena zahrnuje“ jsou v Textech (Společné, ID `ceny.<karta>.obdobi` / `.pobyty`,
+`ceny.vlastnosti`).
 
 | Proměnná | Hodnota |
 | --- | --- |
-| `CENA_HLAVNI_SEZONA` | od 4 500 Kč |
-| `TERMIN_HLAVNI_SEZONA` | Červen – srpen, svátky |
-| `CENA_VEDLEJSI_SEZONA` | od 3 200 Kč |
-| `TERMIN_VEDLEJSI_SEZONA` | Květen, září, říjen |
-| `CENA_MIMO_SEZONU` | od 2 500 Kč |
-| `TERMIN_MIMO_SEZONU` | Listopad – duben |
+| `CENA_VEDLEJSI_SEZONA` | od 5 000 Kč |
+| `CENA_HLAVNI_SEZONA` | od 7 000 Kč |
+| `CENA_VANOCE_SILVESTR` | od 50 000 Kč |
 
 ## Poplatky
 

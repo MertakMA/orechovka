@@ -4,10 +4,10 @@
       "t": ""
     },
     "cta.nadpis": {
-      "t": "Zaujaly vás naše ceny?"
+      "t": "Těšíme se na vás v Ořechovce"
     },
     "cta.podnadpis": {
-      "t": "Zkontrolujte dostupné termíny a rezervujte bezpečně přes Booking.com."
+      "t": "Rezervujte na +420 721 006 632"
     },
     "cta.tlacitko": {
       "t": "Zkontrolovat dostupnost na Booking →"
@@ -21,7 +21,7 @@
     "faq.polozky": [
       {
         "t": "Jak probíhá rezervace?",
-        "p": "Rezervujte přímo přes Booking.com. Po potvrzení vám zašleme veškeré pokyny k příjezdu."
+        "p": "Rezervujte přímo na našich stránkách přes kontaktní formulář, případně nám napiště email na roubenkaorechovka@email.cz nebo lze rezervovat přes E-chalupy.cz"
       },
       {
         "t": "Jaká je minimální délka pobytu?",
@@ -30,17 +30,13 @@
       {
         "t": "Kdy probíhá check-in a check-out?",
         "p": "Check-in: {CHECK_IN} / Check-out: {CHECK_OUT}. Jiné časy po dohodě."
-      },
-      {
-        "t": "Je možné platit v hotovosti?",
-        "p": "Platbu zajišťuje Booking.com (karta, PayPal). Na místě nejsou žádné platby."
       }
     ],
     "hero.nadpis": {
       "t": "Ceník ubytování"
     },
     "hero.podnadpis": {
-      "t": "Jasné ceny, žádné skryté poplatky. Rezervace přes Booking.com."
+      "t": ""
     },
     "poplatky": {
       "t": ""
@@ -50,20 +46,20 @@
     },
     "poplatky.polozky": [
       {
-        "t": "Turistická taxa",
+        "t": "Turistická taxa ",
         "p": "{POPLATEK_TURISTICKA_TAXA}"
       },
       {
-        "t": "Úklid při odjezdu",
-        "p": "{POPLATEK_UKLID}"
+        "t": "Poplatek za extra úklid v případě nadměrného zněčištění",
+        "p": "3.000 Kč"
       },
       {
-        "t": "Pozdní check-out",
+        "t": "STORNO poplatek\nV případě zrušení rezervace více než 30 dní před plánovaným příjezdem",
         "p": "{POPLATEK_POZDNI_CHECKOUT}"
       },
       {
-        "t": "Víkend mimo sezónu",
-        "p": "{POPLATEK_VIKEND}"
+        "t": "STORNO poplatek \nV případě zrušení rezervace 14 dní a méně před plánovaným příjezdem",
+        "p": "50% z ceny pobytu"
       }
     ],
     "prakticke": {
@@ -92,7 +88,7 @@
       "p": "Živý záběr z okolí\nSki areál Mladé Buky"
     },
     "seo.popis": {
-      "t": "Jasné ceny, žádné skryté poplatky. Sezónní ceník, co je v ceně a časté dotazy k rezervaci přes Booking.com."
+      "t": "Zde najdete kompletní ceník ubytování"
     },
     "seo.titulek": {
       "t": "Ceník ubytování"
@@ -107,34 +103,8 @@
       "t": "SEZÓNNÍ CENY"
     },
     "sezony.text": {
-      "t": "Ceny jsou za celou roubenku. Minimální délka pobytu: {MIN_DELKA_POBYTU}."
-    },
-    "v-cene": {
-      "t": ""
-    },
-    "v-cene.nadpis": {
-      "t": "Co je zahrnuto v ceně"
-    },
-    "v-cene.polozky": [
-      {
-        "t": "Energie (elektřina, topení)"
-      },
-      {
-        "t": "WiFi připojení"
-      },
-      {
-        "t": "Parkování na pozemku ({POCET_PARKOVACICH_MIST} místa)"
-      },
-      {
-        "t": "Ložní prádlo a ručníky"
-      },
-      {
-        "t": "Základní vybavení kuchyně"
-      },
-      {
-        "t": "Zahrada a terasa"
-      }
-    ]
+      "t": "Ceny jsou uvedeny za celou roubenku. Minimální délka pobytu: {MIN_DELKA_POBYTU}."
+    }
   },
   "en": {
     "cta": {
@@ -144,7 +114,7 @@
       "t": "Like our rates?"
     },
     "cta.podnadpis": {
-      "t": "Check available dates and book securely via Booking.com."
+      "t": "Rezervujte na +420 721 006 632"
     },
     "cta.tlacitko": {
       "t": "Check availability on Booking →"
@@ -167,17 +137,13 @@
       {
         "t": "What are check-in and check-out times?",
         "p": "Check-in: {CHECK_IN} / Check-out: {CHECK_OUT}. Other times by arrangement."
-      },
-      {
-        "t": "Can I pay in cash?",
-        "p": "Payment is handled by Booking.com (card, PayPal). No payments are taken on site."
       }
     ],
     "hero.nadpis": {
       "t": "Rates"
     },
     "hero.podnadpis": {
-      "t": "Clear prices, no hidden fees. Booking via Booking.com."
+      "t": ""
     },
     "poplatky": {
       "t": ""
@@ -191,16 +157,16 @@
         "p": "{POPLATEK_TURISTICKA_TAXA}"
       },
       {
-        "t": "Departure cleaning",
-        "p": "{POPLATEK_UKLID}"
+        "t": "Extra cleaning",
+        "p": "3.000 Kč"
       },
       {
-        "t": "Late check-out",
+        "t": "STORNO poplatek\nV případě zrušení rezervace více než 30 dní před plánovaným příjezdem",
         "p": "{POPLATEK_POZDNI_CHECKOUT}"
       },
       {
-        "t": "Off-season weekend",
-        "p": "{POPLATEK_VIKEND}"
+        "t": "STORNO poplatek \nV případě zrušení rezervace 14 dní a méně před plánovaným příjezdem",
+        "p": "50% z ceny pobytu"
       }
     ],
     "prakticke": {
@@ -245,33 +211,7 @@
     },
     "sezony.text": {
       "t": "Prices are for the whole cabin. Minimum stay: {MIN_DELKA_POBYTU}."
-    },
-    "v-cene": {
-      "t": ""
-    },
-    "v-cene.nadpis": {
-      "t": "What's included in the price"
-    },
-    "v-cene.polozky": [
-      {
-        "t": "Utilities (electricity, heating)"
-      },
-      {
-        "t": "WiFi connection"
-      },
-      {
-        "t": "On-site parking ({POCET_PARKOVACICH_MIST} spaces)"
-      },
-      {
-        "t": "Bed linen and towels"
-      },
-      {
-        "t": "Basic kitchen equipment"
-      },
-      {
-        "t": "Garden and terrace"
-      }
-    ]
+    }
   },
   "skryte": []
 }
