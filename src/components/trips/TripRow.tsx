@@ -10,6 +10,9 @@ export type Trip = {
   description: string;
   distance: string | null;
   image: string;
+  /** Popisek fotky z Notionu — prázdný = použije se název tipu. */
+  imageAlt?: string;
+  imagePozice?: string;
   mapQuery: string;
   moreHref?: string;
 };
@@ -76,7 +79,8 @@ export default function TripRow({
       <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_20px_-8px_rgba(0,0,0,0.18)] sm:aspect-square sm:w-[220px] lg:w-[260px]">
         <Image
           src={trip.image}
-          alt={trip.title}
+          alt={trip.imageAlt || trip.title}
+          style={{ objectPosition: trip.imagePozice }}
           fill
           sizes="(min-width: 1024px) 260px, (min-width: 640px) 220px, 100vw"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"

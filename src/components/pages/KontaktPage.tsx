@@ -7,6 +7,7 @@ import ContactForm from "@/components/kontakt/ContactForm";
 import HtmlLangSetter from "@/components/HtmlLangSetter";
 import { getNews } from "@/lib/notion";
 import { MAP_EMBED_SRC } from "@/lib/mapa";
+import { fotka } from "@/lib/fotky";
 import { texty, type Locale } from "@/lib/texty";
 import { V } from "@/generated/variables";
 
@@ -63,7 +64,7 @@ export default async function KontaktPage({ locale }: { locale: Locale }) {
       {locale === "en" && <HtmlLangSetter lang="en" />}
       <Navbar hasNews={news.length > 0} locale={locale} />
       <main>
-        <SubpageHero title={k.t("hero.nadpis")} subtitle={k.t("hero.podnadpis")} overlayClassName="bg-[#2a1c12]/50" />
+        <SubpageHero photo={fotka("kontakt-hero", locale)} title={k.t("hero.nadpis")} subtitle={k.t("hero.podnadpis")} overlayClassName="bg-[#2a1c12]/50" />
 
         {(k.sekce("udaje") || k.sekce("formular")) && (
           <section className="bg-surface px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-24">

@@ -1,0 +1,423 @@
+{
+  "mista": {
+    "cenik-hero": [
+      {
+        "src": "/images/notion/f05202b3-7d56-4c9b-835b-daa1a888d1d9.webp",
+        "srcSm": "/images/notion/f05202b3-7d56-4c9b-835b-daa1a888d1d9-sm.webp",
+        "alt": {
+          "cs": "",
+          "en": ""
+        }
+      }
+    ],
+    "galerie-exterier": [
+      {
+        "src": "/images/notion/b5cea63c-8c9b-4887-aa48-a7b42e519a08.webp",
+        "srcSm": "/images/notion/b5cea63c-8c9b-4887-aa48-a7b42e519a08-sm.webp",
+        "alt": {
+          "cs": "{NAZEV_WEBU} zvenčí v létě",
+          "en": "{NAZEV_WEBU} from the outside in summer"
+        }
+      },
+      {
+        "src": "/images/notion/b3e0c321-68a6-46ee-9466-eaf9cce153f1.webp",
+        "srcSm": "/images/notion/b3e0c321-68a6-46ee-9466-eaf9cce153f1-sm.webp",
+        "alt": {
+          "cs": "Pohled na roubenku a okolní krajinu",
+          "en": "View of the cabin and the surrounding countryside"
+        }
+      },
+      {
+        "src": "/images/notion/710db0ef-ebf5-482d-8978-c01b86d3a48a.webp",
+        "srcSm": "/images/notion/710db0ef-ebf5-482d-8978-c01b86d3a48a-sm.webp",
+        "alt": {
+          "cs": "Oplocená zahrada s kamennou zídkou",
+          "en": "Fenced garden with a stone wall"
+        }
+      }
+    ],
+    "galerie-hero": [
+      {
+        "src": "/images/notion/9af07ac5-19d6-422b-9a78-1be352e557d5.webp",
+        "srcSm": "/images/notion/9af07ac5-19d6-422b-9a78-1be352e557d5-sm.webp",
+        "alt": {
+          "cs": "",
+          "en": ""
+        }
+      }
+    ],
+    "galerie-interier": [
+      {
+        "src": "/images/notion/2bcedf9b-ac2e-4a77-b44d-1a813e259052.webp",
+        "srcSm": "/images/notion/2bcedf9b-ac2e-4a77-b44d-1a813e259052-sm.webp",
+        "alt": {
+          "cs": "Otevřená kuchyně a obývací část roubenky",
+          "en": "Open kitchen and living area of the cabin"
+        }
+      },
+      {
+        "src": "/images/notion/e8e16c14-de85-40b6-a969-3b42d1ca9a26.webp",
+        "srcSm": "/images/notion/e8e16c14-de85-40b6-a969-3b42d1ca9a26-sm.webp",
+        "alt": {
+          "cs": "Jídelní stůl z masivního dřeva s výhledem do krajiny",
+          "en": "Solid wood dining table with a view of the countryside"
+        }
+      },
+      {
+        "src": "/images/notion/62729955-1460-4dad-9d21-cd1da1b1120d.webp",
+        "srcSm": "/images/notion/62729955-1460-4dad-9d21-cd1da1b1120d-sm.webp",
+        "alt": {
+          "cs": "Kachlový krb s posezením",
+          "en": "Tiled stove with seating"
+        }
+      },
+      {
+        "src": "/images/notion/9703463f-104f-4d7e-8d81-228430f2214d.webp",
+        "srcSm": "/images/notion/9703463f-104f-4d7e-8d81-228430f2214d-sm.webp",
+        "alt": {
+          "cs": "Kuchyně s výhledem do zahrady",
+          "en": "Kitchen overlooking the garden"
+        }
+      },
+      {
+        "src": "/images/notion/09a6f545-80e5-4770-b615-ed3db4992b80.webp",
+        "srcSm": "/images/notion/09a6f545-80e5-4770-b615-ed3db4992b80-sm.webp",
+        "alt": {
+          "cs": "Obývací pokoj s křesly a dřevěnými trámy",
+          "en": "Living room with armchairs and wooden beams"
+        }
+      }
+    ],
+    "galerie-okoli": [
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sn%C4%9B%C5%BEka%20a%20Ob%C5%99%C3%AD%20d%C5%AFl.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Sn%C4%9B%C5%BEka%20a%20Ob%C5%99%C3%AD%20d%C5%AFl.jpg?width=700",
+        "alt": {
+          "cs": "Sněžka",
+          "en": "Sněžka"
+        }
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/ZOO%20Dv%C5%AFr%20Kr%C3%A1lov%C3%A9%2C%20vyhl%C3%ADdka%20v%20safari.JPG?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/ZOO%20Dv%C5%AFr%20Kr%C3%A1lov%C3%A9%2C%20vyhl%C3%ADdka%20v%20safari.JPG?width=700",
+        "alt": {
+          "cs": "Zoo Dvůr Králové",
+          "en": "Dvůr Králové Zoo"
+        }
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Adr%C5%A1pa%C5%A1skoteplick%C3%A9%20sk%C3%A1ly%2002.JPG?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Adr%C5%A1pa%C5%A1skoteplick%C3%A9%20sk%C3%A1ly%2002.JPG?width=700",
+        "alt": {
+          "cs": "Adršpašské skály",
+          "en": "Adršpach Rocks"
+        }
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ansicht%20kreuzberg%20abfahrten%202009.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Ansicht%20kreuzberg%20abfahrten%202009.jpg?width=700",
+        "alt": {
+          "cs": "Areál Mladé Buky",
+          "en": "Mladé Buky resort"
+        }
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Stezka%20korunami%20strom%C5%AF%20Krkono%C5%A1e%202024.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Stezka%20korunami%20strom%C5%AF%20Krkono%C5%A1e%202024.jpg?width=700",
+        "alt": {
+          "cs": "Stezka korunami stromů",
+          "en": "Treetop Walk"
+        }
+      }
+    ],
+    "kontakt-hero": [
+      {
+        "src": "/images/notion/b187d40b-7af4-47d9-ad7a-c593579d5fc7.webp",
+        "srcSm": "/images/notion/b187d40b-7af4-47d9-ad7a-c593579d5fc7-sm.webp",
+        "alt": {
+          "cs": "",
+          "en": ""
+        }
+      }
+    ],
+    "uvod-galerie": [
+      {
+        "src": "/images/notion/0a8aaad9-6a4e-4e61-9ec2-fb5e5e0a9bb3.webp",
+        "srcSm": "/images/notion/0a8aaad9-6a4e-4e61-9ec2-fb5e5e0a9bb3-sm.webp",
+        "alt": {
+          "cs": "{NAZEV_WEBU} zvenčí",
+          "en": "{NAZEV_WEBU} from the outside"
+        }
+      },
+      {
+        "src": "/images/notion/295740a8-7919-41f6-b331-fabd95d4fdbe.webp",
+        "srcSm": "/images/notion/295740a8-7919-41f6-b331-fabd95d4fdbe-sm.webp",
+        "alt": {
+          "cs": "Kachlový krb s posezením",
+          "en": "Tiled stove with seating"
+        }
+      },
+      {
+        "src": "/images/notion/197f1be0-c575-46b3-8cf8-5612b9d61a50.webp",
+        "srcSm": "/images/notion/197f1be0-c575-46b3-8cf8-5612b9d61a50-sm.webp",
+        "alt": {
+          "cs": "Kuchyně s výhledem do zahrady",
+          "en": "Kitchen overlooking the garden"
+        }
+      },
+      {
+        "src": "/images/notion/8b859b48-7c7f-447c-b773-31d3507a77f6.webp",
+        "srcSm": "/images/notion/8b859b48-7c7f-447c-b773-31d3507a77f6-sm.webp",
+        "alt": {
+          "cs": "Podkrovní ložnice s vikýřem",
+          "en": "Attic bedroom with a dormer window"
+        }
+      },
+      {
+        "src": "/images/notion/783d8a6b-ce04-4b88-885c-2c5dcbcdaa37.webp",
+        "srcSm": "/images/notion/783d8a6b-ce04-4b88-885c-2c5dcbcdaa37-sm.webp",
+        "alt": {
+          "cs": "Jídelní stůl z masivního dřeva s výhledem do krajiny",
+          "en": "Solid wood dining table with a view of the countryside"
+        }
+      },
+      {
+        "src": "/images/notion/cd022187-ae1f-4869-b34e-7c543f687a66.webp",
+        "srcSm": "/images/notion/cd022187-ae1f-4869-b34e-7c543f687a66-sm.webp",
+        "alt": {
+          "cs": "Obývací pokoj s křesly a dřevěnými trámy",
+          "en": "Living room with armchairs and wooden beams"
+        }
+      },
+      {
+        "src": "/images/notion/de9a53dc-e26f-441e-b1f1-42249ad793eb.webp",
+        "srcSm": "/images/notion/de9a53dc-e26f-441e-b1f1-42249ad793eb-sm.webp",
+        "alt": {
+          "cs": "Oplocená zahrada s kamennou zídkou",
+          "en": "Fenced garden with a stone wall"
+        }
+      }
+    ],
+    "uvod-hero": [
+      {
+        "src": "/images/notion/ce0c1da1-b755-481a-9c26-f85746405751.webp",
+        "srcSm": "/images/notion/ce0c1da1-b755-481a-9c26-f85746405751-sm.webp",
+        "alt": {
+          "cs": "{NAZEV_WEBU} – dřevěná roubenka pod korunou ořešáku",
+          "en": "{NAZEV_WEBU} – a wooden log cabin framed by the walnut tree above it"
+        }
+      }
+    ],
+    "uvod-kolotoc": [
+      {
+        "src": "/images/notion/63907b98-5ac6-4b6d-b0ca-133030007138.webp",
+        "srcSm": "/images/notion/63907b98-5ac6-4b6d-b0ca-133030007138-sm.webp",
+        "alt": {
+          "cs": "Jídelní stůl z masivního dřeva s výhledem do krajiny",
+          "en": "Solid wood dining table with a view of the countryside"
+        }
+      },
+      {
+        "src": "/images/notion/bbfe49dc-4696-4f4d-bafa-9f919f9eac85.webp",
+        "srcSm": "/images/notion/bbfe49dc-4696-4f4d-bafa-9f919f9eac85-sm.webp",
+        "alt": {
+          "cs": "Obývací pokoj s křesly a dřevěnými trámy",
+          "en": "Living room with armchairs and wooden beams"
+        }
+      },
+      {
+        "src": "/images/notion/97749395-8a6d-4435-b720-4ee4049ff500.webp",
+        "srcSm": "/images/notion/97749395-8a6d-4435-b720-4ee4049ff500-sm.webp",
+        "alt": {
+          "cs": "Otevřená kuchyně a obývací část roubenky",
+          "en": "Open kitchen and living area of the cabin"
+        }
+      },
+      {
+        "src": "/images/notion/0d6786c9-a3b6-44a9-b2c0-6b00a9854ebd.webp",
+        "srcSm": "/images/notion/0d6786c9-a3b6-44a9-b2c0-6b00a9854ebd-sm.webp",
+        "alt": {
+          "cs": "Čerstvý domácí chléb na dřevěném prkénku",
+          "en": "Fresh homemade bread on a wooden board"
+        }
+      }
+    ],
+    "uvod-tipy": [
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sn%C4%9B%C5%BEka%20a%20Ob%C5%99%C3%AD%20d%C5%AFl.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Sn%C4%9B%C5%BEka%20a%20Ob%C5%99%C3%AD%20d%C5%AFl.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "tipy.snezka"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/ZOO%20Dv%C5%AFr%20Kr%C3%A1lov%C3%A9%2C%20vyhl%C3%ADdka%20v%20safari.JPG?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/ZOO%20Dv%C5%AFr%20Kr%C3%A1lov%C3%A9%2C%20vyhl%C3%ADdka%20v%20safari.JPG?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "tipy.zoo"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ansicht%20kreuzberg%20abfahrten%202009.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Ansicht%20kreuzberg%20abfahrten%202009.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "tipy.mlade-buky"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Adr%C5%A1pa%C5%A1skoteplick%C3%A9%20sk%C3%A1ly%2002.JPG?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Adr%C5%A1pa%C5%A1skoteplick%C3%A9%20sk%C3%A1ly%2002.JPG?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "tipy.adrspach"
+      }
+    ],
+    "uvod-vyhody": [
+      {
+        "src": "/images/notion/8cd22e43-3c01-4a16-83bd-304a05c96be2.webp",
+        "srcSm": "/images/notion/8cd22e43-3c01-4a16-83bd-304a05c96be2-sm.webp",
+        "alt": {
+          "cs": "Kachlový krb s posezením",
+          "en": "Tiled stove with seating"
+        }
+      }
+    ],
+    "vylety-hero": [
+      {
+        "src": "/images/notion/c4bbdce4-811a-471c-9a58-3f5a9d847ac5.webp",
+        "srcSm": "/images/notion/c4bbdce4-811a-471c-9a58-3f5a9d847ac5-sm.webp",
+        "alt": {
+          "cs": "",
+          "en": ""
+        }
+      }
+    ],
+    "vylety-tipy": [
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ansicht%20kreuzberg%20abfahrten%202009.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Ansicht%20kreuzberg%20abfahrten%202009.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "zima.mlade-buky"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Goms%20cross-country%20skiing.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Goms%20cross-country%20skiing.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "zima.bezky"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Meribel%20janvier%202008.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Meribel%20janvier%202008.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "zima.cerna-hora"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/7%20Stanes%20Mountain%20bike%20trail%20-%20geograph.org.uk%20-%204844197.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/7%20Stanes%20Mountain%20bike%20trail%20-%20geograph.org.uk%20-%204844197.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "leto.mlade-buky"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Forest%20Dunes%20Panorama.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Forest%20Dunes%20Panorama.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "leto.grund"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Natural%20swimming%20hole%2C%20Brisbane%20Water%20National%20Park.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Natural%20swimming%20hole%2C%20Brisbane%20Water%20National%20Park.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "leto.sejfy"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/ZOO%20Dv%C5%AFr%20Kr%C3%A1lov%C3%A9%2C%20vyhl%C3%ADdka%20v%20safari.JPG?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/ZOO%20Dv%C5%AFr%20Kr%C3%A1lov%C3%A9%2C%20vyhl%C3%ADdka%20v%20safari.JPG?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "leto.zoo"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Stezka%20korunami%20strom%C5%AF%20Krkono%C5%A1e%202024.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Stezka%20korunami%20strom%C5%AF%20Krkono%C5%A1e%202024.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "leto.stezka"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Adr%C5%A1pa%C5%A1skoteplick%C3%A9%20sk%C3%A1ly%2002.JPG?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Adr%C5%A1pa%C5%A1skoteplick%C3%A9%20sk%C3%A1ly%2002.JPG?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "leto.adrspach"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sn%C4%9B%C5%BEka%20a%20Ob%C5%99%C3%AD%20d%C5%AFl.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Sn%C4%9B%C5%BEka%20a%20Ob%C5%99%C3%AD%20d%C5%AFl.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "leto.snezka"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Collingwood%20Children's%20Farm%20-%20goats.JPG?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Collingwood%20Children's%20Farm%20-%20goats.JPG?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "leto.muchomurka"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Forest%20Dunes%20Panorama.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Forest%20Dunes%20Panorama.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "okoli.grund"
+      },
+      {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jarom%C4%9B%C5%99%2C%20hostinec%20R%C5%AF%C5%BEovka.jpg?width=700",
+        "srcSm": "https://commons.wikimedia.org/wiki/Special:FilePath/Jarom%C4%9B%C5%99%2C%20hostinec%20R%C5%AF%C5%BEovka.jpg?width=700",
+        "alt": {
+          "cs": "",
+          "en": ""
+        },
+        "id": "okoli.na-kopecku"
+      }
+    ]
+  }
+}

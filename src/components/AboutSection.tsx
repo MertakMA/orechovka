@@ -4,31 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
-import { withBasePath } from "@/lib/basePath";
 import { texty, type Locale } from "@/lib/texty";
+import { fotky } from "@/lib/fotky";
 import Radky from "@/components/Radky";
 
-// altId = řádek s popisem fotky na stránce Společné v Notionu.
-const PHOTOS = [
-  { src: withBasePath("/images/carousel-1.jpg"), altId: "foto.carousel-1" },
-  { src: withBasePath("/images/carousel-2.png"), altId: "foto.carousel-2" },
-  { src: withBasePath("/images/carousel-3.jpg"), altId: "foto.carousel-3" },
-  { src: withBasePath("/images/food-bread.jpg"), altId: "foto.food-bread" },
-];
-
-// Photos jsou ve frontě 3x za sebou (A|B|C) a start je uprostřed kopie B —
-// takže je vždycky celá jedna sada fotek jako "polštář" na obě strany.
-// Ať se jede dopředu i dozadu, vždycky je kam animovat na klon, a po
-// doběhnutí přechodu se potichu (duration 0) přeskočí zpátky do prostřední
-// kopie na vizuálně identickou fotku — smyčka tak funguje oběma směry.
-const LOOP_PHOTOS = [...PHOTOS, ...PHOTOS, ...PHOTOS];
-const COUNT = PHOTOS.length;
 const GAP = 12;
 const AUTOPLAY_MS = 5000;
 const SLIDE_TRANSITION = { duration: 0.8, ease: [0.65, 0, 0.35, 1] as const };
 
 function Carousel({ locale }: { locale: Locale }) {
-  const s = texty("spolecne", locale);
+  // Fotky (a jejich počet) určuje Notion, místo "Úvod – O nás (kolotoč)".
+  const PHOTOS = fotky("uvod-kolotoc", locale);
+  // Photos jsou ve frontě 3x za sebou (A|B|C) a start je uprostřed kopie B —
+  // takže je vždycky celá jedna sada fotek jako "polštář" na obě strany.
+  // Ať se jede dopředu i dozadu, vždycky je kam animovat na klon, a po
+  // doběhnutí přechodu se potichu (duration 0) přeskočí zpátky do prostřední
+  // kopie na vizuálně identickou fotku — smyčka tak funguje oběma směry.
+  const LOOP_PHOTOS = [...PHOTOS, ...PHOTOS, ...PHOTOS];
+  const COUNT = PHOTOS.length;
   const trackRef = useRef<HTMLDivElement>(null);
   // Start uprostřed prostřední kopie (skutečná fotka #1), aby byl od
   // začátku stejný polštář fotek k dispozici dozadu i dopředu.
@@ -144,12 +137,13 @@ function Carousel({ locale }: { locale: Locale }) {
             className="relative aspect-[290/480] w-[78%] shrink-0 overflow-hidden rounded-md sm:w-[46%] lg:w-[290px]"
           >
             <Image
-              src={photo.src}
-              alt={s.vzdy(photo.altId)}
+              src={photo.srcSm}
+              alt={photo.alt}
               fill
               draggable={false}
               sizes="(min-width: 1024px) 290px, 46vw"
               className="pointer-events-none select-none object-cover"
+              style={{ objectPosition: photo.pozice }}
             />
           </div>
         ))}
@@ -176,9 +170,9 @@ function Carousel({ locale }: { locale: Locale }) {
       </button>
 
       <div className="mt-4 flex justify-center gap-2">
-        {PHOTOS.map((photo, i) => (
+        {PHOTOS.map((_, i) => (
           <button
-            key={photo.src}
+            key={i}
             type="button"
             onClick={() => {
               // COUNT + i, ne holé i — vždycky přistát v prostřední kopii,

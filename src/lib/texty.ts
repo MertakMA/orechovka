@@ -30,7 +30,7 @@ export function promenne(locale: Locale): Record<keyof typeof V, string> {
 
 // {NAZEV} v textu → hodnota proměnné z Variables, nebo sdílený text ze
 // stránky Společné s ID velkými písmeny (ten může obsahovat další {…}).
-function dosadit(text: string, locale: Locale, hloubka = 0): string {
+export function dosadit(text: string, locale: Locale, hloubka = 0): string {
   const vars = promenne(locale) as Record<string, string>;
   return text.replace(/\{([A-Z][A-Z0-9_]*)\}/g, (cely, klic: string) => {
     if (klic in vars) return vars[klic];

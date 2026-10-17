@@ -3,11 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { withBasePath } from "@/lib/basePath";
 import { texty, type Locale } from "@/lib/texty";
+import { fotka } from "@/lib/fotky";
 
 export default function Hero({ locale = "cs" }: { locale?: Locale }) {
   const u = texty("uvod", locale);
+  const photo = fotka("uvod-hero", locale);
   const title = u.t("hero.nadpis");
   const subtitle = u.t("hero.podnadpis");
   const gallery = u.t("hero.tlacitko");
@@ -17,12 +18,13 @@ export default function Hero({ locale = "cs" }: { locale?: Locale }) {
       className="relative flex h-[calc(100svh-6rem)] max-h-[calc(900px-6rem)] min-h-[440px] items-end overflow-hidden"
     >
       <Image
-        src={withBasePath("/images/hero-2.jpg")}
-        alt={u.vzdy("hero.foto")}
+        src={photo.src}
+        alt={photo.alt}
         fill
         priority
         sizes="100vw"
         className="object-cover object-[50%_65%] [filter:sepia(0.16)_saturate(1.06)]"
+        style={{ objectPosition: photo.pozice }}
       />
       {/* Teplý závoj přes fotku — modrá obloha jinak působí chladně a klientka
           chce, aby web na první dobrou působil hřejivě. */}

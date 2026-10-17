@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { withBasePath } from "@/lib/basePath";
-import { Baby, BedDouble, BedSingle, CookingPot, Layers, ShowerHead, Sofa, WashingMachine, type LucideIcon } from "lucide-react";
+import { fotka } from "@/lib/fotky";
+import { Baby, BedDouble, CookingPot, Layers, ShowerHead, Sofa, WashingMachine, type LucideIcon } from "lucide-react";
 import { texty, type Locale, type Texty } from "@/lib/texty";
 import { ikona } from "@/lib/ikony";
 
@@ -114,6 +114,7 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
   const groups = buildGroups(u);
   const extras = u.seznam("vyhody.extra").map((item) => ({ Icon: ikona(item.i), label: item.t }));
   const bedsForms = u.vzdy("vyhody.tvary.luzka");
+  const sidePhoto = fotka("uvod-vyhody", locale);
 
   const allRooms = floors.flatMap((f) => f.rooms);
   const bedCount = allRooms.reduce((n, r) => n + (r.beds ?? 0), 0);
@@ -159,11 +160,12 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
               className="relative hidden min-h-[240px] w-[300px] shrink-0 overflow-hidden rounded-xl border border-border shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)] lg:block xl:w-[420px]"
             >
               <Image
-                src={withBasePath("/images/adv-krb.jpg")}
-                alt={texty("spolecne", locale).vzdy("foto.adv-krb")}
+                src={sidePhoto.srcSm}
+                alt={sidePhoto.alt}
                 fill
                 sizes="(min-width: 1280px) 420px, 300px"
                 className="object-cover object-[50%_42%]"
+                style={{ objectPosition: sidePhoto.pozice }}
               />
             </motion.div>
           )}

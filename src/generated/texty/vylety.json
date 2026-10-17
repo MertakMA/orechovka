@@ -7,7 +7,7 @@
       "t": "Tipy na výlety"
     },
     "hero.podnadpis": {
-      "t": "Krkonoše v zimě i v létě — vybrali jsme, kam se z roubenky vypravit."
+      "t": "Krkonoše v zimě i v létě.\nZde je pár nápadů, kam se z roubenky můžete vypravit."
     },
     "leto": {
       "t": ""
@@ -24,17 +24,17 @@
     },
     "leto.grund": {
       "t": "Grund Resort Golf & Ski",
-      "p": "18jamkové golfové hřiště a wellness centrum, otevřené i pro veřejnost mimo hotelové hosty."
+      "p": "18jamkové golfové hřiště, bazénové wellness a saunový svět otevřený i pro veřejnost mimo hotelové hosty."
     },
     "leto.grund.vzdalenost": {
       "t": "1 km autem / 600 m pěšky"
     },
     "leto.mlade-buky": {
       "t": "Areál Mladé Buky",
-      "p": "V létě bikepark s lanovkou nahoru a dětský zábavní park Hříčky, celoročně v provozu i bobová dráha."
+      "p": "Zábava pro celou rodinu po celý rok. V létě “Bike park” s lanovkou nebo dětský zábavní park “Hříčky”. V zimě upravená sjezdovka, včetně večerního lyžování, Ski škola pro děti i dospělé. Celoročně je v provozu “Bobovka”."
     },
     "leto.mlade-buky.vzdalenost": {
-      "t": "1 km pěšky / 1,8 km autem"
+      "t": "1 km pěšky / 1,6 km autem"
     },
     "leto.muchomurka": {
       "t": "Farmapark Muchomůrka",
@@ -44,20 +44,20 @@
       "t": "10 km autem"
     },
     "leto.nadpis": {
-      "t": "Hory, koupání a výlety pro děti"
+      "t": "Hory, turistika, koupání i výlety s dětmi"
     },
     "leto.nadtitulek": {
       "t": "LÉTO"
     },
     "leto.podnadpis": {
-      "t": "Od koupání po lesích a skalách až po safari a lanovky — na léto je toho v okolí nejvíc."
+      "t": ""
     },
     "leto.sejfy": {
       "t": "Lesní plovárna Sejfy",
-      "p": "Přírodní koupaliště s 50metrovým bazénem, travnatou plochou k opalování a hřišti na plážový volejbal."
+      "p": "50metrový bazén je napájený čistým krkonošským pramenem – vyjímečně jemnou a nezávadnou vodou. Je to největší uměle vytvořená vodní plocha v Královehradeckém kraji – místo, kde letní dny získávají úplně nový rozměr, kde se voda stává prostorem pro relaxaci, pohyb i radost."
     },
     "leto.sejfy.vzdalenost": {
-      "t": "1 km"
+      "t": "2,8 km"
     },
     "leto.snezka": {
       "t": "Sněžka",
@@ -75,7 +75,7 @@
     },
     "leto.zoo": {
       "t": "Zoo Dvůr Králové",
-      "p": "Jedna z největších afrických zoo v Evropě se safari okruhem přímo mezi zvířaty."
+      "p": "Jedna z největších afrických ZOO v Evropě se safari okruhem přímo mezi zvířaty."
     },
     "leto.zoo.vzdalenost": {
       "t": "{VZDALENOST_ZOO_DVUR_KRALOVE}"
@@ -85,29 +85,29 @@
     },
     "okoli.grund": {
       "t": "Grund Resort Golf & Ski",
-      "p": "Restaurace v hotelovém resortu s výhledem na golfové hřiště a krkonošské kopce."
+      "p": "Restaurace v hotelovém resortu je otevřena denně i pro veřejnost. Výborné jídlo a krásné výhledy na golfové hřiště i krkonošské kopce."
     },
     "okoli.grund.vzdalenost": {
       "t": "1 km autem / 600 m pěšky"
     },
     "okoli.na-kopecku": {
       "t": "Na kopečku – Horní Maršov",
-      "p": "Oblíbený hostinec s českou i mezinárodní kuchyní a letní zahrádkou v centru Horního Maršova."
+      "p": "Oblíbený hostinec s českou i mezinárodní kuchyní."
     },
     "okoli.na-kopecku.vzdalenost": {
       "t": "6 km autem"
     },
     "okoli.nadpis": {
-      "t": "Místa v okolí"
+      "t": "Kam zajít na jídlo"
     },
     "okoli.nadtitulek": {
-      "t": "V OKOLÍ"
+      "t": "RESTAURACE V OKOLÍ"
     },
     "okoli.podnadpis": {
-      "t": "Kam zajít na jídlo, když se vám nechce vařit."
+      "t": ""
     },
     "seo.popis": {
-      "t": "Léto i zima v Krkonoších — lyžařské areály, koupaliště, výlety pro děti i tipy na jídlo v okolí roubenky."
+      "t": "Léto i zima v Krkonoších — lyžařské areály, bike park, koupaliště, výlety pro rodiny s dětmi i tipy na dobré jídlo v okolí roubenky."
     },
     "seo.titulek": {
       "t": "Tipy na výlety"
@@ -140,7 +140,7 @@
       "p": "V zimě lyžařský areál s vleky pro rodiny s dětmi i pokročilé, celoročně v provozu i nejdelší bobová dráha v Krkonoších."
     },
     "zima.mlade-buky.vzdalenost": {
-      "t": "1 km pěšky / 1,8 km autem"
+      "t": "1 km pěšky / 1,6 km autem"
     },
     "zima.nadpis": {
       "t": "Lyže, běžky a bobovka"
@@ -149,7 +149,7 @@
       "t": "ZIMA"
     },
     "zima.podnadpis": {
-      "t": "Sjezdovky i upravené běžecké stopy, na které to z roubenky máte jen na skok."
+      "t": "Sjezdovky i upravené běžecké stopy, na které to z roubenky máte jen kousek."
     }
   },
   "en": {
@@ -187,7 +187,7 @@
       "p": "A bike park with an uphill lift and the Hříčky kids' fun park in summer, plus a bobsled track open year-round."
     },
     "leto.mlade-buky.vzdalenost": {
-      "t": "1 km on foot / 1.8 km by car"
+      "t": "1 km on foot / 1.6 km by car"
     },
     "leto.muchomurka": {
       "t": "Muchomůrka Farm Park",
@@ -203,14 +203,14 @@
       "t": "SUMMER"
     },
     "leto.podnadpis": {
-      "t": "From forest and rock swimming to safari and cable cars — summer brings the most options nearby."
+      "t": ""
     },
     "leto.sejfy": {
       "t": "Sejfy forest swimming spot",
-      "p": "A natural swimming area with a 50-metre pool, a grassy sunbathing lawn and beach volleyball courts."
+      "p": "A natural swimming area with a 50-metre pool."
     },
     "leto.sejfy.vzdalenost": {
-      "t": "1 km"
+      "t": "2,8 km"
     },
     "leto.snezka": {
       "t": "Sněžka",
@@ -245,19 +245,19 @@
     },
     "okoli.na-kopecku": {
       "t": "Na kopečku – Horní Maršov",
-      "p": "A popular inn serving Czech and international dishes, with a summer garden in the centre of Horní Maršov."
+      "p": "A popular inn serving Czech and international dishes."
     },
     "okoli.na-kopecku.vzdalenost": {
       "t": "6 km by car"
     },
     "okoli.nadpis": {
-      "t": "Places nearby"
+      "t": "Where to eat out"
     },
     "okoli.nadtitulek": {
-      "t": "NEARBY"
+      "t": "NEARBY RESTAURANT"
     },
     "okoli.podnadpis": {
-      "t": "Where to eat out when you don't feel like cooking."
+      "t": ""
     },
     "seo.popis": {
       "t": "Summer and winter in the Krkonoše — ski areas, swimming spots, trips for kids and food tips near the cabin."
@@ -293,7 +293,7 @@
       "p": "A ski area with lifts for families and advanced skiers in winter, plus the longest bobsled track in the Krkonoše, open year-round."
     },
     "zima.mlade-buky.vzdalenost": {
-      "t": "1 km on foot / 1.8 km by car"
+      "t": "1 km on foot / 1.6 km by car"
     },
     "zima.nadpis": {
       "t": "Skis, cross-country and a bobsled"

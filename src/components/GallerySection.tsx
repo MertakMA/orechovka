@@ -8,34 +8,43 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { withBasePath } from "@/lib/basePath";
 import { texty, type Locale } from "@/lib/texty";
+import { fotky } from "@/lib/fotky";
 import Radky from "@/components/Radky";
-
-// altId = řádek s popisem fotky na stránce Společné v Notionu.
-const GALLERY = [
-  { src: withBasePath("/images/gallery-1.jpg"), altId: "foto.gallery-1" },
-  { src: withBasePath("/images/gallery-2.jpg"), altId: "foto.gallery-2" },
-  { src: withBasePath("/images/gallery-3.jpg"), altId: "foto.gallery-3" },
-  { src: withBasePath("/images/gallery-4.png"), altId: "foto.gallery-4" },
-  { src: withBasePath("/images/carousel-1.jpg"), altId: "foto.carousel-1" },
-  { src: withBasePath("/images/carousel-2.png"), altId: "foto.carousel-2" },
-  { src: withBasePath("/images/adv-soukromi.png"), altId: "foto.adv-soukromi" },
-];
 
 export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const u = texty("uvod", locale);
-  const s = texty("spolecne", locale);
   if (!u.sekce("galerie")) return null;
 
   const eyebrow = u.t("galerie.nadtitulek");
   const heading = u.t("galerie.nadpis");
   const tile = u.t("galerie.dlazdice");
-  const photos = GALLERY.map((g) => ({ src: g.src, alt: s.vzdy(g.altId) }));
+  // První 4 fotky místa "Úvod – galerie" jdou do dlaždic, v lightboxu jsou všechny.
+  // Když jich je v Notionu méně, chybějící dlaždice se prostě nevykreslí.
+  const photos = fotky("uvod-galerie", locale);
+  const slides = photos.map((p) => ({ src: p.src, alt: p.alt }));
 
   const openAt = (i: number) => {
     setIndex(i);
     setOpen(true);
+  };
+
+  const tileButton = (i: number, className: string, sizes: string) => {
+    const photo = photos[i];
+    if (!photo) return null;
+    return (
+      <button type="button" onClick={() => openAt(i)} className={className}>
+        <Image
+          src={photo.srcSm}
+          alt={photo.alt}
+          fill
+          sizes={sizes}
+          className="object-cover transition-transform hover:scale-105"
+          style={{ objectPosition: photo.pozice }}
+        />
+      </button>
+    );
   };
 
   return (
@@ -60,39 +69,15 @@ export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
           transition={{ duration: 0.6 }}
           className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-[62px] lg:gap-5"
         >
-          <button
-            type="button"
-            onClick={() => openAt(0)}
-            className="relative h-[220px] w-full overflow-hidden rounded-md sm:h-[260px] sm:flex-[400]"
-          >
-            <Image src={photos[0].src} alt={photos[0].alt} fill sizes="(min-width: 640px) 32vw, 100vw" className="object-cover transition-transform hover:scale-105" />
-          </button>
+          {tileButton(0, "relative h-[220px] w-full overflow-hidden rounded-md sm:h-[260px] sm:flex-[400]", "(min-width: 640px) 32vw, 100vw")}
 
           <div className="flex gap-3 sm:contents">
-            <button
-              type="button"
-              onClick={() => openAt(1)}
-              className="relative h-[180px] w-1/2 overflow-hidden rounded-md sm:h-[260px] sm:w-auto sm:flex-[300]"
-            >
-              <Image src={photos[1].src} alt={photos[1].alt} fill sizes="(min-width: 640px) 24vw, 50vw" className="object-cover transition-transform hover:scale-105" />
-            </button>
-            <button
-              type="button"
-              onClick={() => openAt(2)}
-              className="relative h-[180px] w-1/2 overflow-hidden rounded-md sm:h-[260px] sm:w-auto sm:flex-[300]"
-            >
-              <Image src={photos[2].src} alt={photos[2].alt} fill sizes="(min-width: 640px) 24vw, 50vw" className="object-cover transition-transform hover:scale-105" />
-            </button>
+            {tileButton(1, "relative h-[180px] w-1/2 overflow-hidden rounded-md sm:h-[260px] sm:w-auto sm:flex-[300]", "(min-width: 640px) 24vw, 50vw")}
+            {tileButton(2, "relative h-[180px] w-1/2 overflow-hidden rounded-md sm:h-[260px] sm:w-auto sm:flex-[300]", "(min-width: 640px) 24vw, 50vw")}
           </div>
 
           <div className="flex gap-3 sm:flex sm:flex-col sm:flex-[136]">
-            <button
-              type="button"
-              onClick={() => openAt(3)}
-              className="relative h-[100px] w-1/2 overflow-hidden rounded-md sm:h-[124px] sm:w-full"
-            >
-              <Image src={photos[3].src} alt={photos[3].alt} fill sizes="(min-width: 640px) 11vw, 50vw" className="object-cover transition-transform hover:scale-105" />
-            </button>
+            {tileButton(3, "relative h-[100px] w-1/2 overflow-hidden rounded-md sm:h-[124px] sm:w-full", "(min-width: 640px) 11vw, 50vw")}
             {tile && (
               <Link
                 href={locale === "cs" ? "/galerie" : "/en/galerie"}
@@ -118,7 +103,7 @@ export default function GallerySection({ locale = "cs" }: { locale?: Locale }) {
         open={open}
         close={() => setOpen(false)}
         index={index}
-        slides={photos}
+        slides={slides}
       />
     </section>
   );

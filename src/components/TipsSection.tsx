@@ -6,8 +6,9 @@ import { useEffect, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { TIPS } from "@/lib/tips";
 import { texty, type Locale } from "@/lib/texty";
+import { fotka } from "@/lib/fotky";
 
-type Tip = (typeof TIPS)[number] & { title: string; distance: string };
+type Tip = (typeof TIPS)[number] & { title: string; distance: string; src: string; alt: string; pozice?: string };
 
 // Poryv "větru" kolem padajícího polaroidu — pár krátkých čárek, co
 // prolítnou zprava doleva s mírně rozhozeným zpožděním pro dojem gusta.
@@ -139,7 +140,8 @@ function PolaroidCard({
           <div className="relative aspect-[232/188] w-full overflow-hidden">
             <Image
               src={tip.src}
-              alt={tip.title}
+              alt={tip.alt || tip.title}
+              style={{ objectPosition: tip.pozice }}
               fill
               sizes="(min-width: 1024px) 22vw, (min-width: 640px) 40vw, 80vw"
               className="object-cover"
@@ -187,7 +189,9 @@ export default function TipsSection({ locale = "cs" }: { locale?: Locale }) {
   const link = u.t("tipy.odkaz");
   const tips: Tip[] = TIPS.flatMap((tip) => {
     const text = u.polozka(tip.id);
-    return text ? [{ ...tip, title: text.t, distance: text.p ?? "" }] : [];
+    if (!text) return [];
+    const photo = fotka("uvod-tipy", locale, tip.id);
+    return [{ ...tip, title: text.t, distance: text.p ?? "", src: photo.srcSm, alt: photo.alt, pozice: photo.pozice }];
   });
 
   return (

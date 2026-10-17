@@ -30,9 +30,6 @@
     "galerie.nadtitulek": {
       "t": "GALERIE"
     },
-    "hero.foto": {
-      "t": "{NAZEV_WEBU} – dřevěná roubenka pod korunou ořešáku"
-    },
     "hero.nadpis": {
       "t": "{NAZEV_WEBU}"
     },
@@ -85,7 +82,7 @@
       "t": "OŘECHOVKA"
     },
     "o-nas.text": {
-      "t": "Útulná roubenka v Mladých Bukách, kde si můžete užít Krkonoše naplno nebo zpomalit a jen tak být. Výlety do přírody, společné chvíle i lenošení na peci.\nKrásná místa, která stojí za to objevovat, máte z Ořechovky na dosah."
+      "t": "Útulná roubenka v Mladých Bukách, kde si můžete užít Krkonoše naplno nebo zpomalit a jen tak být. Výlety do přírody i lenošení na peci.\nKrásná místa, která stojí za to objevovat, máte z Ořechovky na dosah."
     },
     "o-nas.tlacitko": {
       "t": "Více o roubence →"
@@ -121,7 +118,7 @@
       },
       {
         "t": "{POCET_KOUPELEN}",
-        "p": "Koupelna",
+        "p": "Koupelny",
         "i": "Kapka"
       },
       {
@@ -135,8 +132,8 @@
         "i": "WiFi"
       },
       {
-        "t": "Zdarma",
-        "p": "Parkování",
+        "t": "Parkování",
+        "p": "Zdarma",
         "i": "Parkování"
       }
     ],
@@ -197,7 +194,7 @@
     },
     "vyhody.extra": [
       {
-        "t": "Uzamykatelná kolárna a lyžárna",
+        "t": "Uzamykatelná lyžárna a kolárna",
         "i": "Kolo"
       },
       {
@@ -209,11 +206,11 @@
         "i": "Parkování"
       },
       {
-        "t": "Roubenka je nekuřácká",
+        "t": "Celá roubenka je nekuřácká",
         "i": "Nekuřácké"
       },
       {
-        "t": "Bez domácích mazlíčků",
+        "t": "Ubytování domácích mazlíčků bohužel není možné",
         "i": "Zvířata"
       }
     ],
@@ -293,7 +290,7 @@
     },
     "vyhody.pokoj.patro-ctyrlozkovy": {
       "t": "Čtyřlůžkový pokoj",
-      "p": "2x manželská postel"
+      "p": "1x manželská poste\nHambálka - spaní v podkroví pro 2 osoby"
     },
     "vyhody.pokoj.patro-dvoulozkovy": {
       "t": "Dvoulůžkový pokoj",
@@ -304,8 +301,8 @@
       "p": "sprchový kout, samostatné WC"
     },
     "vyhody.pokoj.patro-sestilozkovy": {
-      "t": "Šestilůžkový pokoj",
-      "p": "1× manželská postel\n2× jednolůžková postel\nHambálka – spaní v podkroví pro 2 osoby"
+      "t": "Čtyřlůžkový pokoj s pohovkou",
+      "p": "1× manželská postel\nHambálka – spaní v podkroví pro 2 osoby"
     },
     "vyhody.pokoj.prizemi-dvoulozkovy": {
       "t": "Dvoulůžkový pokoj",
@@ -319,7 +316,7 @@
       "t": "Pokoje a koupelny"
     },
     "vyhody.pokoje.poznamka": {
-      "t": "Připraveny včetně ložního prádla a osušek."
+      "t": "Pokoje jsou pro vás připraveny včetně ložního prádla a osušek."
     },
     "vyhody.prizemi": {
       "t": "Přízemí"
@@ -355,17 +352,17 @@
     },
     "vyhody.uvod": [
       {
-        "t": "Ořechovka je nově postavená tradiční roubenka s veškerým komfortem dnešní doby — ideální pro rodinnou dovolenou i pobyt s přáteli až pro 10 osob."
+        "t": "Ořechovka je nově postavená tradiční roubenka nabízející veškeré pohodlí dnešní doby. \nV prostorné světnici se nachází kuchyně a kachlová pec s ležením, která je jako stvořená pro vaše chvíle pohody."
       },
       {
-        "t": "V přízemí vás čeká prostorná světnice s velkým dřevěným stolem a kachlovou pecí, srdcem celé chalupy. Zahrada s terasou pak zve k posezení pod vzrostlým ořechem i večernímu opékání na ohništi."
+        "t": "Venku si můžete posedět pod vzrostlým ořechem s výhledem na Rýchory a večer strávit u venkovního ohniště pod širým nebem nebo si připravit něco dobrého na grilu.\n\nOřechovka je ideálním místem pro rodinnou dovolenou i společně strávený čas s přáteli.\n"
       }
     ],
     "vyhody.vybaveni.nadpis": {
       "t": "Vybavení"
     },
     "vyhody.vybaveni.poznamka": {
-      "t": "Kompletně vybavená kuchyň i domácnost."
+      "t": "Plně vybavená kuchyně i domácnost"
     },
     "webkamera": {
       "t": ""
@@ -407,9 +404,6 @@
     },
     "galerie.nadtitulek": {
       "t": "GALLERY"
-    },
-    "hero.foto": {
-      "t": "{NAZEV_WEBU} – a wooden log cabin framed by the walnut tree above it"
     },
     "hero.nadpis": {
       "t": "{NAZEV_WEBU}"
@@ -671,7 +665,7 @@
     },
     "vyhody.pokoj.patro-ctyrlozkovy": {
       "t": "Four-bed room",
-      "p": "2x double bed"
+      "p": "2x double bed\nLoft sleeping for 2 person"
     },
     "vyhody.pokoj.patro-dvoulozkovy": {
       "t": "Double room",
@@ -682,8 +676,8 @@
       "p": "shower, separate WC"
     },
     "vyhody.pokoj.patro-sestilozkovy": {
-      "t": "Six-bed room",
-      "p": "1× double bed\n2× single bed\nLoft (hambálka) sleeping 2"
+      "t": "Four-bed room",
+      "p": "1× double bed\nLoft sleeping for 2 person"
     },
     "vyhody.pokoj.prizemi-dvoulozkovy": {
       "t": "Double room",
@@ -733,7 +727,7 @@
     },
     "vyhody.uvod": [
       {
-        "t": "Ořechovka is a newly built traditional log cabin with all the comforts of today — ideal for a family holiday or a stay with friends, sleeping up to 10."
+        "t": "Ořechovka is a newly built traditional log cabin with all the comforts of today — ideal for a family holiday or a stay with friends, sleeping up to 12."
       },
       {
         "t": "On the ground floor you'll find a spacious living room with a large wooden dining table and a tiled stove, the heart of the whole cabin. The garden with a terrace invites you to sit outside under the old walnut tree or grill in the evening at the outdoor fire pit."

@@ -5,6 +5,7 @@ import SubpageHero from "@/components/SubpageHero";
 import GalleryFilterGrid from "@/components/gallery/GalleryFilterGrid";
 import HtmlLangSetter from "@/components/HtmlLangSetter";
 import { getNews } from "@/lib/notion";
+import { fotka } from "@/lib/fotky";
 import { texty, type Locale } from "@/lib/texty";
 
 export default async function GaleriePage({ locale }: { locale: Locale }) {
@@ -17,7 +18,7 @@ export default async function GaleriePage({ locale }: { locale: Locale }) {
       {locale === "en" && <HtmlLangSetter lang="en" />}
       <Navbar hasNews={news.length > 0} locale={locale} />
       <main>
-        <SubpageHero title={g.t("hero.nadpis")} subtitle={g.t("hero.podnadpis")} overlayClassName="bg-[#2a1c12]/50" />
+        <SubpageHero photo={fotka("galerie-hero", locale)} title={g.t("hero.nadpis")} subtitle={g.t("hero.podnadpis")} overlayClassName="bg-[#2a1c12]/50" />
 
         <div className="px-6 sm:px-10 lg:px-[100px]">
           <GalleryFilterGrid locale={locale} />
