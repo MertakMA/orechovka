@@ -48,3 +48,12 @@ Otevřené otázky na klienta:
   Ty navíc vyžadují uvedení autora, než web půjde naostro.
 
 
+### úprava ceníku
+úprava ceníku podle přiložených fotek, bez fotky ceník neupravovat
+jde o úpravu karet s cenami
+každá karta - zachovat hlavičku (název a cena od), vedle sebe určit sezóny (např. letní zimní) a k nim od kdy do kdy platí, poté rozdělit cenové kategorie (například - týdenní, víkendový) včetně ceny a rozsahu, poté zachovat co cena hzahrnuje + aktualizovat co cena zahrnuje a přidat  tomu nadepsání "co cena zahrnuje" nahradit mimosezónu za Vánoce a Silvestr.
+pod ceníkovými kartami odeber sekci co cena zahrnuje protože to již je v každé kartě.
+na landing page udělej karty ceníku takhle: zachovej hlavičku, a to co je v ceně nahdraď typy pobytů bez dnů
+
+### logo 
+stejná barva jako je barva v CTA sekci u footeru 
