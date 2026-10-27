@@ -5,6 +5,26 @@ import { V } from "@/generated/variables";
 import { availabilityCalendarUrl, E_CHALUPY_CALENDAR_ORIGIN, E_CHALUPY_URL } from "@/lib/rezervace";
 import { texty, type Locale } from "@/lib/texty";
 
+// Barvy jako v kalendáři (parametry volnoPozadi / obsazenoPozadi v rezervace.ts).
+// Den příjezdu a odjezdu e-chalupy kreslí šikmo půl volný, půl obsazený.
+const VOLNO = "#fffdf9";
+const OBSAZENO = "#68452b";
+
+const LEGENDA: Record<Locale, { label: string; background: string }[]> = {
+  cs: [
+    { label: "Volno", background: VOLNO },
+    { label: "Obsazeno", background: OBSAZENO },
+    { label: "Den příjezdu", background: `linear-gradient(135deg, ${VOLNO} 50%, ${OBSAZENO} 50%)` },
+    { label: "Den odjezdu", background: `linear-gradient(135deg, ${OBSAZENO} 50%, ${VOLNO} 50%)` },
+  ],
+  en: [
+    { label: "Available", background: VOLNO },
+    { label: "Booked", background: OBSAZENO },
+    { label: "Arrival day", background: `linear-gradient(135deg, ${VOLNO} 50%, ${OBSAZENO} 50%)` },
+    { label: "Departure day", background: `linear-gradient(135deg, ${OBSAZENO} 50%, ${VOLNO} 50%)` },
+  ],
+};
+
 // joinPrevious = sekce navazuje na ceník nad sebou (stejné krémové pozadí),
 // takže nepotřebuje vlastní horní odsazení — jinak by mezi nimi zůstala dvojitá mezera.
 export default function AvailabilityCalendar({
@@ -47,7 +67,7 @@ export default function AvailabilityCalendar({
 
   // Drobná změna výšky vyvolá v kalendáři resize a ten pošle výšku znovu.
   // Děláme to po načtení a při každém doscrollování ke kalendáři — písmo se
-  // může načíst až po první zprávě a na úzkém displeji jinak zalomit legendu.
+  // může načíst až po první zprávě a změnit šířku měsíců.
   const remeasure = useCallback(() => setHeight((h) => (h ?? iframeRef.current?.offsetHeight ?? 0) + 1), []);
 
   useEffect(() => {
@@ -94,16 +114,30 @@ export default function AvailabilityCalendar({
           />
         </div>
 
-        {link && (
-          <a
-            href={E_CHALUPY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-block text-[14px] font-semibold text-brand hover:underline"
-          >
-            {link}
-          </a>
-        )}
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
+          <ul className="flex flex-wrap gap-2">
+            {LEGENDA[locale].map(({ label, background }) => (
+              <li
+                key={label}
+                className="flex items-center gap-2 rounded-full border border-border bg-surface py-1.5 pl-2 pr-3.5 text-[13px] font-medium text-clay"
+              >
+                <span aria-hidden className="h-[18px] w-[18px] rounded-[5px] border border-border" style={{ background }} />
+                {label}
+              </li>
+            ))}
+          </ul>
+
+          {link && (
+            <a
+              href={E_CHALUPY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[14px] font-semibold text-brand hover:underline"
+            >
+              {link}
+            </a>
+          )}
+        </div>
       </div>
     </section>
   );

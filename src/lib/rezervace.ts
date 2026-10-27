@@ -19,7 +19,8 @@ export function availabilityCalendarUrl(locale: Locale, stylesheetUrl?: string):
     id: "24056",
     pocetMesicu: "12",
     jazyk: locale === "cs" ? "cz" : "en",
-    legenda: "ano",
+    // Legendu kreslíme sami pod kalendářem (AvailabilityCalendar), ve stylu webu.
+    legenda: "ne",
     velikost: "1",
     fontFamily: "Montserrat",
     naStred: "ano",

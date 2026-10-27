@@ -4,16 +4,9 @@
 
 body,
 #obal,
-#obal .legend,
-#obal .legend-obal,
 #obal .month {
   font-family: "Montserrat", Arial, sans-serif !important;
   font-synthesis: none;
-}
-
-#obal .legend,
-#obal .legend-obal {
-  font-weight: 600 !important;
 }
 
 #obal .month .month-name {
