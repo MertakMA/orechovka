@@ -1,23 +1,27 @@
-import { texty, promenne, type Locale } from "@/lib/texty";
+import { texty, type Locale } from "@/lib/texty";
 import type { PriceCardProps } from "@/components/pricing/PriceCard";
+import { reservationHref, RESERVATION_LABEL } from "@/lib/rezervace";
 
 // Jediná sada cenových karet — stejná na úvodní stránce i na /cenik (úvod ukazuje zkrácenou verzi).
-// Názvy, sezóny, typy pobytů a „Cena zahrnuje“ jsou v Notionu (Texty → Společné),
-// cena „od“ v hlavičce ve Variables.
+// Názvy, sezóny, období, typy pobytů a „Cena zahrnuje“ jsou v Notionu (Texty → Společné).
 export function buildPlans(locale: Locale): PriceCardProps[] {
   const s = texty("spolecne", locale);
-  const v = promenne(locale);
   const features = s.seznam("ceny.vlastnosti").map((f) => f.t);
+  const shoulderSeasonDates =
+    locale === "cs"
+      ? ["Duben – červen", "Září – listopad"]
+      : ["April – June", "September – November"];
   const labels = {
     badge: s.t("ceny.odznak"),
     includedHeading: s.t("ceny.zahrnuje"),
-    buttonLabel: s.t("ceny.tlacitko"),
+    buttonLabel: RESERVATION_LABEL[locale],
+    buttonHref: reservationHref(locale),
   };
 
   const plans = [
-    { id: "ceny.vedlejsi", price: v.CENA_VEDLEJSI_SEZONA, priceNote: s.t("ceny.za-noc") },
-    { id: "ceny.hlavni", price: v.CENA_HLAVNI_SEZONA, priceNote: s.t("ceny.za-noc"), featured: true },
-    { id: "ceny.vanoce", price: v.CENA_VANOCE_SILVESTR, priceNote: s.t("ceny.vanoce.pod-cenou") },
+    { id: "ceny.vedlejsi" },
+    { id: "ceny.hlavni", featured: true },
+    { id: "ceny.vanoce" },
   ];
 
   return plans.flatMap(({ id, ...plan }) => {
@@ -28,7 +32,10 @@ export function buildPlans(locale: Locale): PriceCardProps[] {
         ...plan,
         ...labels,
         season,
-        periods: s.seznam(`${id}.obdobi`).map((o) => ({ name: o.t, dates: o.p ?? "" })),
+        periods: s.seznam(`${id}.obdobi`).map((o, i) => ({
+          name: o.t,
+          dates: o.p || (id === "ceny.vedlejsi" ? shoulderSeasonDates[i] ?? "" : ""),
+        })),
         // Text 2: 1. řádek = cena, další řádky = dny / termín / poznámka
         stays: s.seznam(`${id}.pobyty`).map((p) => {
           const [price = "", ...details] = (p.p ?? "").split("\n").filter(Boolean);

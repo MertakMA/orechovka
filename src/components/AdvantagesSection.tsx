@@ -157,7 +157,7 @@ export default function AdvantagesSection({ locale = "cs" }: { locale?: Locale }
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5 }}
-              className="relative hidden min-h-[240px] w-[300px] shrink-0 overflow-hidden rounded-xl border border-border shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)] lg:block xl:w-[420px]"
+              className="relative hidden min-h-[320px] w-[380px] shrink-0 overflow-hidden rounded-xl border border-border shadow-[0px_8px_24px_0px_rgba(34,25,16,0.07)] lg:block xl:w-[500px]"
             >
               <Image
                 src={sidePhoto.srcSm}

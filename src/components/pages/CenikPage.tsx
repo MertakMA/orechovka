@@ -12,6 +12,7 @@ import { buildPlans } from "@/lib/ceny";
 import { fotka } from "@/lib/fotky";
 import { texty, type Locale } from "@/lib/texty";
 import Radky from "@/components/Radky";
+import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 
 // Text karty v Notionu: Text = nadpis, Text 2 = "hodnota\ndrobný text".
 const PRACTICAL_INFO: { id: string; Icon: LucideIcon; href?: Record<Locale, string> }[] = [
@@ -65,6 +66,8 @@ export default async function CenikPage({ locale }: { locale: Locale }) {
             </div>
           </section>
         )}
+
+        <AvailabilityCalendar locale={locale} joinPrevious={c.sekce("sezony")} />
 
         {c.sekce("poplatky") && fees.length > 0 && (
           <section className="bg-sand px-6 py-14 sm:px-10 lg:px-[100px]">
@@ -146,7 +149,12 @@ export default async function CenikPage({ locale }: { locale: Locale }) {
         )}
 
         {c.sekce("cta") && (
-          <CTASection title={c.t("cta.nadpis")} subtitle={c.t("cta.podnadpis")} buttonLabel={c.t("cta.tlacitko")} />
+          <CTASection
+            title={c.t("cta.nadpis")}
+            subtitle={c.t("cta.podnadpis")}
+            buttonLabel={c.t("cta.tlacitko")}
+            locale={locale}
+          />
         )}
       </main>
       <Footer locale={locale} />

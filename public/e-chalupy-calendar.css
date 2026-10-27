@@ -1,0 +1,81 @@
+/* e-chalupy načítá Montserrat jen v řezu 400, tučnější řezy (stejné jako na webu)
+   si proto načítáme sami — jinak prohlížeč tučnost jen uměle dopočítá. */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+body,
+#obal,
+#obal .legend,
+#obal .legend-obal,
+#obal .month {
+  font-family: "Montserrat", Arial, sans-serif !important;
+  font-synthesis: none;
+}
+
+#obal .legend,
+#obal .legend-obal {
+  font-weight: 700 !important;
+}
+
+#obal .month .month-name {
+  font-weight: 800 !important;
+}
+
+#obal .month tr.days td {
+  font-weight: 700 !important;
+}
+
+#obal .month td.day-free,
+#obal .month td.day-full,
+#obal .month td.day-half,
+#obal .month td.day-shdw {
+  font-weight: 700 !important;
+}
+
+/* Užší buňky (měsíc má pak 135 px + 4 px okraj) — dva měsíce vedle sebe se
+   vejdou i na telefon široký 360 px. Zkratky dnů ve stejné velikosti jako čísla,
+   jinak tučné anglické "We" buňku rozšíří a měsíc by měl jinou šířku podle
+   jazyka i podle toho, jestli už je načtené písmo. */
+#obal .month td {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#obal .month tr.days td {
+  font-size: 11px !important;
+}
+
+/* 12 měsíců skládáme po 6 nebo 4 na řádek, ať poslední řádek není kratší
+   (7 + 5, 5 + 5 + 2). Měsíc i s okrajem má 139 px — 900 px pojme 6 i s rezervou
+   na jinak vykreslené písmo, ale ne 7; 600 px pojme 4, ne 5. */
+#obal {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 899px) {
+  #obal {
+    max-width: 600px;
+  }
+}
+
+/* Počítadlo TOPlist (1×1 px obrázek) se vkládá až po tom, co kalendář pošle
+   svou výšku, a přidá pod něj prázdný řádek — skrytý obrázek se dál načítá,
+   jen nezabírá místo, takže poslaná výška sedí. */
+body > img {
+  display: none !important;
+}
+
+/* Den příjezdu / odjezdu: bílé číslo leží napůl na volné (světlé) polovině,
+   kde by zmizelo — obrys v barvě obsazeného dne ho udrží čitelné na obou. */
+#obal .day-full.z,
+#obal .day-full.k {
+  text-shadow:
+    1px 0 #68452b,
+    -1px 0 #68452b,
+    0 1px #68452b,
+    0 -1px #68452b,
+    1px 1px #68452b,
+    -1px -1px #68452b,
+    1px -1px #68452b,
+    -1px 1px #68452b;
+}

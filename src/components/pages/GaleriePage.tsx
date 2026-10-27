@@ -29,6 +29,7 @@ export default async function GaleriePage({ locale }: { locale: Locale }) {
             title={s.t("cta.cekame.nadpis")}
             subtitle={s.t("cta.cekame.podnadpis")}
             buttonLabel={s.t("cta.tlacitko")}
+            locale={locale}
           />
         )}
       </main>

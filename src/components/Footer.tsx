@@ -7,6 +7,7 @@ import { withBasePath } from "@/lib/basePath";
 import { handleHashNavClick } from "@/lib/hashNav";
 import { V } from "@/generated/variables";
 import { texty, type Locale } from "@/lib/texty";
+import { E_CHALUPY_URL } from "@/lib/rezervace";
 
 type LinkDef = { id: string; href: Record<Locale, string> };
 
@@ -25,7 +26,7 @@ const COLUMNS: { headingId: string; links: LinkDef[] }[] = [
     links: [
       { id: "menu.pocasi", href: { cs: "/#pocasi", en: "/en#pocasi" } },
       { id: "menu.webkamera", href: { cs: "/#pocasi", en: "/en#pocasi" } },
-      { id: "menu.booking", href: { cs: V.BOOKING_URL, en: V.BOOKING_URL } },
+      { id: "menu.booking", href: { cs: E_CHALUPY_URL, en: E_CHALUPY_URL } },
       { id: "menu.osobni-udaje", href: { cs: "/zpracovani-osobnich-udaju", en: "/en/zpracovani-osobnich-udaju" } },
     ],
   },
@@ -42,7 +43,7 @@ export default function Footer({ locale = "cs" }: { locale?: Locale }) {
   const pathname = usePathname();
   const s = texty("spolecne", locale);
   const withLabel = (link: LinkDef): Line[] => {
-    const label = s.t(link.id);
+    const label = link.id === "menu.booking" ? "e-chalupy" : s.t(link.id);
     return label ? [{ label, href: link.href[locale] }] : [];
   };
 

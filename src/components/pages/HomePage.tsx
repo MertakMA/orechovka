@@ -6,6 +6,7 @@ import AdvantagesSection from "@/components/AdvantagesSection";
 import GallerySection from "@/components/GallerySection";
 import TipsSection from "@/components/TipsSection";
 import PricingSection from "@/components/PricingSection";
+import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 import WeatherSection from "@/components/WeatherSection";
 import MapSection from "@/components/MapSection";
 import NewsSection from "@/components/NewsSection";
@@ -13,6 +14,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import HtmlLangSetter from "@/components/HtmlLangSetter";
 import StrukturovanaData from "@/components/StrukturovanaData";
+import { buildPlans } from "@/lib/ceny";
 import { getNews } from "@/lib/notion";
 import { texty, type Locale } from "@/lib/texty";
 
@@ -34,13 +36,20 @@ export default async function HomePage({ locale }: { locale: Locale }) {
         <GallerySection locale={locale} />
         <TipsSection locale={locale} />
         <PricingSection locale={locale} />
+        {/* Stejná podmínka, podle které se PricingSection vykreslí. */}
+        <AvailabilityCalendar locale={locale} joinPrevious={u.sekce("cenik") && buildPlans(locale).length > 0} />
         <div id="pocasi" className="scroll-mt-24" />
         <div id="webkamera" className="scroll-mt-24" />
         <WeatherSection locale={locale} />
         <MapSection locale={locale} />
         <NewsSection locale={locale} />
         {u.sekce("cta") && (
-          <CTASection title={u.t("cta.nadpis")} subtitle={u.t("cta.podnadpis")} buttonLabel={s.t("cta.tlacitko")} />
+          <CTASection
+            title={u.t("cta.nadpis")}
+            subtitle={u.t("cta.podnadpis")}
+            buttonLabel={s.t("cta.tlacitko")}
+            locale={locale}
+          />
         )}
       </main>
       <Footer locale={locale} />

@@ -9,6 +9,7 @@ import { withBasePath } from "@/lib/basePath";
 import { handleHashNavClick } from "@/lib/hashNav";
 import { V } from "@/generated/variables";
 import { texty, type Locale } from "@/lib/texty";
+import { reservationHref, RESERVATION_LABEL } from "@/lib/rezervace";
 
 const MotionLink = motion(Link);
 
@@ -80,7 +81,7 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
   const t = TEXT[locale];
   const s = texty("spolecne", locale);
   const siteName = s.vzdy("NAZEV_WEBU");
-  const book = s.t("navbar.rezervovat");
+  const book = s.t("navbar.rezervovat") ? RESERVATION_LABEL[locale] : null;
 
   const showNews = hasNews && texty("uvod", locale).sekce("novinky");
   const navLinks: NavLink[] = NAV_LINKS.flatMap((link) => {
@@ -159,17 +160,15 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
             </a>
           ))}
           {book && (
-            <a
-              href={V.BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={reservationHref(locale)}
               className="rounded bg-brand px-5 py-[10px] text-[14px] font-semibold text-cream transition-colors hover:bg-brand-dark"
             >
               {book}
-            </a>
+            </Link>
           )}
           {/* Přesunuto o 42px doprava (translate, nezasahuje do layoutu
-              ostatních položek) — bez toho sedí hned vedle tlačítka Booking,
+              ostatních položek) — bez toho sedí hned vedle rezervačního tlačítka,
               zatímco ke konci stránky zbývá celých 100px (padding kontejneru)
               nevyužitých. 42px vyrovná obě mezery na stejnou vzdálenost
               (58px) od tlačítka i od okraje stránky. */}
@@ -255,15 +254,13 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
                 </MotionLink>
               ))}
               {book && (
-                <a
-                  href={V.BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={reservationHref(locale)}
                   onClick={() => setOpen(false)}
                   className="mt-4 rounded bg-brand px-8 py-4 text-center text-[16px] font-semibold text-cream"
                 >
                   {book}
-                </a>
+                </Link>
               )}
 
               <div className="mt-4 flex items-center justify-center gap-6">

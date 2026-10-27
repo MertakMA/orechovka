@@ -116,6 +116,18 @@
     "cta.tlacitko": {
       "t": "Rezervovat pobyt přes Booking.com →"
     },
+    "kalendar.nadpis": {
+      "t": "Kalendář obsazenosti"
+    },
+    "kalendar.nadtitulek": {
+      "t": "DOSTUPNOST"
+    },
+    "kalendar.odkaz": {
+      "t": "Prezentace roubenky na e-chalupy →"
+    },
+    "kalendar.popis": {
+      "t": "Aktuální dostupnost pobytů podle kalendáře na e-chalupy.cz."
+    },
     "mapa.titulek": {
       "t": "Mapa – Mladé Buky"
     },
@@ -302,6 +314,18 @@
     },
     "cta.tlacitko": {
       "t": "Book your stay via Booking.com →"
+    },
+    "kalendar.nadpis": {
+      "t": "Availability calendar"
+    },
+    "kalendar.nadtitulek": {
+      "t": "AVAILABILITY"
+    },
+    "kalendar.odkaz": {
+      "t": "View our listing on e-chalupy →"
+    },
+    "kalendar.popis": {
+      "t": "Current availability from the e-chalupy.cz calendar."
     },
     "mapa.titulek": {
       "t": "Map – Mladé Buky"

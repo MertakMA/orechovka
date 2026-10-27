@@ -1,12 +1,10 @@
 "use client";
 
 import { Check } from "lucide-react";
-import { V } from "@/generated/variables";
+import { reservationHref } from "@/lib/rezervace";
 
 export type PriceCardProps = {
   season: string;
-  price: string;
-  priceNote: string | null;
   periods: { name: string; dates: string }[];
   stays: { name: string; price: string; details: string[] }[];
   includedHeading: string | null;
@@ -21,15 +19,13 @@ export type PriceCardProps = {
 
 export default function PriceCard({
   season,
-  price,
-  priceNote,
   periods,
   stays,
   includedHeading,
   features,
   featured = false,
   badge,
-  buttonHref = V.BOOKING_URL,
+  buttonHref = reservationHref("cs"),
   buttonLabel,
   compact = false,
 }: PriceCardProps) {
@@ -48,8 +44,6 @@ export default function PriceCard({
       )}
 
       <p className="text-[14px] font-semibold text-ink">{season}</p>
-      <p className="mt-2 font-serif text-[30px] font-bold text-ink">{price}</p>
-      {priceNote && <p className="text-[13px] text-clay">{priceNote}</p>}
 
       {!compact && periods.length > 0 && (
         <div
