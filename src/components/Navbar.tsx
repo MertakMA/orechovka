@@ -9,7 +9,7 @@ import { withBasePath } from "@/lib/basePath";
 import { handleHashNavClick } from "@/lib/hashNav";
 import { V } from "@/generated/variables";
 import { texty, type Locale } from "@/lib/texty";
-import { reservationHref, RESERVATION_LABEL } from "@/lib/rezervace";
+import { reservationHref } from "@/lib/rezervace";
 
 const MotionLink = motion(Link);
 
@@ -81,7 +81,7 @@ export default function Navbar({ hasNews = false, locale = "cs" }: { hasNews?: b
   const t = TEXT[locale];
   const s = texty("spolecne", locale);
   const siteName = s.vzdy("NAZEV_WEBU");
-  const book = s.t("navbar.rezervovat") ? RESERVATION_LABEL[locale] : null;
+  const book = s.t("navbar.rezervovat");
 
   const showNews = hasNews && texty("uvod", locale).sekce("novinky");
   const navLinks: NavLink[] = NAV_LINKS.flatMap((link) => {

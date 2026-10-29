@@ -89,5 +89,6 @@ Popisky fotek (`foto.*`) se z Textů přesunuly sem; v Textech zůstal jen `mapa
 ## Záměrně v kódu
 - Stránka Zpracování osobních údajů (právní text).
 - Popisky pro čtečky (`aria-label`), přepínač jazyka EN/CS, názvy dnů a počasí v `lib/weather.ts`.
-- Názvy značek (Booking.com) v URL, `mailto:`/`tel:` odkazy.
+- Názvy značek (e-chalupy) v URL, `mailto:`/`tel:` odkazy. ID `menu.booking` a `karta.booking` zůstala
+  z dob Bookingu, dnes nesou odkaz na e-chalupy.
 - Stránka 404 je jen česká (statický export má jednu 404).

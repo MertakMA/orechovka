@@ -10,13 +10,7 @@ export default function FAQAccordion({ locale = "cs" }: { locale?: Locale }) {
   const [open, setOpen] = useState<number | null>(0);
   const faq = texty("cenik", locale)
     .seznam("faq.polozky")
-    .map((item) => ({
-      q: item.t,
-      a:
-        locale === "en" && item.p?.includes("Booking.com")
-          ? "Contact us using the form, by email, or through our e-chalupy listing."
-          : item.p ?? "",
-    }));
+    .map((item) => ({ q: item.t, a: item.p ?? "" }));
 
   return (
     <div className="flex flex-col gap-3">

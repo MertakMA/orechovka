@@ -1,15 +1,9 @@
 import type { Locale } from "@/lib/texty";
 
-export const E_CHALUPY_URL =
-  "https://www.e-chalupy.cz/ubytovani-mlade-buky-roubenka-orechovka-chalupa-pronajem-o24056";
-
 export const E_CHALUPY_CALENDAR_ORIGIN = "https://obsazenost.e-chalupy.cz";
 
-export const RESERVATION_LABEL: Record<Locale, string> = {
-  cs: "Rezervovat pobyt",
-  en: "Book your stay",
-};
-
+// Rezervační tlačítka (menu, cenové karty, hnědý pruh) vedou na kontaktní formulář.
+// Texty tlačítek jsou v Notionu, adresa profilu na e-chalupy ve Variables (E_CHALUPY_URL).
 export function reservationHref(locale: Locale): string {
   return locale === "cs" ? "/kontakt#formular" : "/en/kontakt#formular";
 }

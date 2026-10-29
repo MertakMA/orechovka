@@ -10,13 +10,12 @@ import { MAP_EMBED_SRC } from "@/lib/mapa";
 import { fotka } from "@/lib/fotky";
 import { texty, type Locale } from "@/lib/texty";
 import { V } from "@/generated/variables";
-import { E_CHALUPY_URL } from "@/lib/rezervace";
 
 const CONTACT_CARDS: { id: string; Icon: LucideIcon; href: string; external?: boolean }[] = [
   { id: "karta.adresa", Icon: MapPin, href: "#mapa-kontakt" },
   { id: "karta.email", Icon: Mail, href: `mailto:${V.KONTAKT_EMAIL}` },
   { id: "karta.telefon", Icon: Phone, href: `tel:${V.KONTAKT_TELEFON.replace(/\s+/g, "")}` },
-  { id: "karta.booking", Icon: Globe, href: E_CHALUPY_URL, external: true },
+  { id: "karta.booking", Icon: Globe, href: V.E_CHALUPY_URL, external: true },
 ];
 
 // Firemní modrá/růžová sociálních sítí do přírodní palety nesedí — držíme
@@ -39,15 +38,7 @@ export default async function KontaktPage({ locale }: { locale: Locale }) {
 
   const cards = CONTACT_CARDS.flatMap((card) => {
     const text = k.polozka(card.id);
-    return text
-      ? [
-          {
-            ...card,
-            label: card.id === "karta.booking" ? "e-chalupy" : text.t,
-            value: card.id === "karta.booking" ? "e-chalupy.cz" : text.p ?? "",
-          },
-        ]
-      : [];
+    return text ? [{ ...card, label: text.t, value: text.p ?? "" }] : [];
   });
   const socialLinks = SOCIAL_LINKS.flatMap((link) => {
     const label = s.t(link.id);
@@ -63,10 +54,7 @@ export default async function KontaktPage({ locale }: { locale: Locale }) {
   const followHeading = s.t("sledujte-nas");
   const formEyebrow = k.t("formular.nadtitulek");
   const formHeading = k.t("formular.nadpis");
-  const formNote =
-    locale === "cs"
-      ? "Napište nám, jaký pobyt plánujete. Ozveme se vám a společně domluvíme podrobnosti."
-      : "Tell us about the stay you have in mind. We will get back to you to arrange the details.";
+  const formNote = k.t("formular.poznamka");
   const mapEyebrow = k.t("mapa.nadtitulek");
   const mapHeading = k.t("mapa.nadpis");
   const directionsHeading = k.t("mapa.jak-se-dostat");
@@ -79,11 +67,7 @@ export default async function KontaktPage({ locale }: { locale: Locale }) {
         <SubpageHero
           photo={fotka("kontakt-hero", locale)}
           title={k.t("hero.nadpis")}
-          subtitle={
-            locale === "cs"
-              ? "Rádi vám odpovíme na dotazy a domluvíme s vámi pobyt."
-              : "We are happy to answer your questions and arrange your stay."
-          }
+          subtitle={k.t("hero.podnadpis")}
           overlayClassName="bg-[#2a1c12]/50"
         />
 

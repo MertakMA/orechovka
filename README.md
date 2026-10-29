@@ -6,7 +6,7 @@ Web bude dostupný na doméně [roubenkaorechovka.cz](https://roubenkaorechovka.
 
 ## Cíl projektu
 
-Cílem je vytvořit přehledný a vizuálně příjemný web, který návštěvníkům představí roubenku, její vybavení a okolí. Web nebude obsahovat vlastní rezervační systém. Rezervace budou řešeny prostřednictvím odkazu na externí službu Booking.com.
+Cílem je vytvořit přehledný a vizuálně příjemný web, který návštěvníkům představí roubenku, její vybavení a okolí. Web nebude obsahovat vlastní rezervační systém. Rezervace se řeší přes kontaktní formulář na webu, případně přes portál e-chalupy.cz (kalendář obsazenosti je na Úvodu a v Ceníku).
 
 Obsah a vizuální styl webu budou stavět především na přírodě, klidném prostředí a autentické atmosféře roubenky.
 
@@ -23,7 +23,7 @@ Web bude tvořen čtyřmi hlavními stránkami:
 
 - responzivní zobrazení pro počítače, tablety i telefony,
 - navigační lišta na desktopu a hamburger menu na mobilních zařízeních,
-- výrazný odkaz na rezervaci přes Booking.com,
+- výrazné tlačítko rezervace (kontaktní formulář) a kalendář obsazenosti z e-chalupy,
 - odkazy na sociální sítě,
 - mapa s polohou roubenky,
 - odkazy na aktuální počasí, webkameru a tipy na výlety,

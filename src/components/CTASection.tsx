@@ -1,4 +1,4 @@
-import { reservationHref, RESERVATION_LABEL } from "@/lib/rezervace";
+import { reservationHref } from "@/lib/rezervace";
 import type { Locale } from "@/lib/texty";
 
 // Hnědý pruh dřív končil rovnou čarou proti béžové, což působilo tvrdě.
@@ -65,21 +65,14 @@ export default function CTASection({
 }) {
   // Poslední mezera (před šipkou →) se nahradí nedělitelnou ( ), aby
   // se šipka na mobilu nikdy neodtrhla samotná na druhý řádek.
-  const label = buttonLabel ? RESERVATION_LABEL[locale]?.replace(/ (?=\S*$)/, " ") : null;
-  const safeTitle = title && /booking/i.test(title) ? (locale === "cs" ? "Domluvte si pobyt" : "Plan your stay") : title;
-  const safeSubtitle =
-    subtitle && /booking/i.test(subtitle)
-      ? locale === "cs"
-        ? "Ozvěte se nám a domluvte si pobyt přímo."
-        : "Contact us directly to arrange your stay."
-      : subtitle;
+  const label = buttonLabel?.replace(/ (?=\S*$)/, " ");
 
   return (
     <section className="relative bg-gradient-to-b from-bark via-bark to-[#563f2c] px-6 pb-28 pt-14 text-center sm:px-10 sm:pb-36 sm:pt-16 lg:pb-44">
       <TopRidge />
       <div className="relative">
-        {safeTitle && <h2 className="font-serif text-[28px] font-bold text-cream sm:text-[34px] lg:text-[40px]">{safeTitle}</h2>}
-        {safeSubtitle && <p className="mx-auto mt-4 max-w-xl text-[16px] font-medium text-cream sm:text-[18px]">{safeSubtitle}</p>}
+        {title && <h2 className="font-serif text-[28px] font-bold text-cream sm:text-[34px] lg:text-[40px]">{title}</h2>}
+        {subtitle && <p className="mx-auto mt-4 max-w-xl text-[16px] font-medium text-cream sm:text-[18px]">{subtitle}</p>}
         {label && (
           <a
             href={reservationHref(locale)}

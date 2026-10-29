@@ -47,7 +47,7 @@ check-in/out, kapacity, délky pobytu a řádku adresy.
 | Proměnná | Hodnota | Kde v kódu |
 | --- | --- | --- |
 | `SITE_URL` | https://roubenkaorechovka.cz | `layout.tsx`, `sitemap.ts`, `robots.ts` |
-| `BOOKING_URL` | https://www.booking.com ⚠️ obecný, ne přímý odkaz na objekt | `Hero.tsx`, `Navbar.tsx` (2×), `Footer.tsx → COLUMNS`, `CTASection.tsx`/`PriceCard.tsx` (výchozí `buttonHref`), `kontakt/page.tsx → CONTACT_CARDS` |
+| `E_CHALUPY_URL` | profil roubenky na e-chalupy.cz | `Footer.tsx → COLUMNS`, `KontaktPage.tsx → CONTACT_CARDS`, `AvailabilityCalendar.tsx` (odkaz pod kalendářem) |
 | `FACEBOOK_URL` | `#` ⚠️ nikam nevede | `kontakt/page.tsx → SOCIAL_LINKS`, `Footer.tsx → SOCIAL_LINKS` |
 | `INSTAGRAM_URL` | `#` ⚠️ nikam nevede | `kontakt/page.tsx → SOCIAL_LINKS`, `Footer.tsx → SOCIAL_LINKS` |
 | `WEBKAMERA_STRANKA_URL` | https://www.holidayinfo.cz/cs/camera/mbuky/2084 | `WeatherSection.tsx` |
@@ -74,15 +74,15 @@ kulatá tlačítka, Footer.tsx ne — jiná prezentace), ale obě čtou stejné 
 ## Ceny
 
 Jedna sada karet (`lib/ceny.ts → buildPlans`) pro úvod i `/cenik` — úvod ukazuje zkrácenou verzi
-(hlavička + typy pobytů s cenou). Tady je jen cena „od“ v hlavičce karty; sezóny s termíny,
-typy pobytů a „Cena zahrnuje“ jsou v Textech (Společné, ID `ceny.<karta>.obdobi` / `.pobyty`,
-`ceny.vlastnosti`).
+(název + typy pobytů s cenou). Všechno je v Textech (Společné, ID `ceny.<karta>.obdobi` / `.pobyty`,
+`ceny.vlastnosti`), ve Variables žádné ceny nejsou.
 
-| Proměnná | Hodnota |
-| --- | --- |
-| `CENA_VEDLEJSI_SEZONA` | od 5 000 Kč |
-| `CENA_HLAVNI_SEZONA` | od 7 000 Kč |
-| `CENA_VANOCE_SILVESTR` | od 50 000 Kč |
+⚠️ `CENA_VEDLEJSI_SEZONA`, `CENA_HLAVNI_SEZONA`, `CENA_VANOCE_SILVESTR` zůstaly v Notionu, ale web je
+nepoužívá (hlavička karty s cenou „od“ byla zrušena s kalendářem obsazenosti) — smazat, nebo hlavičku vrátit.
+
+Rezervace: tlačítka „Rezervovat pobyt“ (menu, cenové karty, hnědý pruh) vedou na kontaktní formulář
+(`lib/rezervace.ts → reservationHref`), texty tlačítek jsou v Textech. Kalendář obsazenosti je iframe
+z e-chalupy (ID objektu a barvy v `lib/rezervace.ts`).
 
 ## Poplatky
 
@@ -150,7 +150,6 @@ změny — vrátí se prázdné pole a sekce zmizí.
 | Telefonní číslo | `KONTAKT_TELEFON` |
 | Přesná adresa (číslo popisné) | `ADRESA_RADEK_1`, `MAPA_QUERY` |
 | GPS roubenky (teď jen obec) | `GPS_LAT`, `GPS_LON` |
-| Přímý odkaz na objekt na Bookingu | `BOOKING_URL` |
 | Sociální sítě | `FACEBOOK_URL`, `INSTAGRAM_URL` |
 | Parametry objektu | `POCET_LOZNIC`, `KAPACITA`, `POCET_KOUPELEN`, `VELIKOST_ZAHRADY` |
 | Turistická taxa dle obce | `POPLATEK_TURISTICKA_TAXA` |
@@ -163,7 +162,6 @@ ještě čeká na doplnění.
 
 | Proměnná | Počet |
 | --- | --- |
-| `BOOKING_URL` | 7 výskytů v 6 souborech |
 | `SITE_URL` | 3 soubory |
 | `KONTAKT_EMAIL` | 3 soubory |
 | `KONTAKT_TELEFON` | 3 soubory |
