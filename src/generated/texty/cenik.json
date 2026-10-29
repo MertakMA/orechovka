@@ -7,10 +7,10 @@
       "t": "Těšíme se na vás v Ořechovce"
     },
     "cta.podnadpis": {
-      "t": "Rezervujte na +420 721 006 632"
+      "t": ""
     },
     "cta.tlacitko": {
-      "t": "Zkontrolovat dostupnost na Booking →"
+      "t": "Rezervovat pobyt"
     },
     "faq": {
       "t": ""
@@ -21,11 +21,11 @@
     "faq.polozky": [
       {
         "t": "Jak probíhá rezervace?",
-        "p": "Rezervujte přímo na našich stránkách přes kontaktní formulář, případně nám napiště email na roubenkaorechovka@email.cz nebo lze rezervovat přes E-chalupy.cz"
+        "p": "Pobyt rezervujte přímo na našich stránkách přes kontaktní formulář nebo nám napište e-mail na roubenkaorechovka@email.cz. Rezervaci je možné provést i přes portál e-chalupy.cz"
       },
       {
         "t": "Jaká je minimální délka pobytu?",
-        "p": "Minimálně {MIN_DELKA_POBYTU}. O víkendu a svátcích min. {MIN_DELKA_POBYTU}, v hlavní sezóně min. {MIN_DELKA_POBYTU_HLAVNI_SEZONA}."
+        "p": "Minimálně {MIN_DELKA_POBYTU}. "
       },
       {
         "t": "Kdy probíhá check-in a check-out?",
@@ -46,7 +46,7 @@
     },
     "poplatky.polozky": [
       {
-        "t": "Turistická taxa ",
+        "t": "Poplatek obci za ubytování",
         "p": "{POPLATEK_TURISTICKA_TAXA}"
       },
       {
@@ -58,8 +58,12 @@
         "p": "{POPLATEK_POZDNI_CHECKOUT}"
       },
       {
-        "t": "STORNO poplatek \nV případě zrušení rezervace 14 dní a méně před plánovaným příjezdem",
+        "t": "STORNO poplatek \nV případě zrušení rezervace 29 až 15 dní před plánovaným příjezdem",
         "p": "50% z ceny pobytu"
+      },
+      {
+        "t": "STORNO poplatek \nV případě zrušení rezervace 14 dní a méně před plánovaným příjezdem",
+        "p": "100% z ceny pobytu"
       }
     ],
     "prakticke": {
@@ -111,13 +115,13 @@
       "t": ""
     },
     "cta.nadpis": {
-      "t": "Like our rates?"
+      "t": "We look forward to welcoming you at Ořechovka"
     },
     "cta.podnadpis": {
-      "t": "Rezervujte na +420 721 006 632"
+      "t": ""
     },
     "cta.tlacitko": {
-      "t": "Check availability on Booking →"
+      "t": "Book your stay"
     },
     "faq": {
       "t": ""
@@ -128,7 +132,7 @@
     "faq.polozky": [
       {
         "t": "How does booking work?",
-        "p": "Book directly via Booking.com. Once confirmed, we'll send you all the arrival instructions."
+        "p": "Book directly on our website using the contact form, or email us at {KONTAKT_EMAIL}. You can also book through the e-chalupy.cz portal."
       },
       {
         "t": "What's the minimum stay?",
@@ -165,8 +169,12 @@
         "p": "{POPLATEK_POZDNI_CHECKOUT}"
       },
       {
-        "t": "STORNO poplatek \nV případě zrušení rezervace 14 dní a méně před plánovaným příjezdem",
+        "t": "STORNO poplatek \nV případě zrušení rezervace 29 až 15 dní před plánovaným příjezdem",
         "p": "50% z ceny pobytu"
+      },
+      {
+        "t": "STORNO poplatek \nV případě zrušení rezervace 14 dní a méně před plánovaným příjezdem",
+        "p": "100% z ceny pobytu"
       }
     ],
     "prakticke": {
@@ -195,7 +203,7 @@
       "p": "Live feed from the area\nMladé Buky ski area"
     },
     "seo.popis": {
-      "t": "Clear prices, no hidden fees. Seasonal rates, what's included, and frequently asked questions about booking via Booking.com."
+      "t": "Clear prices, no hidden fees. Seasonal rates, what's included, and frequently asked questions about booking."
     },
     "seo.titulek": {
       "t": "Rates"

@@ -4,13 +4,13 @@
       "t": ""
     },
     "cta.nadpis": {
-      "t": "Rezervujte přes Booking.com"
+      "t": "Těšíme se na Vás!"
     },
     "cta.podnadpis": {
-      "t": "Bezpečná a jednoduchá rezervace. Bez registrace, s garancí nejlepší ceny."
+      "t": ""
     },
     "cta.tlacitko": {
-      "t": "Přejít na Booking.com a rezervovat →"
+      "t": "Rezervovat pobyt"
     },
     "formular": {
       "t": ""
@@ -48,7 +48,7 @@
       "t": "Odeslat zprávu"
     },
     "formular.poznamka": {
-      "t": "Formulář slouží pouze ke kontaktu, ne k rezervaci. Pro rezervaci použijte prosím Booking.com."
+      "t": "Formulář slouží k nezávazné poptávce."
     },
     "formular.predmet": {
       "t": "Předmět zprávy",
@@ -72,15 +72,15 @@
       "t": "Kontakt"
     },
     "hero.podnadpis": {
-      "t": "Rádi vám odpovíme na dotazy. Rezervace probíhají přes Booking.com."
+      "t": ""
     },
     "karta.adresa": {
       "t": "Adresa",
       "p": "{ADRESA_RADEK_1} — {ADRESA_RADEK_2}"
     },
     "karta.booking": {
-      "t": "Booking",
-      "p": "roubenkaorechovka.booking.com"
+      "t": "e-chalupy",
+      "p": "e-chalupy.cz"
     },
     "karta.email": {
       "t": "E-mail",
@@ -118,13 +118,13 @@
     },
     "smer.vlak": {
       "t": "Vlakem",
-      "p": "Vlaková stanice Trutnov hlavní nádraží (spoje z Prahy přes Hradec Králové), odtud MHD nebo taxi cca {VZDALENOST_TRUTNOV_KM}."
+      "p": "Vlaková stanice Trutnov hlavní nádraží (spoje z Prahy přes Hradec Králové), odtud osobním vlakem do stanice Mladé Buky nebo autobusem na zastávku Mladé Buky - škola."
     },
     "udaje": {
       "t": ""
     },
     "udaje.nadpis": {
-      "t": "Spojte se s námi"
+      "t": ""
     },
     "udaje.nadtitulek": {
       "t": "KONTAKTNÍ ÚDAJE"
@@ -135,13 +135,13 @@
       "t": ""
     },
     "cta.nadpis": {
-      "t": "Book via Booking.com"
+      "t": "We look forward to seeing you!"
     },
     "cta.podnadpis": {
-      "t": "Safe and simple booking. No sign-up required, with a best-price guarantee."
+      "t": ""
     },
     "cta.tlacitko": {
-      "t": "Go to Booking.com and book →"
+      "t": "Book your stay"
     },
     "formular": {
       "t": ""
@@ -179,7 +179,7 @@
       "t": "Send message"
     },
     "formular.poznamka": {
-      "t": "This form is for enquiries only, not for booking. Please use Booking.com to book."
+      "t": "This form is for non-binding enquiries."
     },
     "formular.predmet": {
       "t": "Subject",
@@ -203,15 +203,15 @@
       "t": "Contact"
     },
     "hero.podnadpis": {
-      "t": "We're happy to answer your questions. Bookings go through Booking.com."
+      "t": ""
     },
     "karta.adresa": {
       "t": "Address",
       "p": "{ADRESA_RADEK_1} — {ADRESA_RADEK_2}"
     },
     "karta.booking": {
-      "t": "Booking",
-      "p": "roubenkaorechovka.booking.com"
+      "t": "e-chalupy",
+      "p": "e-chalupy.cz"
     },
     "karta.email": {
       "t": "Email",
@@ -255,11 +255,13 @@
       "t": ""
     },
     "udaje.nadpis": {
-      "t": "Get in touch"
+      "t": ""
     },
     "udaje.nadtitulek": {
       "t": "CONTACT DETAILS"
     }
   },
-  "skryte": []
+  "skryte": [
+    "hero.podnadpis"
+  ]
 }

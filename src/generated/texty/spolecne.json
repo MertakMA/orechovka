@@ -10,11 +10,11 @@
     "ceny.hlavni.obdobi": [
       {
         "t": "Letní",
-        "p": "1. července – 31. srpna"
+        "p": "15.června - 15.září"
       },
       {
         "t": "Zimní",
-        "p": "15. prosince – 15. března"
+        "p": "15.prosince - 15.března"
       }
     ],
     "ceny.hlavni.pobyty": [
@@ -35,7 +35,7 @@
       "t": "★ Nejoblíbenější"
     },
     "ceny.tlacitko": {
-      "t": "Rezervovat přes Booking"
+      "t": "Rezervovat pobyt"
     },
     "ceny.vanoce": {
       "t": "Vánoce a Silvestr"
@@ -51,17 +51,19 @@
       }
     ],
     "ceny.vanoce.pod-cenou": {
-      "t": "za pobyt"
+      "t": ""
     },
     "ceny.vedlejsi": {
       "t": "Vedlejší sezóna"
     },
     "ceny.vedlejsi.obdobi": [
       {
-        "t": "Jarní"
+        "t": "Jarní",
+        "p": "16.března - 14.června"
       },
       {
-        "t": "Podzimní"
+        "t": "Podzimní",
+        "p": "16.září - 14.prosince"
       }
     ],
     "ceny.vedlejsi.pobyty": [
@@ -102,7 +104,7 @@
       }
     ],
     "ceny.za-noc": {
-      "t": "za noc"
+      "t": ""
     },
     "ceny.zahrnuje": {
       "t": "Cena zahrnuje"
@@ -111,10 +113,25 @@
       "t": "{NAZEV_WEBU} vás čeká"
     },
     "cta.cekame.podnadpis": {
-      "t": "Zarezervujte si pobyt jednoduše a bezpečně přes Booking.com."
+      "t": ""
     },
     "cta.tlacitko": {
-      "t": "Rezervovat pobyt přes Booking.com →"
+      "t": "Rezervovat pobyt"
+    },
+    "kalendar": {
+      "t": ""
+    },
+    "kalendar.legenda.obsazeno": {
+      "t": "Obsazeno"
+    },
+    "kalendar.legenda.odjezd": {
+      "t": "Den odjezdu"
+    },
+    "kalendar.legenda.prijezd": {
+      "t": "Den příjezdu"
+    },
+    "kalendar.legenda.volno": {
+      "t": "Volno"
     },
     "kalendar.nadpis": {
       "t": "Kalendář obsazenosti"
@@ -123,16 +140,16 @@
       "t": "DOSTUPNOST"
     },
     "kalendar.odkaz": {
-      "t": "Prezentace roubenky na e-chalupy →"
+      "t": "Rezervace možná i přes portál e-chalupy →"
     },
     "kalendar.popis": {
-      "t": "Aktuální dostupnost pobytů podle kalendáře na e-chalupy.cz."
+      "t": "Aktuální obsazenost Ořechovky"
     },
     "mapa.titulek": {
       "t": "Mapa – Mladé Buky"
     },
     "menu.booking": {
-      "t": "Booking.com"
+      "t": "e-chalupy"
     },
     "menu.cenik": {
       "t": "Ceník"
@@ -162,7 +179,7 @@
       "t": "Webkamera"
     },
     "navbar.rezervovat": {
-      "t": "Rezervovat na Bookingu"
+      "t": "Rezervovat pobyt"
     },
     "paticka.adresa": {
       "t": "Mladé Buky 512, okres Trutnov"
@@ -209,7 +226,7 @@
     "ceny.hlavni.obdobi": [
       {
         "t": "Summer",
-        "p": "1 July – 31 August"
+        "p": "15 June – 15 September"
       },
       {
         "t": "Winter",
@@ -234,7 +251,7 @@
       "t": "★ Most popular"
     },
     "ceny.tlacitko": {
-      "t": "Book via Booking.com"
+      "t": "Book your stay"
     },
     "ceny.vanoce": {
       "t": "Christmas & New Year"
@@ -250,17 +267,19 @@
       }
     ],
     "ceny.vanoce.pod-cenou": {
-      "t": "per stay"
+      "t": ""
     },
     "ceny.vedlejsi": {
       "t": "Shoulder season"
     },
     "ceny.vedlejsi.obdobi": [
       {
-        "t": "Spring"
+        "t": "Spring",
+        "p": "16 March – 14 June"
       },
       {
-        "t": "Autumn"
+        "t": "Autumn",
+        "p": "16 September – 14 December"
       }
     ],
     "ceny.vedlejsi.pobyty": [
@@ -301,7 +320,7 @@
       }
     ],
     "ceny.za-noc": {
-      "t": "per night"
+      "t": ""
     },
     "ceny.zahrnuje": {
       "t": "Price includes"
@@ -310,10 +329,25 @@
       "t": "{NAZEV_WEBU} is waiting"
     },
     "cta.cekame.podnadpis": {
-      "t": "Book your stay simply and safely via Booking.com."
+      "t": ""
     },
     "cta.tlacitko": {
-      "t": "Book your stay via Booking.com →"
+      "t": "Book your stay"
+    },
+    "kalendar": {
+      "t": ""
+    },
+    "kalendar.legenda.obsazeno": {
+      "t": "Booked"
+    },
+    "kalendar.legenda.odjezd": {
+      "t": "Departure day"
+    },
+    "kalendar.legenda.prijezd": {
+      "t": "Arrival day"
+    },
+    "kalendar.legenda.volno": {
+      "t": "Available"
     },
     "kalendar.nadpis": {
       "t": "Availability calendar"
@@ -322,16 +356,16 @@
       "t": "AVAILABILITY"
     },
     "kalendar.odkaz": {
-      "t": "View our listing on e-chalupy →"
+      "t": "You can also book through e-chalupy →"
     },
     "kalendar.popis": {
-      "t": "Current availability from the e-chalupy.cz calendar."
+      "t": "Current availability at Ořechovka"
     },
     "mapa.titulek": {
       "t": "Map – Mladé Buky"
     },
     "menu.booking": {
-      "t": "Booking.com"
+      "t": "e-chalupy"
     },
     "menu.cenik": {
       "t": "Rates"
@@ -361,7 +395,7 @@
       "t": "Webcam"
     },
     "navbar.rezervovat": {
-      "t": "Book on Booking.com"
+      "t": "Book your stay"
     },
     "paticka.adresa": {
       "t": "Mladé Buky 512, Trutnov district"

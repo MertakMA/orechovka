@@ -16,7 +16,7 @@
       "t": "Připraveni na pobyt v přírodě?"
     },
     "cta.podnadpis": {
-      "t": "{NAZEV_WEBU} čeká. Rezervujte si termín jednoduše a bezpečně přes Booking.com."
+      "t": "Ozvěte se nám a domluvte si pobyt přímo."
     },
     "galerie": {
       "t": ""
@@ -181,7 +181,7 @@
         "i": "Postel"
       },
       {
-        "t": "Nočník a WC prkénko",
+        "t": "WC prkénko",
         "i": "WC"
       },
       {
@@ -290,7 +290,7 @@
     },
     "vyhody.pokoj.patro-ctyrlozkovy": {
       "t": "Čtyřlůžkový pokoj",
-      "p": "1x manželská poste\nHambálka - spaní v podkroví pro 2 osoby"
+      "p": "1x manželská postel\nHambálka - spaní v podkroví pro 2 osoby"
     },
     "vyhody.pokoj.patro-dvoulozkovy": {
       "t": "Dvoulůžkový pokoj",
@@ -391,7 +391,7 @@
       "t": "Ready for a stay in nature?"
     },
     "cta.podnadpis": {
-      "t": "{NAZEV_WEBU} is waiting. Book your dates simply and safely via Booking.com."
+      "t": "Contact us directly to arrange your stay."
     },
     "galerie": {
       "t": ""
@@ -556,7 +556,7 @@
         "i": "Postel"
       },
       {
-        "t": "Potty and toilet seat",
+        "t": "Toilet seat",
         "i": "WC"
       },
       {
