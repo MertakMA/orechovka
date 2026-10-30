@@ -54,11 +54,11 @@ const SECTIONS = [
     body: (
       <>
         <p>
-          The contact form doesn't send anything to our server or to any database. Clicking &ldquo;Send message&rdquo;
-          opens your own email client on your device with a pre-filled message addressed to {V.KONTAKT_EMAIL} — you
-          then send the email yourself, just like any other email. The website itself never stores the data you
-          enter; processing only begins once the email arrives in our inbox, where we handle it like any regular
-          email correspondence.
+          When you click &ldquo;Send message&rdquo;, the details you entered are sent to the Web3Forms service
+          (web3forms.com), which, as a processor, forwards them by email to our inbox at {V.KONTAKT_EMAIL}. The
+          website itself has no server or database of its own and never stores the data you enter. We then handle
+          the delivered email like any regular email correspondence. Web3Forms processes the data under its own
+          privacy policy.
         </p>
       </>
     ),
@@ -73,8 +73,8 @@ const SECTIONS = [
           your consent at any time — just write to us at {V.KONTAKT_EMAIL}.
         </p>
         <p>
-          Booking a stay doesn't happen through this website — it's handled exclusively via Booking.com, which has
-          its own privacy policy.
+          You can arrange your stay through this form or by email. If you book through the e-chalupy.cz portal, your
+          data is processed under its own privacy policy.
         </p>
       </>
     ),
@@ -100,7 +100,8 @@ const SECTIONS = [
         <ul className="list-disc pl-5">
           <li>Google Maps — the map showing the cabin's location,</li>
           <li>an external webcam feed (holidayinfo.cz) — a live view of the area,</li>
-          <li>Booking.com — the booking system.</li>
+          <li>e-chalupy.cz — the availability calendar,</li>
+          <li>Web3Forms — sending the contact form.</li>
         </ul>
       </>
     ),
@@ -159,7 +160,7 @@ export default async function PersonalDataProcessingPageEn() {
 
         <section className="bg-cream px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-24">
           <div className="mx-auto max-w-[760px]">
-            <p className="text-[13px] font-medium text-clay">Last updated: 23 September 2026</p>
+            <p className="text-[13px] font-medium text-clay">Last updated: 29 October 2026</p>
 
             <div className="mt-10 flex flex-col gap-10">
               {SECTIONS.map((section) => (

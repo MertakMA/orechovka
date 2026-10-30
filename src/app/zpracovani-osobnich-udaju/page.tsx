@@ -16,11 +16,9 @@ export const metadata: Metadata = {
 };
 
 // Vychází přesně z toho, co kontaktní formulář (ContactForm.tsx) skutečně
-// dělá: NEODESÍLÁ nic na server ani do žádné databáze. Tlačítko jen sestaví
-// mailto: odkaz a otevře e-mailového klienta návštěvníka — e-mail pak
-// odchází přímo z jeho zařízení na náš e-mail. Pokud se formulář v budoucnu
-// nahradí opravdovým odesláním přes server (viz TODO "zprovoznit formulář"),
-// je potřeba tuhle stránku podle nové architektury přepsat.
+// dělá: zprávu pošle službě Web3Forms, která ji doručí e-mailem na náš
+// e-mail. Vlastní server ani databázi web nemá. Když se změní způsob
+// odesílání nebo vložené služby, je potřeba tuhle stránku (i EN verzi) upravit.
 const SECTIONS = [
   {
     heading: "Kdo je správcem údajů",
@@ -56,11 +54,10 @@ const SECTIONS = [
     body: (
       <>
         <p>
-          Kontaktní formulář nic neodesílá na náš server ani do žádné databáze. Po kliknutí na „Odeslat zprávu“ se
-          na vašem zařízení otevře váš vlastní e-mailový klient s předvyplněnou zprávou adresovanou na{" "}
-          {V.KONTAKT_EMAIL} — samotný e-mail pak odešlete vy, stejně jako kterýkoli jiný e-mail. Web samotný tedy
-          zadané údaje nikde needukládá; ke zpracování dochází až doručením e-mailu do naší schránky, kde s ním
-          nakládáme jako s běžnou e-mailovou korespondencí.
+          Po kliknutí na „Odeslat zprávu“ se vyplněné údaje odešlou službě Web3Forms (web3forms.com), která je
+          jako zpracovatel přepošle e-mailem do naší schránky {V.KONTAKT_EMAIL}. Web samotný nemá vlastní server ani
+          databázi a zadané údaje nikde neukládá. Doručený e-mail pak vyřizujeme jako běžnou e-mailovou
+          korespondenci. Web3Forms zpracovává údaje podle svých zásad ochrany osobních údajů.
         </p>
       </>
     ),
@@ -75,8 +72,8 @@ const SECTIONS = [
           stačí nám napsat na {V.KONTAKT_EMAIL}.
         </p>
         <p>
-          Rezervace pobytu neprobíhá přes tento web, ale výhradně přes Booking.com, který má vlastní zásady ochrany
-          osobních údajů.
+          Pobyt si můžete domluvit přes tento formulář nebo e-mailem. Pokud rezervujete přes portál e-chalupy.cz,
+          řídí se zpracování vašich údajů jeho vlastními zásadami ochrany osobních údajů.
         </p>
       </>
     ),
@@ -102,7 +99,8 @@ const SECTIONS = [
         <ul className="list-disc pl-5">
           <li>Google Maps — mapa s polohou roubenky,</li>
           <li>externí webkamera (holidayinfo.cz) — živý záběr z okolí,</li>
-          <li>Booking.com — rezervační systém.</li>
+          <li>e-chalupy.cz — kalendář obsazenosti,</li>
+          <li>Web3Forms — odeslání kontaktního formuláře.</li>
         </ul>
       </>
     ),
@@ -160,7 +158,7 @@ export default async function ZpracovaniOsobnichUdajuPage() {
 
         <section className="bg-cream px-6 py-16 sm:px-10 sm:py-20 lg:px-[100px] lg:py-24">
           <div className="mx-auto max-w-[760px]">
-            <p className="text-[13px] font-medium text-clay">Poslední aktualizace: 23. 9. 2026</p>
+            <p className="text-[13px] font-medium text-clay">Poslední aktualizace: 29. 10. 2026</p>
 
             <div className="mt-10 flex flex-col gap-10">
               {SECTIONS.map((section) => (

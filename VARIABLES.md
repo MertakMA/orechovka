@@ -34,7 +34,7 @@ check-in/out, kapacity, délky pobytu a řádku adresy.
 
 | Proměnná | Hodnota | Kde v kódu |
 | --- | --- | --- |
-| `KONTAKT_EMAIL` | info@roubenkaorechovka.cz | `kontakt/page.tsx → CONTACT_CARDS`, `Footer.tsx → CONTACT_LINES`, `ContactForm.tsx` (mailto + fallback text) |
+| `KONTAKT_EMAIL` | roubenkaorechovka@email.cz | `kontakt/page.tsx → CONTACT_CARDS`, `Footer.tsx → CONTACT_LINES`, hláška při chybě odeslání formuláře (`{KONTAKT_EMAIL}` v Textech) |
 | `KONTAKT_TELEFON` | +420 XXX XXX XXX ⚠️ | `kontakt/page.tsx → CONTACT_CARDS`, `Footer.tsx → CONTACT_LINES`, `ContactForm.tsx → placeholder`. `tel:` odkaz se skládá v místě použití (`.replace(/\s+/g, "")`) |
 | `ADRESA_RADEK_1` | Mladé Buky, u kostela | `MapSection.tsx`, `kontakt/page.tsx → CONTACT_CARDS` (spojeno s `ADRESA_RADEK_2` přes „ — ") |
 | `ADRESA_RADEK_2` | 542 23, okres Trutnov ⚠️ chybí číslo popisné | `MapSection.tsx`, `kontakt/page.tsx → CONTACT_CARDS` |
@@ -128,7 +128,7 @@ by se mohl rozejít. Skládají se přímo v kódu z hodnot výše:
 | Skládaná hodnota | Z čeho | Kde |
 | --- | --- | --- |
 | `tel:` odkaz na telefon | `KONTAKT_TELEFON` bez mezer | `kontakt/page.tsx`, `Footer.tsx` |
-| `mailto:` odkaz na e-mail | `KONTAKT_EMAIL` | `kontakt/page.tsx`, `Footer.tsx`, `ContactForm.tsx` |
+| `mailto:` odkaz na e-mail | `KONTAKT_EMAIL` | `kontakt/page.tsx`, `Footer.tsx`, `zpracovani-osobnich-udaju` |
 | Google Maps embed URL | `MAPA_QUERY` | `MapSection.tsx`, `kontakt/page.tsx` |
 | Celá adresa na kartě Kontakt | `ADRESA_RADEK_1` + „ — " + `ADRESA_RADEK_2` | `kontakt/page.tsx` |
 | GPS jako čísla pro Open-Meteo | `Number(GPS_LAT)`, `Number(GPS_LON)` | `lib/weather.ts` |

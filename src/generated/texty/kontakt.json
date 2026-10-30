@@ -15,6 +15,9 @@
     "formular": {
       "t": ""
     },
+    "formular.chyba-odeslani": {
+      "t": "Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo nám napište přímo na {KONTAKT_EMAIL}."
+    },
     "formular.chyba-povinne": {
       "t": "Vyplňte prosím všechna povinná pole."
     },
@@ -29,20 +32,14 @@
       "t": "Jméno a příjmení",
       "p": "Vaše jméno a příjmení"
     },
-    "formular.mail-jmeno": {
-      "t": "Jméno"
-    },
-    "formular.mail-telefon": {
-      "t": "Telefon"
-    },
     "formular.nadpis": {
       "t": "Napište nám"
     },
     "formular.nadtitulek": {
       "t": "KONTAKTNÍ FORMULÁŘ"
     },
-    "formular.neuvedeno": {
-      "t": "neuvedeno"
+    "formular.odesilani": {
+      "t": "Odesílám…"
     },
     "formular.odeslat": {
       "t": "Odeslat zprávu"
@@ -62,7 +59,7 @@
       "p": "{KONTAKT_TELEFON}"
     },
     "formular.uspech": {
-      "t": "Otevřel se váš e-mailový klient s předvyplněnou zprávou. Pokud se nic neotevřelo, napište nám prosím přímo na {KONTAKT_EMAIL}."
+      "t": "Děkujeme, zpráva byla odeslána. Ozveme se vám co nejdříve."
     },
     "formular.zprava": {
       "t": "Zpráva",
@@ -146,6 +143,9 @@
     "formular": {
       "t": ""
     },
+    "formular.chyba-odeslani": {
+      "t": "Your message could not be sent. Please try again, or email us directly at {KONTAKT_EMAIL}."
+    },
     "formular.chyba-povinne": {
       "t": "Please fill in all required fields."
     },
@@ -160,20 +160,14 @@
       "t": "Full name",
       "p": "Your full name"
     },
-    "formular.mail-jmeno": {
-      "t": "Name"
-    },
-    "formular.mail-telefon": {
-      "t": "Phone"
-    },
     "formular.nadpis": {
       "t": "Write to us"
     },
     "formular.nadtitulek": {
       "t": "CONTACT FORM"
     },
-    "formular.neuvedeno": {
-      "t": "not provided"
+    "formular.odesilani": {
+      "t": "Sending…"
     },
     "formular.odeslat": {
       "t": "Send message"
@@ -193,7 +187,7 @@
       "p": "{KONTAKT_TELEFON}"
     },
     "formular.uspech": {
-      "t": "Your email client should have opened with a pre-filled message. If nothing opened, please write to us directly at {KONTAKT_EMAIL}."
+      "t": "Thank you, your message has been sent. We'll get back to you as soon as possible."
     },
     "formular.zprava": {
       "t": "Message",
